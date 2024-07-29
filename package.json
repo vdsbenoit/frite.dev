@@ -13,5 +13,8 @@
     "@nuxt/ui": "^2.18.2",
     "nuxt": "^3.12.4",
     "vue": "latest"
+  },
+  "devDependencies": {
+    "@nuxt/devtools": "latest"
   }
 }
