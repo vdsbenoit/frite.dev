@@ -15,5 +15,6 @@
     "className",
     "ngClass",
     "ui"
-  ]
+  ],
+  "editor.formatOnSave": true
 }
