@@ -2,6 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer utilities {
-  /* write custom classes here */
+@layer base {
+  body {
+    @apply bg-gray-900;
+  }
 }

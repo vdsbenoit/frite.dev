@@ -8,16 +8,21 @@
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "postinstall": "nuxt prepare"
+    "postinstall": "nuxt prepare",
+    "prepare": "husky && husky install"
   },
-  "dependencies": {
-    "@nuxt/ui": "^2.18.2",
-    "nuxt": "^3.12.4",
-    "vue": "latest"
+  "lint-staged": {
+    "*.{ts,js,vue,css,json,yaml}": "npx prettier --check"
   },
   "devDependencies": {
     "@nuxt/devtools": "latest",
+    "@nuxt/ui": "^2.18.2",
+    "@tailwindcss/forms": "^0.5.7",
+    "husky": "^9.1.4",
+    "lint-staged": "^15.2.8",
+    "nuxt": "^3.12.4",
     "prettier": "^3.3.3",
-    "prettier-plugin-tailwindcss": "^0.6.5"
+    "prettier-plugin-tailwindcss": "^0.6.5",
+    "vue": "latest"
   }
 }

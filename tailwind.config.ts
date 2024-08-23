@@ -1,6 +1,9 @@
 import type { Config } from "tailwindcss";
+import defaultTheme from "tailwindcss/defaultTheme";
 
 export default <Partial<Config>>{
+  plugins: [require("@tailwindcss/forms")],
+  content: ["content/**/*.md", "docs/content/**/*.md"],
   theme: {
     extend: {
       aspectRatio: {
@@ -23,10 +26,9 @@ export default <Partial<Config>>{
           950: "#401f08",
         },
       },
+      fontFamily: {
+        sans: ["Arial", ...defaultTheme.fontFamily.sans],
+      },
     },
   },
-  content: [
-    "content/**/*.md",
-    "docs/content/**/*.md",
-  ],
 };
