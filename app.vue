@@ -2,22 +2,28 @@
   <div>
     <div
       v-for="(star, index) in stars1"
-      class="stars1 absolute bg-white"
+      class="stars1 absolute"
       :key="index"
       :style="{ top: star.top, left: star.left }"
-    ></div>
+    >
+      <img src="~/assets/img/frite.png" alt="fry" class="h-2" />
+    </div>
     <div
       v-for="(star, index) in stars2"
-      class="stars2 absolute bg-white"
+      class="stars2 absolute"
       :key="index"
       :style="{ top: star.top, left: star.left }"
-    ></div>
+    >
+      <img src="~/assets/img/frite.png" alt="fry" class="h-4" />
+    </div>
     <div
       v-for="(star, index) in stars3"
-      class="stars3 absolute bg-white"
+      class="stars3 absolute"
       :key="index"
       :style="{ top: star.top, left: star.left }"
-    ></div>
+    >
+      <img src="~/assets/img/frite.png" alt="fry" class="h-7" />
+    </div>
     <div id="title">
       <span> THIS IS </span>
       <br />
@@ -65,39 +71,30 @@ html {
 
 .stars1,
 .stars1:after {
-  width: 1px;
-  height: 1px;
   animation: animStar 50s linear infinite;
 }
 
 .stars1:after {
-  content: " ";
   position: absolute;
   top: 2000px;
 }
 
 .stars2,
 .stars2:after {
-  width: 2px;
-  height: 2px;
   animation: animStar 100s linear infinite;
 }
 
 .stars2:after {
-  content: " ";
   position: absolute;
   top: 2000px;
 }
 
 .stars3,
 .stars3:after {
-  width: 3px;
-  height: 3px;
   animation: animStar 150s linear infinite;
 }
 
 .stars3:after {
-  content: " ";
   position: absolute;
   top: 2000px;
 }
