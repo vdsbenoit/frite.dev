@@ -1,28 +1,27 @@
 <template>
   <div>
-    <div
-      v-for="(star, index) in stars1"
-      class="stars1 absolute"
-      :key="index"
-      :style="{ top: star.top, left: star.left }"
-    >
-      <img src="~/assets/img/frite.png" alt="fry" class="h-2" />
-    </div>
-    <div
-      v-for="(star, index) in stars2"
-      class="stars2 absolute"
-      :key="index"
-      :style="{ top: star.top, left: star.left }"
-    >
-      <img src="~/assets/img/frite.png" alt="fry" class="h-4" />
-    </div>
-    <div
-      v-for="(star, index) in stars3"
-      class="stars3 absolute"
-      :key="index"
-      :style="{ top: star.top, left: star.left }"
-    >
-      <img src="~/assets/img/frite.png" alt="fry" class="h-7" />
+    <div v-for="(layer, indexLayer) in stars" :key="indexLayer">
+      <div
+        v-for="(offset, indexOffset) in [0, windowHeight]"
+        :key="indexOffset"
+      >
+        <div
+          v-for="(star, indexStar) in layer.stars"
+          :key="indexStar"
+          class="absolute"
+          :style="{
+            top: star.top + offset + 'px',
+            left: star.left + 'px',
+            animation: `animateStar ${layer.speed}s linear infinite`,
+          }"
+        >
+          <img
+            src="~/assets/img/frite.png"
+            alt="fry"
+            :class="`h-${layer.height}`"
+          />
+        </div>
+      </div>
     </div>
     <div id="title">
       <span> THIS IS </span>
@@ -33,22 +32,37 @@
 </template>
 <script setup lang="ts">
 interface Star {
-  top: string;
-  left: string;
+  top: number;
+  left: number;
 }
 
-const stars1 = ref<Star[]>([]);
-const stars2 = ref<Star[]>([]);
-const stars3 = ref<Star[]>([]);
+interface StarLayer {
+  stars: Star[];
+  speed: number;
+  height: number;
+}
+
+const windowHeight = ref(0);
+const windowWidth = ref(0);
+const stars = ref<StarLayer[]>([]);
+
+const starTransformTo = computed(() => {
+  return `translateY(-${windowHeight.value}px)`;
+});
+
+const updateWindowSize = () => {
+  windowHeight.value = 2000;
+  windowWidth.value = window.innerWidth;
+  resetStars();
+};
 
 const generateStars = (n: number): Star[] => {
   const stars: Star[] = [];
-  const viewportWidth = window.innerWidth;
 
   for (let i = 0; i < 100; i++) {
     const star: Star = {
-      top: `${Math.floor(Math.random() * 2000)}px`,
-      left: `${Math.floor(Math.random() * viewportWidth)}px`,
+      top: Math.floor(Math.random() * windowHeight.value),
+      left: Math.floor(Math.random() * windowWidth.value),
     };
 
     stars.push(star);
@@ -56,10 +70,20 @@ const generateStars = (n: number): Star[] => {
   return stars;
 };
 
+const resetStars = () => {
+  stars.value = [
+    { stars: generateStars(700), speed: 75, height: 2 },
+    { stars: generateStars(200), speed: 100, height: 3 },
+    { stars: generateStars(100), speed: 150, height: 5 },
+  ];
+};
+
 onMounted(() => {
-  stars1.value = generateStars(700);
-  stars2.value = generateStars(200);
-  stars3.value = generateStars(100);
+  window.addEventListener("resize", updateWindowSize);
+  updateWindowSize();
+});
+onUnmounted(() => {
+  window.removeEventListener("resize", updateWindowSize);
 });
 </script>
 <style>
@@ -67,36 +91,6 @@ html {
   height: 100%;
   background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
   overflow: hidden;
-}
-
-.stars1,
-.stars1:after {
-  animation: animStar 50s linear infinite;
-}
-
-.stars1:after {
-  position: absolute;
-  top: 2000px;
-}
-
-.stars2,
-.stars2:after {
-  animation: animStar 100s linear infinite;
-}
-
-.stars2:after {
-  position: absolute;
-  top: 2000px;
-}
-
-.stars3,
-.stars3:after {
-  animation: animStar 150s linear infinite;
-}
-
-.stars3:after {
-  position: absolute;
-  top: 2000px;
 }
 
 #title {
@@ -120,12 +114,12 @@ html {
   -webkit-text-fill-color: transparent;
 }
 
-@keyframes animStar {
+@keyframes animateStar {
   from {
     transform: translateY(0px);
   }
   to {
-    transform: translateY(-2000px);
+    transform: v-bind("starTransformTo");
   }
 }
 </style>
