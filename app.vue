@@ -1,5 +1,4 @@
 <template>
-  <p>{{ windowHeight * windowWidth }}</p>
   <div>
     <div v-for="(layer, indexLayer) in stars" :key="indexLayer">
       <div
@@ -9,7 +8,7 @@
         <div
           v-for="(star, indexStar) in layer.stars"
           :key="indexStar"
-          class="absolute"
+          class="absolute -z-10"
           :style="{
             top: star.top + offset + 'px',
             left: star.left + 'px',
