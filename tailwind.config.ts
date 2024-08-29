@@ -27,7 +27,7 @@ export default <Partial<Config>>{
         },
       },
       fontFamily: {
-        sans: ["Arial", ...defaultTheme.fontFamily.sans],
+        sans: ["Montserrat", ...defaultTheme.fontFamily.sans],
       },
     },
   },

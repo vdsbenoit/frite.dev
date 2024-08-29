@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div v-for="(layer, indexLayer) in stars" :key="indexLayer">
+    <div id="stars" v-for="(layer, indexLayer) in stars" :key="indexLayer">
       <div
         v-for="(offset, indexOffset) in [0, windowHeight]"
         :key="indexOffset"
@@ -8,7 +8,7 @@
         <div
           v-for="(star, indexStar) in layer.stars"
           :key="indexStar"
-          class="absolute -z-10"
+          class="pointer-events-none absolute -z-10"
           :style="{
             top: star.top + offset + 'px',
             left: star.left + 'px',
@@ -23,11 +23,9 @@
         </div>
       </div>
     </div>
-    <div id="title">
-      <span> THIS IS </span>
-      <br />
-      <span> A STAR BACKGROUND </span>
-    </div>
+    <NuxtLayout>
+      <NuxtPage />
+    </NuxtLayout>
   </div>
 </template>
 <script setup lang="ts">
@@ -105,31 +103,10 @@ onUnmounted(() => {
 });
 </script>
 <style>
-html {
+body {
   height: 100%;
-  background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
+  background: radial-gradient(ellipse at bottom, #262626 0%, #0a0a0a 100%);
   overflow: hidden;
-}
-
-#title {
-  position: absolute;
-  top: 50%;
-  left: 0;
-  right: 0;
-  color: #fff;
-  text-align: center;
-  font-family: "Lato", sans-serif;
-  font-weight: 300;
-  font-size: 50px;
-  letter-spacing: 10px;
-  margin-top: -60px;
-  padding-left: 10px;
-}
-
-#title span {
-  background: -webkit-linear-gradient(white, #38495a);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
 }
 
 @keyframes animateStar {

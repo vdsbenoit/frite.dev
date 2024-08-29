@@ -6,22 +6,33 @@
         src="~/assets/img/frites.png"
         alt="frite-logo"
       />
-      <p class="text-primary font-extrabold tracking-tight">frite.dev</p>
-      <h1 class="mt-4 text-5xl text-gray-100">
-        Belgian-grade<br />software services
+      <p class="text-primary font-bold">frite.dev</p>
+      <h1 class="relative mt-3 px-6 pb-8 pt-4 text-5xl font-light">
+        <span
+          class="block bg-gradient-to-t from-slate-400 to-white bg-clip-text leading-normal text-transparent"
+        >
+          Empower your businesses
+        </span>
+        <span
+          class="block bg-gradient-to-t from-slate-400 to-white bg-clip-text text-transparent"
+        >
+          with tailored software solutions
+        </span>
       </h1>
-      <div class="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2">
+      <div
+        class="mt-6 grid grid-cols-1 justify-items-stretch gap-4 sm:grid-cols-2"
+      >
         <a
           href="#contact"
-          class="bg-primary inline-block rounded-lg px-6 py-3 font-semibold text-gray-800 shadow-lg"
+          class="bg-primary inline-block justify-self-end rounded-lg px-6 py-3 font-semibold text-gray-800 shadow-lg"
         >
-          Contact us
+          Meet me
         </a>
         <a
           href="#services"
-          class="inline-block rounded-lg bg-gray-800 px-6 py-3 font-semibold text-gray-100 shadow-lg"
+          class="inline-block justify-self-start rounded-lg bg-gray-800 px-6 py-3 font-semibold text-gray-100 shadow-lg"
         >
-          Learn more
+          Who I am
         </a>
       </div>
     </div>
