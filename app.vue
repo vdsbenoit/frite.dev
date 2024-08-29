@@ -1,4 +1,5 @@
 <template>
+  <p>{{ windowHeight * windowWidth }}</p>
   <div>
     <div v-for="(layer, indexLayer) in stars" :key="indexLayer">
       <div
@@ -31,6 +32,12 @@
   </div>
 </template>
 <script setup lang="ts">
+// Constants
+
+const START_DENSITY = 1;
+
+// Interfaces & Types
+
 interface Star {
   top: number;
   left: number;
@@ -42,16 +49,26 @@ interface StarLayer {
   height: number;
 }
 
+// Reactive variables
+
 const windowHeight = ref(0);
 const windowWidth = ref(0);
 const stars = ref<StarLayer[]>([]);
+
+// Computed variables
 
 const starTransformTo = computed(() => {
   return `translateY(-${windowHeight.value}px)`;
 });
 
+const nbStars = computed(() => {
+  return ((windowHeight.value * windowWidth.value) / 40000) * START_DENSITY;
+});
+
+// Methods
+
 const updateWindowSize = () => {
-  windowHeight.value = 2000;
+  windowHeight.value = window.innerHeight;
   windowWidth.value = window.innerWidth;
   resetStars();
 };
@@ -59,7 +76,7 @@ const updateWindowSize = () => {
 const generateStars = (n: number): Star[] => {
   const stars: Star[] = [];
 
-  for (let i = 0; i < 100; i++) {
+  for (let i = 0; i < n; i++) {
     const star: Star = {
       top: Math.floor(Math.random() * windowHeight.value),
       left: Math.floor(Math.random() * windowWidth.value),
@@ -72,11 +89,13 @@ const generateStars = (n: number): Star[] => {
 
 const resetStars = () => {
   stars.value = [
-    { stars: generateStars(700), speed: 75, height: 2 },
-    { stars: generateStars(200), speed: 100, height: 3 },
-    { stars: generateStars(100), speed: 150, height: 5 },
+    { stars: generateStars(nbStars.value * 6), speed: 60, height: 2 },
+    { stars: generateStars(nbStars.value * 2), speed: 100, height: 3 },
+    { stars: generateStars(nbStars.value), speed: 150, height: 6 },
   ];
 };
+
+// Lifecycle hooks
 
 onMounted(() => {
   window.addEventListener("resize", updateWindowSize);
