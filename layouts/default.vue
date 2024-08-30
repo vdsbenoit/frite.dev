@@ -33,17 +33,60 @@
         </div>
       </div>
     </div>
-    <div>
-      <nav>
-        This is a navbar
-        <button class="border border-white" @click="showStars = !showStars">
-          Toggle stars
-        </button>
-      </nav>
-      <main ref="scrollableContent" class="h-lvh overflow-y-auto">
-        <slot />
-      </main>
-    </div>
+    <div></div>
+    <nav
+      class="fixed left-0 right-0 top-0 z-10 flex items-center justify-between bg-gray-800 px-4 py-2 text-gray-100 sm:hidden"
+    >
+      <div class="flex items-center">
+        <img
+          src="~/assets/img/frites.png"
+          alt="frites-logo"
+          class="mr-2 h-8 w-8"
+        />
+        <a
+          href="#hero"
+          class="hover:text-primary text-lg font-bold text-gray-100 transition-colors"
+          >frite.dev</a
+        >
+      </div>
+      <div class="flex items-center space-x-4 text-gray-100">
+        <a href="#profile" class="hover:text-primary-300 transition-colors"
+          >Profile
+        </a>
+        <a href="#skills" class="hover:text-primary-300 transition-colors"
+          >Skills
+        </a>
+        <a href="#contact" class="hover:text-primary-300 transition-colors"
+          >Contact</a
+        >
+      </div>
+      <button class="border border-white" @click="showStars = !showStars">
+        Toggle stars
+      </button>
+    </nav>
+    <nav class="fixed left-0 right-0 top-8 z-10 hidden sm:flex">
+      <div
+        class="via-primary mx-auto rounded-2xl bg-gradient-to-br from-gray-700 to-red-400 p-0.5"
+      >
+        <div class="rounded-2xl bg-gray-800 px-6 py-1 text-gray-100">
+          <div class="flex items-center space-x-4">
+            <a href="#profile" class="hover:text-primary-300 transition-colors"
+              >Profile
+            </a>
+            <a href="#skills" class="hover:text-primary-300 transition-colors"
+              >Skills
+            </a>
+            <a href="#contact" class="hover:text-primary-300 transition-colors"
+              >Contact</a
+            >
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <main ref="scrollableContent" class="h-lvh overflow-y-auto">
+      <slot />
+    </main>
   </div>
 </template>
 <script setup lang="ts">
@@ -143,7 +186,7 @@ onUnmounted(() => {
 <style>
 body {
   height: 100%;
-    /* this is equivalent to Tailwind's neutral-800 & neutral-950 */
+  /* this is equivalent to Tailwind's neutral-800 & neutral-950 */
   background: radial-gradient(ellipse at bottom, #262626 0%, #0a0a0a 100%);
   overflow: hidden;
 }
