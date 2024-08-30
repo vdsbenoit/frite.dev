@@ -1,7 +1,120 @@
 <template>
   <div>
+    <div id="stars" v-for="(layer, indexLayer) in stars" :key="indexLayer">
+      <div
+        v-for="(offset, indexOffset) in [0, windowHeight]"
+        :key="indexOffset"
+      >
+        <div
+          v-for="(star, indexStar) in layer.stars"
+          :key="indexStar"
+          class="pointer-events-none absolute -z-10"
+          :style="{
+            top: star.top + offset + 'px',
+            left: star.left + 'px',
+            animation: `animateStar ${layer.speed}s linear infinite`,
+          }"
+        >
+          <img
+            src="~/assets/img/frite.png"
+            alt="fry"
+            :class="`h-${layer.height}`"
+          />
+        </div>
+      </div>
+    </div>
     <NuxtLayout>
       <NuxtPage />
     </NuxtLayout>
   </div>
 </template>
+<script setup lang="ts">
+// Constants
+
+const START_DENSITY = 1;
+
+// Interfaces & Types
+
+interface Star {
+  top: number;
+  left: number;
+}
+
+interface StarLayer {
+  stars: Star[];
+  speed: number;
+  height: number;
+}
+
+// Reactive variables
+
+const windowHeight = ref(0);
+const windowWidth = ref(0);
+const stars = ref<StarLayer[]>([]);
+
+// Computed variables
+
+const starTransformTo = computed(() => {
+  return `translateY(-${windowHeight.value}px)`;
+});
+
+const nbStars = computed(() => {
+  return ((windowHeight.value * windowWidth.value) / 40000) * START_DENSITY;
+});
+
+// Methods
+
+const updateWindowSize = () => {
+  windowHeight.value = window.innerHeight;
+  windowWidth.value = window.innerWidth;
+  resetStars();
+};
+
+const generateStars = (n: number): Star[] => {
+  const stars: Star[] = [];
+
+  for (let i = 0; i < n; i++) {
+    const star: Star = {
+      top: Math.floor(Math.random() * windowHeight.value),
+      left: Math.floor(Math.random() * windowWidth.value),
+    };
+
+    stars.push(star);
+  }
+  return stars;
+};
+
+const resetStars = () => {
+  stars.value = [
+    { stars: generateStars(nbStars.value * 6), speed: 60, height: 2 },
+    { stars: generateStars(nbStars.value * 2), speed: 100, height: 3 },
+    { stars: generateStars(nbStars.value), speed: 150, height: 6 },
+  ];
+};
+
+// Lifecycle hooks
+
+onMounted(() => {
+  window.addEventListener("resize", updateWindowSize);
+  updateWindowSize();
+});
+onUnmounted(() => {
+  window.removeEventListener("resize", updateWindowSize);
+});
+</script>
+<style>
+body {
+  height: 100%;
+  background: radial-gradient(ellipse at bottom, #262626 0%, #0a0a0a 100%);
+  overflow: hidden;
+}
+
+@keyframes animateStar {
+  from {
+    transform: translateY(0px);
+  }
+  to {
+    transform: v-bind("starTransformTo");
+  }
+}
+</style>

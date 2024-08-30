@@ -1,6 +1,8 @@
 <template>
   <div>
     <nav>This is a navbar</nav>
-    <slot />
+    <main class="h-lvh overflow-y-auto">
+      <slot />
+    </main>
   </div>
 </template>
