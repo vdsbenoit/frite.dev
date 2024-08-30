@@ -1,75 +1,20 @@
-# Nuxt UI Minimal Starter
+# Portfolio website
 
-Look at [Nuxt docs](https://nuxt.com/docs/getting-started/introduction) and [Nuxt UI docs](https://ui.nuxt.com) to learn more.
+## Tech stack
 
-## Setup
+- Nuxt + Vue 3 Composition API
+- Nuxt UI
+- Tailwind
+- Prettier (& prettier-plugin-tailwindcss) enforced
 
-Make sure to install the dependencies:
+## Design
 
-```bash
-# npm
-npm install
+### Colors
 
-# pnpm
-pnpm install
+| Role       | HEX     | Tailwind    |
+| ---------- | ------- | ----------- |
+| Primary    | #f4c61f | custom      |
+| Light text | #f5f5f5 | neutral-100 |
+| Gray light | #262626 | neutral-800 |
+| Gray dark  | #0a0a0a | neutral-950 |
 
-# yarn
-yarn install
-
-# bun
-bun install
-```
-
-## Development Server
-
-Start the development server on `http://localhost:3000`:
-
-```bash
-# npm
-npm run dev
-
-# pnpm
-pnpm run dev
-
-# yarn
-yarn dev
-
-# bun
-bun run dev
-```
-
-## Production
-
-Build the application for production:
-
-```bash
-# npm
-npm run build
-
-# pnpm
-pnpm run build
-
-# yarn
-yarn build
-
-# bun
-bun run build
-```
-
-Locally preview production build:
-
-```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm run preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.

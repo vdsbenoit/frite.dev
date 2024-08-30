@@ -143,6 +143,7 @@ onUnmounted(() => {
 <style>
 body {
   height: 100%;
+    /* this is equivalent to Tailwind's neutral-800 & neutral-950 */
   background: radial-gradient(ellipse at bottom, #262626 0%, #0a0a0a 100%);
   overflow: hidden;
 }
