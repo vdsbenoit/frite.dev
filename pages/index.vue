@@ -1,6 +1,6 @@
 <template>
   <div>
-    <HeroSection />
+    <SectionHero />
   </div>
 </template>
 
