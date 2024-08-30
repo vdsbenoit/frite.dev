@@ -1,16 +1,13 @@
 <template>
   <div class="flex min-h-screen items-center justify-center">
     <div class="text-center">
-      <img
-        class="mx-auto h-10 w-10"
-        src="~/assets/img/frites.png"
-        alt="frite-logo"
-      />
-      <p class="text-primary font-bold">frite.dev</p>
       <div id="background-clip" ref="backgroundClip"></div>
-      <h1 ref="heroTitle" class="relative mt-3 px-2 text-5xl font-light">
+      <h1
+        ref="heroTitle"
+        class="relative mt-3 px-2 text-4xl font-light md:text-5xl"
+      >
         <span
-          class="block bg-gradient-to-t from-gray-400 to-white bg-clip-text leading-normal text-transparent"
+          class="block bg-gradient-to-t from-gray-400 to-white bg-clip-text text-transparent md:leading-normal"
         >
           Empower your businesses
         </span>
@@ -21,17 +18,17 @@
         </span>
       </h1>
       <div
-        class="mt-6 grid grid-cols-1 justify-items-stretch gap-4 sm:grid-cols-2"
+        class="mt-8 grid grid-cols-1 justify-items-center gap-4 sm:mt-12 sm:grid-cols-2 sm:justify-normal sm:gap-12"
       >
         <a
           href="#contact"
-          class="bg-primary inline-block justify-self-end rounded-lg px-6 py-3 font-semibold text-gray-800 shadow-lg"
+          class="bg-primary inline-block rounded-lg px-24 py-3 font-semibold text-gray-800 shadow-xl sm:justify-self-end sm:px-16"
         >
           Meet me
         </a>
         <a
           href="#services"
-          class="inline-block justify-self-start rounded-lg bg-gray-800 px-6 py-3 font-semibold text-gray-100 shadow-lg"
+          class="inline-block rounded-lg bg-gray-800 px-24 py-3 font-semibold text-gray-100 shadow-xl sm:justify-self-start sm:px-16"
         >
           Who I am
         </a>
