@@ -1,7 +1,7 @@
 <template>
   <div>
     <nav>This is a navbar</nav>
-    <main class="h-lvh overflow-y-auto">
+    <main>
       <slot />
     </main>
   </div>

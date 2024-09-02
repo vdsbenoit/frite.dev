@@ -1,6 +1,12 @@
 <template>
   <div>
-    <div id="stars" v-for="(layer, indexLayer) in stars" :key="indexLayer">
+    <div
+      id="background"
+      v-for="(layer, indexLayer) in stars"
+      :key="indexLayer"
+      :class="{ blur: blurBackground }"
+      class="transition duration-1000"
+    >
       <div
         v-for="(offset, indexOffset) in [0, windowHeight]"
         :key="indexOffset"
@@ -24,7 +30,10 @@
       </div>
     </div>
     <NuxtLayout>
-      <NuxtPage />
+      <div ref="scrollableContent" class="h-lvh overflow-y-auto">
+        <SectionHero />
+        <SectionPresentation />
+      </div>
     </NuxtLayout>
   </div>
 </template>
@@ -48,6 +57,8 @@ interface StarLayer {
 
 // Reactive variables
 
+const scrollableContent = ref<HTMLElement | null>(null);
+const blurBackground = ref(false);
 const windowHeight = ref(0);
 const windowWidth = ref(0);
 const stars = ref<StarLayer[]>([]);
@@ -63,12 +74,6 @@ const nbStars = computed(() => {
 });
 
 // Methods
-
-const updateWindowSize = () => {
-  windowHeight.value = window.innerHeight;
-  windowWidth.value = window.innerWidth;
-  resetStars();
-};
 
 const generateStars = (n: number): Star[] => {
   const stars: Star[] = [];
@@ -92,14 +97,32 @@ const resetStars = () => {
   ];
 };
 
+const updateWindowSize = () => {
+  windowHeight.value = window.innerHeight;
+  windowWidth.value = window.innerWidth;
+  resetStars();
+};
+
+const handleScroll = () => {
+  if (!scrollableContent.value) return;
+  blurBackground.value =
+    scrollableContent.value.scrollTop > windowHeight.value / 2;
+};
+
 // Lifecycle hooks
 
 onMounted(() => {
   window.addEventListener("resize", updateWindowSize);
   updateWindowSize();
+  if (scrollableContent.value) {
+    scrollableContent.value.addEventListener("scroll", handleScroll);
+  }
 });
 onUnmounted(() => {
   window.removeEventListener("resize", updateWindowSize);
+  if (scrollableContent.value) {
+    scrollableContent.value.removeEventListener("scroll", handleScroll);
+  }
 });
 </script>
 <style>
