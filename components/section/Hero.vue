@@ -18,17 +18,17 @@
         </span>
       </h1>
       <div
-        class="mt-8 grid grid-cols-1 justify-items-center gap-2 sm:grid-cols-2 sm:justify-normal sm:gap-4"
+        class="mt-8 grid grid-cols-1 justify-items-center gap-2 font-semibold *:rounded-lg *:px-10 *:py-2 *:shadow-xl focus:*:outline-none focus:*:ring-2 focus:*:ring-red-400 sm:grid-cols-2 sm:justify-normal sm:gap-4 sm:*:px-16"
       >
         <a
           href="#contact"
-          class="bg-primary inline-block rounded-lg px-10 py-2 font-semibold text-gray-800 shadow-xl sm:justify-self-end sm:px-16"
+          class="bg-primary-400 hover:bg-primary-300 active:bg-primary-500 inline-block text-gray-800 sm:justify-self-end"
         >
           Meet me
         </a>
         <a
           href="#services"
-          class="inline-block rounded-lg bg-gray-800 px-10 py-2 font-semibold text-gray-100 shadow-xl sm:justify-self-start sm:px-16"
+          class="inline-block bg-gray-800 text-gray-100 hover:bg-gray-700 active:bg-gray-900 sm:justify-self-start"
         >
           Who I am
         </a>

@@ -37,10 +37,10 @@
     </div>
     <nav class="relative left-0 right-0 top-0 z-10 sm:fixed sm:top-8 sm:flex">
       <div
-        class="via-primary bg-gradient-to-r from-gray-700 to-red-400 pb-0.5 sm:mx-auto sm:rounded-2xl sm:bg-gradient-to-br sm:p-0.5"
+        class="via-primary bg-gradient-to-r from-gray-700 to-red-400 pb-0.5 sm:mx-auto sm:rounded-xl sm:bg-gradient-to-br sm:p-0.5"
       >
         <div
-          class="hover:*:text-primary-300 flex items-center justify-between bg-gray-800 px-4 py-2 text-gray-100 *:transition-colors sm:space-x-4 sm:rounded-2xl sm:px-6 sm:py-1"
+          class="hover:*:text-primary-300 flex items-center justify-between bg-gray-800 px-4 py-2 text-gray-100 *:transition-colors focus:*:outline-none focus:*:ring-2 focus:*:ring-red-400 sm:gap-x-4 sm:rounded-xl sm:px-3 sm:py-1"
         >
           <div class="flex items-center sm:hidden">
             <img
