@@ -14,7 +14,10 @@
         <span
           class="block bg-gradient-to-t from-gray-400 to-white bg-clip-text text-lg text-transparent sm:text-3xl"
         >
-          with tailored software solutions
+          with tailored
+          <span class="decoration-primary underline underline-offset-4">
+            software solutions</span
+          >
         </span>
       </h1>
       <div
