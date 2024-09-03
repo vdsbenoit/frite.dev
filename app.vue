@@ -1,6 +1,8 @@
 <template>
   <NuxtLayout>
-    <SectionHero />
-    <SectionPresentation />
+    <SectionHero id="hero" />
+    <SectionProfile id="profile" />
+    <SectionSkills id="skills" />
+    <SectionContact id="contact" />
   </NuxtLayout>
 </template>

@@ -141,6 +141,18 @@ const handleScroll = () => {
     scrollableContent.value.scrollTop > windowHeight.value / 4;
 };
 
+const scrollToSection = (event: Event) => {
+  event.preventDefault();
+  const target = event.target as HTMLAnchorElement;
+  const sectionId = target.getAttribute("href");
+  if (sectionId) {
+    const targetElement = document.querySelector(sectionId);
+    if (targetElement) {
+      targetElement.scrollIntoView({ behavior: "smooth" });
+    }
+  }
+};
+
 // Lifecycle hooks
 
 onMounted(() => {
@@ -152,6 +164,11 @@ onMounted(() => {
   if (scrollableContent.value) {
     scrollableContent.value.addEventListener("scroll", handleScroll);
   }
+  // Add click event listener to all anchor tags
+  const anchors = document.querySelectorAll('a[href^="#"]');
+  anchors.forEach((anchor) => {
+    anchor.addEventListener("click", scrollToSection);
+  });
   setTimeout(() => {
     showStars.value = true;
   }, 1);
@@ -164,13 +181,6 @@ onUnmounted(() => {
 });
 </script>
 <style>
-body {
-  height: 100%;
-  /* this is equivalent to Tailwind's neutral-800 & neutral-950 */
-  background: radial-gradient(ellipse at bottom, #262626 0%, #0a0a0a 100%);
-  overflow: hidden;
-}
-
 @keyframes animateStar {
   from {
     transform: translateY(0px);
