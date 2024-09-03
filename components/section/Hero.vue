@@ -1,34 +1,34 @@
 <template>
   <div class="flex min-h-screen items-center justify-center">
-    <div class="text-center">
+    <div class="-mt-16 sm:mt-0">
       <div id="background-clip" ref="backgroundClip"></div>
       <h1
         ref="heroTitle"
-        class="relative mt-3 px-2 text-4xl font-light md:text-5xl"
+        class="relative mt-3 px-0.5 text-center font-bold tracking-tight sm:px-2"
       >
         <span
-          class="block bg-gradient-to-t from-gray-400 to-white bg-clip-text text-transparent md:leading-normal"
+          class="block bg-gradient-to-t from-gray-400 to-white bg-clip-text text-[28px] text-transparent sm:text-5xl sm:leading-normal"
         >
-          Empower your businesses
+          Empower your business
         </span>
         <span
-          class="block bg-gradient-to-t from-gray-400 to-white bg-clip-text text-transparent"
+          class="block bg-gradient-to-t from-gray-400 to-white bg-clip-text text-lg text-transparent sm:text-3xl"
         >
           with tailored software solutions
         </span>
       </h1>
       <div
-        class="mt-8 grid grid-cols-1 justify-items-center gap-4 sm:mt-12 sm:grid-cols-2 sm:justify-normal sm:gap-12"
+        class="mt-8 grid grid-cols-1 justify-items-center gap-2 sm:grid-cols-2 sm:justify-normal sm:gap-4"
       >
         <a
           href="#contact"
-          class="bg-primary inline-block rounded-lg px-24 py-3 font-semibold text-gray-800 shadow-xl sm:justify-self-end sm:px-16"
+          class="bg-primary inline-block rounded-lg px-10 py-2 font-semibold text-gray-800 shadow-xl sm:justify-self-end sm:px-16"
         >
           Meet me
         </a>
         <a
           href="#services"
-          class="inline-block rounded-lg bg-gray-800 px-24 py-3 font-semibold text-gray-100 shadow-xl sm:justify-self-start sm:px-16"
+          class="inline-block rounded-lg bg-gray-800 px-10 py-2 font-semibold text-gray-100 shadow-xl sm:justify-self-start sm:px-16"
         >
           Who I am
         </a>
