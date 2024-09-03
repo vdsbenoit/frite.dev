@@ -18,7 +18,9 @@
           :style="{
             top: star.top + offset + 'px',
             left: star.left + 'px',
-            animation: `animateStar ${layer.speed}s linear infinite`,
+            animation: prefersReducedMotion
+              ? ''
+              : `animateStar ${layer.speed}s linear infinite`,
           }"
           :class="{
             'opacity-0': !showStars,
@@ -110,6 +112,7 @@ interface StarLayer {
 // Reactive variables
 
 const scrollableContent = ref<HTMLElement | null>(null);
+const prefersReducedMotion = ref(false);
 const blurBackground = ref(false);
 const windowHeight = ref(0);
 const windowWidth = ref(0);
@@ -167,6 +170,9 @@ const handleScroll = () => {
 // Lifecycle hooks
 
 onMounted(() => {
+  prefersReducedMotion.value = window.matchMedia(
+    "(prefers-reduced-motion: reduce)",
+  ).matches;
   window.addEventListener("resize", updateWindowSize);
   updateWindowSize();
   if (scrollableContent.value) {
