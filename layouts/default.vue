@@ -118,7 +118,7 @@ const updateWindowSize = () => {
 const handleScroll = () => {
   if (!scrollableContent.value) return;
   blurBackground.value =
-    scrollableContent.value.scrollTop > windowHeight.value / 2;
+    scrollableContent.value.scrollTop > windowHeight.value / 4;
 };
 
 // Lifecycle hooks
