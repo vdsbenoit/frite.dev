@@ -35,57 +35,31 @@
         </div>
       </div>
     </div>
-    <div></div>
-    <nav
-      class="fixed left-0 right-0 top-0 z-10 flex items-center justify-between bg-gray-800 px-4 py-2 text-gray-100 sm:hidden"
-    >
-      <div class="flex items-center">
-        <img
-          src="~/assets/img/frites.png"
-          alt="frites-logo"
-          class="mr-2 h-8 w-8"
-        />
-        <a
-          href="#hero"
-          class="hover:text-primary text-lg font-bold text-gray-100 transition-colors"
-          >frite.dev</a
-        >
-      </div>
-      <div class="flex items-center space-x-4 text-gray-100">
-        <a href="#profile" class="hover:text-primary-300 transition-colors"
-          >Profile
-        </a>
-        <a href="#skills" class="hover:text-primary-300 transition-colors"
-          >Skills
-        </a>
-        <a href="#contact" class="hover:text-primary-300 transition-colors"
-          >Contact</a
-        >
-      </div>
-      <button class="border border-white" @click="showStars = !showStars">
-        Toggle stars
-      </button>
-    </nav>
-    <nav class="fixed left-0 right-0 top-8 z-10 hidden sm:flex">
+    <nav class="relative left-0 right-0 top-0 z-10 sm:fixed sm:top-8 sm:flex">
       <div
-        class="via-primary mx-auto rounded-2xl bg-gradient-to-br from-gray-700 to-red-400 p-0.5"
+        class="via-primary bg-gradient-to-r from-gray-700 to-red-400 pb-0.5 sm:mx-auto sm:rounded-2xl sm:bg-gradient-to-br sm:p-0.5"
       >
-        <div class="rounded-2xl bg-gray-800 px-6 py-1 text-gray-100">
-          <div class="flex items-center space-x-4">
-            <a href="#profile" class="hover:text-primary-300 transition-colors"
-              >Profile
-            </a>
-            <a href="#skills" class="hover:text-primary-300 transition-colors"
-              >Skills
-            </a>
-            <a href="#contact" class="hover:text-primary-300 transition-colors"
-              >Contact</a
+        <div
+          class="hover:*:text-primary-300 flex items-center justify-between bg-gray-800 px-4 py-2 text-gray-100 *:transition-colors sm:space-x-4 sm:rounded-2xl sm:px-6 sm:py-1"
+        >
+          <div class="flex items-center sm:hidden">
+            <img
+              src="~/assets/img/frites.png"
+              alt="frites-logo"
+              class="mr-2 h-8 w-8"
+            />
+            <a
+              href="#hero"
+              class="hover:text-primary text-lg font-bold transition-colors"
+              >frite.dev</a
             >
           </div>
+          <a href="#profile">Profile </a>
+          <a href="#skills">Skills </a>
+          <a href="#contact">Contact</a>
         </div>
       </div>
     </nav>
-
     <main ref="scrollableContent" class="h-lvh overflow-y-auto">
       <slot />
     </main>
