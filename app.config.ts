@@ -3,4 +3,5 @@ export default defineAppConfig({
     primary: "frite",
     gray: "neutral",
   },
+  starDensity: 1,
 });

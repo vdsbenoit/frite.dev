@@ -38,9 +38,9 @@
   </div>
 </template>
 <script setup lang="ts">
-// Constants
+// Imports
 
-const START_DENSITY = 1;
+const appConfig = useAppConfig();
 
 // Interfaces & Types
 
@@ -70,7 +70,9 @@ const starTransformTo = computed(() => {
 });
 
 const nbStars = computed(() => {
-  return ((windowHeight.value * windowWidth.value) / 40000) * START_DENSITY;
+  return (
+    ((windowHeight.value * windowWidth.value) / 40000) * appConfig.starDensity
+  );
 });
 
 // Methods
