@@ -1,22 +1,23 @@
 <template>
   <div class="">
     <nav
-      class="relative left-0 right-0 top-0 z-10 items-center sm:fixed sm:top-8 sm:grid sm:grid-flow-col sm:grid-cols-3"
+      class="relative left-0 right-0 top-0 z-10 items-center sm:fixed sm:top-8 sm:grid sm:grid-flow-col sm:grid-cols-5 sm:justify-items-center"
     >
-      <div class="ml-4 hidden items-center sm:flex sm:justify-self-start">
+      <div class="hidden items-center sm:flex">
         <img
           src="~/assets/img/frites.png"
           alt="frites-logo"
-          class="mr-2 size-10"
+          class="mr-2 size-8 md:size-10"
         />
         <a
           href="#hero"
-          class="decoration-primary text-xl font-bold underline-offset-2 shadow-xl transition-colors hover:text-gray-100 focus:underline focus:outline-none"
+          class="decoration-primary text-lg font-bold underline-offset-2 shadow-xl transition-colors hover:text-gray-100 focus:underline focus:outline-none md:text-xl"
           >frite.dev</a
         >
       </div>
+      <div class="hidden sm:flex"></div>
       <div
-        class="via-primary bg-gradient-to-r from-gray-700 to-red-400 pb-0.5 sm:justify-self-center sm:rounded-xl sm:bg-gradient-to-br sm:p-0.5"
+        class="via-primary bg-gradient-to-r from-gray-700 to-red-400 pb-0.5 sm:rounded-xl sm:bg-gradient-to-br sm:p-0.5"
       >
         <div
           class="flex items-center justify-between bg-gray-800 px-4 py-2 text-gray-100 sm:gap-x-5 sm:rounded-xl sm:px-5 sm:py-1 sm:hover:text-gray-500"
@@ -46,12 +47,13 @@
           >
         </div>
       </div>
+      <div class="hidden sm:flex"></div>
       <UToggle
         v-model="showStars"
         size="lg"
         off-icon="i-tdesign-animation-1"
         on-icon="i-tdesign-animation-1"
-        class="mr-6 hidden sm:inline-flex sm:justify-self-end"
+        class="hidden sm:inline-flex"
       />
     </nav>
     <main ref="scrollableContent" class="h-lvh overflow-y-auto">
