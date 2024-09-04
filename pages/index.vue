@@ -5,7 +5,7 @@
     >
       <div
         class="hidden cursor-pointer items-center sm:flex"
-        @click="scrollTo('hero')"
+        @click.prevent="scrollTo('hero')"
       >
         <img
           src="~/assets/img/frites.png"
@@ -27,7 +27,7 @@
         >
           <div
             class="flex cursor-pointer items-center sm:hidden"
-            @click="scrollTo('hero')"
+            @click.prevent="scrollTo('hero')"
           >
             <img
               src="~/assets/img/frites.png"
@@ -44,6 +44,7 @@
             v-for="section in SECTIONS"
             :key="section.id"
             :href="`#${section.id}`"
+            @click.prevent="scrollTo(section.id)"
             :class="{
               'text-primary': currentSection === section.id,
               hidden: section.id === 'hero',
@@ -117,8 +118,11 @@ const toggleShowStars = () => {
 
 const scrollTo = (sectionId: string) => {
   const targetElement = document.getElementById(sectionId);
-  if (targetElement) {
-    targetElement.scrollIntoView({ behavior: "smooth" });
+  if (targetElement && scrollableContent.value) {
+    scrollableContent.value.scrollTo({
+      top: targetElement.offsetTop,
+      behavior: "smooth",
+    });
   }
 };
 
