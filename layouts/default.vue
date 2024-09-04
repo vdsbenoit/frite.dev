@@ -63,7 +63,7 @@ const blurBackground = useState("blurBackground", () => false);
 const windowHeight = ref(0);
 const windowWidth = ref(0);
 const stars = ref<StarLayer[]>([]);
-const showStars = ref(false);
+const showStars = useState("showStars", () => false);
 
 // Computed variables
 
