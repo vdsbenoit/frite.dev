@@ -1,6 +1,6 @@
 <template>
   <div class="">
-    <nav class="realtive left-0 right-0 top-0 z-10 sm:fixed sm:top-8 sm:flex">
+    <nav class="relative left-0 right-0 top-0 z-10 sm:fixed sm:top-8 sm:flex">
       <div
         class="via-primary bg-gradient-to-r from-gray-700 to-red-400 pb-0.5 sm:mx-auto sm:rounded-xl sm:bg-gradient-to-br sm:p-0.5"
       >
