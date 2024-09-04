@@ -14,7 +14,7 @@
         />
         <a
           href="#hero"
-          class="decoration-primary text-lg font-bold underline-offset-2 transition-colors hover:text-gray-100 focus:underline focus:outline-none md:text-xl"
+          class="decoration-primary bg-gray-950 text-lg font-bold underline-offset-2 transition-colors hover:text-gray-100 focus:underline focus:outline-none md:text-xl"
           >frite.dev</a
         >
       </div>
