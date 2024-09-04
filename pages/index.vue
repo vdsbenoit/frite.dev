@@ -3,7 +3,10 @@
     <nav
       class="relative left-0 right-0 top-0 z-10 items-center sm:fixed sm:top-8 sm:grid sm:grid-flow-col sm:grid-cols-5 sm:justify-items-center"
     >
-      <div class="hidden items-center sm:flex">
+      <div
+        class="hidden cursor-pointer items-center sm:flex"
+        @click="scrollTo('hero')"
+      >
         <img
           src="~/assets/img/frites.png"
           alt="frites-logo"
@@ -11,7 +14,7 @@
         />
         <a
           href="#hero"
-          class="decoration-primary text-lg font-bold underline-offset-2 shadow-xl transition-colors hover:text-gray-100 focus:underline focus:outline-none md:text-xl"
+          class="decoration-primary text-lg font-bold underline-offset-2 transition-colors hover:text-gray-100 focus:underline focus:outline-none md:text-xl"
           >frite.dev</a
         >
       </div>
@@ -22,7 +25,10 @@
         <div
           class="flex items-center justify-between bg-gray-800 px-4 py-2 text-gray-100 sm:gap-x-5 sm:rounded-xl sm:px-5 sm:py-1 sm:hover:text-gray-500"
         >
-          <div class="flex items-center sm:hidden">
+          <div
+            class="flex cursor-pointer items-center sm:hidden"
+            @click="scrollTo('hero')"
+          >
             <img
               src="~/assets/img/frites.png"
               alt="frites-logo"
@@ -61,6 +67,17 @@
         <component :id="section.id" :is="section.component" />
       </div>
     </main>
+    <div
+      class="fixed bottom-6 right-6 flex size-10 cursor-pointer items-center justify-center rounded-full shadow shadow-gray-400/50 transition-colors active:shadow-none sm:hidden"
+      :class="{ 'bg-primary-400': showStars, 'bg-gray-800': !showStars }"
+      @click="toggleShowStars"
+    >
+      <UIcon
+        name="i-tdesign-animation-1"
+        class="size-5 transition-colors"
+        :class="{ 'bg-primary-400': !showStars, 'bg-gray-800': showStars }"
+      />
+    </div>
   </div>
 </template>
 
@@ -92,6 +109,17 @@ const handleScroll = () => {
   if (!scrollableContent.value) return;
   blurBackground.value =
     scrollableContent.value.scrollTop > window.innerHeight / 4;
+};
+
+const toggleShowStars = () => {
+  showStars.value = !showStars.value;
+};
+
+const scrollTo = (sectionId: string) => {
+  const targetElement = document.getElementById(sectionId);
+  if (targetElement) {
+    targetElement.scrollIntoView({ behavior: "smooth" });
+  }
 };
 
 // Lifecycle Hooks
