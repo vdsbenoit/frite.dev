@@ -18,7 +18,9 @@
           :style="{
             top: star.top + offset + 'px',
             left: star.left + 'px',
-            animation: `animateStar ${layer.speed}s linear infinite`,
+            animation: prefersReducedMotion
+              ? ''
+              : `animateStar ${layer.speed}s linear infinite`,
           }"
           :class="{
             'opacity-0': !showStars,
@@ -27,23 +29,13 @@
         >
           <img
             src="~/assets/img/frite.png"
-            alt="fry"
+            alt="frite"
             :class="`h-${layer.height}`"
           />
         </div>
       </div>
     </div>
-    <div>
-      <nav>
-        This is a navbar
-        <button class="border border-white" @click="showStars = !showStars">
-          Toggle stars
-        </button>
-      </nav>
-      <main ref="scrollableContent" class="h-lvh overflow-y-auto">
-        <slot />
-      </main>
-    </div>
+    <slot />
   </div>
 </template>
 <script setup lang="ts">
@@ -66,12 +58,12 @@ interface StarLayer {
 
 // Reactive variables
 
-const scrollableContent = ref<HTMLElement | null>(null);
-const blurBackground = ref(false);
+const prefersReducedMotion = ref(false);
+const blurBackground = useState("blurBackground", () => false);
 const windowHeight = ref(0);
 const windowWidth = ref(0);
 const stars = ref<StarLayer[]>([]);
-const showStars = ref(false);
+const showStars = useState("showStars", () => false);
 
 // Computed variables
 
@@ -115,38 +107,25 @@ const updateWindowSize = () => {
   resetStars();
 };
 
-const handleScroll = () => {
-  if (!scrollableContent.value) return;
-  blurBackground.value =
-    scrollableContent.value.scrollTop > windowHeight.value / 4;
-};
-
 // Lifecycle hooks
 
 onMounted(() => {
+  prefersReducedMotion.value = window.matchMedia(
+    "(prefers-reduced-motion: reduce)",
+  ).matches;
   window.addEventListener("resize", updateWindowSize);
   updateWindowSize();
-  if (scrollableContent.value) {
-    scrollableContent.value.addEventListener("scroll", handleScroll);
-  }
+
   setTimeout(() => {
     showStars.value = true;
   }, 1);
 });
+
 onUnmounted(() => {
   window.removeEventListener("resize", updateWindowSize);
-  if (scrollableContent.value) {
-    scrollableContent.value.removeEventListener("scroll", handleScroll);
-  }
 });
 </script>
 <style>
-body {
-  height: 100%;
-  background: radial-gradient(ellipse at bottom, #262626 0%, #0a0a0a 100%);
-  overflow: hidden;
-}
-
 @keyframes animateStar {
   from {
     transform: translateY(0px);

@@ -1,6 +1,5 @@
 <template>
   <NuxtLayout>
-    <SectionHero />
-    <SectionPresentation />
+    <NuxtPage />
   </NuxtLayout>
 </template>
