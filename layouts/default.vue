@@ -1,3 +1,4 @@
+<!-- This layout contains the animated stars background -->
 <template>
   <div>
     <div
