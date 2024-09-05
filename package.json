@@ -26,6 +26,7 @@
     "vue": "latest"
   },
   "dependencies": {
+    "@vueuse/components": "^11.0.3",
     "@vueuse/core": "^11.0.3"
   }
 }

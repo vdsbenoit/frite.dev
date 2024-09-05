@@ -40,7 +40,11 @@
   </div>
 </template>
 <script setup lang="ts">
-import { usePreferredReducedMotion, useWindowSize } from "@vueuse/core";
+import {
+  useEventListener,
+  usePreferredReducedMotion,
+  useWindowSize,
+} from "@vueuse/core";
 
 // Interfaces & Types
 
@@ -110,16 +114,12 @@ const resetStars = () => {
 // Lifecycle hooks
 
 onMounted(() => {
-  window.addEventListener("resize", resetStars);
+  useEventListener(window, "resize", resetStars);
   resetStars();
 
   setTimeout(() => {
     showStars.value = true;
   }, 1);
-});
-
-onUnmounted(() => {
-  window.removeEventListener("resize", resetStars);
 });
 </script>
 <style>
