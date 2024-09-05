@@ -50,7 +50,6 @@
 <script lang="ts" setup>
 const skills = {
   hard: [
-    // 50 word lorem ipsum :
     {
       title: "JavaScript",
       icon: "i-simple-icons-javascript",
