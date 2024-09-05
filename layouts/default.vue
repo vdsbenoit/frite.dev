@@ -39,9 +39,7 @@
   </div>
 </template>
 <script setup lang="ts">
-// Config & imports
-
-const appConfig = useAppConfig();
+import { usePreferredReducedMotion, useWindowSize } from "@vueuse/core";
 
 // Interfaces & Types
 
@@ -56,16 +54,23 @@ interface StarLayer {
   height: number;
 }
 
+// Composables
+
+const appConfig = useAppConfig();
+const { width: windowWidth, height: windowHeight } = useWindowSize();
+
 // Reactive variables
 
-const prefersReducedMotion = ref(false);
+const preferedMotion = usePreferredReducedMotion();
 const blurBackground = useState("blurBackground", () => false);
-const windowHeight = ref(0);
-const windowWidth = ref(0);
 const stars = ref<StarLayer[]>([]);
 const showStars = useState("showStars", () => false);
 
 // Computed variables
+
+const prefersReducedMotion = computed(() => {
+  return preferedMotion.value === "reduce";
+});
 
 const starTransformTo = computed(() => {
   return `translateY(-${windowHeight.value}px)`;
@@ -101,20 +106,11 @@ const resetStars = () => {
   ];
 };
 
-const updateWindowSize = () => {
-  windowHeight.value = window.innerHeight;
-  windowWidth.value = window.innerWidth;
-  resetStars();
-};
-
 // Lifecycle hooks
 
 onMounted(() => {
-  prefersReducedMotion.value = window.matchMedia(
-    "(prefers-reduced-motion: reduce)",
-  ).matches;
-  window.addEventListener("resize", updateWindowSize);
-  updateWindowSize();
+  window.addEventListener("resize", resetStars);
+  resetStars();
 
   setTimeout(() => {
     showStars.value = true;
@@ -122,7 +118,7 @@ onMounted(() => {
 });
 
 onUnmounted(() => {
-  window.removeEventListener("resize", updateWindowSize);
+  window.removeEventListener("resize", resetStars);
 });
 </script>
 <style>

@@ -17,6 +17,6 @@
     "ui"
   ],
   "github.copilot.chat.customUserInstructions": [
-    "Use Vue 3 Composition API with TypeScript for the scripting and templating. Use Nuxt UI and Tailwind for the design."
+    "This is a Nuxt project. Use Vue 3 Composition API with TypeScript for the templating and the scripting. You can use VueUse utilities too. Use Nuxt UI and Tailwind for the design."
   ]
 }
