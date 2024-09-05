@@ -1,27 +1,32 @@
 <template>
   <div class="relative inline-block">
     <div
-      class="group m-1 cursor-pointer border border-white"
+      class="group cursor-pointer"
       @click="showDescription = true"
       ref="currentElement"
     >
+      <!-- Icon -->
       <div
-        class="flex size-16 scale-75 items-center justify-center rounded-full bg-gray-800 transition-transform ease-in-out group-hover:-translate-y-3 group-hover:scale-100"
+        class="flex size-16 scale-90 items-center justify-center rounded-full bg-gray-800 ease-in-out group-hover:-translate-y-4 group-hover:scale-100 motion-safe:transition-transform"
       >
         <UIcon class="size-8" :name="icon" :style="{ color }" />
       </div>
+      <!-- Caption -->
       <div
-        class="absolute bottom-0 left-1/2 -translate-x-1/2 text-center opacity-0 transition ease-in-out group-hover:translate-y-3 group-hover:opacity-100"
+        class="absolute bottom-0 left-1/2 -translate-x-1/2 text-center opacity-0 ease-in-out group-hover:translate-y-4 group-hover:opacity-100 motion-safe:transition"
       >
         <span
-          class="rounded p-1 text-xs text-gray-800"
+          class="rounded p-1 text-sm text-gray-800"
           :style="{ backgroundColor: color }"
-          >{{ title }}</span
         >
+          {{ title }}
+        </span>
       </div>
     </div>
+    <!-- Description popup -->
     <div
-      class="absolute top-0 z-10 h-auto w-72 rounded bg-gray-100 p-4 text-base text-gray-800 transition-transform"
+      id="description"
+      class="absolute left-1/2 top-1/2 z-10 h-auto w-72 -translate-x-1/2 -translate-y-1/2 rounded bg-gray-100 p-4 text-base text-gray-800 motion-safe:transition-transform"
       :class="{ 'scale-100': showDescription, 'scale-0': !showDescription }"
     >
       <h4
@@ -58,6 +63,4 @@ onMounted(() => {
 });
 </script>
 
-<style scoped>
-/* Add any additional scoped styles here */
-</style>
+<style scoped></style>
