@@ -25,7 +25,7 @@ items:
     id: project-management
   - title: DevOps
     group: hard
-    icon: i-heroicons-chart-pie-24-solid
+    icon: i-ph-infinity-bold
     color: "#f59e0b"
     description: >-
       I worked as a DevOps engineer for 5 year at Sony, and was promoted
@@ -76,21 +76,46 @@ items:
       company.
     id: quality-assurance
   - title: Agile
-    group: hard
-    icon: i-heroicons-lightbulb-idea-24-solid
-    color: "#f59e0b"
-    description: >-
-      As most the software engineering companies today, the companies I
-      worked for were using Agile methodologies.
     id: agile
-  - title: Waterfall
     group: hard
-    icon: i-heroicons-lightbulb-idea-24-solid
+    icon: i-iconoir-agile
     color: "#f59e0b"
     description: >-
-      Even though it isn't my prefered methodology, I have experience with
-      the Waterfall methodology too.
+      Agile is a software development methodology focused on iterative progress, collaboration, flexibility, and customer feedback. 
+      It emphasizes small, frequent releases, adaptive planning, and continuous improvement to quickly respond to changing requirements and deliver high-quality products.
+      Like most the software engineering companies today, the places I worked at used Agile methodologies.
+  - title: V-Model
+    group: hard
+    icon: i-heroicons-chevron-down
+    color: "#f59e0b"
+    description: >-
+      The V-Model is a software development model that emphasis the relationships between 
+      each phase of the development life cycle and its associated phase of testing.
+      Even though it isn't my prefered methodology, I have experience with this methodology.
     id: waterfall
+  - title: French
+    id: french
+    group: hard
+    icon: i-flag-bl-4x3
+    color: "#f59e0b"
+    description: >-
+      French is my mother tongue.
+
+  - title: English
+    id: english
+    group: hard
+    icon: i-flag-sh-4x3
+    color: "#f59e0b"
+    description: >-
+      I am completely fluent in English. I lived in Australia for one year and worked in international environments for 7 years.
+
+  - title: Spanish
+    id: spanish
+    group: hard
+    icon: i-flag-es-4x3
+    color: "#f59e0b"
+    description: >-
+      I have an A2 level of Spanish. I took classes in 2023 and try to practice it every week.
 
   - title: Supreme communication
     group: soft
