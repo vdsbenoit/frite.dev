@@ -1,6 +1,6 @@
 <template>
   <div class="flex min-h-screen items-center justify-center px-4">
-    <div class="relative">
+    <div class="relative max-w-screen-lg">
       <div class="mt-4 py-4" v-for="section in sections" :key="section.id">
         <h2 class="mb-2 text-left text-5xl font-bold">{{ section.title }}</h2>
         <div

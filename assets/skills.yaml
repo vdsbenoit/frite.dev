@@ -4,10 +4,11 @@ groups:
   - title: Soft skills
     id: soft
 items:
+  # Hard skills
   - title: Full-stack development
     id: full-stack-development
     group: hard
-    icon:
+    icon: i-heroicons-code-bracket-16-solid
     color: "#f59e0b"
     description: >-
       I have experience in building full-stack applications using various
@@ -17,7 +18,7 @@ items:
     id: project-management
     group: hard
     icon: i-heroicons-calendar-date-range-16-solid
-    color: "#f59e0b"
+    color: "#c6d165"
     description: >-
       I used to the the head of a non-profit organization and was
       responsible for managing the project and the team. This non-profit
@@ -27,7 +28,7 @@ items:
     id: devops
     group: hard
     icon: i-ph-infinity-bold
-    color: "#f59e0b"
+    color: "#a0d8ef"
     description: >-
       I worked as a DevOps engineer for 5 year at Sony, and was promoted
       to the position of Senior DevOps Engineer. As a DevOps, I analyze
@@ -36,8 +37,8 @@ items:
   - title: CI/CD
     id: ci-cd
     group: hard
-    icon:
-    color: "#f59e0b"
+    icon: i-heroicons-arrow-path
+    color: "#3b82f6"
     description: >-
       Through my career as a DevOps, I acquired a lot of experience in
       creating and maintaining fully-automated software integration and
@@ -45,8 +46,8 @@ items:
   - title: Package management
     id: package-management
     group: hard
-    icon:
-    color: "#f59e0b"
+    icon: i-heroicons-cube
+    color: "#B9875E"
     description: >-
       My previous DevOps position also gave me the oppotunity to sharpen
       my knowledge with package management tools, including conda (python)
@@ -54,8 +55,8 @@ items:
   - title: Software Testing
     id: software-testing
     group: hard
-    icon:
-    color: "#f59e0b"
+    icon: i-heroicons-check-circle
+    color: "#90ee90"
     description: >-
       My first professional experience was as a software tester for a
       medical device company. I have a good understanding of the software
@@ -65,8 +66,8 @@ items:
   - title: Quality Assurance
     id: quality-assurance
     group: hard
-    icon:
-    color: "#f59e0b"
+    icon: i-heroicons-shield-check
+    color: "#ff6961"
     description: >-
       My first professional experience was for a company that produces
       medical devices. Hence, the quality of the software was crucial. I
@@ -79,7 +80,7 @@ items:
     id: agile
     group: hard
     icon: i-iconoir-agile
-    color: "#f59e0b"
+    color: "#eab308"
     description: >-
       Agile is a software development methodology focused on iterative progress, collaboration, flexibility, and customer feedback. 
       It emphasizes small, frequent releases, adaptive planning, and continuous improvement to quickly respond to changing requirements and deliver high-quality products.
@@ -87,34 +88,35 @@ items:
   - title: V-Model
     id: waterfall
     group: hard
-    icon: i-heroicons-chevron-down
-    color: "#f59e0b"
+    icon: i-tabler-square-root
+    color: "#14b8a6"
     description: >-
       The V-Model is a software development model that emphasis the relationships between 
       each phase of the development life cycle and its associated phase of testing.
       Even though it isn't my prefered methodology, I have experience with this methodology.
+  # Languages
   - title: French
     id: french
     group: hard
     icon: i-flag-bl-4x3
-    color: "#f59e0b"
+    color: "#90cdf4"
     description: >-
       French is my mother tongue.
   - title: English
     id: english
     group: hard
     icon: i-flag-sh-4x3
-    color: "#f59e0b"
+    color: "#f56565"
     description: >-
       I am completely fluent in English. I lived in Australia for one year and worked in international environments for 7 years.
   - title: Spanish
     id: spanish
     group: hard
     icon: i-flag-es-4x3
-    color: "#f59e0b"
+    color: "#faf089"
     description: >-
       I have an A2 level of Spanish. I took classes in 2023 and try to practice it every week.
-
+  # Soft skills
   - title: Supreme communication
     id: supreme-communication
     group: soft
@@ -130,8 +132,8 @@ items:
   - title: End-user focus
     id: end-user-focus
     group: soft
-    icon:
-    color: "#f59e0b"
+    icon: i-heroicons-user-circle
+    color: "#22c55e"
     description: >-
       High end-user focus is crucial for solving problems effectively. By
       thoroughly understanding the user requirements, I can tailor
@@ -141,8 +143,8 @@ items:
   - title: Problem solving
     id: problem-solving
     group: soft
-    icon:
-    color: "#f59e0b"
+    icon: i-heroicons-light-bulb
+    color: "#d97706"
     description: >-
       I have a strong problem-solving mindset. I enjoy tackling complex
       problems and finding innovative solutions. I am not afraid to take
@@ -152,7 +154,7 @@ items:
     id: teamwork
     group: soft
     icon: i-heroicons-user-group-16-solid
-    color: "#f43f5e"
+    color: "#4f46e5"
     description: >-
       I am a good team player and I enjoy working with others. I am always
       willing to help my teammates and share my knowledge with them. I
@@ -161,8 +163,8 @@ items:
   - title: Evidence-based decision making
     id: evidence-based-decision making
     group: soft
-    icon:
-    color: "#f59e0b"
+    icon: i-tabler-file-certificate
+    color: "#f43f5e"
     description: >-
       In order to make the best decisions, I rely on evidence. It helps me
       to make informed decisions and avoid making decisions based on
