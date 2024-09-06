@@ -25,23 +25,23 @@
     <!-- Description popup -->
     <div
       id="description"
-      class="absolute left-1/2 top-1/2 z-30 -translate-x-1/2 -translate-y-1/2 rounded bg-gray-300 p-4 text-base text-gray-900 motion-safe:transition-transform"
+      class="absolute left-1/2 top-1/2 z-30 min-w-72 -translate-x-1/2 -translate-y-1/2 rounded bg-gray-300 p-4 text-base text-gray-900 motion-safe:transition-transform"
       :class="{ 'scale-100': showDescription, 'scale-0': !showDescription }"
     >
       <div class="flex items-center justify-between">
         <h4
-          class="rounded px-4 py-1 font-bold text-gray-800"
+          class="text-nowrap rounded px-4 py-1 font-bold text-gray-800"
           :style="{ backgroundColor: color }"
         >
           {{ title }}
         </h4>
         <UIcon
-          class="size-7 cursor-pointer pr-4"
+          class="ml-4 size-7 cursor-pointer"
           name="i-heroicons-x-mark-16-solid"
           @click="showDescription = false"
         />
       </div>
-      <p class="mt-3 h-auto w-60">{{ description }}</p>
+      <p class="mt-3">{{ description }}</p>
     </div>
   </div>
 </template>
