@@ -7,13 +7,13 @@
     >
       <!-- Icon -->
       <div
-        class="flex size-16 scale-90 items-center justify-center rounded-full bg-gray-800 ease-in-out group-hover:-translate-y-4 group-hover:scale-100 motion-safe:transition-transform"
+        class="flex size-16 scale-90 items-center justify-center rounded-full bg-gray-800 ease-in-out group-hover:z-10 group-hover:-translate-y-4 group-hover:scale-100 motion-safe:transition-transform"
       >
         <UIcon class="size-8" :name="icon" :style="{ color }" />
       </div>
       <!-- Caption -->
       <div
-        class="absolute bottom-0 left-1/2 -translate-x-1/2 text-center opacity-0 ease-in-out group-hover:translate-y-4 group-hover:opacity-100 motion-safe:transition"
+        class="absolute bottom-0 left-1/2 -translate-x-1/2 text-center opacity-0 ease-in-out group-hover:z-10 group-hover:translate-y-4 group-hover:opacity-100 motion-safe:transition"
       >
         <span
           class="rounded p-1 text-sm text-gray-800"
