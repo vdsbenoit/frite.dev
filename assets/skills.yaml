@@ -5,25 +5,26 @@ groups:
     id: soft
 items:
   - title: Full-stack development
+    id: full-stack-development
     group: hard
-    icon: i-heroicons-globe-24-solid
+    icon:
     color: "#f59e0b"
     description: >-
       I have experience in building full-stack applications using various
       technologies. My prefered stack right now being Vue, Nuxt, Tailwind
       and serverless backend services like Firebase.
-    id: full-stack-development
   - title: Project management
+    id: project-management
     group: hard
-    icon: i-heroicons-calendar-24-solid
+    icon: i-heroicons-calendar-date-range-16-solid
     color: "#f59e0b"
     description: >-
       I used to the the head of a non-profit organization and was
       responsible for managing the project and the team. This non-profit
       organization was organizing a yearly event with over 1000
       participants.
-    id: project-management
   - title: DevOps
+    id: devops
     group: hard
     icon: i-ph-infinity-bold
     color: "#f59e0b"
@@ -32,28 +33,28 @@ items:
       to the position of Senior DevOps Engineer. As a DevOps, I analyze
       the established software lifecyle, identify its flaws and optimize
       it with the state-of-the-art technologies.
-    id: devops
   - title: CI/CD
+    id: ci-cd
     group: hard
-    icon: i-heroicons-lightbulb-idea-24-solid
+    icon:
     color: "#f59e0b"
     description: >-
       Through my career as a DevOps, I acquired a lot of experience in
       creating and maintaining fully-automated software integration and
       delivery.
-    id: ci-cd
   - title: Package management
+    id: package-management
     group: hard
-    icon: i-heroicons-lightbulb-idea-24-solid
+    icon:
     color: "#f59e0b"
     description: >-
       My previous DevOps position also gave me the oppotunity to sharpen
       my knowledge with package management tools, including conda (python)
       and conan (C/C++).
-    id: package-management
   - title: Software Testing
+    id: software-testing
     group: hard
-    icon: i-heroicons-lightbulb-idea-24-solid
+    icon:
     color: "#f59e0b"
     description: >-
       My first professional experience was as a software tester for a
@@ -61,10 +62,10 @@ items:
       testing process and have experience with various testing tools. I
       wrote hundreds of test cases, both automated and manual. I performed
       on-site validation campaigns and wrote validation reports.
-    id: software-testing
   - title: Quality Assurance
+    id: quality-assurance
     group: hard
-    icon: i-heroicons-lightbulb-idea-24-solid
+    icon:
     color: "#f59e0b"
     description: >-
       My first professional experience was for a company that produces
@@ -74,7 +75,6 @@ items:
       records: my end of study thesis was about a quality assurance tool
       that I made from scratch and was tailored to the needs of this
       company.
-    id: quality-assurance
   - title: Agile
     id: agile
     group: hard
@@ -85,6 +85,7 @@ items:
       It emphasizes small, frequent releases, adaptive planning, and continuous improvement to quickly respond to changing requirements and deliver high-quality products.
       Like most the software engineering companies today, the places I worked at used Agile methodologies.
   - title: V-Model
+    id: waterfall
     group: hard
     icon: i-heroicons-chevron-down
     color: "#f59e0b"
@@ -92,7 +93,6 @@ items:
       The V-Model is a software development model that emphasis the relationships between 
       each phase of the development life cycle and its associated phase of testing.
       Even though it isn't my prefered methodology, I have experience with this methodology.
-    id: waterfall
   - title: French
     id: french
     group: hard
@@ -100,7 +100,6 @@ items:
     color: "#f59e0b"
     description: >-
       French is my mother tongue.
-
   - title: English
     id: english
     group: hard
@@ -108,7 +107,6 @@ items:
     color: "#f59e0b"
     description: >-
       I am completely fluent in English. I lived in Australia for one year and worked in international environments for 7 years.
-
   - title: Spanish
     id: spanish
     group: hard
@@ -118,6 +116,7 @@ items:
       I have an A2 level of Spanish. I took classes in 2023 and try to practice it every week.
 
   - title: Supreme communication
+    id: supreme-communication
     group: soft
     icon: i-heroicons-chat-bubble-oval-left
     color: "#0284c7"
@@ -128,10 +127,10 @@ items:
       technical knowledge. I am a good listener, I take the necessary time
       to understand the needs of my collaborators. I always document my
       work to ensure that others can understand it.
-    id: supreme-communication
   - title: End-user focus
+    id: end-user-focus
     group: soft
-    icon: i-heroicons-lightbulb-idea-24-solid
+    icon:
     color: "#f59e0b"
     description: >-
       High end-user focus is crucial for solving problems effectively. By
@@ -139,18 +138,18 @@ items:
       solutions that enhance their experience. With this approach, I
       ensure my decisions are user-centric, leading to more impactful
       outcomes.
-    id: end-user-focus
   - title: Problem solving
+    id: problem-solving
     group: soft
-    icon: i-heroicons-lightbulb-idea-24-solid
+    icon:
     color: "#f59e0b"
     description: >-
       I have a strong problem-solving mindset. I enjoy tackling complex
       problems and finding innovative solutions. I am not afraid to take
       risks and try new approaches to solve problems. I never give up and
       always strive to find the best solution.
-    id: problem-solving
   - title: Teamwork
+    id: teamwork
     group: soft
     icon: i-heroicons-user-group-16-solid
     color: "#f43f5e"
@@ -159,14 +158,13 @@ items:
       willing to help my teammates and share my knowledge with them. I
       believe that teamwork is essential for success. By working together,
       we can achieve great things.
-    id: teamwork
   - title: Evidence-based decision making
+    id: evidence-based-decision making
     group: soft
-    icon: i-heroicons-lightbulb-idea-24-solid
+    icon:
     color: "#f59e0b"
     description: >-
       In order to make the best decisions, I rely on evidence. It helps me
       to make informed decisions and avoid making decisions based on
       assumptions. I also use data to evaluate the impact of my decisions
       and make adjustments as needed.
-    id: evidence-based-decision making
