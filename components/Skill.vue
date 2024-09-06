@@ -24,7 +24,7 @@
       </div>
       <!-- Caption -->
       <div
-        class="absolute bottom-0 left-1/2 -translate-x-1/2 text-nowrap rounded p-1 text-center text-sm text-gray-800 opacity-0 ease-in-out peer-hover:z-10 peer-hover:translate-y-5 peer-hover:opacity-100 motion-safe:transition"
+        class="absolute bottom-0 left-1/2 -translate-x-1/2 text-nowrap rounded p-1 text-center text-sm font-semibold text-gray-800 opacity-0 ease-in-out peer-hover:z-10 peer-hover:translate-y-5 peer-hover:opacity-100 motion-safe:transition"
         :style="{ backgroundColor: color ? color : '' }"
         :class="{ 'bg-gray-300': !color }"
       >

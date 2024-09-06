@@ -9,7 +9,7 @@ items:
     id: full-stack-development
     group: hard
     icon: i-heroicons-code-bracket-16-solid
-    color: "#e0a848"
+    color: "#f8da4c"
     description: >-
       I have experience in building full-stack applications using various
       technologies. My prefered stack right now being Vue, Nuxt, Tailwind
@@ -80,7 +80,7 @@ items:
     id: agile
     group: hard
     icon: i-iconoir-agile
-    color: "#eab308"
+    color: "#b19cd9"
     description: >-
       Agile is a software development methodology focused on iterative progress, collaboration, flexibility, and customer feedback. 
       It emphasizes small, frequent releases, adaptive planning, and continuous improvement to quickly respond to changing requirements and deliver high-quality products.
@@ -133,7 +133,7 @@ items:
     id: end-user-focus
     group: soft
     icon: i-heroicons-user-circle
-    color: "#22c55e"
+    color: "#45ba70"
     description: >-
       High end-user focus is crucial for solving problems effectively. By
       thoroughly understanding the user requirements, I can tailor
@@ -164,7 +164,7 @@ items:
     id: evidence-based-decision making
     group: soft
     icon: i-tabler-file-certificate
-    color: "#f43f5e"
+    color: "#e2526a"
     description: >-
       In order to make the best decisions, I rely on evidence. It helps me
       to make informed decisions and avoid making decisions based on
