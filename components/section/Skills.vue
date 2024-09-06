@@ -7,7 +7,10 @@
           class="grid grid-cols-1 gap-4"
           :class="[`sm:grid-cols-${section.content.groups.length}`]"
         >
-          <div v-for="group in section.content.groups" :key="group.id">
+          <div
+            v-for="group in section.content.groups"
+            :key="`${group.id}-subsection`"
+          >
             <h3 class="mb-4 text-xl font-semibold">
               {{ group.title }}
             </h3>
@@ -40,5 +43,4 @@ const sections = [
   { title: "Techologies", id: "techs-subsection", content: techs },
 ];
 </script>
-
 <style scoped></style>

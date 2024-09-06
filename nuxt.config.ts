@@ -4,7 +4,7 @@ import yaml from "@rollup/plugin-yaml";
 export default defineNuxtConfig({
   compatibilityDate: "2024-04-03",
   devtools: { enabled: true },
-  modules: ["@nuxt/ui"],
+  modules: ["@nuxt/ui", "@nuxt/test-utils/module"],
   vite: { plugins: [yaml()] },
   typescript: { tsConfig: { include: ["types"] } },
   colorMode: {

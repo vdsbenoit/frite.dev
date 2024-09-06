@@ -3,6 +3,8 @@ groups:
     id: code
   - title: DevOps
     id: devops
+  - title: Miscellaneous
+    id: miscellaneous
 items:
   - title: Vue
     group: code
@@ -116,7 +118,7 @@ items:
       process of C/C++ projects, alongside conan.
     id: cmake
   - title: C/C++
-    group: devops
+    group: code
     icon: i-simple-icons-cplusplus
     color: "#00599c"
     description: >-
@@ -127,7 +129,7 @@ items:
       previous professional experiences.
     id: c-c++
   - title: java
-    group: devops
+    group: code
     icon: i-simple-icons-java
     color: "#007396"
     description: >-
@@ -145,7 +147,7 @@ items:
       compnay internal dependencies.
     id: maven
   - title: Jira
-    group: devops
+    group: miscellaneous
     icon: i-simple-icons-jira
     color: "#0052cc"
     description: >-
@@ -175,7 +177,7 @@ items:
       applications.
     id: gcp
   - title: MongoDB
-    group: devops
+    group: code
     icon: i-simple-icons-mongodb
     color: "#47a248"
     description: >-
@@ -183,7 +185,7 @@ items:
       store and manage data.
     id: mongodb
   - title: MySQL
-    group: devops
+    group: code
     icon: i-simple-icons-mysql
     color: "#4479a1"
     description: >-
@@ -211,7 +213,7 @@ items:
       of the software I was maintaining.
     id: grafana
   - title: Confluence
-    group: devops
+    group: miscellaneous
     icon: i-simple-icons-confluence
     color: "#172b4d"
     description: >-
@@ -230,7 +232,7 @@ items:
       experiences.
     id: artifactory
   - title: Angular
-    group: devops
+    group: code
     icon: i-simple-icons-angular
     color: "#DD0031"
     description: >-
@@ -240,3 +242,14 @@ items:
       Today, I prefer working with Vue, which provides cleaner code, hence
       better maintenability.
     id: angular
+  - title: Windows
+    id: windows
+    group: miscellaneous
+    icon: i-simple-icons-angular
+    color: "#DD0031"
+    description: >-
+      Angular is an open-source web application framework led by the
+      Angular Team at Google and by a community of individuals and
+      corporations. I worked with Angular for a project in the past.
+      Today, I prefer working with Vue, which provides cleaner code, hence
+      better maintenability.
