@@ -12,12 +12,21 @@
         id="icon"
         class="flex size-16 scale-100 items-center justify-center rounded-full border border-gray-800 bg-gray-900 ease-in-out peer-hover:z-10 peer-hover:-translate-y-4 peer-hover:scale-110 motion-safe:transition-all"
       >
-        <UIcon class="size-8" :name="icon" :style="{ color }" />
+        <UIcon
+          v-if="icon"
+          class="size-8"
+          :name="icon"
+          :style="{ color: color ? color : '@apply text-neutrol-300' }"
+        />
+        <span v-else class="text-nowrap font-bold text-gray-300">{{
+          title
+        }}</span>
       </div>
       <!-- Caption -->
       <div
-        class="absolute bottom-0 left-1/2 -translate-x-1/2 text-nowrap rounded p-1 text-center text-sm text-gray-800 opacity-0 ease-in-out peer-hover:z-10 peer-hover:translate-y-4 peer-hover:opacity-100 motion-safe:transition"
-        :style="{ backgroundColor: color }"
+        class="absolute bottom-0 left-1/2 -translate-x-1/2 text-nowrap rounded p-1 text-center text-sm text-gray-800 opacity-0 ease-in-out peer-hover:z-10 peer-hover:translate-y-5 peer-hover:opacity-100 motion-safe:transition"
+        :style="{ backgroundColor: color ? color : '' }"
+        :class="{ 'bg-gray-300': !color }"
       >
         {{ title }}
       </div>
@@ -30,8 +39,12 @@
     >
       <div class="flex items-center justify-between">
         <h4
-          class="text-nowrap rounded px-4 py-1 font-bold text-gray-800"
-          :style="{ backgroundColor: color }"
+          class="text-nowrap rounded px-4 py-1 font-bold"
+          :style="{ backgroundColor: color ? color : '' }"
+          :class="{
+            'text-gray-800': color,
+            'bg-gray-800 text-gray-300': !color,
+          }"
         >
           {{ title }}
         </h4>
@@ -51,8 +64,8 @@ import { useEventListener } from "@vueuse/core";
 
 const props = defineProps<{
   title: string;
-  icon: string;
-  color: string;
+  icon?: string;
+  color?: string;
   description: string;
 }>();
 

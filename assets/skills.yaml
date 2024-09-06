@@ -17,23 +17,24 @@ items:
   - title: DevOps
     id: devops
     group: hard
-    icon: i-ph-infinity-bold
+    icon: i-iconoir-infinite
     color: "#a0d8ef"
     description: >-
       I worked as a DevOps engineer for 5 year at Sony, and was promoted
       to the position of Senior DevOps Engineer. As a DevOps, I analyze
       the established software lifecyle, identify its flaws and optimize
       it with the state-of-the-art technologies.
-  - title: Project management
-    id: project-management
+  - title: Software Testing
+    id: software-testing
     group: hard
-    icon: i-heroicons-calendar-date-range-16-solid
-    color: "#c6d165"
+    icon: i-heroicons-check-circle
+    color: "#90ee90"
     description: >-
-      I used to the the head of a non-profit organization and was
-      responsible for managing the project and the team. This non-profit
-      organization was organizing a yearly event with over 1000
-      participants.
+      My first professional experience was as a software tester for a
+      medical device company. I have a good understanding of the software
+      testing process and have experience with various testing tools. I
+      wrote hundreds of test cases, both automated and manual. I performed
+      on-site validation campaigns and wrote validation reports.
   - title: CI/CD
     id: ci-cd
     group: hard
@@ -52,17 +53,6 @@ items:
       My previous DevOps position also gave me the oppotunity to sharpen
       my knowledge with package management tools, including conda (python)
       and conan (C/C++).
-  - title: Software Testing
-    id: software-testing
-    group: hard
-    icon: i-heroicons-check-circle
-    color: "#90ee90"
-    description: >-
-      My first professional experience was as a software tester for a
-      medical device company. I have a good understanding of the software
-      testing process and have experience with various testing tools. I
-      wrote hundreds of test cases, both automated and manual. I performed
-      on-site validation campaigns and wrote validation reports.
   - title: Quality Assurance
     id: quality-assurance
     group: hard
@@ -76,6 +66,16 @@ items:
       records: my end of study thesis was about a quality assurance tool
       that I made from scratch and was tailored to the needs of this
       company.
+  - title: Project management
+    id: project-management
+    group: hard
+    icon: i-heroicons-calendar-date-range-16-solid
+    color: "#c6d165"
+    description: >-
+      I used to the the head of a non-profit organization and was
+      responsible for managing the project and the team. This non-profit
+      organization was organizing a yearly event with over 1000
+      participants.
   - title: Agile
     id: agile
     group: hard

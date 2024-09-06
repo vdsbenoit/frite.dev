@@ -22,9 +22,9 @@
                 :key="skill.title"
                 :id="skill.id"
                 :title="skill.title"
-                :icon="skill.icon"
+                :icon="skill.icon ?? undefined"
                 :description="skill.description"
-                :color="skill.color"
+                :color="skill.color ?? undefined"
               />
             </div>
           </div>
