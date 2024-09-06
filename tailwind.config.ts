@@ -4,6 +4,16 @@ import defaultTheme from "tailwindcss/defaultTheme";
 export default <Partial<Config>>{
   plugins: [require("@tailwindcss/forms")],
   content: ["content/**/*.md", "docs/content/**/*.md"],
+  safelist: [
+    { pattern: /grid-cols-\d/, variants: ["sm"] },
+    { pattern: /h-\d/ },
+    "scale-0",
+    "scale-100",
+    "blur",
+    "opacity-0",
+    "opacity-100",
+    "hidden",
+  ],
   theme: {
     extend: {
       aspectRatio: {
