@@ -1,0 +1,328 @@
+groups:
+  - title: Code
+    id: code
+  - title: DevOps
+    id: devops
+  - title: Miscellaneous
+    id: miscellaneous
+items:
+  - title: Vue
+    id: vue
+    group: code
+    icon: i-vscode-icons-file-type-vue
+    color: "#4FC08D"
+    description: >-
+      Vue is my prefered front-end framework at the moment. Even though
+      React is more popular, Vue is one of the most stable frameworks,
+      which a solid community. I appreciate the way Vue manage reactivity
+      and the separation of concerns.
+  - title: Tailwind
+    id: tailwind
+    group: code
+    icon: i-vscode-icons-file-type-tailwind
+    color: "#06b6d4"
+    description: >-
+      As for most of the front-end developers today, Tailwind has become
+      my favorite CSS framework. It provides a set of pre-defined classes
+      that can be used to style your components, making it easier to
+      create consistent and responsive designs.
+  - title: Nuxt
+    id: nuxt
+    group: code
+    icon: i-vscode-icons-file-type-nuxt
+    color: "#00C58E"
+    description: >-
+      Nuxt is a higher-level framework built on top of Vue.js. It provides
+      a lot of features out of the box, such as server-side rendering,
+      static site generation, and more. I use Nuxt for most of my projects
+      to have a better SEO and performance. It is my go-to framework for
+      building web applications.
+  - title: Ionic
+    id: ionic
+    group: code
+    icon: i-vscode-icons-file-type-ionic
+    color: "#3880ff"
+    description: >-
+      Ionic is a complete open-source SDK for hybrid mobile app
+      development. I used Ionic in the past to build mobile applications.
+  - title: Python
+    id: python
+    group: code
+    icon: i-vscode-icons-file-type-python
+    color: "#306998"
+    description: >-
+      Python is a high-level, interpreted programming language. It is a convenient language for
+      scripting and automating tasks. It is also widely used in data science and machine learning.
+      I used Python a lot in my previous professional experiences. I have a good knowledge of the language.
+  - title: JavaScript
+    id: javascript
+    group: code
+    icon: i-logos-javascript
+    color: "#f7df1e"
+    description: >-
+      JavaScript is the programming language of the web. I use JavaScript
+      in all of my web projects to build interactive web applications.
+  - title: TypeScript
+    id: typescript
+    group: code
+    icon: i-logos-typescript-icon
+    color: "#3178c6"
+    description: >-
+      TypeScript is a strict syntactical superset of JavaScript that adds
+      optional static typing to the language. I use TypeScript in my
+      projects to have a cleaner code and to catch errors
+      earlier in the development process.
+  - title: Node.js
+    id: nodejs
+    group: code
+    icon: i-logos-nodejs-icon-alt
+    color: "#43853d"
+    description: >-
+      Node.js is an open-source, cross-platform, back-end JavaScript
+      runtime environment that executes JavaScript code outside a web browser. 
+      I use Node.js to build server-side applications.
+  - title: Docker
+    id: docker
+    group: devops
+    icon: i-vscode-icons-file-type-docker
+    color: "#2496ed"
+    description: >-
+      Docker is a set of platform as a service products that use OS-level
+      virtualization to deliver software in packages called containers. In
+      one of my previous professional experiences, I used Docker to
+      containerize all the possible build environments of the company's
+      software. I used to maintain all of these Docker images
+      programmatically, with the best DevOps automation practices. It
+      allowed the company to have a wide range of consitent build
+      environments, available across all the developers' machines and the
+      CI/CD servers.
+  - title: GitLab
+    id: gitlab
+    group: devops
+    icon: i-vscode-icons-file-type-gitlab
+    color: "#fca326"
+    description: >-
+      GitLab is a web-based DevOps lifecycle tool that provides a Git
+      repository manager providing wiki, issue-tracking and CI/CD pipeline
+      features, using an open-source license, developed by GitLab Inc. I
+      deployed and maintained a GitLab server for multiple years in one of
+      my previous professional experiences. Hence, I have a very good
+      understanding of most of GitLab features.
+  - title: Git
+    id: git
+    group: devops
+    icon: i-vscode-icons-file-type-git
+    color: "#f34f29"
+    description: >-
+      Git is a distributed version control system. I intensively use it on
+      every project. Hence, I have a very good understanding of Git and
+      its CLI.
+  - title: Anaconda
+    id: anaconda
+    group: devops
+    icon: i-vscode-icons-file-type-conda
+    color: "#44a833"
+    description: >-
+      Anaconda is a package manager for Python. Compared to pip, it provides
+      a built-in environments manager. I used to create and use conda
+      packages with the internal dependencies in one of my previous
+      professional experiences
+  - title: Conan
+    id: conan
+    group: devops
+    icon: i-vscode-icons-file-type-conan
+    color: "#0086FD"
+    description: >-
+      Conan is a C/C++ package manager. In one of my past professional
+      experiences, I helped a company to package their C/C++ internal
+      dependencies into conan packages. It allowed the company to manage
+      their dependencies more efficiently and enable better automation of
+      their Software Development Life Cycle.
+  - title: CMake
+    id: cmake
+    group: devops
+    icon: i-vscode-icons-file-type-cmake
+    color: "#064F8C"
+    description: >-
+      CMake is a powerfull cross-platform build system generator. I used
+      CMake in my previous professional experiences to manage the build
+      process of C/C++ projects, alongside conan.
+  - title: C/C++
+    id: c-lang
+    group: code
+    icon: i-logos-c-plusplus
+    color: "#00599C"
+    description: >-
+      C and C++ are two of the most widely used programming languages in
+      the world. While I am not an active C/C++ developer, I have a good
+      understanding of the language and its ecosystem. I studied system C
+      during my bachelor and used to work with C/C++ projects in my
+      previous professional experiences.
+  - title: java
+    id: java
+    group: code
+    icon: i-logos-java
+    color: "#007396"
+    description: >-
+      Java is one of the first programming languages I learned. I used
+      Java in my previous professional experiences. However, I haven't
+      worked with Java for a while.
+  - title: maven
+    id: maven
+    group: devops
+    icon: i-vscode-icons-file-type-maven
+    color: "#C71A36"
+    description: >-
+      Maven is a build automation tool used primarily for Java projects. I
+      used Maven in my previous professional experiences to manage the
+      compnay internal dependencies.
+
+  - title: Firebase
+    id: firebase
+    group: devops
+    icon: i-vscode-icons-file-type-firebase
+    color: "#f5820b"
+    description: >-
+      Firebase is a BaaS (Back-end as a Service) platform developed by
+      Google for creating mobile and web applications. I used Firebase in
+      my previous web development experiences to deploy severless web
+      applications.
+  - title: GCP
+    id: gcp
+    group: devops
+    icon: i-logos-google-cloud
+    color: "#4285f4"
+    description: >-
+      Google Cloud Platform is a suite of cloud computing services that
+      runs on the same infrastructure that Google uses internally for its
+      end-user products. As Firebase is part of GCP, I also used GCP in my
+      previous web development experiences to deploy serverless web
+      applications.
+  - title: MongoDB
+    id: mongodb
+    group: code
+    icon: i-vscode-icons-file-type-mongo
+    color: "#47a248"
+    description: >-
+      MongoDB is a NoSQL database program. I used MongoDB in the past to
+      store and manage data.
+  - title: MySQL
+    id: mysql
+    group: code
+    icon: i-logos-mysql-icon
+    color: "#4479a1"
+    description: >-
+      MySQL is an open-source relational database management system. I
+      learned SQL during my bachelor and used MySQL in the past to store
+      and manage data.
+  - title: Prometheus
+    id: prometheus
+    group: devops
+    icon: i-logos-prometheus
+    color: "#e6522c"
+    description: >-
+      Prometheus is an open-source monitoring and alerting toolkit. I used
+      Prometheus alongside Grafana in my previous professional experiences
+      to monitor the performance of the software I was maintaining.
+  - title: Grafana
+    id: grafana
+    group: devops
+    icon: i-logos-grafana
+    color: "#f46800"
+    description: >-
+      Granafa is a multi-platform open-source analytics and interactive
+      visualization web application. I used Grafana alongside Prometheus
+      in my previous professional experiences to monitor the performance
+      of the software I was maintaining.
+  - title: Artifactory
+    id: artifactory
+    group: devops
+    icon: i-logos-jfrog
+    color: "#36953B"
+    description: >-
+      Artifactory is a universal artifact repository manager. I used to
+      maintain an Artifactory server in one of my previous professional
+      experiences.
+  - title: Angular
+    id: angular
+    group: code
+    icon: i-logos-angular-icon
+    color: "#dd0031"
+    description: >-
+      Angular is an open-source web application framework led by the
+      Angular Team at Google and by a community of individuals and
+      corporations. I worked with Angular for a project in the past.
+      Today, I prefer working with Vue, which provides cleaner code, hence
+      better maintenability.
+  - title: Bash
+    id: bash
+    group: code
+    icon: i-simple-icons-gnubash
+    color: "#4EAA25"
+    description: >-
+      Bash is a Unix shell and command language. I use Bash scripts to
+      automate tasks on my machine and on servers.
+  - title: PowerShell
+    id: powershell
+    group: code
+    icon: i-simple-icons-powershell
+    color: "#5391FE"
+    description: >-
+      PowerShell is a task automation and configuration management
+      framework from Microsoft, consisting of a command-line shell and
+      associated scripting language. I use PowerShell scripts to automate
+      tasks on Windows machines.
+  - title: Windows
+    id: windows
+    group: miscellaneous
+    icon: i-logos-microsoft-windows-icon
+    color: "#0078D4"
+    description: >-
+      Windows is a group of several proprietary graphical operating system
+      families, all of which are developed and marketed by Microsoft. I have
+      been using Windows as my main operating system for most of my life.
+      I can admninistrate Windows servers too.
+  - title: MacOS
+    id: macos
+    group: miscellaneous
+    icon: i-simple-icons-apple
+    description: >-
+      macOS is a series of proprietary graphical operating systems developed and marketed by Apple Inc. 
+      I switched to macOS in 2023. I appreciate the stability and the Unix-like environment of macOS.
+      I still value Windows and Linux for their use cases.
+  - title: Linux
+    id: linux
+    group: miscellaneous
+    icon: i-logos-linux-tux
+    color: "#DD0031"
+    description: >-
+      Linux is a family of open-source Unix-like operating systems based on the Linux kernel. 
+      Thanks to its stability, Linux is widely used in the industry for servers and embedded systems. 
+      I have been using Linux a lot during my professional experiences, both on servers and on my personal computer.
+      I am comfortable with the command line and the Linux ecosystem.
+  - title: WSL
+    id: wsl
+    group: miscellaneous
+    description: >-
+      Windows Subsystem for Linux is a compatibility layer for running
+      Linux binary executables natively on Windows 10, 11 and Windows Server
+      2019. I use WSL to run Linux commands on my Windows machine.
+  - title: Confluence
+    id: confluence
+    group: miscellaneous
+    icon: i-logos-confluence
+    color: "#1C77F2"
+    description: >-
+      Confluence is a collaboration tool that helps teams to collaborate
+      and share knowledge efficiently. I used Confluence in my previous
+      professional experiences to document my work and share it with my
+      colleagues.
+  - title: Jira
+    id: jira
+    group: miscellaneous
+    icon: i-logos-jira
+    color: "#2684FF"
+    description: >-
+      Jira is a project management tool that helps teams to plan, track,
+      and manage their work. I used Jira in my previous professional
+      experiences to manage my projects and tasks.

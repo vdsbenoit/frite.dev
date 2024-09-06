@@ -1,7 +1,8 @@
+<!-- This page contains the nav bar & instantiate the different sections -->
 <template>
   <div class="">
     <nav
-      class="relative left-0 right-0 top-0 z-10 items-center sm:fixed sm:top-8 sm:grid sm:grid-flow-col sm:grid-cols-5 sm:justify-items-center"
+      class="relative left-0 right-0 top-0 z-20 items-center sm:fixed sm:top-8 sm:grid sm:grid-flow-col sm:grid-cols-5 sm:justify-items-center"
     >
       <div
         class="hidden cursor-pointer items-center sm:flex"
@@ -65,7 +66,14 @@
     </nav>
     <main ref="scrollableContent" class="h-lvh overflow-y-auto">
       <div v-for="section in SECTIONS" :key="section.id">
-        <component :id="section.id" :is="section.component" />
+        <component
+          :id="section.id"
+          :is="section.component"
+          v-intersection-observer="[
+            onIntersectionObserver,
+            INTERACTION_OBSERVER_OPTIONS,
+          ]"
+        />
       </div>
     </main>
     <div
@@ -87,8 +95,10 @@ import Hero from "../components/Section/Hero.vue";
 import Profile from "../components/Section/Profile.vue";
 import Skills from "../components/Section/Skills.vue";
 import Contact from "../components/Section/Contact.vue";
+import { useEventListener } from "@vueuse/core";
+import { vIntersectionObserver } from "@vueuse/components";
 
-// Constants
+// Variables & Constants
 
 const SECTIONS = [
   { id: "hero", title: "Home", component: Hero },
@@ -97,12 +107,15 @@ const SECTIONS = [
   { id: "contact", title: "Contact", component: Contact },
 ];
 
-// Reactive variables
-
 const currentSection = ref<string>("");
 const scrollableContent = ref<HTMLElement | null>(null);
 const blurBackground = useState("blurBackground");
 const showStars = useState<boolean>("showStars");
+
+const INTERACTION_OBSERVER_OPTIONS = {
+  root: scrollableContent,
+  threshold: 0.5,
+};
 
 // Methods
 
@@ -126,36 +139,18 @@ const scrollTo = (sectionId: string) => {
   }
 };
 
+const onIntersectionObserver = (entries: IntersectionObserverEntry[]) => {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      currentSection.value = entry.target.id;
+    }
+  });
+};
+
 // Lifecycle Hooks
 
 onMounted(() => {
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          currentSection.value = entry.target.id;
-        }
-      });
-    },
-    { threshold: 0.5 },
-  );
-
-  SECTIONS.forEach((section) => {
-    const element = document.getElementById(section.id);
-    if (element) {
-      observer.observe(element);
-    }
-  });
-  if (scrollableContent.value) {
-    scrollableContent.value.addEventListener("scroll", handleScroll);
-  }
-
-  onUnmounted(() => {
-    observer.disconnect();
-    if (scrollableContent.value) {
-      scrollableContent.value.removeEventListener("scroll", handleScroll);
-    }
-  });
+  useEventListener(scrollableContent, "scroll", handleScroll);
 });
 </script>
 <style scoped></style>

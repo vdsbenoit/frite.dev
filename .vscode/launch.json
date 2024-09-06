@@ -4,6 +4,8 @@
   "version": "0.2.0",
   "configurations": [
     {
+      // One need to start Arc with this command to make it work :
+      // open -a "Arc" --args --remote-debugging-port=9222
       "name": "client: Arc",
       "type": "chrome",
       "request": "attach",
@@ -29,8 +31,13 @@
   ],
   "compounds": [
     {
-      "name": "fullstack: nuxt",
+      // Attaching the debugger in Arc is not super stable. Prefer using Chrome
+      "name": "fullstack: Arc",
       "configurations": ["server: nuxt", "client: Arc"]
+    },
+    {
+      "name": "fullstack: Chrome",
+      "configurations": ["server: nuxt", "client: Chrome"]
     }
   ]
 }
