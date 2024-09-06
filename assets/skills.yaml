@@ -9,21 +9,11 @@ items:
     id: full-stack-development
     group: hard
     icon: i-heroicons-code-bracket-16-solid
-    color: "#f59e0b"
+    color: "#e0a848"
     description: >-
       I have experience in building full-stack applications using various
       technologies. My prefered stack right now being Vue, Nuxt, Tailwind
       and serverless backend services like Firebase.
-  - title: Project management
-    id: project-management
-    group: hard
-    icon: i-heroicons-calendar-date-range-16-solid
-    color: "#c6d165"
-    description: >-
-      I used to the the head of a non-profit organization and was
-      responsible for managing the project and the team. This non-profit
-      organization was organizing a yearly event with over 1000
-      participants.
   - title: DevOps
     id: devops
     group: hard
@@ -34,6 +24,16 @@ items:
       to the position of Senior DevOps Engineer. As a DevOps, I analyze
       the established software lifecyle, identify its flaws and optimize
       it with the state-of-the-art technologies.
+  - title: Project management
+    id: project-management
+    group: hard
+    icon: i-heroicons-calendar-date-range-16-solid
+    color: "#c6d165"
+    description: >-
+      I used to the the head of a non-profit organization and was
+      responsible for managing the project and the team. This non-profit
+      organization was organizing a yearly event with over 1000
+      participants.
   - title: CI/CD
     id: ci-cd
     group: hard
@@ -113,7 +113,7 @@ items:
     id: spanish
     group: hard
     icon: i-flag-es-4x3
-    color: "#faf089"
+    color: "#fecf59"
     description: >-
       I have an A2 level of Spanish. I took classes in 2023 and try to practice it every week.
   # Soft skills
@@ -126,7 +126,7 @@ items:
     description: >-
       I have excellent communication skills. I am able to break down
       complex problems and clearly explain them to people with fewer
-      technical knowledge. I am a good listener, I take the necessary time
+      technical knowledge. I am a good listener; I take the necessary time
       to understand the needs of my collaborators. I always document my
       work to ensure that others can understand it.
   - title: End-user focus
