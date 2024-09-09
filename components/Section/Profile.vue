@@ -1,7 +1,5 @@
 <template>
-  <div class="flex min-h-screen items-center justify-center">
-    <h2>Hi I'm Benoit</h2>
-  </div>
+  <div class="px6 max-w-screen-lg"></div>
 </template>
 
 <script lang="ts" setup></script>
