@@ -1,172 +1,457 @@
-groups:
-  - title: Hard skills
-    id: hard
-  - title: Soft skills
-    id: soft
-items:
-  # Hard skills
-  - title: Full-stack development
-    id: full-stack-development
-    group: hard
-    icon: i-heroicons-code-bracket-16-solid
-    color: "#f8da4c"
-    description: >-
-      I have experience in building full-stack applications using various
-      technologies. My prefered stack right now being Vue, Nuxt, Tailwind
-      and serverless backend services like Firebase.
-  - title: DevOps
-    id: devops
-    group: hard
-    icon: i-iconoir-infinite
-    color: "#a0d8ef"
-    description: >-
-      I worked as a DevOps engineer for 5 year at Sony, and was promoted
-      to the position of Senior DevOps Engineer. As a DevOps, I analyze
-      the established software lifecyle, identify its flaws and optimize
-      it with the state-of-the-art technologies.
-  - title: Software Testing
-    id: software-testing
-    group: hard
-    icon: i-heroicons-check-circle
-    color: "#90ee90"
-    description: >-
-      My first professional experience was as a software tester for a
-      medical device company. I have a good understanding of the software
-      testing process and have experience with various testing tools. I
-      wrote hundreds of test cases, both automated and manual. I performed
-      on-site validation campaigns and wrote validation reports.
-  - title: CI/CD
-    id: ci-cd
-    group: hard
-    icon: i-heroicons-arrow-path
-    color: "#3b82f6"
-    description: >-
-      Through my career as a DevOps, I acquired a lot of experience in
-      creating and maintaining fully-automated software integration and
-      delivery.
-  - title: Package management
-    id: package-management
-    group: hard
-    icon: i-heroicons-cube
-    color: "#B9875E"
-    description: >-
-      My previous DevOps position also gave me the oppotunity to sharpen
-      my knowledge with package management tools, including conda (python)
-      and conan (C/C++).
-  - title: Quality Assurance
-    id: quality-assurance
-    group: hard
-    icon: i-heroicons-shield-check
-    color: "#ff6961"
-    description: >-
-      My first professional experience was for a company that produces
-      medical devices. Hence, the quality of the software was crucial. I
-      learned a lot about quality assurance (including requirement
-      management) and how to ensure high quality of the software. For the
-      records: my end of study thesis was about a quality assurance tool
-      that I made from scratch and was tailored to the needs of this
-      company.
-  - title: Project management
-    id: project-management
-    group: hard
-    icon: i-heroicons-calendar-date-range-16-solid
-    color: "#c6d165"
-    description: >-
-      I used to the the head of a non-profit organization and was
-      responsible for managing the project and the team. This non-profit
-      organization was organizing a yearly event with over 1000
-      participants.
-  - title: Agile
-    id: agile
-    group: hard
-    icon: i-iconoir-agile
-    color: "#b19cd9"
-    description: >-
-      Agile is a software development methodology focused on iterative progress, collaboration, flexibility, and customer feedback. 
-      It emphasizes small, frequent releases, adaptive planning, and continuous improvement to quickly respond to changing requirements and deliver high-quality products.
-      Like most the software engineering companies today, the places I worked at used Agile methodologies.
-  - title: V-Model
-    id: waterfall
-    group: hard
-    icon: i-tabler-square-root
-    color: "#14b8a6"
-    description: >-
-      The V-Model is a software development model that emphasis the relationships between 
-      each phase of the development life cycle and its associated phase of testing.
-      Even though it isn't my prefered methodology, I have experience with this methodology.
-  # Languages
-  - title: French
-    id: french
-    group: hard
-    icon: i-flag-bl-4x3
-    color: "#90cdf4"
-    description: >-
-      French is my mother tongue.
-  - title: English
-    id: english
-    group: hard
-    icon: i-flag-sh-4x3
-    color: "#f56565"
-    description: >-
-      I am completely fluent in English. I lived in Australia for one year and worked in international environments for 7 years.
-  - title: Spanish
-    id: spanish
-    group: hard
-    icon: i-flag-es-4x3
-    color: "#fecf59"
-    description: >-
-      I have an A2 level of Spanish. I took classes in 2023 and try to practice it every week.
-  # Soft skills
-  - title: Supreme communication
-    id: supreme-communication
-    group: soft
-    icon: i-heroicons-chat-bubble-oval-left
-    color: "#0284c7"
-    keywords: ask, understand, break down, propose, explain, document
-    description: >-
-      I have excellent communication skills. I am able to break down
-      complex problems and clearly explain them to people with fewer
-      technical knowledge. I am a good listener; I take the necessary time
-      to understand the needs of my collaborators. I always document my
-      work to ensure that others can understand it.
-  - title: End-user focus
-    id: end-user-focus
-    group: soft
-    icon: i-heroicons-user-circle
-    color: "#45ba70"
-    description: >-
-      High end-user focus is crucial for solving problems effectively. By
-      thoroughly understanding the user requirements, I can tailor
-      solutions that enhance their experience. With this approach, I
-      ensure my decisions are user-centric, leading to more impactful
-      outcomes.
-  - title: Problem solving
-    id: problem-solving
-    group: soft
-    icon: i-heroicons-light-bulb
-    color: "#d97706"
-    description: >-
-      I have a strong problem-solving mindset. I enjoy tackling complex
-      problems and finding innovative solutions. I am not afraid to take
-      risks and try new approaches to solve problems. I never give up and
-      always strive to find the best solution.
-  - title: Teamwork
-    id: teamwork
-    group: soft
-    icon: i-heroicons-user-group-16-solid
-    color: "#4f46e5"
-    description: >-
-      I am a good team player and I enjoy working with others. I am always
-      willing to help my teammates and share my knowledge with them. I
-      believe that teamwork is essential for success. By working together,
-      we can achieve great things.
-  - title: Evidence-based decision making
-    id: evidence-based-decision making
-    group: soft
-    icon: i-tabler-file-certificate
-    color: "#e2526a"
-    description: >-
-      In order to make the best decisions, I rely on evidence. It helps me
-      to make informed decisions and avoid making decisions based on
-      assumptions. I also use data to evaluate the impact of my decisions
-      and make adjustments as needed.
+- title: Skills
+  id: skills-subsection
+  groups:
+    - title: Hard skills
+      id: hard
+      items:
+        - title: Full-stack development
+          id: full-stack-development
+          icon: i-heroicons-code-bracket-16-solid
+          color: "#f8da4c"
+          description: >-
+            I have experience in building full-stack applications using various
+            technologies. My prefered stack right now being Vue, Nuxt, Tailwind
+            and serverless backend services like Firebase.
+        - title: DevOps
+          id: devops
+          icon: i-iconoir-infinite
+          color: "#a0d8ef"
+          description: >-
+            I worked as a DevOps engineer for 5 year at Sony, and was promoted
+            to the position of Senior DevOps Engineer. As a DevOps, I analyze
+            the established software lifecyle, identify its flaws and optimize
+            it with the state-of-the-art technologies.
+        - title: Software Testing
+          id: software-testing
+          icon: i-heroicons-check-circle
+          color: "#90ee90"
+          description: >-
+            My first professional experience was as a software tester for a
+            medical device company. I have a good understanding of the software
+            testing process and have experience with various testing tools. I
+            wrote hundreds of test cases, both automated and manual. I performed
+            on-site validation campaigns and wrote validation reports.
+        - title: CI/CD
+          id: ci-cd
+          icon: i-heroicons-arrow-path
+          color: "#3b82f6"
+          description: >-
+            Through my career as a DevOps, I acquired a lot of experience in
+            creating and maintaining fully-automated software integration and
+            delivery.
+        - title: Package management
+          id: package-management
+          icon: i-heroicons-cube
+          color: "#B9875E"
+          description: >-
+            My previous DevOps position also gave me the oppotunity to sharpen
+            my knowledge with package management tools, including conda (python)
+            and conan (C/C++).
+        - title: Quality Assurance
+          id: quality-assurance
+          icon: i-heroicons-shield-check
+          color: "#ff6961"
+          description: >-
+            My first professional experience was for a company that produces
+            medical devices. Hence, the quality of the software was crucial. I
+            learned a lot about quality assurance (including requirement
+            management) and how to ensure high quality of the software. For the
+            records: my end of study thesis was about a quality assurance tool
+            that I made from scratch and was tailored to the needs of this
+            company.
+        - title: Project management
+          id: project-management
+          icon: i-heroicons-calendar-date-range-16-solid
+          color: "#c6d165"
+          description: >-
+            I used to the the head of a non-profit organization and was
+            responsible for managing the project and the team. This non-profit
+            organization was organizing a yearly event with over 1000
+            participants.
+        - title: Agile
+          id: agile
+          icon: i-iconoir-agile
+          color: "#b19cd9"
+          description: >-
+            Agile is a software development methodology focused on iterative progress, collaboration, flexibility, and customer feedback. 
+            It emphasizes small, frequent releases, adaptive planning, and continuous improvement to quickly respond to changing requirements and deliver high-quality products.
+            Like most the software engineering companies today, the places I worked at used Agile methodologies.
+        - title: V-Model
+          id: waterfall
+          icon: i-tabler-square-root
+          color: "#14b8a6"
+          description: >-
+            The V-Model is a software development model that emphasis the relationships between 
+            each phase of the development life cycle and its associated phase of testing.
+            Even though it isn't my prefered methodology, I have experience with this methodology.
+        - title: French
+          id: french
+          icon: i-flag-bl-4x3
+          color: "#90cdf4"
+          description: >-
+            French is my mother tongue.
+        - title: English
+          id: english
+          icon: i-flag-sh-4x3
+          color: "#f56565"
+          description: >-
+            I am completely fluent in English. I lived in Australia for one year and worked in international environments for 7 years.
+        - title: Spanish
+          id: spanish
+          icon: i-flag-es-4x3
+          color: "#fecf59"
+          description: >-
+            I have an A2 level of Spanish. I took classes in 2023 and try to practice it every week.
+
+    - title: Soft skills
+      id: soft
+      items:
+        - title: Supreme communication
+          id: supreme-communication
+          icon: i-heroicons-chat-bubble-oval-left
+          color: "#0284c7"
+          keywords: ask, understand, break down, propose, explain, document
+          description: >-
+            I have excellent communication skills. I am able to break down
+            complex problems and clearly explain them to people with fewer
+            technical knowledge. I am a good listener; I take the necessary time
+            to understand the needs of my collaborators. I always document my
+            work to ensure that others can understand it.
+        - title: End-user focus
+          id: end-user-focus
+          icon: i-heroicons-user-circle
+          color: "#45ba70"
+          description: >-
+            High end-user focus is crucial for solving problems effectively. By
+            thoroughly understanding the user requirements, I can tailor
+            solutions that enhance their experience. With this approach, I
+            ensure my decisions are user-centric, leading to more impactful
+            outcomes.
+        - title: Problem solving
+          id: problem-solving
+          icon: i-heroicons-light-bulb
+          color: "#d97706"
+          description: >-
+            I have a strong problem-solving mindset. I enjoy tackling complex
+            problems and finding innovative solutions. I am not afraid to take
+            risks and try new approaches to solve problems. I never give up and
+            always strive to find the best solution.
+        - title: Teamwork
+          id: teamwork
+          icon: i-heroicons-user-group-16-solid
+          color: "#4f46e5"
+          description: >-
+            I am a good team player and I enjoy working with others. I am always
+            willing to help my teammates and share my knowledge with them. I
+            believe that teamwork is essential for success. By working together,
+            we can achieve great things.
+        - title: Evidence-based decision making
+          id: evidence-based-decision making
+          icon: i-tabler-file-certificate
+          color: "#e2526a"
+          description: >-
+            In order to make the best decisions, I rely on evidence. It helps me
+            to make informed decisions and avoid making decisions based on
+            assumptions. I also use data to evaluate the impact of my decisions
+            and make adjustments as needed.
+
+- title: Technologies
+  id: techs-subsection
+  groups:
+    - title: Code
+      id: code
+      items:
+        - title: Vue
+          id: vue
+          icon: i-vscode-icons-file-type-vue
+          color: "#4FC08D"
+          description: >-
+            Vue is my prefered front-end framework at the moment. Even though
+            React is more popular, Vue is one of the most stable frameworks,
+            which a solid community. I appreciate the way Vue manage reactivity
+            and SFC system with clear separation of concerns.
+        - title: Tailwind
+          id: tailwind
+          icon: i-vscode-icons-file-type-tailwind
+          color: "#06b6d4"
+          description: >-
+            As for most of the front-end developers today, Tailwind has become
+            my favorite CSS framework. It provides a set of pre-defined classes
+            that can be used to style your components, making it easier to
+            create consistent and responsive designs.
+        - title: Nuxt
+          id: nuxt
+          icon: i-vscode-icons-file-type-nuxt
+          color: "#00C58E"
+          description: >-
+            Nuxt is a higher-level framework built on top of Vue.js. It provides
+            a lot of features out of the box, such as server-side rendering,
+            static site generation, and more. I use Nuxt for most of my projects
+            to have a better SEO and performance. It is my go-to framework for
+            building web applications.
+        - title: Ionic
+          id: ionic
+          icon: i-vscode-icons-file-type-ionic
+          color: "#3880ff"
+          description: >-
+            Ionic is a complete open-source SDK for hybrid mobile app
+            development. I used Ionic in the past to build mobile applications.
+        - title: Python
+          id: python
+          icon: i-vscode-icons-file-type-python
+          color: "#306998"
+          description: >-
+            Python is a high-level, interpreted programming language. It is a convenient language for
+            scripting and automating tasks. It is also widely used in data science and machine learning.
+            I used Python a lot in my previous professional experiences. I have a good knowledge of the language.
+        - title: JavaScript
+          id: javascript
+          icon: i-logos-javascript
+          color: "#f7df1e"
+          description: >-
+            JavaScript is the programming language of the web. I use JavaScript
+            in all of my web projects to build interactive web applications.
+        - title: TypeScript
+          id: typescript
+          icon: i-logos-typescript-icon
+          color: "#3178c6"
+          description: >-
+            TypeScript is a strict syntactical superset of JavaScript that adds
+            optional static typing to the language. I use TypeScript in my
+            projects to have a cleaner code and to catch errors
+            earlier in the development process.
+        - title: Node.js
+          id: nodejs
+          icon: i-logos-nodejs-icon-alt
+          color: "#43853d"
+          description: >-
+            Node.js is an open-source, cross-platform, back-end JavaScript
+            runtime environment that executes JavaScript code outside a web browser. 
+            I use Node.js to build server-side applications.
+        - title: C/C++
+          id: c-lang
+          icon: i-logos-c-plusplus
+          color: "#00599C"
+          description: >-
+            C and C++ are two of the most widely used programming languages in
+            the world. While I am not an active C/C++ developer, I have a good
+            understanding of the language and its ecosystem. I studied system C
+            during my bachelor and used to work with C/C++ projects in my
+            previous professional experiences.
+        - title: Java
+          id: java
+          icon: i-logos-java
+          color: "#007396"
+          description: >-
+            Java is one of the first programming languages I learned. I used
+            Java in my previous professional experiences. However, I haven't
+            worked with Java for a while.
+        - title: MongoDB
+          id: mongodb
+          icon: i-vscode-icons-file-type-mongo
+          color: "#47a248"
+          description: >-
+            MongoDB is a NoSQL database program. I used MongoDB in the past to
+            store and manage data.
+        - title: MySQL
+          id: mysql
+          icon: i-logos-mysql-icon
+          color: "#4479a1"
+          description: >-
+            MySQL is an open-source relational database management system. I
+            learned SQL during my bachelor and used MySQL in the past to store
+            and manage data.
+        - title: Angular
+          id: angular
+          icon: i-logos-angular-icon
+          color: "#dd0031"
+          description: >-
+            Angular is an open-source web application framework led by the
+            Angular Team at Google and by a community of individuals and
+            corporations. I worked with Angular for a project in the past.
+            Today, I prefer working with Vue, which provides cleaner code, hence
+            better maintenability.
+        - title: Bash
+          id: bash
+          icon: i-simple-icons-gnubash
+          color: "#4EAA25"
+          description: >-
+            Bash is a Unix shell and command language. I use Bash scripts to
+            automate tasks on my machine and on servers.
+        - title: PowerShell
+          id: powershell
+          icon: i-simple-icons-powershell
+          color: "#5391FE"
+          description: >-
+            PowerShell is a task automation and configuration management
+            framework from Microsoft, consisting of a command-line shell and
+            associated scripting language. I use PowerShell scripts to automate
+            tasks on Windows machines.
+
+    - title: DevOps
+      id: devops
+      items:
+        - title: Docker
+          id: docker
+          icon: i-vscode-icons-file-type-docker
+          color: "#2496ed"
+          description: >-
+            Docker is a set of platform as a service products that use OS-level
+            virtualization to deliver software in packages called containers. In
+            one of my previous professional experiences, I used Docker to
+            containerize all the possible build environments of the company's
+            software. I used to maintain all of these Docker images
+            programmatically, with the best DevOps automation practices. It
+            allowed the company to have a wide range of consitent build
+            environments, available across all the developers' machines and the
+            CI/CD servers.
+        - title: GitLab
+          id: gitlab
+          icon: i-vscode-icons-file-type-gitlab
+          color: "#fca326"
+          description: >-
+            GitLab is a web-based DevOps lifecycle tool that provides a Git
+            repository manager providing wiki, issue-tracking and CI/CD pipeline
+            features, using an open-source license, developed by GitLab Inc. I
+            deployed and maintained a GitLab server for multiple years in one of
+            my previous professional experiences. Hence, I have a very good
+            understanding of most of GitLab features.
+        - title: Git
+          id: git
+          icon: i-vscode-icons-file-type-git
+          color: "#f34f29"
+          description: >-
+            Git is a distributed version control system. I intensively use it on
+            every project. Hence, I have a very good understanding of Git and
+            its CLI.
+        - title: Artifactory
+          id: artifactory
+          icon: i-logos-jfrog
+          color: "#36953B"
+          description: >-
+            Artifactory is a universal artifact repository manager. I used to
+            maintain an Artifactory server in one of my previous professional
+            experiences.
+        - title: Anaconda
+          id: anaconda
+          icon: i-vscode-icons-file-type-conda
+          color: "#44a833"
+          description: >-
+            Anaconda is a package manager for Python. Compared to pip, it provides
+            a built-in environments manager. I used to create and use conda
+            packages with the internal dependencies in one of my previous
+            professional experiences
+        - title: Conan
+          id: conan
+          icon: i-vscode-icons-file-type-conan
+          color: "#0086FD"
+          description: >-
+            Conan is a C/C++ package manager. In one of my past professional
+            experiences, I helped a company to package their C/C++ internal
+            dependencies into conan packages. It allowed the company to manage
+            their dependencies more efficiently and enable better automation of
+            their Software Development Life Cycle.
+        - title: CMake
+          id: cmake
+          icon: i-vscode-icons-file-type-cmake
+          color: "#064F8C"
+          description: >-
+            CMake is a powerfull cross-platform build system generator. I used
+            CMake in my previous professional experiences to manage the build
+            process of C/C++ projects, alongside conan.
+        - title: Maven
+          id: maven
+          icon: i-vscode-icons-file-type-maven
+          color: "#C71A36"
+          description: >-
+            Maven is a build automation tool used primarily for Java projects. I
+            used Maven in my previous professional experiences to manage the
+            compnay internal dependencies.
+        - title: Firebase
+          id: firebase
+          icon: i-vscode-icons-file-type-firebase
+          color: "#f5820b"
+          description: >-
+            Firebase is a BaaS (Back-end as a Service) platform developed by
+            Google for creating mobile and web applications. I used Firebase in
+            my previous web development experiences to deploy severless web
+            applications.
+        - title: GCP
+          id: gcp
+          icon: i-logos-google-cloud
+          color: "#4285f4"
+          description: >-
+            Google Cloud Platform is a suite of cloud computing services that
+            runs on the same infrastructure that Google uses internally for its
+            end-user products. As Firebase is part of GCP, I also used GCP in my
+            previous web development experiences to deploy serverless web
+            applications.
+        - title: Prometheus
+          id: prometheus
+          icon: i-logos-prometheus
+          color: "#e6522c"
+          description: >-
+            Prometheus is an open-source monitoring and alerting toolkit. I used
+            Prometheus alongside Grafana in my previous professional experiences
+            to monitor the performance of the software I was maintaining.
+        - title: Grafana
+          id: grafana
+          icon: i-logos-grafana
+          color: "#f46800"
+          description: >-
+            Granafa is a multi-platform open-source analytics and interactive
+            visualization web application. I used Grafana alongside Prometheus
+            in my previous professional experiences to monitor the performance
+            of the software I was maintaining.
+
+    - title: Miscellaneous
+      id: miscellaneous
+      items:
+        - title: Windows
+          id: windows
+          icon: i-logos-microsoft-windows-icon
+          color: "#0078D4"
+          description: >-
+            Windows is a group of several proprietary graphical operating system
+            families, all of which are developed and marketed by Microsoft. I have
+            been using Windows as my main operating system for most of my life.
+            I can admninistrate Windows servers too.
+        - title: MacOS
+          id: macos
+          icon: i-simple-icons-apple
+          description: >-
+            macOS is a series of proprietary graphical operating systems developed and marketed by Apple Inc. 
+            I switched to macOS in 2023. I appreciate the stability and the Unix-like environment of macOS.
+            I still value Windows and Linux for their use cases.
+        - title: Linux
+          id: linux
+          icon: i-logos-linux-tux
+          color: "#DD0031"
+          description: >-
+            Linux is a family of open-source Unix-like operating systems based on the Linux kernel. 
+            Thanks to its stability, Linux is widely used in the industry for servers and embedded systems. 
+            I have been using Linux a lot during my professional experiences, both on servers and on my personal computer.
+            I am comfortable with the command line and the Linux ecosystem.
+        - title: WSL
+          id: wsl
+          description: >-
+            Windows Subsystem for Linux is a compatibility layer for running
+            Linux binary executables natively on Windows 10, 11 and Windows Server
+            2019. I use WSL to run Linux commands on my Windows machine.
+        - title: Confluence
+          id: confluence
+          icon: i-logos-confluence
+          color: "#1C77F2"
+          description: >-
+            Confluence is a collaboration tool that helps teams to collaborate
+            and share knowledge efficiently. I used Confluence in my previous
+            professional experiences to document my work and share it with my
+            colleagues.
+        - title: Jira
+          id: jira
+          icon: i-logos-jira
+          color: "#2684FF"
+          description: >-
+            Jira is a project management tool that helps teams to plan, track,
+            and manage their work. I used Jira in my previous professional
+            experiences to manage my projects and tasks.
