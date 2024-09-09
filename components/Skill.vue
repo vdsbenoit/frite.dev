@@ -1,11 +1,12 @@
 <template>
-  <div class="relative" ref="currentElement">
+  <div class="relative" ref="thisComponent">
     <div>
       <!-- Invisible div that cover the whole parent div, to increase the hover area -->
       <!-- Creating a group with the parent div induced weird hover effects with the translations -->
       <div
-        class="peer absolute bottom-0 left-0 right-0 top-0 z-20 cursor-pointer"
-        @click="showDescription = true"
+        class="peer absolute inset-0 z-20 cursor-pointer"
+        @click="showDescription"
+        ref="clickableArea"
       ></div>
       <!-- Icon -->
       <div
@@ -34,8 +35,14 @@
     <!-- Description popup -->
     <div
       id="description"
-      class="absolute left-1/2 top-1/2 z-30 min-w-72 -translate-x-1/2 -translate-y-1/2 rounded bg-gray-300 p-4 text-base text-gray-900 motion-safe:transition-transform"
-      :class="{ 'scale-100': showDescription, 'scale-0': !showDescription }"
+      class="absolute top-1/2 z-30 min-w-72 -translate-y-1/2 rounded bg-gray-300 p-4 text-base text-gray-900 motion-safe:transition-transform"
+      :class="{
+        'scale-100': isDescriptionDisplayed,
+        'scale-0': !isDescriptionDisplayed,
+        invisble: isDescriptionInvisible,
+        'left-1/2 -translate-x-1/2': xCenterDescription,
+      }"
+      ref="descriptionElement"
     >
       <div class="flex items-center justify-between">
         <h4
@@ -51,7 +58,7 @@
         <UIcon
           class="ml-4 size-7 cursor-pointer"
           name="i-heroicons-x-mark-16-solid"
-          @click="showDescription = false"
+          @click="isDescriptionDisplayed = false"
         />
       </div>
       <p class="mt-3">{{ description }}</p>
@@ -69,16 +76,60 @@ const props = defineProps<{
   description: string;
 }>();
 
-const currentElement = ref<HTMLElement | null>(null);
-const showDescription = ref(false);
+const thisComponent = ref<HTMLElement | null>(null);
+const clickableArea = ref<HTMLElement | null>(null);
+const descriptionElement = ref<HTMLElement | null>(null);
+const isDescriptionDisplayed = ref(true);
+const isDescriptionInvisible = ref(true);
+const descriptionWidth = ref(0);
+const xCenterDescription = ref(true);
 
-const hideDescription = (event: MouseEvent) => {
-  if (currentElement.value?.contains(event.target as Node)) return;
-  showDescription.value = false;
+const showDescription = () => {
+  if (!clickableArea.value || !descriptionElement.value) return;
+  xCenterDescription.value = false;
+  // Position the description div horizontally
+  const clickableAreaRect = clickableArea.value.getBoundingClientRect();
+  // ensure it does not go out the the viewport on the left
+  if (
+    clickableAreaRect.left +
+      clickableAreaRect.width / 2 -
+      descriptionWidth.value / 2 <
+    0
+  ) {
+    descriptionElement.value.style.left = "0px";
+    // ensure it does not go out the the viewport on the right
+  } else if (
+    clickableAreaRect.left +
+      clickableAreaRect.width / 2 +
+      descriptionWidth.value / 2 >
+    window.innerWidth
+  ) {
+    descriptionElement.value.style.right = "0px";
+  } else {
+    // else, center it on the previous div (clickable area)
+    xCenterDescription.value = true;
+  }
+  isDescriptionDisplayed.value = true;
+};
+
+const clickOutsideDescription = (event: MouseEvent) => {
+  if (thisComponent.value?.contains(event.target as Node)) return;
+  isDescriptionDisplayed.value = false;
 };
 
 onMounted(() => {
-  useEventListener(window, "click", hideDescription);
+  // The following code is necessary to get the width of the description div.
+  // Since the description div has a zero scale, its width is zero when not displayed.
+  if (descriptionElement.value) {
+    descriptionWidth.value =
+      descriptionElement.value.getBoundingClientRect().width;
+    isDescriptionDisplayed.value = false;
+    isDescriptionInvisible.value = false;
+  } else {
+    console.error("descriptionElement is null");
+  }
+
+  useEventListener(window, "click", clickOutsideDescription);
 });
 </script>
 
