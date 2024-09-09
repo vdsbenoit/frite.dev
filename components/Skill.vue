@@ -82,4 +82,9 @@ onMounted(() => {
 });
 </script>
 
-<style scoped></style>
+<style lang="postcss" scoped>
+::selection {
+  @apply text-gray-100;
+  background-color: v-bind(color);
+}
+</style>
