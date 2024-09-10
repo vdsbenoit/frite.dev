@@ -1,7 +1,7 @@
 <template>
   <div class="max-w-screen-lg px-6">
     <div class="mt-4 py-4" v-for="subSection in content" :key="subSection.id">
-      <h2 class="text-left text-5xl font-bold">{{ subSection.title }}</h2>
+      <h2>{{ subSection.title }}</h2>
       <div
         class="grid grid-cols-1 gap-4 sm:grid-cols-2"
         :class="[`md:grid-cols-${subSection.groups.length}`]"
@@ -11,7 +11,7 @@
           :key="`skill-${group.id}`"
           :id="`skill-${group.id}`"
         >
-          <h3 class="mb-4 mt-4 text-xl font-semibold">
+          <h3 class="mb-4 mt-4">
             {{ group.title }}
           </h3>
           <div class="flex flex-wrap gap-1">
