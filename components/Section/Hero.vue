@@ -1,6 +1,6 @@
 <template>
   <div class="-mt-16 sm:mt-0">
-    <div id="background-clip" ref="backgroundClip"></div>
+    <div id="background-clip" :style="{ clipPath }"></div>
     <h1
       ref="heroTitle"
       class="relative mt-3 px-0.5 text-center font-bold tracking-tight sm:px-2"
@@ -39,25 +39,14 @@
 </template>
 
 <script lang="ts" setup>
+import { useElementBounding } from "@vueuse/core";
+
 const heroTitle = ref<HTMLInputElement | null>(null);
-const backgroundClip = ref<HTMLInputElement | null>(null);
+const heroTitleRect = useElementBounding(heroTitle);
 
-const updateClipPath = () => {
-  const h1Element = heroTitle.value;
-  const bgClipElement = backgroundClip.value;
-
-  if (h1Element && bgClipElement) {
-    const rect = h1Element.getBoundingClientRect();
-    const clipPath = `polygon(${rect.left}px ${rect.top}px, ${rect.right}px ${rect.top}px, ${rect.right}px ${rect.bottom}px, ${rect.left}px ${rect.bottom}px)`;
-    bgClipElement.style.clipPath = clipPath;
-  }
-};
-onMounted(() => {
-  updateClipPath();
-  window.addEventListener("resize", updateClipPath);
-});
-onUnmounted(() => {
-  window.removeEventListener("resize", updateClipPath);
+const clipPath = computed(() => {
+  if (!heroTitleRect.left.value) return "";
+  return `polygon(${heroTitleRect.left.value}px ${heroTitleRect.top.value}px, ${heroTitleRect.right.value}px ${heroTitleRect.top.value}px, ${heroTitleRect.right.value}px ${heroTitleRect.bottom.value}px, ${heroTitleRect.left.value}px ${heroTitleRect.bottom.value}px)`;
 });
 </script>
 
