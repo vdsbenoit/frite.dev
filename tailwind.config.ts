@@ -5,7 +5,7 @@ export default <Partial<Config>>{
   plugins: [require("@tailwindcss/forms")],
   content: ["content/**/*.md", "docs/content/**/*.md"],
   safelist: [
-    { pattern: /grid-cols-\d/, variants: ["sm"] },
+    { pattern: /grid-cols-\d/, variants: ["md"] },
     { pattern: /h-\d/ },
     "scale-0",
     "scale-100",

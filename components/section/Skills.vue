@@ -4,8 +4,8 @@
       <div class="mt-4 py-4" v-for="subSection in content" :key="subSection.id">
         <h2 class="text-left text-5xl font-bold">{{ subSection.title }}</h2>
         <div
-          class="grid grid-cols-1 gap-4"
-          :class="[`sm:grid-cols-${subSection.groups.length}`]"
+          class="grid grid-cols-1 gap-4 sm:grid-cols-2"
+          :class="[`md:grid-cols-${subSection.groups.length}`]"
         >
           <div
             v-for="group in subSection.groups"
