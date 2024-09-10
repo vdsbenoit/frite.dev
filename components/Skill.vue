@@ -6,7 +6,6 @@
       <div
         class="peer absolute inset-0 z-20 cursor-pointer"
         @click="showDescription"
-        ref="clickableArea"
       ></div>
       <!-- Icon -->
       <div
@@ -35,13 +34,14 @@
     <!-- Description popup -->
     <div
       id="description"
-      class="absolute top-1/2 z-30 min-w-72 -translate-y-1/2 rounded bg-gray-300 p-4 text-base text-gray-900 motion-safe:transition-transform"
-      :class="{
-        'scale-100': isDescriptionDisplayed,
-        'scale-0': !isDescriptionDisplayed,
-        invisble: isDescriptionInvisible,
-        'left-1/2 -translate-x-1/2': xCenterDescription,
-      }"
+      class="fixed top-1/2 z-30 min-w-72 origin-center -translate-y-1/2 rounded bg-gray-300 p-4 text-base text-gray-900 motion-safe:transition-all sm:absolute"
+      :class="[
+        {
+          'scale-100': isDescriptionDisplayed,
+          'scale-0': !isDescriptionDisplayed,
+        },
+        xClassesDescription,
+      ]"
       ref="descriptionElement"
     >
       <div class="flex items-center justify-between">
@@ -67,7 +67,7 @@
 </template>
 
 <script lang="ts" setup>
-import { useEventListener } from "@vueuse/core";
+import { useElementBounding, useEventListener } from "@vueuse/core";
 
 const props = defineProps<{
   title: string;
@@ -77,38 +77,26 @@ const props = defineProps<{
 }>();
 
 const thisComponent = ref<HTMLElement | null>(null);
-const clickableArea = ref<HTMLElement | null>(null);
 const descriptionElement = ref<HTMLElement | null>(null);
-const isDescriptionDisplayed = ref(true);
-const isDescriptionInvisible = ref(true);
-const descriptionWidth = ref(0);
-const xCenterDescription = ref(true);
+const descriptionRect = useElementBounding(descriptionElement);
+const isDescriptionDisplayed = ref(false);
+const xClassesDescription = ref<string[]>([]);
 
-const showDescription = () => {
-  if (!clickableArea.value || !descriptionElement.value) return;
-  xCenterDescription.value = false;
-  // Position the description div horizontally
-  const clickableAreaRect = clickableArea.value.getBoundingClientRect();
-  // ensure it does not go out the the viewport on the left
-  if (
-    clickableAreaRect.left +
-      clickableAreaRect.width / 2 -
-      descriptionWidth.value / 2 <
-    0
-  ) {
-    descriptionElement.value.style.left = "0px";
-    // ensure it does not go out the the viewport on the right
-  } else if (
-    clickableAreaRect.left +
-      clickableAreaRect.width / 2 +
-      descriptionWidth.value / 2 >
-    window.innerWidth
-  ) {
-    descriptionElement.value.style.right = "0px";
-  } else {
-    // else, center it on the previous div (clickable area)
-    xCenterDescription.value = true;
+/**
+ * Ensure the description popup does not go out the the viewport
+ */
+watch(descriptionRect.left, () => {
+  // if it does not fit on both sides, change the way it is displayed to a fixed centered position
+  if (descriptionRect.left.value < 0) {
+    xClassesDescription.value = ["left-0"];
+    // if description goes out of the viewport on the right side
+  } else if (descriptionRect.right.value > window.innerWidth) {
+    xClassesDescription.value = ["left-1/2", "-translate-x-3/4"];
   }
+});
+
+const showDescription = async () => {
+  xClassesDescription.value = ["left-1/2", "-translate-x-1/2"];
   isDescriptionDisplayed.value = true;
 };
 
@@ -118,18 +106,8 @@ const clickOutsideDescription = (event: MouseEvent) => {
 };
 
 onMounted(() => {
-  // The following code is necessary to get the width of the description div.
-  // Since the description div has a zero scale, its width is zero when not displayed.
-  if (descriptionElement.value) {
-    descriptionWidth.value =
-      descriptionElement.value.getBoundingClientRect().width;
-    isDescriptionDisplayed.value = false;
-    isDescriptionInvisible.value = false;
-  } else {
-    console.error("descriptionElement is null");
-  }
-
   useEventListener(window, "click", clickOutsideDescription);
+  useEventListener(descriptionElement, "transitionend", descriptionRect.update);
 });
 </script>
 

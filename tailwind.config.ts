@@ -13,6 +13,10 @@ export default <Partial<Config>>{
     "opacity-0",
     "opacity-100",
     "hidden",
+    "left-0",
+    "left-1/2",
+    "-translate-x-1/2",
+    "-translate-x-3/4",
   ],
   theme: {
     extend: {
