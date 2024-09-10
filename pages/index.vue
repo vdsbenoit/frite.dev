@@ -65,11 +65,7 @@
       />
     </header>
     <main ref="scrollableContent" class="h-lvh overflow-y-auto">
-      <section
-        v-for="section in SECTIONS"
-        :key="section.id"
-        class="flex min-h-screen items-center justify-center"
-      >
+      <section v-for="section in SECTIONS" :key="section.id">
         <component
           :id="section.id"
           :is="section.component"
