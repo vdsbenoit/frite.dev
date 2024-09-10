@@ -1,7 +1,7 @@
 <!-- This page contains the nav bar & instantiate the different sections -->
 <template>
-  <div class="">
-    <nav
+  <div>
+    <header
       class="relative left-0 right-0 top-0 z-20 items-center sm:fixed sm:top-8 sm:grid sm:grid-flow-col sm:grid-cols-5 sm:justify-items-center"
     >
       <div
@@ -19,8 +19,8 @@
           >frite.dev</a
         >
       </div>
-      <div class="hidden sm:flex"></div>
-      <div
+      <div class="hidden sm:block"></div>
+      <nav
         class="via-primary bg-gradient-to-r from-gray-700 to-red-400 pb-0.5 sm:rounded-xl sm:bg-gradient-to-br sm:p-0.5"
       >
         <div
@@ -54,8 +54,8 @@
             >{{ section.title }}</a
           >
         </div>
-      </div>
-      <div class="hidden sm:flex"></div>
+      </nav>
+      <div class="hidden sm:block"></div>
       <UToggle
         v-model="showStars"
         size="lg"
@@ -63,9 +63,9 @@
         on-icon="i-tdesign-animation-1"
         class="hidden sm:inline-flex"
       />
-    </nav>
+    </header>
     <main ref="scrollableContent" class="h-lvh overflow-y-auto">
-      <div v-for="section in SECTIONS" :key="section.id">
+      <section v-for="section in SECTIONS" :key="section.id">
         <component
           :id="section.id"
           :is="section.component"
@@ -74,7 +74,7 @@
             INTERACTION_OBSERVER_OPTIONS,
           ]"
         />
-      </div>
+      </section>
     </main>
     <div
       class="fixed bottom-6 right-6 flex size-10 cursor-pointer items-center justify-center rounded-full shadow shadow-gray-400/50 transition-colors active:shadow-none sm:hidden"
