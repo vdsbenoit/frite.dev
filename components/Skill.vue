@@ -26,7 +26,7 @@
       <div
         class="absolute bottom-0 left-1/2 -translate-x-1/2 text-nowrap rounded p-1 text-center text-sm font-semibold text-gray-800 opacity-0 ease-in-out peer-hover:z-10 peer-hover:translate-y-5 peer-hover:opacity-100 motion-safe:transition"
         :style="{ backgroundColor: color ? color : '' }"
-        :class="{ 'bg-gray-300': !color }"
+        :class="{ 'bg-gray-100': !color }"
       >
         {{ title }}
       </div>
@@ -34,7 +34,7 @@
     <!-- Description popup -->
     <div
       id="description"
-      class="fixed top-1/2 z-30 min-w-72 origin-center -translate-y-1/2 rounded bg-gray-300 p-4 text-base text-gray-900 motion-safe:transition-all sm:absolute"
+      class="fixed top-1/2 z-30 min-w-72 origin-center -translate-y-1/2 rounded bg-gray-100 p-4 text-base text-gray-900 motion-safe:transition-all sm:absolute"
       :class="[
         {
           'scale-100': isDescriptionDisplayed,
