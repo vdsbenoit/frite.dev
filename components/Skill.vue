@@ -10,11 +10,11 @@
       <!-- Icon -->
       <div
         id="icon"
-        class="flex size-16 scale-100 items-center justify-center rounded-full border border-gray-800 bg-gray-900 ease-in-out peer-hover:z-10 peer-hover:-translate-y-4 peer-hover:scale-110 motion-safe:transition-all"
+        class="flex size-12 scale-100 items-center justify-center rounded-full border border-gray-800 bg-gray-900 ease-in-out peer-hover:z-10 peer-hover:-translate-y-4 peer-hover:scale-110 motion-safe:transition-all sm:size-16"
       >
         <UIcon
           v-if="icon"
-          class="size-8"
+          class="size-6 sm:size-8"
           :name="icon"
           :style="{ color: color ? color : '@apply text-neutrol-300' }"
         />
