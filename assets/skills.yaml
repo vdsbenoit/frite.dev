@@ -145,15 +145,14 @@
             willing to help my teammates and share my knowledge with them. I
             believe that teamwork is essential for success. By working together,
             we can achieve great things.
-        - title: Evidence-based decision making
-          id: evidence-based-decision making
+        - title: Evidence-based decisions
+          id: evidence-based-decisions
           icon: i-tabler-file-certificate
           color: "#e2526a"
           description: >-
             In order to make the best decisions, I rely on evidence. It helps me
-            to make informed decisions and avoid making decisions based on
-            assumptions. I also use data to evaluate the impact of my decisions
-            and make adjustments as needed.
+            to make informed choices and avoid making them based on assumptions. 
+            I also use data to evaluate the impact of my decisions and make adjustments as needed.
 
 - title: Technologies
   id: techs-subsection
@@ -261,6 +260,13 @@
             MySQL is an open-source relational database management system. I
             learned SQL during my bachelor and used MySQL in the past to store
             and manage data.
+        - title: php
+          id: php
+          icon: i-logos-php
+          color: "#777BB4"
+          description: >-
+            php is a server-side scripting language designed for web development.
+            I used php during my bachelor to build a wiki and a forum.
         - title: Angular
           id: angular
           icon: i-logos-angular-icon
@@ -316,14 +322,6 @@
             deployed and maintained a GitLab server for multiple years in one of
             my previous professional experiences. Hence, I have a very good
             understanding of most of GitLab features.
-        - title: Git
-          id: git
-          icon: i-vscode-icons-file-type-git
-          color: "#f34f29"
-          description: >-
-            Git is a distributed version control system. I intensively use it on
-            every project. Hence, I have a very good understanding of Git and
-            its CLI.
         - title: Artifactory
           id: artifactory
           icon: i-logos-jfrog
@@ -357,16 +355,41 @@
           color: "#064F8C"
           description: >-
             CMake is a powerfull cross-platform build system generator. I used
-            CMake in my previous professional experiences to manage the build
+            CMake in my previous DevOps experiences to manage the build
             process of C/C++ projects, alongside conan.
-        - title: Maven
-          id: maven
-          icon: i-vscode-icons-file-type-maven
-          color: "#C71A36"
+        - title: MSBuild
+          id: msbuild
+          icon: i-logos-visual-studio
+          color: "#BE8EF3"
           description: >-
-            Maven is a build automation tool used primarily for Java projects. I
-            used Maven in my previous professional experiences to manage the
-            compnay internal dependencies.
+            MSBuild is the build platform for .NET and Visual Studio. 
+            In my previous DevOps experiences, I used to create CI/CD pipelines with MSBuild to compile C/C++ projects for Windows.
+            I know the complexity of building on various platforms.
+        - title: gcc
+          id: gcc
+          icon: i-simple-icons-gnu
+          color: "#FFA07A"
+          description: >-
+            GCC is a compiler system produced by the GNU Project. 
+            In my previous DevOps experiences, I used to create CI/CD pipelines with GCC to compile C/C++ projects for Linux.
+            I know the complexity of building on various platforms.
+        - title: clang
+          id: clang
+          icon: i-simple-icons-llvm
+          color: "#A9A9A9"
+          description: >-
+            Clang is a compiler front end for the C, C++, and Objective-C programming languages. 
+            In my previous DevOps experiences, I used to create CI/CD pipelines with clang to compile C/C++ projects for Linux and Android.
+            I know the complexity of building on various platforms.
+        - title: Android
+          id: android
+          icon: i-logos-android-icon
+          color: "#3DDC84"
+          description: >-
+            Android is a mobile operating system developed by Google. 
+            I used to build Android software in my previous DevOps experiences.
+            In my previous DevOps experiences, I used to create CI/CD pipelines to compile C/C++ projects Android.
+            I know the complexity of building on various platforms.
         - title: Firebase
           id: firebase
           icon: i-vscode-icons-file-type-firebase
@@ -391,8 +414,8 @@
           icon: i-logos-prometheus
           color: "#e6522c"
           description: >-
-            Prometheus is an open-source monitoring and alerting toolkit. I used
-            Prometheus alongside Grafana in my previous professional experiences
+            Prometheus is an open-source monitoring and alerting toolkit. 
+            I used Prometheus alongside Grafana in my previous professional experiences
             to monitor the performance of the software I was maintaining.
         - title: Grafana
           id: grafana
@@ -403,6 +426,14 @@
             visualization web application. I used Grafana alongside Prometheus
             in my previous professional experiences to monitor the performance
             of the software I was maintaining.
+        - title: Git
+          id: git
+          icon: i-vscode-icons-file-type-git
+          color: "#f34f29"
+          description: >-
+            Git is a distributed version control system. I intensively use it on
+            every project. I have a very good understanding of Git's logic and
+            its CLI. I am also familiar with Mercurial and Subversion.
 
     - title: Miscellaneous
       id: miscellaneous
@@ -455,3 +486,24 @@
             Jira is a project management tool that helps teams to plan, track,
             and manage their work. I used Jira in my previous professional
             experiences to manage my projects and tasks.
+        - title: Trello
+          id: trello
+          icon: i-logos-trello
+          color: "#0079BF"
+          description: >-
+            Trello is a web-based list-making application. 
+            I used Trello in some of my projects to plan, track the progress of the tasks and to collaborate with my team.
+        - title: Bugzilla
+          id: bugzilla
+          icon: i-simple-icons-mozilla
+          color: "#2C2D30"
+          description: >-
+            Bugzilla is a web-based general-purpose bug tracking system and testing tool originally developed and used by the Mozilla project. 
+            I used Bugzilla in my previous professional experiences to track bugs and issues.
+        - title: IBM DOORS
+          id: doors
+          icon: i-simple-icons-ibm
+          description: >-
+            Rational DOORS is a requirement management tool. It was developed by Telelogic, which was then acquired by IBM.
+            I used DOORS in previous professional experiences to manage software requirements.
+            I also created a tool to extend DOORS functionalities.
