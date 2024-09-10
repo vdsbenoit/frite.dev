@@ -10,7 +10,7 @@
           color: "#f8da4c"
           description: >-
             I have experience in building full-stack applications using various
-            technologies. My prefered stack right now being Vue, Nuxt, Tailwind
+            technologies. My preferred stack right now being Vue, Nuxt, Tailwind
             and serverless backend services like Firebase.
         - title: DevOps
           id: devops
@@ -19,7 +19,7 @@
           description: >-
             I worked as a DevOps engineer for 5 year at Sony, and was promoted
             to the position of Senior DevOps Engineer. As a DevOps, I analyze
-            the established software lifecyle, identify its flaws and optimize
+            the established software lifecycle, identify its flaws and optimize
             it with the state-of-the-art technologies.
         - title: Software Testing
           id: software-testing
@@ -44,7 +44,7 @@
           icon: i-heroicons-cube
           color: "#B9875E"
           description: >-
-            My previous DevOps position also gave me the oppotunity to sharpen
+            My previous DevOps position also gave me the opportunity to sharpen
             my knowledge with package management tools, including conda (python)
             and conan (C/C++).
         - title: Quality Assurance
@@ -83,7 +83,7 @@
           description: >-
             The V-Model is a software development model that emphasis the relationships between 
             each phase of the development life cycle and its associated phase of testing.
-            Even though it isn't my prefered methodology, I have experience with this methodology.
+            Even though it isn't my preferred methodology, I have experience with this methodology.
         - title: French
           id: french
           icon: i-flag-bl-4x3
@@ -165,7 +165,7 @@
           icon: i-vscode-icons-file-type-vue
           color: "#4FC08D"
           description: >-
-            Vue is my prefered front-end framework at the moment. Even though
+            Vue is my preferred front-end framework at the moment. Even though
             React is more popular, Vue is one of the most stable frameworks,
             which a solid community. I appreciate the way Vue manage reactivity
             and SFC system with clear separation of concerns.
@@ -276,7 +276,7 @@
             Angular Team at Google and by a community of individuals and
             corporations. I worked with Angular for a project in the past.
             Today, I prefer working with Vue, which provides cleaner code, hence
-            better maintenability.
+            better maintainability.
         - title: Bash
           id: bash
           icon: i-simple-icons-gnubash
@@ -308,7 +308,7 @@
             containerize all the possible build environments of the company's
             software. I used to maintain all of these Docker images
             programmatically, with the best DevOps automation practices. It
-            allowed the company to have a wide range of consitent build
+            allowed the company to have a wide range of consistent build
             environments, available across all the developers' machines and the
             CI/CD servers.
         - title: GitLab
@@ -354,7 +354,7 @@
           icon: i-vscode-icons-file-type-cmake
           color: "#064F8C"
           description: >-
-            CMake is a powerfull cross-platform build system generator. I used
+            CMake is a powerful cross-platform build system generator. I used
             CMake in my previous DevOps experiences to manage the build
             process of C/C++ projects, alongside conan.
         - title: MSBuild
@@ -397,7 +397,7 @@
           description: >-
             Firebase is a BaaS (Back-end as a Service) platform developed by
             Google for creating mobile and web applications. I used Firebase in
-            my previous web development experiences to deploy severless web
+            my previous web development experiences to deploy serverless web
             applications.
         - title: GCP
           id: gcp
@@ -446,7 +446,7 @@
             Windows is a group of several proprietary graphical operating system
             families, all of which are developed and marketed by Microsoft. I have
             been using Windows as my main operating system for most of my life.
-            I can admninistrate Windows servers too.
+            I can administrate Windows servers too.
         - title: MacOS
           id: macos
           icon: i-simple-icons-apple
