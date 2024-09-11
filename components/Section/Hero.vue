@@ -1,6 +1,6 @@
 <template>
   <div class="flex min-h-screen items-center justify-center">
-    <div class="">
+    <div>
       <div id="background-clip" :style="{ clipPath }"></div>
       <h1
         ref="heroTitle"

@@ -12,7 +12,7 @@
             :key="`skill-${group.id}`"
             :id="`skill-${group.id}`"
           >
-            <h3 class="mb-4 mt-4">
+            <h3 class="mb-4 mt-2">
               {{ group.title }}
             </h3>
             <div class="flex flex-wrap gap-1">
