@@ -1,47 +1,47 @@
 <template>
   <div class="flex min-h-screen items-center justify-center">
     <div class="mt-4 max-w-screen-lg px-2 py-6">
-      <div class="grid grid-cols-1 gap-4 sm:grid-cols-5">
+      <div class="grid grid-cols-1 gap-4 sm:grid-cols-7">
         <!-- First Column -->
         <div
           class="col-span-1 flex flex-col items-center gap-y-2 sm:col-span-2"
         >
-          <img
-            src="~/assets/img/avatar.jpg"
-            alt="Avatar"
-            class="size-64 rounded-full"
-          />
+          <div class="sm:max-h-64 sm:max-w-64">
+            <img
+              src="~/assets/img/avatar.jpg"
+              alt="Avatar"
+              class="size-max rounded-full"
+            />
+          </div>
           <p class="font-mono">@vdsbenoit</p>
           <div
             class="flex items-center justify-center gap-x-4 *:transition hover:*:-translate-y-1 hover:*:scale-110"
           >
             <NuxtLink to="https://github.com/vdsbenoit" target="_blank">
-              <UIcon name="i-simple-icons-github" class="text-2xl" />
+              <UIcon name="i-simple-icons-github" class="text-xl" />
             </NuxtLink>
             <NuxtLink to="https://gitlab.com/vdsbenoit" target="_blank">
               <UIcon name="i-vscode-icons-file-type-gitlab" class="text-2xl" />
             </NuxtLink>
             <NuxtLink to="https://linkedin.com/in/vdsbenoit" target="_blank">
-              <UIcon name="i-logos-linkedin-icon" class="text-2xl" />
+              <UIcon name="i-logos-linkedin-icon" class="text-xl" />
             </NuxtLink>
             <NuxtLink to="mailto:benoit@frite.dev" target="_blank">
               <UIcon name="i-logos-google-gmail" class="text-xl" />
             </NuxtLink>
           </div>
           <UButton
-            class="transition hover:scale-110"
+            class="mt-2 transition hover:scale-110"
             size="md"
             color="primary"
             variant="solid"
-            icon="i-heroicons-arrow-down-circle-16-solid"
-            label="Go to skills section"
             to="#skills"
             >My skills</UButton
           >
         </div>
 
         <!-- Second Column -->
-        <div class="col-span-1 sm:col-span-3">
+        <div class="col-span-1 sm:col-span-5">
           <span class="font-bold">Hi, I am</span><br />
           <h2
             class="mb-4 bg-gradient-to-t from-gray-400 to-gray-100 bg-clip-text text-transparent"
@@ -89,12 +89,6 @@
               <p class="text-sm">2 years</p>
               <h4 class="text-md font-medium">Intern</h4>
               <p class="text-sm">Company GHI</p>
-            </div>
-            <div>
-              <h3 class="text-lg font-semibold">2015 - 2017</h3>
-              <p class="text-sm">2 years</p>
-              <h4 class="text-md font-medium">Student</h4>
-              <p class="text-sm">University JKL</p>
             </div>
           </div>
         </div>
