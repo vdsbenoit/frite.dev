@@ -1,12 +1,12 @@
-<!-- This page contains the nav bar & instantiate the different sections -->
+<!-- This page contains the nav bar & instantiate the different section components -->
 <template>
   <div>
     <header
-      class="relative left-0 right-0 top-0 z-20 items-center sm:fixed sm:top-8 sm:grid sm:grid-flow-col sm:grid-cols-5 sm:justify-items-center"
+      class="fixed left-0 right-0 top-0 z-20 items-center sm:top-8 sm:grid sm:grid-flow-col sm:grid-cols-5 sm:justify-items-center"
     >
       <div
         class="hidden cursor-pointer items-center sm:flex"
-        @click.prevent="scrollTo('hero')"
+        @click.prevent="navigateTo('#hero')"
       >
         <img
           src="~/assets/img/frites.png"
@@ -28,7 +28,7 @@
         >
           <div
             class="flex cursor-pointer items-center sm:hidden"
-            @click.prevent="scrollTo('hero')"
+            @click.prevent="navigateTo('#hero')"
           >
             <img
               src="~/assets/img/frites.png"
@@ -45,7 +45,6 @@
             v-for="section in SECTIONS"
             :key="section.id"
             :href="`#${section.id}`"
-            @click.prevent="scrollTo(section.id)"
             :class="{
               'text-primary': currentSection === section.id,
               hidden: section.id === 'hero',
@@ -64,15 +63,12 @@
         class="hidden sm:inline-flex"
       />
     </header>
-    <main ref="scrollableContent" class="h-lvh overflow-y-auto">
+    <main ref="scrollableContent">
       <section v-for="section in SECTIONS" :key="section.id">
         <component
           :id="section.id"
           :is="section.component"
-          v-intersection-observer="[
-            onIntersectionObserver,
-            INTERACTION_OBSERVER_OPTIONS,
-          ]"
+          v-intersection-observer="[onIntersectionObserver, { threshold: 0.5 }]"
         />
       </section>
     </main>
@@ -108,35 +104,13 @@ const SECTIONS = [
 ];
 
 const currentSection = ref<string>("");
-const scrollableContent = ref<HTMLElement | null>(null);
-const blurBackground = useState("blurBackground");
-const showStars = useState<boolean>("showStars");
 
-const INTERACTION_OBSERVER_OPTIONS = {
-  root: scrollableContent,
-  threshold: 0.5,
-};
+const showStars = useState<boolean>("showStars");
 
 // Methods
 
-const handleScroll = () => {
-  if (!scrollableContent.value) return;
-  blurBackground.value =
-    scrollableContent.value.scrollTop > window.innerHeight / 4;
-};
-
 const toggleShowStars = () => {
   showStars.value = !showStars.value;
-};
-
-const scrollTo = (sectionId: string) => {
-  const targetElement = document.getElementById(sectionId);
-  if (targetElement && scrollableContent.value) {
-    scrollableContent.value.scrollTo({
-      top: targetElement.offsetTop,
-      behavior: "smooth",
-    });
-  }
 };
 
 const onIntersectionObserver = (entries: IntersectionObserverEntry[]) => {
@@ -146,11 +120,5 @@ const onIntersectionObserver = (entries: IntersectionObserverEntry[]) => {
     }
   });
 };
-
-// Lifecycle Hooks
-
-onMounted(() => {
-  useEventListener(scrollableContent, "scroll", handleScroll);
-});
 </script>
 <style scoped></style>

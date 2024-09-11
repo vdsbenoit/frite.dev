@@ -1,12 +1,16 @@
-<!-- This layout contains the animated stars background -->
+<!-- This layout contains the animated stars background and the ellipse gradient background -->
 <template>
   <div>
     <div
-      id="background"
+      id="background-ellipse"
+      class="fixed inset-0 -z-50 h-screen w-screen bg-cover"
+    ></div>
+    <div
+      id="background-stars"
       v-for="(layer, indexLayer) in stars"
       :key="indexLayer"
       :class="{ blur: blurBackground }"
-      class="transition duration-1000"
+      class="fixed inset-0 -z-40 h-screen w-screen overflow-hidden transition duration-1000"
     >
       <div
         v-for="(offset, indexOffset) in [0, windowHeight]"
@@ -66,15 +70,15 @@ const { width: windowWidth, height: windowHeight } = useWindowSize();
 
 // Reactive variables
 
-const preferedMotion = usePreferredReducedMotion();
-const blurBackground = useState("blurBackground", () => false);
+const preferredMotion = usePreferredReducedMotion();
+const blurBackground = ref(false);
 const stars = ref<StarLayer[]>([]);
 const showStars = useState("showStars", () => false);
 
 // Computed variables
 
 const prefersReducedMotion = computed(() => {
-  return preferedMotion.value === "reduce";
+  return preferredMotion.value === "reduce";
 });
 
 const starTransformTo = computed(() => {
@@ -111,18 +115,28 @@ const resetStars = () => {
   ];
 };
 
+const handleScroll = () => {
+  blurBackground.value = window.scrollY > window.innerHeight / 4;
+};
+
 // Lifecycle hooks
 
 onMounted(() => {
-  useEventListener(window, "resize", resetStars);
   resetStars();
-
   setTimeout(() => {
     showStars.value = true;
   }, 1);
+
+  useEventListener(window, "resize", resetStars);
+  useEventListener(window, "scroll", handleScroll);
 });
 </script>
 <style>
+#background-ellipse {
+  /* this is equivalent to Tailwind's neutral-800 & neutral-950 */
+  background: radial-gradient(ellipse at bottom, #262626 0%, #0a0a0a 100%);
+}
+
 @keyframes animateStar {
   from {
     transform: translateY(0px);
