@@ -24,7 +24,7 @@
         class="via-primary bg-gradient-to-r from-gray-700 to-red-400 pb-0.5 sm:rounded-xl sm:bg-gradient-to-br sm:p-0.5"
       >
         <div
-          class="flex items-center justify-between bg-gray-800 px-4 py-2 text-gray-100 sm:gap-x-5 sm:rounded-xl sm:px-5 sm:py-1 sm:hover:text-gray-500"
+          class="flex items-center justify-between bg-gray-800 px-4 py-2 text-gray-100 sm:gap-x-5 sm:rounded-xl sm:px-5 sm:py-1"
         >
           <div
             class="flex cursor-pointer items-center sm:hidden"
@@ -37,7 +37,7 @@
             />
             <a
               href="#hero"
-              class="decoration-primary text-lg font-bold transition-colors hover:text-gray-100 focus:underline focus:underline-offset-2 focus:outline-none"
+              class="decoration-primary text-lg font-bold transition-colors hover:text-gray-400 focus:underline focus:underline-offset-2 focus:outline-none"
               >frite.dev</a
             >
           </div>
@@ -49,7 +49,7 @@
               'text-primary': currentSection === section.id,
               hidden: section.id === 'hero',
             }"
-            class="decoration-primary transition-colors hover:text-gray-100 focus:underline focus:underline-offset-2 focus:outline-none"
+            class="decoration-primary transition-colors hover:text-gray-400 focus:underline focus:underline-offset-2 focus:outline-none"
             >{{ section.title }}</a
           >
         </div>
