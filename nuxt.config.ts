@@ -7,7 +7,7 @@ export default defineNuxtConfig({
   modules: ["@nuxt/ui", "@nuxt/test-utils/module"],
   vite: { plugins: [yaml()] },
   typescript: {
-    typeCheck: true,
+    typeCheck: "build",
     tsConfig: {
       include: ["types"],
       compilerOptions: {
