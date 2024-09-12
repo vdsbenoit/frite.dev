@@ -86,10 +86,20 @@
               title="Software Test Engineer"
               company="IBA"
               location="Louvain-la-Neuve"
-              icon="assets-icons:iba"
+              icon="~/assets/icons/experiences/iba.svg"
               icon-bg="bg-[#69BE28]"
               :from="2016"
               :to="2018"
+              description=""
+            />
+            <WorkExperience
+              title="Computer Science degree"
+              company="EPHEC"
+              location="Louvain-la-Neuve"
+              icon="~/assets/icons/experiences/ephec.svg"
+              icon-bg="bg-gray-300"
+              :from="2012"
+              :to="2015"
               description=""
             />
           </div>

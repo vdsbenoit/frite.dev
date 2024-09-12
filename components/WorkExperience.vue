@@ -23,23 +23,28 @@
         <span>{{ location }}</span>
       </div>
       <div
-        v-if="icon"
         class="absolute -left-5 top-1/2 flex size-10 -translate-y-1/2 items-center justify-center overflow-hidden rounded-full"
-        :class="[iconBg]"
+        :class="[icon ? iconBg : 'bg-primary']"
       >
-        <UIcon :name="icon" class="size-8" />
+        <UIcon
+          v-if="!icon"
+          name="i-heroicons-check-circle"
+          class="size-6 text-gray-800"
+        />
+        <img
+          v-else-if="icon.startsWith('~')"
+          :src="imgPath"
+          alt="icon"
+          class="size-8"
+        />
+        <UIcon v-else="icon" :name="icon" class="size-8" />
       </div>
     </div>
   </div>
 </template>
 
 <script lang="ts" setup>
-import {
-  promiseTimeout,
-  set,
-  useMouseInElement,
-  usePreferredReducedMotion,
-} from "@vueuse/core";
+import { usePreferredReducedMotion } from "@vueuse/core";
 
 const props = defineProps<{
   title: string;
@@ -56,6 +61,18 @@ const isHovered = ref(false);
 const isRotating = ref(false);
 const badgeText = ref(props.from.toString());
 const preferredMotion = usePreferredReducedMotion();
+
+const assets = import.meta.glob("~/assets/icons/experiences/*.svg");
+let imgPath = "";
+if (props.icon && props.icon.startsWith("~")) {
+  if (props.icon.slice(1) in assets) {
+    imgPath = await assets[props.icon.slice(1)]().then(
+      (module: any) => module.default,
+    );
+  } else {
+    throw new Error(`${props.icon} not found in ~/assets/icons/experiences/`);
+  }
+}
 
 watch(isHovered, async (newHoverState) => {
   isRotating.value = true;

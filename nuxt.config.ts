@@ -22,14 +22,6 @@ export default defineNuxtConfig({
   colorMode: {
     preference: "dark",
   },
-  icon: {
-    customCollections: [
-      {
-        prefix: "assets-icons",
-        dir: "assets/icons",
-      },
-    ],
-  },
   app: {
     head: {
       title: "frite.dev • Portfolio",
