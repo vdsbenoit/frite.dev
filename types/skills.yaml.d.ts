@@ -18,7 +18,7 @@ interface Section {
   groups: Group[];
 }
 
-declare module "*/skills.yaml" {
+declare module "~/assets/skills.yaml" {
   const content: Section[];
   export default content;
 }

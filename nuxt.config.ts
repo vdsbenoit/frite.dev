@@ -6,7 +6,19 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   modules: ["@nuxt/ui", "@nuxt/test-utils/module"],
   vite: { plugins: [yaml()] },
-  typescript: { tsConfig: { include: ["types"] }, typeCheck: true },
+  typescript: {
+    typeCheck: true,
+    tsConfig: {
+      include: ["types"],
+      compilerOptions: {
+        baseUrl: ".",
+        paths: {
+          "~/*": ["./*"],
+          "@/*": ["./*"],
+        },
+      },
+    },
+  },
   colorMode: {
     preference: "dark",
   },
