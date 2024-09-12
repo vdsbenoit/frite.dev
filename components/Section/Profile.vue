@@ -86,7 +86,7 @@
               title="Software Test Engineer"
               company="IBA"
               location="Louvain-la-Neuve"
-              icon=""
+              icon="assets-icons:iba"
               :from="2016"
               :to="2018"
               description=""
