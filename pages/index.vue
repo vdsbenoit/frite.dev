@@ -9,7 +9,7 @@
         @click.prevent="navigateTo('#hero')"
       >
         <img
-          src="~/assets/img/frites.png"
+          src="~/assets/img/company-logo.png"
           alt="frites-logo"
           class="mr-2 size-8 md:size-10"
         />
@@ -31,7 +31,7 @@
             @click.prevent="navigateTo('#hero')"
           >
             <img
-              src="~/assets/img/frites.png"
+              src="~/assets/img/company-logo.png"
               alt="frites-logo"
               class="mr-2 size-8"
             />

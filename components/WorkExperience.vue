@@ -24,20 +24,24 @@
       </div>
       <div
         class="absolute -left-5 top-1/2 flex size-10 -translate-y-1/2 items-center justify-center overflow-hidden rounded-full"
-        :class="[icon ? iconBg : 'bg-primary']"
+        :class="[{ 'bg-primary': !icon }, iconWrapperClass]"
       >
         <UIcon
           v-if="!icon"
           name="i-heroicons-check-circle"
-          class="size-6 text-gray-800"
+          :class="[iconClass ? iconClass : 'size-6 text-gray-800']"
         />
         <img
           v-else-if="icon.startsWith('~')"
           :src="imgPath"
           alt="icon"
-          class="size-8"
+          :class="[iconClass ? iconClass : 'size-8']"
         />
-        <UIcon v-else="icon" :name="icon" class="size-8" />
+        <UIcon
+          v-else="icon"
+          :name="icon"
+          :class="[iconClass ? iconClass : 'size-8']"
+        />
       </div>
     </div>
   </div>
@@ -51,7 +55,8 @@ const props = defineProps<{
   company: string;
   location: string;
   icon?: string;
-  iconBg?: string;
+  iconClass?: string;
+  iconWrapperClass?: string;
   from: number;
   to?: number;
   description: string;
@@ -62,7 +67,8 @@ const isRotating = ref(false);
 const badgeText = ref(props.from.toString());
 const preferredMotion = usePreferredReducedMotion();
 
-const assets = import.meta.glob("~/assets/icons/experiences/*.svg");
+// Load the icon if it's a local asset
+const assets = import.meta.glob("~/assets/img/**/*");
 let imgPath = "";
 if (props.icon && props.icon.startsWith("~")) {
   if (props.icon.slice(1) in assets) {
@@ -70,23 +76,25 @@ if (props.icon && props.icon.startsWith("~")) {
       (module: any) => module.default,
     );
   } else {
-    throw new Error(`${props.icon} not found in ~/assets/icons/experiences/`);
+    throw new Error(`${props.icon} not found in ~/assets/`);
   }
 }
 
+// Animate the badge text when hovering
 watch(isHovered, async (newHoverState) => {
   isRotating.value = true;
   setTimeout(
     () => {
       badgeText.value = newHoverState ? durationStr : props.from.toString();
     },
-    preferredMotion.value === "reduce" ? 0 : 500,
+    preferredMotion.value === "reduce" ? 0 : 250,
   );
   setTimeout(() => {
     isRotating.value = false;
-  }, 1000);
+  }, 500);
 });
 
+// Compute the duration of the work experience
 let durationStr: string;
 if (props.to) {
   const duration = props.to - props.from;
@@ -104,6 +112,6 @@ if (props.to) {
   }
 }
 .flip-badge {
-  animation: flip 1s forwards;
+  animation: flip 500ms forwards;
 }
 </style>
