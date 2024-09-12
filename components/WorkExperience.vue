@@ -26,12 +26,11 @@
         <span>{{ location }}</span>
       </div>
       <div
-        v-if="icon || img"
-        class="absolute -left-5 top-1/2 flex size-10 -translate-y-1/2 items-center justify-center rounded-full"
+        v-if="icon"
+        class="absolute -left-5 top-1/2 flex size-10 -translate-y-1/2 items-center justify-center overflow-hidden rounded-full"
         :class="[iconBg]"
       >
-        <UIcon v-if="icon" :name="icon" class="size-8" />
-        <img v-if="img" :src="img" alt="icon" class="size-8" />
+        <UIcon :name="icon" class="size-8" />
       </div>
     </div>
   </div>
@@ -50,7 +49,6 @@ const props = defineProps<{
   company: string;
   location: string;
   icon?: string;
-  img?: string;
   iconBg?: string;
   from: number;
   to?: number;

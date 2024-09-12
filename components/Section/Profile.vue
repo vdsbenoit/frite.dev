@@ -87,6 +87,7 @@
               company="IBA"
               location="Louvain-la-Neuve"
               icon="assets-icons:iba"
+              icon-bg="bg-[#69BE28]"
               :from="2016"
               :to="2018"
               description=""
