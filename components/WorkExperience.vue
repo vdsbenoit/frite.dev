@@ -1,5 +1,6 @@
 <template>
   <div class="flex items-center">
+    <!-- Left side badge -->
     <div
       class="w-24 pr-4 text-center"
       @mouseenter="isHovered = true"
@@ -13,7 +14,10 @@
         {{ badgeText }}
       </UBadge>
     </div>
-    <div class="border-primary relative border-l py-4 pl-8">
+    <!-- Right side content -->
+    <div
+      class="border-primary relative origin-left cursor-pointer border-l py-4 pl-8 transition hover:scale-110"
+    >
       <div class="">
         {{ title }}
       </div>
@@ -22,6 +26,7 @@
         <span> • </span>
         <span>{{ location }}</span>
       </div>
+      <!-- Icon (absolute position, relative to content) -->
       <div
         class="absolute -left-5 top-1/2 flex size-10 -translate-y-1/2 items-center justify-center overflow-hidden rounded-full"
         :class="[{ 'bg-primary': !icon }, iconWrapperClass]"
