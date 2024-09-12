@@ -9,7 +9,7 @@
       id="background-stars"
       v-for="(layer, indexLayer) in stars"
       :key="indexLayer"
-      :class="{ blur: blurBackground }"
+      :class="{ blur: isBackgroundBlurred }"
       class="fixed inset-0 -z-40 h-screen w-screen overflow-hidden transition duration-1000"
     >
       <div
@@ -71,7 +71,7 @@ const { width: windowWidth, height: windowHeight } = useWindowSize();
 // Reactive variables
 
 const preferredMotion = usePreferredReducedMotion();
-const blurBackground = ref(false);
+const isBackgroundBlurred = ref(false);
 const stars = ref<StarLayer[]>([]);
 const showStars = useState("showStars", () => false);
 
@@ -115,8 +115,8 @@ const resetStars = () => {
   ];
 };
 
-const handleScroll = () => {
-  blurBackground.value = window.scrollY > window.innerHeight / 4;
+const blurBackground = () => {
+  isBackgroundBlurred.value = window.scrollY > window.innerHeight / 4;
 };
 
 // Lifecycle hooks
@@ -126,9 +126,10 @@ onMounted(() => {
   setTimeout(() => {
     showStars.value = true;
   }, 1);
-
   useEventListener(window, "resize", resetStars);
-  useEventListener(window, "scroll", handleScroll);
+
+  blurBackground();
+  useEventListener(window, "scroll", blurBackground);
 });
 </script>
 <style>
