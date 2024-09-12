@@ -1,6 +1,6 @@
 <template>
   <div class="flex min-h-screen items-center justify-center">
-    <div class="max-w-screen-lg px-6">
+    <div class="max-w-screen-lg px-4 sm:px-6">
       <div class="mt-4 py-4" v-for="subSection in content" :key="subSection.id">
         <h2>{{ subSection.title }}</h2>
         <div

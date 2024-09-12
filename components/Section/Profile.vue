@@ -1,6 +1,6 @@
 <template>
   <div class="flex min-h-screen items-center justify-center">
-    <div class="max-w-screen-lg px-6 py-6">
+    <div class="max-w-screen-lg px-4 sm:px-6">
       <div class="grid grid-cols-7 gap-4">
         <!-- 1st block -->
         <div
@@ -51,31 +51,46 @@
             >
             such as health, education, entertainment and new technologies.
           </p>
-          <div class="space-y-6">
-            <div>
-              <h3 class="text-lg font-semibold">2023 - Present</h3>
-              <p class="text-sm">1 year</p>
-              <h4 class="text-md font-medium">Senior Developer</h4>
-              <p class="text-sm">Company XYZ</p>
-            </div>
-            <div>
-              <h3 class="text-lg font-semibold">2021 - 2023</h3>
-              <p class="text-sm">2 years</p>
-              <h4 class="text-md font-medium">Mid-level Developer</h4>
-              <p class="text-sm">Company ABC</p>
-            </div>
-            <div>
-              <h3 class="text-lg font-semibold">2019 - 2021</h3>
-              <p class="text-sm">2 years</p>
-              <h4 class="text-md font-medium">Junior Developer</h4>
-              <p class="text-sm">Company DEF</p>
-            </div>
-            <div>
-              <h3 class="text-lg font-semibold">2017 - 2019</h3>
-              <p class="text-sm">2 years</p>
-              <h4 class="text-md font-medium">Intern</h4>
-              <p class="text-sm">Company GHI</p>
-            </div>
+          <div>
+            <WorkExperience
+              title="Senior DevOps Engineer"
+              company="Sony"
+              location="Brussels"
+              icon="i-simple-icons-sony"
+              icon-bg="bg-gray-950"
+              :from="2022"
+              :to="2024"
+              description=""
+            />
+            <WorkExperience
+              title="DevOps Engineer"
+              company="Sony"
+              location="Brussels"
+              icon="i-simple-icons-sony"
+              icon-bg="bg-gray-950"
+              :from="2019"
+              :to="2022"
+              description=""
+            />
+            <WorkExperience
+              title="Software Test Engineer"
+              company="Sony"
+              location="Brussels"
+              icon="i-simple-icons-sony"
+              icon-bg="bg-gray-950"
+              :from="2018"
+              :to="2019"
+              description=""
+            />
+            <WorkExperience
+              title="Software Test Engineer"
+              company="IBA"
+              location="Louvain-la-Neuve"
+              icon=""
+              :from="2016"
+              :to="2018"
+              description=""
+            />
           </div>
         </div>
       </div>
