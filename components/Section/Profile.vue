@@ -4,7 +4,7 @@
       <div class="grid grid-cols-7 gap-4">
         <!-- 1st block -->
         <div
-          class="col-span-2 flex flex-col items-center self-center sm:row-span-2 sm:gap-y-1 sm:self-baseline"
+          class="col-span-2 flex flex-col items-center self-center sm:row-span-2 sm:gap-y-2 sm:self-baseline"
         >
           <div class="max-h-32 max-w-32 sm:max-h-48 sm:max-w-48">
             <img
@@ -16,7 +16,7 @@
           <p class="hidden font-mono sm:block">@vdsbenoit</p>
           <SocialLinks class="hidden justify-center gap-x-5 sm:flex" />
           <UButton
-            class="mt-8 hidden font-semibold transition hover:scale-110 sm:block"
+            class="mt-4 hidden font-semibold transition hover:scale-110 sm:block"
             size="md"
             color="primary"
             variant="solid"

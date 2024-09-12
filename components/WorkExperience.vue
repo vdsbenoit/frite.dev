@@ -6,12 +6,9 @@
       @mouseleave="isHovered = false"
     >
       <UBadge
-        :class="{ 'flip-badge': isRotating }"
+        :class="{ 'flip-badge': isRotating && preferredMotion != 'reduce' }"
         color="primary"
         variant="outline"
-        :style="{
-          animation: preferredMotion === 'reduce' ? '' : 'flip 1s forwards;',
-        }"
       >
         {{ badgeText }}
       </UBadge>
