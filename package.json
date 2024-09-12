@@ -9,9 +9,10 @@
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
-    "prepare": "husky && husky install",
+    "prepare": "husky",
     "test": "vitest run",
-    "coverage": "vitest run --coverage"
+    "coverage": "vitest run --coverage",
+    "upgrade": "nuxi upgrade"
   },
   "lint-staged": {
     "*.{ts,js,vue,css,json,yaml}": "npx prettier --check"
@@ -30,7 +31,7 @@
     "@tailwindcss/forms": "^0.5.9",
     "@vue/test-utils": "^2.4.6",
     "happy-dom": "^15.7.4",
-    "husky": "^9.1.5",
+    "husky": "^9.1.6",
     "lint-staged": "^15.2.10",
     "nuxt": "^3.13.1",
     "playwright-core": "^1.47.0",
