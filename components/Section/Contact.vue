@@ -5,95 +5,147 @@
 
       <div class="grid grid-cols-1 gap-8 sm:grid-cols-2">
         <!-- Contact Form -->
-        <div class="rounded-lg bg-gray-100 p-6 shadow-lg">
+        <UCard :ui="{ background: 'dark:bg-gray-100' }">
           <h3 class="mb-4 text-center text-xl font-semibold text-gray-800">
-            Send a Message
+            Send a message
           </h3>
-          <form @submit.prevent="submitForm" class="text-gray-800">
+          <UForm
+            :schema="formSchema"
+            :state="formData"
+            class="space-y-4"
+            @submit="onSubmit"
+          >
             <!-- Form Fields -->
-            <div class="mb-4">
-              <label for="name" class="block font-semibold text-gray-700"
-                >Name</label
-              >
-              <input
+            <UFormGroup label="Name" name="name" size="xl" :ui="UI_FORM_GROUP">
+              <UInput
                 type="text"
-                id="name"
                 v-model="formData.name"
-                class="w-full rounded-lg border border-gray-300 p-2"
-                required
+                icon="i-heroicons-user"
+                color="gray"
+                :ui="UI_FORM_INPUT"
               />
-            </div>
-            <div class="mb-4">
-              <label for="email" class="block font-semibold text-gray-700"
-                >Email</label
-              >
-              <input
+            </UFormGroup>
+            <UFormGroup
+              label="Email"
+              name="email"
+              size="xl"
+              :ui="UI_FORM_GROUP"
+              required
+            >
+              <UInput
                 type="email"
-                id="email"
                 v-model="formData.email"
-                class="w-full rounded-lg border border-gray-300 p-2"
-                required
+                icon="i-heroicons-envelope"
+                color="gray"
+                :ui="UI_FORM_INPUT"
               />
-            </div>
-            <div class="mb-4">
-              <label for="message" class="block font-semibold text-gray-700"
-                >Message</label
-              >
-              <textarea
-                id="message"
+            </UFormGroup>
+            <UFormGroup
+              label="Message"
+              name="message"
+              size="xl"
+              :ui="UI_FORM_GROUP"
+              required
+            >
+              <UTextarea
                 v-model="formData.message"
-                rows="4"
-                class="w-full rounded-lg border border-gray-300 p-2"
-                required
-              ></textarea>
-            </div>
+                color="gray"
+                :ui="UI_FORM_INPUT"
+                size="xl"
+                :rows="8"
+                autoresize
+                eager-validation
+              />
+            </UFormGroup>
 
             <!-- reCAPTCHA -->
             <div class="g-recaptcha" data-sitekey="YOUR_SITE_KEY"></div>
 
             <UButton type="submit" size="xl" class="mr-2">
-              Send Message
+              Send message
             </UButton>
             <UButton :to="mailtoLink" size="xl" color="white"
-              >Send it from your mailbox
+              >Send from your mailbox
             </UButton>
-          </form>
-        </div>
+          </UForm>
+        </UCard>
 
         <!-- Google Appointment Schedule -->
-        <div class="rounded-lg bg-gray-100 p-6 text-center shadow-lg">
-          <h3 class="mb-4 text-xl font-semibold text-gray-800">
-            Schedule an Appointment
+        <UCard :ui="{ background: 'dark:bg-gray-100' }">
+          <h3 class="mb-4 text-center text-xl font-semibold text-gray-800">
+            Schedule an appointment
           </h3>
-          <iframe
-            src="https://calendar.google.com/calendar/embed?src=your-calendar-id&ctz=your-timezone"
+          <!-- todo: re-enable this -->
+          <!-- <iframe
+            src="https://calendar.google.com/calendar/appointments/schedules/AcZssZ1bFv7MU8Veh8vByx4_AGhr52K5pVaZKx9A4xGvDFUIR3a2qjoAo4i7rA9ljbcUqhheLlQvLEOc?gv=true"
             style="border: 0"
             width="100%"
-            height="400"
+            height="500"
             frameborder="0"
-            scrolling="no"
-          ></iframe>
-        </div>
+          ></iframe> -->
+        </UCard>
       </div>
     </div>
   </div>
 </template>
 <script lang="ts" setup>
-const EMAIL_BENOIT = "benoit@frite.dev";
-const SUBJECT = "Contact from frite.dev";
+import { z } from "zod";
+import type { FormSubmitEvent } from "#ui/types";
+import { AlertModal } from "#components";
 
-const formData = reactive({
-  name: "",
-  email: "",
-  message: "",
-});
+// Constants & variables
 
+const UI_FORM_GROUP = { label: { base: "dark:text-gray-700 font-semibold" } };
+const UI_FORM_INPUT = {
+  color: {
+    gray: {
+      outline:
+        "dark:text-gray-800 dark:ring-gray-300 dark:bg-gray-100 invalid:text-gray-800",
+    },
+  },
+};
+const TO_EMAIL = "benoit@frite.dev";
 let lastSubmittedTime = 0;
 
-const submitForm = () => {
+const formSchema = z.object({
+  name: z.string().optional(),
+  email: z.string().email("Invalid email format"),
+  message: z
+    .string()
+    .min(30, "Don't be shy, tell me more!")
+    .max(
+      500,
+      "Well, that's very long. Could you summarize it? Else, I invite you to book a call with me instead.",
+    ),
+});
+
+type Schema = z.output<typeof formSchema>;
+
+// Reactive data
+
+const formData = reactive({
+  name: undefined,
+  email: undefined,
+  message: undefined,
+});
+
+let subject = computed(() => {
+  return `Message from ${formData.name || "frite.dev"}`;
+});
+
+// Composable
+
+const modal = useModal();
+const toast = useToast();
+
+// Methods
+
+const onSubmit = async (event: FormSubmitEvent<Schema>) => {
   const captchaResponse = grecaptcha.getResponse();
   if (!captchaResponse) {
-    alert("Please complete the CAPTCHA");
+    modal.open(AlertModal, {
+      title: "Please complete the CAPTCHA",
+    });
     return;
   }
 
@@ -102,16 +154,19 @@ const submitForm = () => {
 
   if (timeDiff < 60000) {
     // 1 minute limit between submissions
-    alert("Please wait before submitting again.");
+    modal.open(AlertModal, {
+      title: "Too many submissions",
+      description: "Please wait before submitting again.",
+    });
     return;
   }
 
   lastSubmittedTime = currentTime;
 
   const templateParams = {
-    name: formData.name,
-    email: formData.email,
-    message: formData.message,
+    name: event.data.name,
+    email: event.data.email,
+    message: event.data.message,
     "g-recaptcha-response": captchaResponse,
   };
 
@@ -119,17 +174,23 @@ const submitForm = () => {
   emailjs
     .send("YOUR_SERVICE_ID", "YOUR_TEMPLATE_ID", templateParams, "YOUR_USER_ID")
     .then(() => {
-      alert("Message sent!");
+      toast.add({ title: "Message sent", id: "message-sent", color: "green" });
     })
     .catch((error: any) => {
       console.error(error);
+      toast.add({
+        title: "Failed to send message",
+        description: "Use the other button to send it from your inbox please",
+        id: "message-error",
+        color: "red",
+      });
       alert("Failed to send message.");
     });
 };
 
 // URL encoding the message for the mailto link
 const mailtoLink = computed(() => {
-  let mailto = `mailto:${EMAIL_BENOIT}?subject=${encodeURIComponent(SUBJECT)}`;
+  let mailto = `mailto:${TO_EMAIL}?subject=${encodeURIComponent(subject.value)}`;
   if (formData.message)
     mailto += `&body=${encodeURIComponent(formData.message)}`;
   return mailto;
