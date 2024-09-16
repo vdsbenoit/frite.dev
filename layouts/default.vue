@@ -25,7 +25,7 @@
             left: star.left + 'px',
             animation: prefersReducedMotion
               ? ''
-              : `animateStar ${layer.speed}s linear infinite`,
+              : `translateStar ${layer.speed}s linear infinite`,
           }"
           :class="{
             'opacity-0': !showStars,
@@ -36,6 +36,11 @@
             src="~/assets/img/frite.png"
             alt="frite"
             :class="`h-${layer.height}`"
+            :style="{
+              animation: prefersReducedMotion
+                ? ''
+                : `rotateStar-${star.rotationDirection} ${star.rotationSpeed}s linear infinite`,
+            }"
           />
         </div>
       </div>
@@ -55,6 +60,8 @@ import {
 interface Star {
   top: number;
   left: number;
+  rotationDirection: string;
+  rotationSpeed: number;
 }
 
 interface StarLayer {
@@ -107,6 +114,9 @@ const generateStars = (n: number): Star[] => {
     const star: Star = {
       top: Math.floor(Math.random() * bgStarHeight.value),
       left: Math.floor(Math.random() * bgStarWidth.value),
+      rotationDirection:
+        Math.random() > 0.5 ? "clockwise" : "counter-clockwise",
+      rotationSpeed: Math.random() * 100 + 10, // Random speed between 10 and 110 seconds
     };
 
     stars.push(star);
@@ -157,12 +167,28 @@ onMounted(() => {
   background: radial-gradient(ellipse at bottom, #262626 0%, #0a0a0a 100%);
 }
 
-@keyframes animateStar {
+@keyframes translateStar {
   from {
     transform: translateY(0px);
   }
   to {
     transform: v-bind("starTransformTo");
+  }
+}
+@keyframes rotateStar-clockwise {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes rotateStar-counter-clockwise {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(-360deg);
   }
 }
 </style>
