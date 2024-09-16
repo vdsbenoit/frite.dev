@@ -1,16 +1,18 @@
 <template>
   <div class="flex min-h-screen items-center justify-center">
-    <div class="max-w-screen-lg px-4 sm:px-6">
+    <div class="max-w-screen-lg px-3 sm:px-6">
       <div class="grid grid-cols-7 gap-4">
         <!-- 1st block -->
         <div
-          class="col-span-2 flex flex-col items-center self-center sm:row-span-2 sm:gap-y-2 sm:self-baseline"
+          class="col-span-2 flex flex-col items-center self-center sm:row-span-3 sm:gap-y-2 sm:self-baseline"
         >
-          <div class="max-h-32 max-w-32 sm:max-h-48 sm:max-w-48">
+          <div
+            class="via-primary max-h-32 max-w-32 rounded-full bg-gradient-to-r from-gray-900 to-red-400 p-0.5 sm:max-h-48 sm:max-w-48"
+          >
             <img
               src="~/assets/img/avatar.jpg"
               alt="Avatar"
-              class="size-max rounded-full"
+              class="rounded-full"
             />
           </div>
           <p class="hidden font-mono sm:block">@vdsbenoit</p>
@@ -32,9 +34,8 @@
         </div>
 
         <!-- 3rd block -->
-        <SocialLinks class="col-span-7 flex justify-center gap-x-7 sm:hidden" />
         <div class="col-span-7 sm:col-span-5">
-          <p class="mb-6">
+          <p>
             I am a
             <span class="decoration-primary underline underline-offset-2"
               >freelance developer.</span
@@ -51,69 +52,72 @@
             >
             such as health, education, entertainment and new technologies.
           </p>
-          <div>
-            <WorkExperience
-              title="Freelance Developer"
-              company="frite.dev"
-              location="Brussels"
-              icon="~/assets/img/company-logo.png"
-              icon-class="size-7"
-              icon-wrapper-class="bg-gray-950"
-              :from="2024"
-              description=""
-            />
-            <WorkExperience
-              title="Senior DevOps Engineer"
-              company="Sony"
-              location="Brussels"
-              icon="i-simple-icons-sony"
-              icon-wrapper-class="bg-gray-950"
-              :from="2022"
-              :to="2024"
-              description=""
-            />
-            <WorkExperience
-              title="DevOps Engineer"
-              company="Sony"
-              location="Brussels"
-              icon="i-simple-icons-sony"
-              icon-wrapper-class="bg-gray-950"
-              :from="2019"
-              :to="2022"
-              description=""
-            />
-            <WorkExperience
-              title="Software Test Engineer"
-              company="Sony"
-              location="Brussels"
-              icon="i-simple-icons-sony"
-              icon-wrapper-class="bg-gray-950"
-              :from="2018"
-              :to="2019"
-              description=""
-            />
-            <WorkExperience
-              title="Software Test Engineer"
-              company="IBA"
-              location="Louvain-la-Neuve"
-              icon="~/assets/img/iba.svg"
-              icon-class="size-10"
-              icon-wrapper-class="bg-[#69BE28]"
-              :from="2016"
-              :to="2018"
-              description=""
-            />
-            <WorkExperience
-              title="Computer Science degree"
-              company="EPHEC"
-              location="Louvain-la-Neuve"
-              icon="~/assets/img/ephec.svg"
-              icon-wrapper-class="bg-gray-100"
-              :from="2012"
-              :to="2015"
-              description=""
-            />
-          </div>
+        </div>
+        <SocialLinks
+          class="col-span-7 flex justify-center gap-x-11 sm:hidden"
+        />
+        <div class="col-span-7 sm:col-span-5">
+          <WorkExperience
+            title="Freelance Developer"
+            company="frite.dev"
+            location="Brussels"
+            icon="~/assets/img/company-logo.png"
+            icon-class="size-7"
+            icon-wrapper-class="bg-gray-950"
+            :from="2024"
+            description=""
+          />
+          <WorkExperience
+            title="Senior DevOps Engineer"
+            company="Sony"
+            location="Brussels"
+            icon="i-simple-icons-sony"
+            icon-wrapper-class="bg-gray-950"
+            :from="2022"
+            :to="2024"
+            description=""
+          />
+          <WorkExperience
+            title="DevOps Engineer"
+            company="Sony"
+            location="Brussels"
+            icon="i-simple-icons-sony"
+            icon-wrapper-class="bg-gray-950"
+            :from="2019"
+            :to="2022"
+            description=""
+          />
+          <WorkExperience
+            title="Software Test Engineer"
+            company="Sony"
+            location="Brussels"
+            icon="i-simple-icons-sony"
+            icon-wrapper-class="bg-gray-950"
+            :from="2018"
+            :to="2019"
+            description=""
+          />
+          <WorkExperience
+            title="Software Test Engineer"
+            company="IBA"
+            location="Louvain-la-Neuve"
+            icon="~/assets/img/iba.svg"
+            icon-class="size-10"
+            icon-wrapper-class="bg-[#69BE28]"
+            :from="2016"
+            :to="2018"
+            description=""
+          />
+          <WorkExperience
+            title="Computer Science degree"
+            company="EPHEC"
+            location="Louvain-la-Neuve"
+            icon="~/assets/img/ephec.svg"
+            icon-wrapper-class="bg-gray-100"
+            :from="2012"
+            :to="2015"
+            description=""
+          />
         </div>
       </div>
     </div>

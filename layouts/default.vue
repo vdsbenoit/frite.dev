@@ -3,17 +3,17 @@
   <div>
     <div
       id="background-ellipse"
-      class="fixed inset-0 -z-50 h-screen w-screen bg-cover"
+      class="fixed inset-0 -z-50 h-lvh w-lvw bg-cover"
     ></div>
     <div
       id="background-stars"
       v-for="(layer, indexLayer) in stars"
       :key="indexLayer"
       :class="{ blur: isBackgroundBlurred }"
-      class="fixed inset-0 -z-40 h-screen w-screen overflow-hidden transition duration-1000"
+      class="fixed inset-0 -z-40 h-lvh w-lvw overflow-hidden transition duration-1000"
     >
       <div
-        v-for="(offset, indexOffset) in [0, windowHeight]"
+        v-for="(offset, indexOffset) in [0, bgStarHeight]"
         :key="indexOffset"
       >
         <div
@@ -63,6 +63,11 @@ interface StarLayer {
   height: number;
 }
 
+// Constants
+
+const RESET_THRESHOLD_X = 0.1;
+const RESET_THRESHOLD_Y = 0.2;
+
 // Composables
 
 const appConfig = useAppConfig();
@@ -70,6 +75,8 @@ const { width: windowWidth, height: windowHeight } = useWindowSize();
 
 // Reactive variables
 
+const bgStarWidth = ref(0);
+const bgStarHeight = ref(0);
 const preferredMotion = usePreferredReducedMotion();
 const isBackgroundBlurred = ref(false);
 const stars = ref<StarLayer[]>([]);
@@ -82,12 +89,12 @@ const prefersReducedMotion = computed(() => {
 });
 
 const starTransformTo = computed(() => {
-  return `translateY(-${windowHeight.value}px)`;
+  return `translateY(-${bgStarHeight.value}px)`;
 });
 
 const nbStars = computed(() => {
   return (
-    ((windowHeight.value * windowWidth.value) / 40000) * appConfig.starDensity
+    ((bgStarHeight.value * bgStarWidth.value) / 40000) * appConfig.starDensity
   );
 });
 
@@ -98,8 +105,8 @@ const generateStars = (n: number): Star[] => {
 
   for (let i = 0; i < n; i++) {
     const star: Star = {
-      top: Math.floor(Math.random() * windowHeight.value),
-      left: Math.floor(Math.random() * windowWidth.value),
+      top: Math.floor(Math.random() * bgStarHeight.value),
+      left: Math.floor(Math.random() * bgStarWidth.value),
     };
 
     stars.push(star);
@@ -107,12 +114,24 @@ const generateStars = (n: number): Star[] => {
   return stars;
 };
 
-const resetStars = () => {
+const setStars = () => {
+  bgStarWidth.value = windowWidth.value;
+  bgStarHeight.value = windowHeight.value;
   stars.value = [
     { stars: generateStars(nbStars.value * 6), speed: 60, height: 2 },
     { stars: generateStars(nbStars.value * 2), speed: 100, height: 3 },
     { stars: generateStars(nbStars.value), speed: 150, height: 6 },
   ];
+};
+
+const resetStars = () => {
+  if (
+    Math.abs(windowWidth.value - bgStarWidth.value) >
+      bgStarWidth.value * RESET_THRESHOLD_X ||
+    Math.abs(windowHeight.value - bgStarHeight.value) >
+      bgStarHeight.value * RESET_THRESHOLD_Y
+  )
+    setStars();
 };
 
 const blurBackground = () => {
@@ -122,10 +141,10 @@ const blurBackground = () => {
 // Lifecycle hooks
 
 onMounted(() => {
-  resetStars();
+  setStars();
   setTimeout(() => {
     showStars.value = true;
-  }, 1);
+  }, 10);
   useEventListener(window, "resize", resetStars);
 
   blurBackground();

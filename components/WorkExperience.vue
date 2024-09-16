@@ -2,7 +2,7 @@
   <div class="flex items-center">
     <!-- Left side badge -->
     <div
-      class="w-24 pr-4 text-center"
+      class="mr-6 w-16 text-center sm:mr-8"
       @mouseenter="isHovered = true"
       @mouseleave="isHovered = false"
     >
@@ -16,9 +16,9 @@
     </div>
     <!-- Right side content -->
     <div
-      class="border-primary relative origin-left cursor-pointer border-l py-4 pl-8 transition hover:scale-110"
+      class="border-primary relative origin-left cursor-pointer border-l py-4 pl-8 transition hover:scale-110 sm:pl-10"
     >
-      <div class="">
+      <div class="line-clamp-1">
         {{ title }}
       </div>
       <div class="text-sm text-gray-400">

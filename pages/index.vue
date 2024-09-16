@@ -2,7 +2,7 @@
 <template>
   <div>
     <header
-      class="fixed left-0 right-0 top-0 z-20 items-center sm:top-8 sm:grid sm:grid-flow-col sm:grid-cols-5 sm:justify-items-center"
+      class="fixed left-0 right-0 top-0 z-30 items-center sm:top-8 sm:grid sm:grid-flow-col sm:grid-cols-5 sm:justify-items-center"
     >
       <div
         class="hidden cursor-pointer items-center sm:flex"
@@ -19,9 +19,8 @@
           >frite.dev</a
         >
       </div>
-      <div class="hidden sm:block"></div>
       <div
-        class="via-primary bg-gradient-to-r from-gray-700 to-red-400 pb-[1px] sm:rounded-xl sm:bg-gradient-to-br sm:p-[1px]"
+        class="via-primary bg-gradient-to-r from-gray-700 to-red-400 pb-[1px] sm:col-start-3 sm:rounded-xl sm:bg-gradient-to-br sm:p-[1px]"
       >
         <nav
           class="flex items-center justify-between bg-gray-800 px-4 py-2 text-gray-100 sm:gap-x-5 sm:rounded-xl sm:px-5 sm:py-1"
@@ -54,16 +53,15 @@
           >
         </nav>
       </div>
-      <div class="hidden sm:block"></div>
       <UToggle
         v-model="showStars"
         size="lg"
         off-icon="i-tdesign-animation-1"
         on-icon="i-tdesign-animation-1"
-        class="hidden sm:inline-flex"
+        class="hidden sm:col-start-5 sm:inline-flex"
       />
     </header>
-    <main ref="scrollableContent">
+    <main class="overflow-x-hidden">
       <section v-for="section in SECTIONS" :key="section.id">
         <component
           :id="section.id"
