@@ -9,7 +9,7 @@ export default <Partial<Config>>{
     { pattern: /h-\d/ },
     "scale-0",
     "scale-100",
-    "blur",
+    "blur-md",
     "opacity-0",
     "opacity-100",
     "hidden",

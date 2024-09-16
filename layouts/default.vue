@@ -9,7 +9,7 @@
       id="background-stars"
       v-for="(layer, indexLayer) in stars"
       :key="indexLayer"
-      :class="{ blur: isBackgroundBlurred }"
+      :class="{ 'blur-md': isBackgroundBlurred }"
       class="fixed inset-0 -z-40 h-lvh w-lvw overflow-hidden transition duration-1000"
     >
       <div
@@ -37,9 +37,10 @@
             alt="frite"
             :class="`h-${layer.height}`"
             :style="{
-              animation: prefersReducedMotion
-                ? ''
-                : `rotateStar-${star.rotationDirection} ${star.rotationSpeed}s linear infinite`,
+              animation:
+                prefersReducedMotion || !isStarRotating
+                  ? ''
+                  : `rotateStar-${star.rotationDirection} ${star.rotationSpeed}s linear infinite`,
             }"
           />
         </div>
@@ -86,6 +87,7 @@ const bgStarWidth = ref(0);
 const bgStarHeight = ref(0);
 const preferredMotion = usePreferredReducedMotion();
 const isBackgroundBlurred = ref(false);
+const isStarRotating = ref(true);
 const stars = ref<StarLayer[]>([]);
 const showStars = useState("showStars", () => false);
 
@@ -103,6 +105,18 @@ const nbStars = computed(() => {
   return (
     ((bgStarHeight.value * bgStarWidth.value) / 40000) * appConfig.starDensity
   );
+});
+
+// Watchers
+
+watch(isBackgroundBlurred, (isBlurred: boolean) => {
+  if (isBlurred) {
+    setTimeout(() => {
+      isStarRotating.value = false;
+    }, 1000);
+  } else {
+    isStarRotating.value = true;
+  }
 });
 
 // Methods
