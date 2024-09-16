@@ -95,13 +95,18 @@ import { AlertModal } from "#components";
 
 // Constants & variables
 
-const UI_FORM_GROUP = { label: { base: "dark:text-gray-700 font-semibold" } };
+const UI_FORM_GROUP = {
+  label: { base: "dark:text-gray-700 font-semibold" },
+  error: "dark:text-red-500",
+};
 const UI_FORM_INPUT = {
   color: {
     gray: {
-      outline:
-        "dark:text-gray-800 dark:ring-gray-300 dark:bg-gray-100 invalid:text-gray-800",
+      outline: "dark:text-gray-800 dark:ring-gray-300 dark:bg-gray-100",
     },
+  },
+  variant: {
+    outline: "dark:text-gray-800 dark:bg-gray-100",
   },
 };
 const TO_EMAIL = "benoit@frite.dev";
@@ -112,9 +117,9 @@ const formSchema = z.object({
   email: z.string().email("Invalid email format"),
   message: z
     .string()
-    .min(30, "Don't be shy, tell me more!")
+    .min(80, "This is interesting! Please, tell me more.")
     .max(
-      500,
+      600,
       "Well, that's very long. Could you summarize it? Else, I invite you to book a call with me instead.",
     ),
 });
