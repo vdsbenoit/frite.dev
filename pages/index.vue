@@ -20,10 +20,10 @@
         >
       </div>
       <div class="hidden sm:block"></div>
-      <nav
-        class="via-primary bg-gradient-to-r from-gray-700 to-red-400 pb-0.5 sm:rounded-xl sm:bg-gradient-to-br sm:p-0.5"
+      <div
+        class="via-primary bg-gradient-to-r from-gray-700 to-red-400 pb-[1px] sm:rounded-xl sm:bg-gradient-to-br sm:p-[1px]"
       >
-        <div
+        <nav
           class="flex items-center justify-between bg-gray-800 px-4 py-2 text-gray-100 sm:gap-x-5 sm:rounded-xl sm:px-5 sm:py-1"
         >
           <div
@@ -52,8 +52,8 @@
             class="decoration-primary transition-colors hover:text-gray-400 focus:underline focus:underline-offset-2 focus:outline-none"
             >{{ section.title }}</a
           >
-        </div>
-      </nav>
+        </nav>
+      </div>
       <div class="hidden sm:block"></div>
       <UToggle
         v-model="showStars"
