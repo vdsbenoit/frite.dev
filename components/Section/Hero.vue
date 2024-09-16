@@ -7,7 +7,7 @@
         class="relative mt-3 px-0.5 text-center font-bold tracking-tight sm:px-2"
       >
         <span
-          class="block bg-gradient-to-t from-gray-400 to-white bg-clip-text text-[28px] text-transparent sm:text-5xl sm:leading-normal"
+          class="block bg-gradient-to-t from-gray-400 to-white bg-clip-text text-[28px] text-transparent sm:text-5xl sm:leading-tight"
         >
           Empower your business
         </span>
