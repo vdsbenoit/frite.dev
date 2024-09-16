@@ -62,9 +62,8 @@
       />
     </header>
     <main class="overflow-x-hidden">
-      <section v-for="section in SECTIONS" :key="section.id">
+      <section v-for="section in SECTIONS" :key="section.id" :id="section.id">
         <component
-          :id="section.id"
           :is="section.component"
           v-intersection-observer="[onIntersectionObserver, { threshold: 0.5 }]"
         />

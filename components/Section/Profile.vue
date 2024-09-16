@@ -1,6 +1,8 @@
 <template>
-  <div class="flex min-h-screen items-center justify-center">
-    <div class="max-w-screen-lg px-3 sm:px-6">
+  <div
+    class="flex min-h-screen items-start justify-center pb-24 md:items-center"
+  >
+    <div class="mt-2 max-w-screen-lg px-3 sm:mt-0 sm:px-6">
       <div class="grid grid-cols-7 gap-4">
         <!-- 1st block -->
         <div
