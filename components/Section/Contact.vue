@@ -1,9 +1,8 @@
 <template>
-  <div class="flex min-h-screen items-start justify-center md:items-center">
-    <div class="container mx-auto px-4">
-      <h2 class="mb-8">Contact Me</h2>
-
-      <div class="grid grid-cols-1 gap-8 sm:grid-cols-2">
+  <div class="flex min-h-screen items-start justify-center lg:items-center">
+    <div class="px-3">
+      <h2 class="mb-6">Contact Me</h2>
+      <div class="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-8">
         <!-- Contact Form -->
         <UCard :ui="{ background: 'dark:bg-gray-100' }">
           <h3 class="mb-4 text-center text-xl font-semibold text-gray-800">

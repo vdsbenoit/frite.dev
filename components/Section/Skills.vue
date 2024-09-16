@@ -1,6 +1,6 @@
 <template>
   <div
-    class="mb-8 flex min-h-screen items-start justify-center md:items-center"
+    class="flex min-h-screen items-start justify-center pb-16 md:pb-0 lg:items-center"
   >
     <div class="max-w-screen-lg px-3 sm:px-10">
       <div class="mb-6" v-for="subSection in content" :key="subSection.id">
