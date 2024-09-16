@@ -1,9 +1,205 @@
 <template>
   <div class="flex min-h-screen items-start justify-center md:items-center">
-    <h2>Contact</h2>
+    <div class="container mx-auto px-4">
+      <h2 class="mb-8">Contact Me</h2>
+
+      <div class="grid grid-cols-1 gap-8 sm:grid-cols-2">
+        <!-- Contact Form -->
+        <UCard :ui="{ background: 'dark:bg-gray-100' }">
+          <h3 class="mb-4 text-center text-xl font-semibold text-gray-800">
+            Send a message
+          </h3>
+          <UForm
+            :schema="formSchema"
+            :state="formData"
+            class="space-y-4"
+            @submit="onSubmit"
+          >
+            <!-- Form Fields -->
+            <UFormGroup label="Name" name="name" size="xl" :ui="UI_FORM_GROUP">
+              <UInput
+                type="text"
+                v-model="formData.name"
+                icon="i-heroicons-user"
+                color="gray"
+                :ui="UI_FORM_INPUT"
+              />
+            </UFormGroup>
+            <UFormGroup
+              label="Email"
+              name="email"
+              size="xl"
+              :ui="UI_FORM_GROUP"
+              required
+            >
+              <UInput
+                type="email"
+                v-model="formData.email"
+                icon="i-heroicons-envelope"
+                color="gray"
+                :ui="UI_FORM_INPUT"
+              />
+            </UFormGroup>
+            <UFormGroup
+              label="Message"
+              name="message"
+              size="xl"
+              :ui="UI_FORM_GROUP"
+              required
+            >
+              <UTextarea
+                v-model="formData.message"
+                color="gray"
+                :ui="UI_FORM_INPUT"
+                size="xl"
+                :rows="8"
+                autoresize
+                eager-validation
+              />
+            </UFormGroup>
+
+            <!-- reCAPTCHA -->
+            <div class="g-recaptcha" data-sitekey="YOUR_SITE_KEY"></div>
+
+            <UButton type="submit" size="xl" class="mr-2">
+              Send message
+            </UButton>
+            <UButton :to="mailtoLink" size="xl" color="white"
+              >Send from your mailbox
+            </UButton>
+          </UForm>
+        </UCard>
+
+        <!-- Google Appointment Schedule -->
+        <UCard :ui="{ background: 'dark:bg-gray-100' }">
+          <h3 class="mb-4 text-center text-xl font-semibold text-gray-800">
+            Schedule an appointment
+          </h3>
+          <!-- todo: re-enable this -->
+          <!-- <iframe
+            src="https://calendar.google.com/calendar/appointments/schedules/AcZssZ1bFv7MU8Veh8vByx4_AGhr52K5pVaZKx9A4xGvDFUIR3a2qjoAo4i7rA9ljbcUqhheLlQvLEOc?gv=true"
+            style="border: 0"
+            width="100%"
+            height="500"
+            frameborder="0"
+          ></iframe> -->
+        </UCard>
+      </div>
+    </div>
   </div>
 </template>
+<script lang="ts" setup>
+import { z } from "zod";
+import type { FormSubmitEvent } from "#ui/types";
+import { AlertModal } from "#components";
 
-<script lang="ts" setup></script>
+// Constants & variables
+
+const UI_FORM_GROUP = {
+  label: { base: "dark:text-gray-700 font-semibold" },
+  error: "dark:text-red-500",
+};
+const UI_FORM_INPUT = {
+  color: {
+    gray: {
+      outline: "dark:text-gray-800 dark:ring-gray-300 dark:bg-gray-100",
+    },
+  },
+  variant: {
+    outline: "dark:text-gray-800 dark:bg-gray-100",
+  },
+};
+const TO_EMAIL = "benoit@frite.dev";
+let lastSubmittedTime = 0;
+
+const formSchema = z.object({
+  name: z.string().optional(),
+  email: z.string().email("Invalid email format"),
+  message: z
+    .string()
+    .min(80, "This is interesting! Please, tell me more.")
+    .max(
+      600,
+      "Well, that's very long. Could you summarize it? Else, I invite you to book a call with me instead.",
+    ),
+});
+
+type Schema = z.output<typeof formSchema>;
+
+// Reactive data
+
+const formData = reactive({
+  name: undefined,
+  email: undefined,
+  message: undefined,
+});
+
+let subject = computed(() => {
+  return `Message from ${formData.name || "frite.dev"}`;
+});
+
+// Composable
+
+const modal = useModal();
+const toast = useToast();
+
+// Methods
+
+const onSubmit = async (event: FormSubmitEvent<Schema>) => {
+  const captchaResponse = grecaptcha.getResponse();
+  if (!captchaResponse) {
+    modal.open(AlertModal, {
+      title: "Please complete the CAPTCHA",
+    });
+    return;
+  }
+
+  const currentTime = Date.now();
+  const timeDiff = currentTime - lastSubmittedTime;
+
+  if (timeDiff < 60000) {
+    // 1 minute limit between submissions
+    modal.open(AlertModal, {
+      title: "Too many submissions",
+      description: "Please wait before submitting again.",
+    });
+    return;
+  }
+
+  lastSubmittedTime = currentTime;
+
+  const templateParams = {
+    name: event.data.name,
+    email: event.data.email,
+    message: event.data.message,
+    "g-recaptcha-response": captchaResponse,
+  };
+
+  // Send email using EmailJS, include captcha response for backend validation
+  emailjs
+    .send("YOUR_SERVICE_ID", "YOUR_TEMPLATE_ID", templateParams, "YOUR_USER_ID")
+    .then(() => {
+      toast.add({ title: "Message sent", id: "message-sent", color: "green" });
+    })
+    .catch((error: any) => {
+      console.error(error);
+      toast.add({
+        title: "Failed to send message",
+        description: "Use the other button to send it from your inbox please",
+        id: "message-error",
+        color: "red",
+      });
+      alert("Failed to send message.");
+    });
+};
+
+// URL encoding the message for the mailto link
+const mailtoLink = computed(() => {
+  let mailto = `mailto:${TO_EMAIL}?subject=${encodeURIComponent(subject.value)}`;
+  if (formData.message)
+    mailto += `&body=${encodeURIComponent(formData.message)}`;
+  return mailto;
+});
+</script>
 
 <style scoped></style>
