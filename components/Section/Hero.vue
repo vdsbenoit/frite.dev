@@ -21,19 +21,19 @@
         </span>
       </h1>
       <div
-        class="focus:*:ring-primary-200 mt-8 grid grid-cols-1 justify-items-center gap-2 font-semibold *:rounded-lg *:px-10 *:py-2 *:shadow-xl focus:*:outline-none focus:*:ring-2 sm:grid-cols-2 sm:justify-normal sm:gap-4 sm:*:px-16"
+        class="focus:*:ring-primary-200 mt-8 grid grid-cols-1 justify-items-center gap-2 font-semibold *:w-48 *:rounded-lg *:py-2 *:text-center *:shadow-xl focus:*:outline-none focus:*:ring-2 sm:grid-cols-2 sm:justify-normal sm:gap-4 sm:*:w-52"
       >
         <a
-          href="#contact"
+          href="#profile"
           class="bg-primary-400 hover:bg-primary-300 active:bg-primary-500 inline-block text-gray-800 sm:justify-self-end"
         >
-          Meet me
+          Who I am
         </a>
         <a
-          href="#profile"
-          class="inline-block bg-gray-800 text-gray-100 hover:bg-gray-700 active:bg-gray-900 sm:justify-self-start"
+          href="#contact"
+          class="inline-block border border-gray-700 bg-gray-800 text-gray-100 hover:bg-gray-700 active:bg-gray-900 sm:justify-self-start"
         >
-          Who I am
+          Let's talk
         </a>
       </div>
     </div>
