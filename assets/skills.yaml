@@ -496,7 +496,7 @@
         - title: Bugzilla
           id: bugzilla
           icon: i-simple-icons-mozilla
-          color: "#2C2D30"
+          color: "#9148C8"
           description: >-
             Bugzilla is a web-based general-purpose bug tracking system and testing tool originally developed and used by the Mozilla project. 
             I used Bugzilla in my previous professional experiences to track bugs and issues.

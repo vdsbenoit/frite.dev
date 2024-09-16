@@ -1,15 +1,19 @@
-<!-- This layout contains the animated stars background -->
+<!-- This layout contains the animated stars background and the ellipse gradient background -->
 <template>
   <div>
     <div
-      id="background"
+      id="background-ellipse"
+      class="fixed inset-0 -z-50 h-lvh w-lvw bg-cover"
+    ></div>
+    <div
+      id="background-stars"
       v-for="(layer, indexLayer) in stars"
       :key="indexLayer"
-      :class="{ blur: blurBackground }"
-      class="transition duration-1000"
+      :class="{ blur: isBackgroundBlurred }"
+      class="fixed inset-0 -z-40 h-lvh w-lvw overflow-hidden transition duration-1000"
     >
       <div
-        v-for="(offset, indexOffset) in [0, windowHeight]"
+        v-for="(offset, indexOffset) in [0, bgStarHeight]"
         :key="indexOffset"
       >
         <div
@@ -59,6 +63,11 @@ interface StarLayer {
   height: number;
 }
 
+// Constants
+
+const RESET_THRESHOLD_X = 0.1;
+const RESET_THRESHOLD_Y = 0.2;
+
 // Composables
 
 const appConfig = useAppConfig();
@@ -66,24 +75,26 @@ const { width: windowWidth, height: windowHeight } = useWindowSize();
 
 // Reactive variables
 
-const preferedMotion = usePreferredReducedMotion();
-const blurBackground = useState("blurBackground", () => false);
+const bgStarWidth = ref(0);
+const bgStarHeight = ref(0);
+const preferredMotion = usePreferredReducedMotion();
+const isBackgroundBlurred = ref(false);
 const stars = ref<StarLayer[]>([]);
 const showStars = useState("showStars", () => false);
 
 // Computed variables
 
 const prefersReducedMotion = computed(() => {
-  return preferedMotion.value === "reduce";
+  return preferredMotion.value === "reduce";
 });
 
 const starTransformTo = computed(() => {
-  return `translateY(-${windowHeight.value}px)`;
+  return `translateY(-${bgStarHeight.value}px)`;
 });
 
 const nbStars = computed(() => {
   return (
-    ((windowHeight.value * windowWidth.value) / 40000) * appConfig.starDensity
+    ((bgStarHeight.value * bgStarWidth.value) / 40000) * appConfig.starDensity
   );
 });
 
@@ -94,8 +105,8 @@ const generateStars = (n: number): Star[] => {
 
   for (let i = 0; i < n; i++) {
     const star: Star = {
-      top: Math.floor(Math.random() * windowHeight.value),
-      left: Math.floor(Math.random() * windowWidth.value),
+      top: Math.floor(Math.random() * bgStarHeight.value),
+      left: Math.floor(Math.random() * bgStarWidth.value),
     };
 
     stars.push(star);
@@ -103,7 +114,9 @@ const generateStars = (n: number): Star[] => {
   return stars;
 };
 
-const resetStars = () => {
+const setStars = () => {
+  bgStarWidth.value = windowWidth.value;
+  bgStarHeight.value = windowHeight.value;
   stars.value = [
     { stars: generateStars(nbStars.value * 6), speed: 60, height: 2 },
     { stars: generateStars(nbStars.value * 2), speed: 100, height: 3 },
@@ -111,18 +124,39 @@ const resetStars = () => {
   ];
 };
 
+const resetStars = () => {
+  if (
+    Math.abs(windowWidth.value - bgStarWidth.value) >
+      bgStarWidth.value * RESET_THRESHOLD_X ||
+    Math.abs(windowHeight.value - bgStarHeight.value) >
+      bgStarHeight.value * RESET_THRESHOLD_Y
+  )
+    setStars();
+};
+
+const blurBackground = () => {
+  isBackgroundBlurred.value = window.scrollY > window.innerHeight / 4;
+};
+
 // Lifecycle hooks
 
 onMounted(() => {
-  useEventListener(window, "resize", resetStars);
-  resetStars();
-
+  setStars();
   setTimeout(() => {
     showStars.value = true;
-  }, 1);
+  }, 10);
+  useEventListener(window, "resize", resetStars);
+
+  blurBackground();
+  useEventListener(window, "scroll", blurBackground);
 });
 </script>
 <style>
+#background-ellipse {
+  /* this is equivalent to Tailwind's neutral-800 & neutral-950 */
+  background: radial-gradient(ellipse at bottom, #262626 0%, #0a0a0a 100%);
+}
+
 @keyframes animateStar {
   from {
     transform: translateY(0px);

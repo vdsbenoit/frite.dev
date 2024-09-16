@@ -6,13 +6,25 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   modules: ["@nuxt/ui", "@nuxt/test-utils/module"],
   vite: { plugins: [yaml()] },
-  typescript: { tsConfig: { include: ["types"] }, typeCheck: true },
+  typescript: {
+    typeCheck: "build",
+    tsConfig: {
+      include: ["types"],
+      compilerOptions: {
+        baseUrl: ".",
+        paths: {
+          "~/*": ["./*"],
+          "@/*": ["./*"],
+        },
+      },
+    },
+  },
   colorMode: {
     preference: "dark",
   },
   app: {
     head: {
-      title: "frite.dev - Belgian-grade Software Development",
+      title: "frite.dev • Portfolio",
       meta: [
         { charset: "utf-8" },
         { name: "viewport", content: "width=device-width, initial-scale=1" },
