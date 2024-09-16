@@ -2,7 +2,7 @@
   <div
     class="mb-8 flex min-h-screen items-start justify-center md:items-center"
   >
-    <div class="max-w-screen-lg px-3 sm:px-6">
+    <div class="max-w-screen-lg px-3 sm:px-10">
       <div class="mb-6" v-for="subSection in content" :key="subSection.id">
         <h2 class="mb-2">{{ subSection.title }}</h2>
         <div
