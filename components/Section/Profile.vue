@@ -20,7 +20,7 @@
           <p class="hidden font-mono sm:block">@vdsbenoit</p>
           <SocialLinks class="hidden justify-center gap-x-5 sm:flex" />
           <UButton
-            class="mt-4 hidden font-semibold transition ease-in hover:scale-110 sm:block"
+            class="mt-4 hidden font-semibold transition ease-in motion-safe:hover:scale-110 sm:block"
             size="md"
             color="primary"
             variant="solid"

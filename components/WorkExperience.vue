@@ -7,7 +7,7 @@
       @mouseleave="isHovered = false"
     >
       <UBadge
-        :class="{ 'flip-badge': isRotating && preferredMotion != 'reduce' }"
+        :class="{ 'flip-badge': isRotating }"
         color="primary"
         variant="outline"
       >
@@ -16,7 +16,7 @@
     </div>
     <!-- Right side content -->
     <div
-      class="border-primary relative origin-left cursor-pointer border-l py-4 pl-8 transition hover:scale-110 sm:pl-10"
+      class="border-primary relative origin-left cursor-pointer border-l py-4 pl-8 transition motion-safe:hover:scale-110 sm:pl-10"
     >
       <div class="line-clamp-1">
         {{ title }}
@@ -118,5 +118,10 @@ if (props.to) {
 }
 .flip-badge {
   animation: flip 500ms forwards;
+}
+@media (prefers-reduced-motion) {
+  .flip-badge {
+    animation: none;
+  }
 }
 </style>

@@ -1,6 +1,6 @@
 <template>
   <div
-    class="flex items-center *:transition hover:*:-translate-y-1 hover:*:scale-110"
+    class="flex items-center *:transition motion-safe:hover:*:-translate-y-1 motion-safe:hover:*:scale-110"
   >
     <NuxtLink to="https://github.com/vdsbenoit" target="_blank">
       <UIcon name="i-simple-icons-github" class="text-xl" />

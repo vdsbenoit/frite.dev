@@ -1,7 +1,9 @@
 <template>
   <div class="flex min-h-screen items-start justify-center lg:items-center">
     <div class="px-3">
-      <h2 class="mb-6">Contact Me</h2>
+      <h2 class="mb-4" :class="[isActive ? 'anim-show-bottom' : 'anim-hide']">
+        Contact me
+      </h2>
       <div class="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-8">
         <!-- Contact Form -->
         <UCard :ui="{ background: 'dark:bg-gray-100' }">

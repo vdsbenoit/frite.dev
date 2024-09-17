@@ -5,7 +5,7 @@
       class="fixed left-0 right-0 top-0 z-30 items-center sm:top-8 sm:grid sm:grid-flow-col sm:grid-cols-5 sm:justify-items-center"
     >
       <div
-        class="hidden cursor-pointer items-center sm:flex"
+        class="group hidden cursor-pointer items-center sm:flex"
         @click.prevent="navigateTo('#hero')"
       >
         <img
@@ -15,7 +15,7 @@
         />
         <a
           href="#hero"
-          class="decoration-primary bg-gray-950 text-lg font-bold underline-offset-2 transition-colors hover:text-gray-100 focus:underline focus:outline-none md:text-xl"
+          class="decoration-primary bg-gray-950 text-lg font-bold transition-colors focus:underline focus:underline-offset-2 focus:outline-none group-hover:text-gray-400 md:text-xl"
           >frite.dev</a
         >
       </div>
@@ -26,7 +26,7 @@
           class="flex items-center justify-between bg-gray-800 px-4 py-2 text-gray-100 sm:gap-x-5 sm:rounded-xl sm:px-5 sm:py-1"
         >
           <div
-            class="flex cursor-pointer items-center sm:hidden"
+            class="group flex cursor-pointer items-center sm:hidden"
             @click.prevent="navigateTo('#hero')"
           >
             <img
@@ -36,7 +36,7 @@
             />
             <a
               href="#hero"
-              class="decoration-primary text-lg font-bold transition-colors hover:text-gray-400 focus:underline focus:underline-offset-2 focus:outline-none"
+              class="decoration-primary text-lg font-bold transition-colors focus:underline focus:underline-offset-2 focus:outline-none group-hover:text-gray-400"
               >frite.dev</a
             >
           </div>
@@ -62,10 +62,14 @@
       />
     </header>
     <main class="overflow-x-hidden">
-      <section v-for="section in SECTIONS" :key="section.id" :id="section.id">
+      <section
+        v-for="section in SECTIONS"
+        :key="section.id"
+        :id="section.id"
+        v-intersection-observer="[onIntersectionObserver, { threshold: 0.5 }]"
+      >
         <component
           :is="section.component"
-          v-intersection-observer="[onIntersectionObserver, { threshold: 0.5 }]"
           :isActive="currentSection === section.id"
         />
       </section>
@@ -89,7 +93,6 @@ import Hero from "../components/Section/Hero.vue";
 import Profile from "../components/Section/Profile.vue";
 import Skills from "../components/Section/Skills.vue";
 import Contact from "../components/Section/Contact.vue";
-import { useEventListener } from "@vueuse/core";
 import { vIntersectionObserver } from "@vueuse/components";
 
 // Variables & Constants
