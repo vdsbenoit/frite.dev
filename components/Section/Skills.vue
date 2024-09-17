@@ -8,7 +8,7 @@
         v-for="(subSection, index) in content"
         :key="subSection.id"
       >
-        <h2 class="mb-2" :class="[animationClass(index)]">
+        <h2 class="mb-2">
           {{ subSection.title }}
         </h2>
         <div
@@ -47,50 +47,5 @@ import content from "~/assets/skills.yaml";
 const props = defineProps<{
   isActive: boolean;
 }>();
-const animationClass = (index: number) => {
-  if (props.isActive) {
-    return index % 2 === 0 ? "anim-show-left" : "anim-show-right";
-  } else {
-    return "anim-hide";
-  }
-};
 </script>
-<style scoped>
-@keyframes animShowLeft {
-  from {
-    opacity: 0;
-    transform: translateX(-200px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0) ease-in-out;
-  }
-}
-@keyframes animShowRight {
-  from {
-    opacity: 0;
-    transform: translateX(200px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0) ease-in-out;
-  }
-}
-
-.anim-show-left {
-  animation: animShowLeft 0.3s both;
-}
-.anim-show-right {
-  animation: animShowRight 0.3s both;
-}
-/* anim-hide is defined globally in tailwind.css */
-
-@media (prefers-reduced-motion) {
-  .anim-show-left {
-    animation: none;
-  }
-  .anim-show-right {
-    animation: none;
-  }
-}
-</style>
+<style scoped></style>
