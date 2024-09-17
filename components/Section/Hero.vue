@@ -43,6 +43,12 @@
 <script lang="ts" setup>
 import { useElementBounding } from "@vueuse/core";
 
+// Props
+
+const props = defineProps<{
+  isActive: boolean;
+}>();
+
 const heroTitle = ref<HTMLInputElement | null>(null);
 const heroTitleRect = useElementBounding(heroTitle);
 

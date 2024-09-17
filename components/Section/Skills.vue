@@ -37,5 +37,9 @@
 
 <script lang="ts" setup>
 import content from "~/assets/skills.yaml";
+// Props
+const props = defineProps<{
+  isActive: boolean;
+}>();
 </script>
 <style scoped></style>

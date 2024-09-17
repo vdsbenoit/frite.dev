@@ -98,6 +98,12 @@ import { z } from "zod";
 import type { FormSubmitEvent } from "#ui/types";
 import { AlertModal } from "#components";
 
+// Props
+
+const props = defineProps<{
+  isActive: boolean;
+}>();
+
 // Constants & variables
 
 const UI_FORM_GROUP = {

@@ -66,6 +66,7 @@
         <component
           :is="section.component"
           v-intersection-observer="[onIntersectionObserver, { threshold: 0.5 }]"
+          :isActive="currentSection === section.id"
         />
       </section>
     </main>

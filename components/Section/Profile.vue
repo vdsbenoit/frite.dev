@@ -127,6 +127,12 @@
 </template>
 
 <script lang="ts" setup>
+// Props
+
+const props = defineProps<{
+  isActive: boolean;
+}>();
+
 const workTime = new Date().getTime() - new Date(2016, 8).getTime();
 const workTimeYears = Math.floor(workTime / (1000 * 60 * 60 * 24 * 365.25));
 </script>
