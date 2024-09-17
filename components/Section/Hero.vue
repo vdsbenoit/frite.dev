@@ -21,7 +21,7 @@
         </span>
       </h1>
       <div
-        class="focus:*:ring-primary-200 mt-8 grid grid-cols-1 justify-items-center gap-2 font-semibold *:w-48 *:rounded-lg *:py-2 *:text-center *:shadow-xl focus:*:outline-none focus:*:ring-2 sm:grid-cols-2 sm:justify-normal sm:gap-4 sm:*:w-52"
+        class="focus:*:ring-primary-200 mt-8 grid grid-cols-1 justify-items-center gap-2 font-semibold *:w-48 *:rounded-lg *:py-2 *:text-center *:shadow-xl *:transition *:ease-in hover:*:scale-110 focus:*:outline-none focus:*:ring-2 sm:grid-cols-2 sm:justify-normal sm:gap-4 sm:*:w-52"
       >
         <a
           href="#profile"

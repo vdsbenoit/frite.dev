@@ -63,8 +63,14 @@
             <UButton type="submit" size="xl" class="mr-2">
               Send message
             </UButton>
-            <UButton :to="mailtoLink" size="xl" color="white"
-              >Send from your mailbox
+            <UButton
+              :to="mailtoLink"
+              size="xl"
+              color="white"
+              variant="solid"
+              :ui="{ color: { white: { solid: 'dark:hover:bg-gray-800' } } }"
+            >
+              Send from your mailbox
             </UButton>
           </UForm>
         </UCard>
