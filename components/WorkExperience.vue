@@ -1,13 +1,14 @@
 <template>
-  <div class="flex items-center">
+  <div class="flex items-center" ref="thisComponent">
     <!-- Left side badge -->
     <div
-      class="mr-6 w-16 text-center sm:mr-8"
-      @mouseenter="isHovered = true"
-      @mouseleave="isHovered = false"
+      class="mr-6 shrink-0 overflow-hidden text-center motion-safe:transition-all motion-safe:duration-700 sm:mr-8 sm:block sm:w-16"
+      :class="[isOpen ? 'hidden w-0' : 'w-16']"
+      @mouseenter="isBadgeHovered = true"
+      @mouseleave="isBadgeHovered = false"
     >
       <UBadge
-        :class="{ 'flip-badge': isRotating }"
+        :class="{ 'flip-badge': isBadgeRotating }"
         color="primary"
         variant="outline"
       >
@@ -16,20 +17,42 @@
     </div>
     <!-- Right side content -->
     <div
-      class="border-primary relative origin-left cursor-pointer border-l py-4 pl-8 transition motion-safe:hover:scale-110 sm:pl-10"
+      class="border-primary relative origin-left motion-safe:transition-all motion-safe:hover:scale-110 sm:border-l sm:pl-10"
+      :class="[
+        isOpen
+          ? 'z-0 scale-110 cursor-default py-8 motion-safe:duration-500'
+          : 'z-10 cursor-pointer border-l py-4 pl-8',
+      ]"
+      @click="isOpen = true"
     >
-      <div class="line-clamp-1">
+      <div
+        class="decoration-primary line-clamp-1 underline-offset-4 motion-safe:transition-all motion-safe:duration-700"
+        :class="{
+          'mb-2 font-semibold underline': isOpen,
+        }"
+      >
         {{ title }}
       </div>
-      <div class="text-sm text-gray-400">
+      <p
+        class="w-10/12 overflow-hidden border-l-2 border-gray-500 bg-gray-800 px-3 text-justify text-sm motion-safe:transition-all motion-safe:duration-700 motion-safe:ease-in-out sm:px-4"
+        :class="[isOpen ? 'max-h-[1000px] py-2' : 'max-h-0 py-0']"
+      >
+        <span v-html="description"></span>
+      </p>
+
+      <div class="text-sm text-gray-400" :class="{ 'mt-2': isOpen }">
         <span class="font-bold uppercase">{{ company }}</span>
         <span> • </span>
         <span>{{ location }}</span>
       </div>
       <!-- Icon (absolute position, relative to content) -->
       <div
-        class="absolute -left-5 top-1/2 flex size-10 -translate-y-1/2 items-center justify-center overflow-hidden rounded-full"
-        :class="[{ 'bg-primary': !icon }, iconWrapperClass]"
+        class="absolute -left-5 top-1/2 flex size-10 -translate-y-1/2 items-center justify-center overflow-hidden rounded-full sm:scale-100"
+        :class="[
+          { 'bg-primary': !icon },
+          iconWrapperClass,
+          isOpen ? 'scale-0' : 'scale-100',
+        ]"
       >
         <UIcon
           v-if="!icon"
@@ -53,7 +76,7 @@
 </template>
 
 <script lang="ts" setup>
-import { usePreferredReducedMotion } from "@vueuse/core";
+import { useEventListener, usePreferredReducedMotion } from "@vueuse/core";
 
 const props = defineProps<{
   title: string;
@@ -67,10 +90,19 @@ const props = defineProps<{
   description: string;
 }>();
 
-const isHovered = ref(false);
-const isRotating = ref(false);
-const badgeText = ref(props.from.toString());
 const preferredMotion = usePreferredReducedMotion();
+const thisComponent = ref<HTMLElement | null>(null);
+const isBadgeHovered = ref(false);
+const isBadgeRotating = ref(false);
+const badgeText = ref(props.from.toString());
+const isOpen = ref(false);
+
+// Compute the duration of the work experience
+const experienceDuration = computed(() => {
+  if (!props.to) return "Current";
+  const duration = props.to - props.from;
+  return `${duration} year${duration > 1 ? "s" : ""}`;
+});
 
 // Load the icon if it's a local asset
 const assets = import.meta.glob("~/assets/img/**/*");
@@ -86,26 +118,29 @@ if (props.icon && props.icon.startsWith("~")) {
 }
 
 // Animate the badge text when hovering
-watch(isHovered, async (newHoverState) => {
-  isRotating.value = true;
+watch(isBadgeHovered, async (newHoverState) => {
+  isBadgeRotating.value = true;
   setTimeout(
     () => {
-      badgeText.value = newHoverState ? durationStr : props.from.toString();
+      badgeText.value = newHoverState
+        ? experienceDuration.value
+        : props.from.toString();
     },
     preferredMotion.value === "reduce" ? 0 : 250,
   );
   setTimeout(() => {
-    isRotating.value = false;
+    isBadgeRotating.value = false;
   }, 500);
 });
 
-// Compute the duration of the work experience
-let durationStr: string;
-if (props.to) {
-  const duration = props.to - props.from;
-  durationStr = `${duration} year`;
-  if (duration > 1) durationStr = durationStr + "s";
-} else durationStr = "Current";
+const clickOutsideDescription = (event: MouseEvent) => {
+  if (thisComponent.value?.contains(event.target as Node)) return;
+  isOpen.value = false;
+};
+
+onMounted(() => {
+  useEventListener(window, "click", clickOutsideDescription);
+});
 </script>
 <style scoped>
 @keyframes flip {
