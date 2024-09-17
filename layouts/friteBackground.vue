@@ -137,7 +137,7 @@ const setStars = () => {
   bgStarWidth.value = window.outerWidth;
   bgStarHeight.value = window.outerHeight;
   stars.value = [
-    { stars: generateStars(nbStars.value * 6), speed: 60, height: 2 },
+    { stars: generateStars(nbStars.value * 6), speed: 70, height: 2 },
     { stars: generateStars(nbStars.value * 2), speed: 100, height: 3 },
     { stars: generateStars(nbStars.value), speed: 150, height: 6 },
   ];
