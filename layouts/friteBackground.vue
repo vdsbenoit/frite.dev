@@ -50,11 +50,7 @@
   </div>
 </template>
 <script setup lang="ts">
-import {
-  useEventListener,
-  usePreferredReducedMotion,
-  useWindowSize,
-} from "@vueuse/core";
+import { useEventListener, usePreferredReducedMotion } from "@vueuse/core";
 
 // Interfaces & Types
 
@@ -79,7 +75,6 @@ const RESET_THRESHOLD_Y = 0.2;
 // Composables
 
 const appConfig = useAppConfig();
-const { width: windowWidth, height: windowHeight } = useWindowSize();
 
 // Reactive variables
 
@@ -139,8 +134,8 @@ const generateStars = (n: number): Star[] => {
 };
 
 const setStars = () => {
-  bgStarWidth.value = windowWidth.value;
-  bgStarHeight.value = windowHeight.value;
+  bgStarWidth.value = window.outerWidth;
+  bgStarHeight.value = window.outerHeight;
   stars.value = [
     { stars: generateStars(nbStars.value * 6), speed: 60, height: 2 },
     { stars: generateStars(nbStars.value * 2), speed: 100, height: 3 },
@@ -150,9 +145,9 @@ const setStars = () => {
 
 const resetStars = () => {
   if (
-    Math.abs(windowWidth.value - bgStarWidth.value) >
+    Math.abs(window.outerWidth - bgStarWidth.value) >
       bgStarWidth.value * RESET_THRESHOLD_X ||
-    Math.abs(windowHeight.value - bgStarHeight.value) >
+    Math.abs(window.outerHeight - bgStarHeight.value) >
       bgStarHeight.value * RESET_THRESHOLD_Y
   )
     setStars();

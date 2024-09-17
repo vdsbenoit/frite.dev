@@ -1,5 +1,5 @@
 <template>
-  <NuxtLayout>
+  <NuxtLayout name="frite-background">
     <NuxtPage />
   </NuxtLayout>
   <UModals />
