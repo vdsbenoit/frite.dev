@@ -75,14 +75,9 @@ const clipPath = computed(() => {
 @keyframes bringIn {
   from {
     opacity: 0;
-    transform: translateY(-20px);
-    scale: 0.5;
   }
-
   to {
     opacity: 1;
-    transform: translateY(0);
-    scale: 1;
   }
 }
 @keyframes typing {
@@ -101,12 +96,12 @@ const clipPath = computed(() => {
     border-color: transparent;
   }
   50% {
-    border-color: white;
+    border-color: #f5f5f5;
   }
 }
 
 .anim-bring-in {
-  animation: bringIn 0.5s;
+  animation: bringIn 1s;
 }
 
 /* Credits : https://css-tricks.com/snippets/css/typewriter-effect/ */
@@ -119,7 +114,7 @@ const clipPath = computed(() => {
   animation:
     typing 2s steps(30, end) both,
     blink-caret 0.75s step-end infinite;
-  animation-delay: 0.5s;
+  animation-delay: 0.8s;
 }
 @media (prefers-reduced-motion) {
   .anim-bring-in {

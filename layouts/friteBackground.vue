@@ -108,7 +108,7 @@ watch(isBackgroundBlurred, (isBlurred: boolean) => {
   if (isBlurred) {
     setTimeout(() => {
       isStarRotating.value = false;
-    }, 1000);
+    }, 500);
   } else {
     isStarRotating.value = true;
   }
