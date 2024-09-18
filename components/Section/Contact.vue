@@ -17,8 +17,8 @@
             <!-- Form Fields -->
             <UFormGroup label="Name" name="name" size="xl" :ui="UI_FORM_GROUP">
               <UInput
-                type="text"
                 v-model="formData.name"
+                type="text"
                 icon="i-heroicons-user"
                 color="gray"
                 :ui="UI_FORM_INPUT"
@@ -32,8 +32,8 @@
               required
             >
               <UInput
-                type="email"
                 v-model="formData.email"
+                type="email"
                 icon="i-heroicons-envelope"
                 color="gray"
                 :ui="UI_FORM_INPUT"
@@ -145,7 +145,7 @@ const formData = reactive({
   message: undefined,
 });
 
-let subject = computed(() => {
+const subject = computed(() => {
   return `Message from ${formData.name || "frite.dev"}`;
 });
 
@@ -192,7 +192,7 @@ const onSubmit = async (event: FormSubmitEvent<Schema>) => {
     .then(() => {
       toast.add({ title: "Message sent", id: "message-sent", color: "green" });
     })
-    .catch((error: any) => {
+    .catch((error: Error) => {
       console.error(error);
       toast.add({
         title: "Failed to send message",

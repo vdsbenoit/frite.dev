@@ -1,5 +1,5 @@
 <template>
-  <div class="relative" ref="thisComponent">
+  <div ref="thisComponent" class="relative">
     <div>
       <!-- Invisible div that cover the whole parent div, to increase the hover area -->
       <!-- Creating a group with the parent div induced weird hover effects with the translations -->
@@ -34,6 +34,7 @@
     <!-- Description popup -->
     <div
       id="description"
+      ref="descriptionElement"
       class="fixed top-1/2 z-30 min-w-72 origin-center -translate-y-1/2 rounded bg-gray-100 p-4 text-base text-gray-900 motion-safe:transition-all sm:absolute"
       :class="[
         {
@@ -42,7 +43,6 @@
         },
         xClassesDescription,
       ]"
-      ref="descriptionElement"
     >
       <div class="flex items-center justify-between">
         <h4

@@ -1,5 +1,5 @@
 <template>
-  <div class="flex items-center" ref="thisComponent">
+  <div ref="thisComponent" class="flex items-center">
     <!-- Left side badge -->
     <div
       class="mr-6 shrink-0 overflow-hidden text-center motion-safe:transition-all motion-safe:duration-700 sm:mr-8 sm:block sm:w-16"
@@ -37,6 +37,7 @@
         class="w-10/12 overflow-hidden border-l-2 border-gray-500 bg-gray-800 px-3 text-justify text-sm motion-safe:transition-all motion-safe:duration-700 motion-safe:ease-in-out sm:px-4"
         :class="[isOpen ? 'max-h-[1000px] py-2' : 'max-h-0 py-0']"
       >
+        <!-- eslint-disable-next-line vue/no-v-html -->
         <span v-html="description"></span>
       </p>
 
@@ -66,7 +67,7 @@
           :class="[iconClass ? iconClass : 'size-8']"
         />
         <UIcon
-          v-else="icon"
+          v-else
           :name="icon"
           :class="[iconClass ? iconClass : 'size-8']"
         />
@@ -76,7 +77,11 @@
 </template>
 
 <script lang="ts" setup>
-import { useEventListener, usePreferredReducedMotion } from "@vueuse/core";
+import {
+  computedAsync,
+  useEventListener,
+  usePreferredReducedMotion,
+} from "@vueuse/core";
 
 const props = defineProps<{
   title: string;
@@ -105,17 +110,21 @@ const experienceDuration = computed(() => {
 });
 
 // Load the icon if it's a local asset
-const assets = import.meta.glob("~/assets/img/**/*");
-let imgPath = "";
-if (props.icon && props.icon.startsWith("~")) {
-  if (props.icon.slice(1) in assets) {
-    imgPath = await assets[props.icon.slice(1)]().then(
-      (module: any) => module.default,
-    );
-  } else {
-    throw new Error(`${props.icon} not found in ~/assets/`);
-  }
-}
+type AssetModule = {
+  default: string;
+};
+const imgPath = computedAsync(async () => {
+  if (props.icon && props.icon.startsWith("~")) {
+    const assets = import.meta.glob<AssetModule>("~/assets/img/**/*");
+    if (props.icon.slice(1) in assets) {
+      return await assets[props.icon.slice(1)]().then(
+        (module) => module.default,
+      );
+    } else {
+      throw new Error(`${props.icon} not found in ~/assets/`);
+    }
+  } else return "";
+}, "");
 
 // Animate the badge text when hovering
 watch(isBadgeHovered, async (newHoverState) => {

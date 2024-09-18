@@ -1,8 +1,9 @@
 import type { Config } from "tailwindcss";
 import defaultTheme from "tailwindcss/defaultTheme";
+import forms from "@tailwindcss/forms";
 
 export default <Partial<Config>>{
-  plugins: [require("@tailwindcss/forms")],
+  plugins: [forms],
   content: ["content/**/*.md", "docs/content/**/*.md"],
   safelist: [
     { pattern: /grid-cols-\d/, variants: ["md"] },

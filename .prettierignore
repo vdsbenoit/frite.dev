@@ -1,3 +1,4 @@
 /.husky
 /.nuxt
 /.vscode
+eslint.config.mjs

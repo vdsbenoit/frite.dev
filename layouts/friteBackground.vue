@@ -6,8 +6,8 @@
       class="fixed inset-0 -z-50 h-lvh w-lvw bg-cover"
     ></div>
     <div
-      id="background-stars"
       v-for="(layer, indexLayer) in stars"
+      id="background-stars"
       :key="indexLayer"
       :class="{ 'blur-md': isBackgroundBlurred }"
       class="fixed inset-0 -z-40 h-lvh w-lvw overflow-hidden transition duration-1000"

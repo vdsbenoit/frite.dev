@@ -64,13 +64,13 @@
     <main class="overflow-x-hidden">
       <section
         v-for="section in SECTIONS"
-        :key="section.id"
         :id="section.id"
+        :key="section.id"
         v-intersection-observer="[onIntersectionObserver, { threshold: 0.5 }]"
       >
         <component
           :is="section.component"
-          :isActive="currentSection === section.id"
+          :is-active="currentSection === section.id"
         />
       </section>
     </main>
