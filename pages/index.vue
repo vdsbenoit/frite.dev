@@ -8,11 +8,7 @@
         class="group hidden cursor-pointer items-center sm:flex"
         @click.prevent="navigateTo('#hero')"
       >
-        <img
-          src="~/assets/img/company-logo.png"
-          alt="frites-logo"
-          class="mr-2 size-8 md:size-10"
-        />
+        <img src="~/assets/img/company-logo.png" alt="frites-logo" class="mr-2 size-8 md:size-10" />
         <a
           href="#hero"
           class="decoration-primary bg-gray-950 text-lg font-bold transition-colors focus:underline focus:underline-offset-2 focus:outline-none group-hover:text-gray-400 md:text-xl"
@@ -29,11 +25,7 @@
             class="group flex cursor-pointer items-center sm:hidden"
             @click.prevent="navigateTo('#hero')"
           >
-            <img
-              src="~/assets/img/company-logo.png"
-              alt="frites-logo"
-              class="mr-2 size-8"
-            />
+            <img src="~/assets/img/company-logo.png" alt="frites-logo" class="mr-2 size-8" />
             <a
               href="#hero"
               class="decoration-primary text-lg font-bold transition-colors focus:underline focus:underline-offset-2 focus:outline-none group-hover:text-gray-400"
@@ -68,10 +60,7 @@
         :key="section.id"
         v-intersection-observer="[onIntersectionObserver, { threshold: 0.5 }]"
       >
-        <component
-          :is="section.component"
-          :is-active="currentSection === section.id"
-        />
+        <component :is="section.component" :is-active="currentSection === section.id" />
       </section>
     </main>
     <div
@@ -89,11 +78,11 @@
 </template>
 
 <script lang="ts" setup>
-import Hero from "../components/Section/Hero.vue";
-import Profile from "../components/Section/Profile.vue";
-import Skills from "../components/Section/Skills.vue";
-import Contact from "../components/Section/Contact.vue";
-import { vIntersectionObserver } from "@vueuse/components";
+import Hero from "../components/Section/Hero.vue"
+import Profile from "../components/Section/Profile.vue"
+import Skills from "../components/Section/Skills.vue"
+import Contact from "../components/Section/Contact.vue"
+import { vIntersectionObserver } from "@vueuse/components"
 
 // Variables & Constants
 
@@ -102,24 +91,24 @@ const SECTIONS = [
   { id: "profile", title: "Profile", component: Profile },
   { id: "skills", title: "Skills", component: Skills },
   { id: "contact", title: "Contact", component: Contact },
-];
+]
 
-const currentSection = ref<string>("");
+const currentSection = ref<string>("")
 
-const showStars = useState<boolean>("showStars");
+const showStars = useState<boolean>("showStars")
 
 // Methods
 
 const toggleShowStars = () => {
-  showStars.value = !showStars.value;
-};
+  showStars.value = !showStars.value
+}
 
 const onIntersectionObserver = (entries: IntersectionObserverEntry[]) => {
   entries.forEach((entry) => {
     if (entry.isIntersecting) {
-      currentSection.value = entry.target.id;
+      currentSection.value = entry.target.id
     }
-  });
-};
+  })
+}
 </script>
 <style scoped></style>

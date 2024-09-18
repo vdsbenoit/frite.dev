@@ -1,7 +1,5 @@
 <template>
-  <div
-    class="flex min-h-screen items-start justify-center pb-16 md:pb-0 lg:items-center"
-  >
+  <div class="flex min-h-screen items-start justify-center pb-16 md:pb-0 lg:items-center">
     <div class="max-w-screen-lg px-3 sm:px-10">
       <div v-for="subSection in content" :key="subSection.id" class="mb-6">
         <h2 class="mb-2">
@@ -38,10 +36,10 @@
 </template>
 
 <script lang="ts" setup>
-import content from "~/assets/skills.yaml";
+import content from "~/assets/skills.yaml"
 // Props
 const props = defineProps<{
-  isActive: boolean;
-}>();
+  isActive: boolean
+}>()
 </script>
 <style scoped></style>

@@ -5,15 +5,8 @@
       <div class="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-8">
         <!-- Contact Form -->
         <UCard :ui="{ background: 'dark:bg-gray-100' }">
-          <h3 class="mb-4 text-center text-xl font-semibold text-gray-800">
-            Send a message
-          </h3>
-          <UForm
-            :schema="formSchema"
-            :state="formData"
-            class="space-y-4"
-            @submit="onSubmit"
-          >
+          <h3 class="mb-4 text-center text-xl font-semibold text-gray-800">Send a message</h3>
+          <UForm :schema="formSchema" :state="formData" class="space-y-4" @submit="onSubmit">
             <!-- Form Fields -->
             <UFormGroup label="Name" name="name" size="xl" :ui="UI_FORM_GROUP">
               <UInput
@@ -24,13 +17,7 @@
                 :ui="UI_FORM_INPUT"
               />
             </UFormGroup>
-            <UFormGroup
-              label="Email"
-              name="email"
-              size="xl"
-              :ui="UI_FORM_GROUP"
-              required
-            >
+            <UFormGroup label="Email" name="email" size="xl" :ui="UI_FORM_GROUP" required>
               <UInput
                 v-model="formData.email"
                 type="email"
@@ -39,13 +26,7 @@
                 :ui="UI_FORM_INPUT"
               />
             </UFormGroup>
-            <UFormGroup
-              label="Message"
-              name="message"
-              size="xl"
-              :ui="UI_FORM_GROUP"
-              required
-            >
+            <UFormGroup label="Message" name="message" size="xl" :ui="UI_FORM_GROUP" required>
               <UTextarea
                 v-model="formData.message"
                 color="gray"
@@ -60,9 +41,7 @@
             <!-- reCAPTCHA -->
             <div class="g-recaptcha" data-sitekey="YOUR_SITE_KEY"></div>
 
-            <UButton type="submit" size="xl" class="mr-2">
-              Send message
-            </UButton>
+            <UButton type="submit" size="xl" class="mr-2"> Send message </UButton>
             <UButton
               :to="mailtoLink"
               size="xl"
@@ -94,22 +73,22 @@
   </div>
 </template>
 <script lang="ts" setup>
-import { z } from "zod";
-import type { FormSubmitEvent } from "#ui/types";
-import { AlertModal } from "#components";
+import { z } from "zod"
+import type { FormSubmitEvent } from "#ui/types"
+import { AlertModal } from "#components"
 
 // Props
 
 const props = defineProps<{
-  isActive: boolean;
-}>();
+  isActive: boolean
+}>()
 
 // Constants & variables
 
 const UI_FORM_GROUP = {
   label: { base: "dark:text-gray-700 font-semibold" },
   error: "dark:text-red-500",
-};
+}
 const UI_FORM_INPUT = {
   color: {
     gray: {
@@ -119,9 +98,9 @@ const UI_FORM_INPUT = {
   variant: {
     outline: "dark:text-gray-800 dark:bg-gray-100",
   },
-};
-const TO_EMAIL = "benoit@frite.dev";
-let lastSubmittedTime = 0;
+}
+const TO_EMAIL = "benoit@frite.dev"
+let lastSubmittedTime = 0
 
 const formSchema = z.object({
   name: z.string().optional(),
@@ -133,9 +112,9 @@ const formSchema = z.object({
       600,
       "Well, that's very long. Could you summarize it? Else, I invite you to book a call with me instead.",
     ),
-});
+})
 
-type Schema = z.output<typeof formSchema>;
+type Schema = z.output<typeof formSchema>
 
 // Reactive data
 
@@ -143,74 +122,73 @@ const formData = reactive({
   name: undefined,
   email: undefined,
   message: undefined,
-});
+})
 
 const subject = computed(() => {
-  return `Message from ${formData.name || "frite.dev"}`;
-});
+  return `Message from ${formData.name || "frite.dev"}`
+})
 
 // Composable
 
-const modal = useModal();
-const toast = useToast();
+const modal = useModal()
+const toast = useToast()
 
 // Methods
 
 const onSubmit = async (event: FormSubmitEvent<Schema>) => {
-  const captchaResponse = grecaptcha.getResponse();
+  const captchaResponse = grecaptcha.getResponse()
   if (!captchaResponse) {
     modal.open(AlertModal, {
       title: "Please complete the CAPTCHA",
-    });
-    return;
+    })
+    return
   }
 
-  const currentTime = Date.now();
-  const timeDiff = currentTime - lastSubmittedTime;
+  const currentTime = Date.now()
+  const timeDiff = currentTime - lastSubmittedTime
 
   if (timeDiff < 60000) {
     // 1 minute limit between submissions
     modal.open(AlertModal, {
       title: "Too many submissions",
       description: "Please wait before submitting again.",
-    });
-    return;
+    })
+    return
   }
 
-  lastSubmittedTime = currentTime;
+  lastSubmittedTime = currentTime
 
   const templateParams = {
     name: event.data.name,
     email: event.data.email,
     message: event.data.message,
     "g-recaptcha-response": captchaResponse,
-  };
+  }
 
   // Send email using EmailJS, include captcha response for backend validation
   emailjs
     .send("YOUR_SERVICE_ID", "YOUR_TEMPLATE_ID", templateParams, "YOUR_USER_ID")
     .then(() => {
-      toast.add({ title: "Message sent", id: "message-sent", color: "green" });
+      toast.add({ title: "Message sent", id: "message-sent", color: "green" })
     })
     .catch((error: Error) => {
-      console.error(error);
+      console.error(error)
       toast.add({
         title: "Failed to send message",
         description: "Use the other button to send it from your inbox please",
         id: "message-error",
         color: "red",
-      });
-      alert("Failed to send message.");
-    });
-};
+      })
+      alert("Failed to send message.")
+    })
+}
 
 // URL encoding the message for the mailto link
 const mailtoLink = computed(() => {
-  let mailto = `mailto:${TO_EMAIL}?subject=${encodeURIComponent(subject.value)}`;
-  if (formData.message)
-    mailto += `&body=${encodeURIComponent(formData.message)}`;
-  return mailto;
-});
+  let mailto = `mailto:${TO_EMAIL}?subject=${encodeURIComponent(subject.value)}`
+  if (formData.message) mailto += `&body=${encodeURIComponent(formData.message)}`
+  return mailto
+})
 </script>
 
 <style scoped></style>

@@ -3,10 +3,7 @@
     <div>
       <!-- Invisible div that cover the whole parent div, to increase the hover area -->
       <!-- Creating a group with the parent div induced weird hover effects with the translations -->
-      <div
-        class="peer absolute inset-0 z-20 cursor-pointer"
-        @click="showDescription"
-      ></div>
+      <div class="peer absolute inset-0 z-20 cursor-pointer" @click="showDescription"></div>
       <!-- Icon -->
       <div
         id="icon"
@@ -18,9 +15,7 @@
           :name="icon"
           :style="{ color: color ? color : '@apply text-neutrol-300' }"
         />
-        <span v-else class="text-nowrap font-bold text-gray-300">{{
-          title
-        }}</span>
+        <span v-else class="text-nowrap font-bold text-gray-300">{{ title }}</span>
       </div>
       <!-- Caption -->
       <div
@@ -67,20 +62,20 @@
 </template>
 
 <script lang="ts" setup>
-import { useElementBounding, useEventListener } from "@vueuse/core";
+import { useElementBounding, useEventListener } from "@vueuse/core"
 
 const props = defineProps<{
-  title: string;
-  icon?: string;
-  color?: string;
-  description: string;
-}>();
+  title: string
+  icon?: string
+  color?: string
+  description: string
+}>()
 
-const thisComponent = ref<HTMLElement | null>(null);
-const descriptionElement = ref<HTMLElement | null>(null);
-const descriptionRect = useElementBounding(descriptionElement);
-const isDescriptionDisplayed = ref(false);
-const xClassesDescription = ref<string[]>([]);
+const thisComponent = ref<HTMLElement | null>(null)
+const descriptionElement = ref<HTMLElement | null>(null)
+const descriptionRect = useElementBounding(descriptionElement)
+const isDescriptionDisplayed = ref(false)
+const xClassesDescription = ref<string[]>([])
 
 /**
  * Ensure the description popup does not go out the the viewport
@@ -88,27 +83,27 @@ const xClassesDescription = ref<string[]>([]);
 watch(descriptionRect.left, () => {
   // if it does not fit on both sides, change the way it is displayed to a fixed centered position
   if (descriptionRect.left.value < 0) {
-    xClassesDescription.value = ["left-0"];
+    xClassesDescription.value = ["left-0"]
     // if description goes out of the viewport on the right side
   } else if (descriptionRect.right.value > window.innerWidth) {
-    xClassesDescription.value = ["left-1/2", "-translate-x-3/4"];
+    xClassesDescription.value = ["left-1/2", "-translate-x-3/4"]
   }
-});
+})
 
 const showDescription = async () => {
-  xClassesDescription.value = ["left-1/2", "-translate-x-1/2"];
-  isDescriptionDisplayed.value = true;
-};
+  xClassesDescription.value = ["left-1/2", "-translate-x-1/2"]
+  isDescriptionDisplayed.value = true
+}
 
 const clickOutsideDescription = (event: MouseEvent) => {
-  if (thisComponent.value?.contains(event.target as Node)) return;
-  isDescriptionDisplayed.value = false;
-};
+  if (thisComponent.value?.contains(event.target as Node)) return
+  isDescriptionDisplayed.value = false
+}
 
 onMounted(() => {
-  useEventListener(window, "click", clickOutsideDescription);
-  useEventListener(descriptionElement, "transitionend", descriptionRect.update);
-});
+  useEventListener(window, "click", clickOutsideDescription)
+  useEventListener(descriptionElement, "transitionend", descriptionRect.update)
+})
 </script>
 
 <style lang="postcss" scoped>

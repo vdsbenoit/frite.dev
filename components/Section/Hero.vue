@@ -2,10 +2,7 @@
   <div class="flex min-h-screen items-center justify-center">
     <div>
       <div id="background-clip" :style="{ clipPath }"></div>
-      <h1
-        ref="heroTitle"
-        class="relative mt-3 px-0.5 text-center font-bold tracking-tight sm:px-2"
-      >
+      <h1 ref="heroTitle" class="relative mt-3 px-0.5 text-center font-bold tracking-tight sm:px-2">
         <span
           class="anim-bring-in block bg-gradient-to-t from-gray-400 to-white bg-clip-text text-[28px] text-transparent sm:text-5xl sm:leading-tight"
         >
@@ -45,21 +42,21 @@
 </template>
 
 <script lang="ts" setup>
-import { useElementBounding } from "@vueuse/core";
+import { useElementBounding } from "@vueuse/core"
 
 // Props
 
 const props = defineProps<{
-  isActive: boolean;
-}>();
+  isActive: boolean
+}>()
 
-const heroTitle = ref<HTMLInputElement | null>(null);
-const heroTitleRect = useElementBounding(heroTitle);
+const heroTitle = ref<HTMLInputElement | null>(null)
+const heroTitleRect = useElementBounding(heroTitle)
 
 const clipPath = computed(() => {
-  if (!heroTitleRect.left.value) return "";
-  return `polygon(${heroTitleRect.left.value}px ${heroTitleRect.top.value}px, ${heroTitleRect.right.value}px ${heroTitleRect.top.value}px, ${heroTitleRect.right.value}px ${heroTitleRect.bottom.value}px, ${heroTitleRect.left.value}px ${heroTitleRect.bottom.value}px)`;
-});
+  if (!heroTitleRect.left.value) return ""
+  return `polygon(${heroTitleRect.left.value}px ${heroTitleRect.top.value}px, ${heroTitleRect.right.value}px ${heroTitleRect.top.value}px, ${heroTitleRect.right.value}px ${heroTitleRect.bottom.value}px, ${heroTitleRect.left.value}px ${heroTitleRect.bottom.value}px)`
+})
 </script>
 
 <style scoped>

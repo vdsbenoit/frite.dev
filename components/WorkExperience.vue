@@ -7,11 +7,7 @@
       @mouseenter="isBadgeHovered = true"
       @mouseleave="isBadgeHovered = false"
     >
-      <UBadge
-        :class="{ 'flip-badge': isBadgeRotating }"
-        color="primary"
-        variant="outline"
-      >
+      <UBadge :class="{ 'flip-badge': isBadgeRotating }" color="primary" variant="outline">
         {{ badgeText }}
       </UBadge>
     </div>
@@ -49,11 +45,7 @@
       <!-- Icon (absolute position, relative to content) -->
       <div
         class="absolute -left-5 top-1/2 flex size-10 -translate-y-1/2 items-center justify-center overflow-hidden rounded-full sm:scale-100"
-        :class="[
-          { 'bg-primary': !icon },
-          iconWrapperClass,
-          isOpen ? 'scale-0' : 'scale-100',
-        ]"
+        :class="[{ 'bg-primary': !icon }, iconWrapperClass, isOpen ? 'scale-0' : 'scale-100']"
       >
         <UIcon
           v-if="!icon"
@@ -66,90 +58,78 @@
           alt="icon"
           :class="[iconClass ? iconClass : 'size-8']"
         />
-        <UIcon
-          v-else
-          :name="icon"
-          :class="[iconClass ? iconClass : 'size-8']"
-        />
+        <UIcon v-else :name="icon" :class="[iconClass ? iconClass : 'size-8']" />
       </div>
     </div>
   </div>
 </template>
 
 <script lang="ts" setup>
-import {
-  computedAsync,
-  useEventListener,
-  usePreferredReducedMotion,
-} from "@vueuse/core";
+import { computedAsync, useEventListener, usePreferredReducedMotion } from "@vueuse/core"
 
 const props = defineProps<{
-  title: string;
-  company: string;
-  location: string;
-  icon?: string;
-  iconClass?: string;
-  iconWrapperClass?: string;
-  from: number;
-  to?: number;
-  description: string;
-}>();
+  title: string
+  company: string
+  location: string
+  icon?: string
+  iconClass?: string
+  iconWrapperClass?: string
+  from: number
+  to?: number
+  description: string
+}>()
 
-const preferredMotion = usePreferredReducedMotion();
-const thisComponent = ref<HTMLElement | null>(null);
-const isBadgeHovered = ref(false);
-const isBadgeRotating = ref(false);
-const badgeText = ref(props.from.toString());
-const isOpen = ref(false);
+const preferredMotion = usePreferredReducedMotion()
+const thisComponent = ref<HTMLElement | null>(null)
+const isBadgeHovered = ref(false)
+const isBadgeRotating = ref(false)
+const badgeText = ref(props.from.toString())
+const isOpen = ref(false)
 
 // Compute the duration of the work experience
 const experienceDuration = computed(() => {
-  if (!props.to) return "Current";
-  const duration = props.to - props.from;
-  return `${duration} year${duration > 1 ? "s" : ""}`;
-});
+  if (!props.to) return "Current"
+  const duration = props.to - props.from
+  return `${duration} year${duration > 1 ? "s" : ""}`
+})
 
 // Load the icon if it's a local asset
 type AssetModule = {
-  default: string;
-};
+  default: string
+}
 const imgPath = computedAsync(async () => {
   if (props.icon && props.icon.startsWith("~")) {
-    const assets = import.meta.glob<AssetModule>("~/assets/img/**/*");
+    const assets = import.meta.glob<AssetModule>("~/assets/img/**/*")
     if (props.icon.slice(1) in assets) {
-      return await assets[props.icon.slice(1)]().then(
-        (module) => module.default,
-      );
+      return await assets[props.icon.slice(1)]().then((module) => module.default)
     } else {
-      throw new Error(`${props.icon} not found in ~/assets/`);
+      throw new Error(`${props.icon} not found in ~/assets/`)
     }
-  } else return "";
-}, "");
+  } else return ""
+}, "")
 
 // Animate the badge text when hovering
 watch(isBadgeHovered, async (newHoverState) => {
-  isBadgeRotating.value = true;
+  isBadgeRotating.value = true
   setTimeout(
     () => {
-      badgeText.value = newHoverState
-        ? experienceDuration.value
-        : props.from.toString();
+      badgeText.value = newHoverState ? experienceDuration.value : props.from.toString()
     },
     preferredMotion.value === "reduce" ? 0 : 250,
-  );
+  )
   setTimeout(() => {
-    isBadgeRotating.value = false;
-  }, 500);
-});
+    isBadgeRotating.value = false
+  }, 500)
+})
 
 const clickOutsideDescription = (event: MouseEvent) => {
-  if (thisComponent.value?.contains(event.target as Node)) return;
-  isOpen.value = false;
-};
+  if (thisComponent.value?.contains(event.target as Node)) return
+  isOpen.value = false
+}
 
 onMounted(() => {
-  useEventListener(window, "click", clickOutsideDescription);
-});
+  useEventListener(window, "click", clickOutsideDescription)
+})
 </script>
 <style scoped>
 @keyframes flip {

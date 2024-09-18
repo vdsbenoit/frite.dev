@@ -17,11 +17,11 @@
 
 <script lang="ts" setup>
 const props = defineProps<{
-  title: string;
-  description?: string;
-}>();
-const isOpen = ref(false);
-const modal = useModal();
+  title: string
+  description?: string
+}>()
+const isOpen = ref(false)
+const modal = useModal()
 </script>
 
 <style scoped></style>

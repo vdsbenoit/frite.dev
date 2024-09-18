@@ -1,4 +1,4 @@
-import yaml from "@rollup/plugin-yaml";
+import yaml from "@rollup/plugin-yaml"
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
@@ -29,8 +29,7 @@ export default defineNuxtConfig({
         { charset: "utf-8" },
         {
           name: "viewport",
-          content:
-            "width=device-width, height=device-height, initial-scale=1, user-scalable=no",
+          content: "width=device-width, height=device-height, initial-scale=1, user-scalable=no",
         },
         {
           hid: "description",
@@ -43,4 +42,4 @@ export default defineNuxtConfig({
       link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }],
     },
   },
-});
+})

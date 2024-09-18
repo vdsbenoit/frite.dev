@@ -7,4 +7,4 @@ export default defineAppConfig({
     },
   },
   starDensity: 1,
-});
+})

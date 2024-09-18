@@ -1,7 +1,5 @@
 <template>
-  <div
-    class="flex min-h-screen items-start justify-center pb-24 md:pb-0 lg:items-center"
-  >
+  <div class="flex min-h-screen items-start justify-center pb-24 md:pb-0 lg:items-center">
     <div class="mt-2 max-w-screen-lg px-3 sm:mt-0 sm:px-6">
       <div class="grid grid-cols-7 gap-4">
         <!-- 1st block -->
@@ -11,11 +9,7 @@
           <div
             class="via-primary max-h-32 max-w-32 rounded-full bg-gradient-to-r from-gray-900 to-red-400 p-0.5 sm:max-h-48 sm:max-w-48"
           >
-            <img
-              src="~/assets/img/avatar.jpg"
-              alt="Avatar"
-              class="rounded-full"
-            />
+            <img src="~/assets/img/avatar.jpg" alt="Avatar" class="rounded-full" />
           </div>
           <p class="hidden font-mono sm:block">@vdsbenoit</p>
           <SocialLinks class="hidden justify-center gap-x-5 sm:flex" />
@@ -42,22 +36,16 @@
             <span class="decoration-primary underline underline-offset-2"
               >freelance developer.</span
             >
-            I find solutions to business issues using technology. I have more
-            than
+            I find solutions to business issues using technology. I have more than
             <span class="decoration-primary underline underline-offset-2"
               >{{ workTimeYears }} years of experience</span
             >
-            in software development, testing, automation and DevOps. I have
-            worked in
-            <span class="decoration-primary underline underline-offset-2"
-              >various industries</span
-            >
+            in software development, testing, automation and DevOps. I have worked in
+            <span class="decoration-primary underline underline-offset-2">various industries</span>
             such as health, education, entertainment and new technologies.
           </p>
         </div>
-        <SocialLinks
-          class="col-span-7 flex justify-center gap-x-11 sm:hidden"
-        />
+        <SocialLinks class="col-span-7 flex justify-center gap-x-11 sm:hidden" />
         <div class="col-span-7 sm:col-span-5">
           <WorkExperience
             title="Freelance Developer"
@@ -153,11 +141,11 @@
 // Props
 
 const props = defineProps<{
-  isActive: boolean;
-}>();
+  isActive: boolean
+}>()
 
-const workTime = new Date().getTime() - new Date(2016, 8).getTime();
-const workTimeYears = Math.floor(workTime / (1000 * 60 * 60 * 24 * 365.25));
+const workTime = new Date().getTime() - new Date(2016, 8).getTime()
+const workTimeYears = Math.floor(workTime / (1000 * 60 * 60 * 24 * 365.25))
 </script>
 
 <style scoped></style>
