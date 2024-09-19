@@ -1,5 +1,5 @@
 <template>
-  <div class="flex min-h-screen items-start justify-center pb-16 md:pb-0 lg:items-center">
+  <section class="flex min-h-screen items-start justify-center pb-16 md:pb-0 lg:items-center">
     <div class="max-w-screen-lg px-3 sm:px-10">
       <div v-for="subSection in content" :key="subSection.id" class="mb-6">
         <h2 class="mb-2">
@@ -32,7 +32,7 @@
         </div>
       </div>
     </div>
-  </div>
+  </section>
 </template>
 
 <script lang="ts" setup>
