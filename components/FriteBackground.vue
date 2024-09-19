@@ -36,7 +36,7 @@
         >
           <img
             src="~/assets/img/frite.png"
-            alt="frite"
+            alt="moving fry"
             :class="`h-${layer.height}`"
             :style="{
               animation:

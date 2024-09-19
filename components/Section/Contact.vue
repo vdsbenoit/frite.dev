@@ -55,18 +55,19 @@
         </UCard>
 
         <!-- Google Appointment Schedule -->
-        <UCard :ui="{ background: 'dark:bg-gray-100' }">
+        <UCard :ui="{ background: 'dark:bg-gray-100', body: { padding: 'px-0 sm:px-0 sm:pb-0' } }">
           <h3 class="mb-4 text-center text-xl font-semibold text-gray-800">
             Schedule an appointment
           </h3>
           <!-- todo: re-enable this -->
-          <!-- <iframe
+          <iframe
+            title="Schedule Google Meeting"
             src="https://calendar.google.com/calendar/appointments/schedules/AcZssZ1bFv7MU8Veh8vByx4_AGhr52K5pVaZKx9A4xGvDFUIR3a2qjoAo4i7rA9ljbcUqhheLlQvLEOc?gv=true"
             style="border: 0"
             width="100%"
             height="500"
             frameborder="0"
-          ></iframe> -->
+          ></iframe>
         </UCard>
       </div>
     </div>

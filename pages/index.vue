@@ -48,6 +48,7 @@
       </div>
       <UToggle
         v-model="showStars"
+        name="toggleStarBackground"
         size="lg"
         off-icon="i-tdesign-animation-1"
         on-icon="i-tdesign-animation-1"
