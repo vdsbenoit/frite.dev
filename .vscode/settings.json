@@ -14,7 +14,9 @@
     "class",
     "className",
     "ngClass",
-    "ui"
+    "ui",
+    "active-class",
+    "inactive-class"
   ],
   "github.copilot.chat.experimental.codeGeneration.instructions": [
     { 
