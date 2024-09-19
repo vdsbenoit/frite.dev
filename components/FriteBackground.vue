@@ -1,7 +1,12 @@
 <!-- This layout contains the animated stars background and the ellipse gradient background -->
 <template>
   <div>
-    <div id="background-ellipse" class="fixed inset-0 -z-50 h-lvh w-lvw bg-cover"></div>
+    <!-- The following gradient color hex are equivalent to Tailwind's neutral-800 & neutral-950 -->
+    <div
+      id="background-ellipse"
+      class="fixed inset-0 -z-50 h-lvh w-lvw bg-cover"
+      style="background: radial-gradient(ellipse at bottom, #262626 0%, #0a0a0a 100%)"
+    ></div>
     <div
       v-for="(layer, indexLayer) in stars"
       id="background-stars"
@@ -9,7 +14,13 @@
       :class="{ 'blur-md': isBackgroundBlurred }"
       class="fixed inset-0 -z-40 h-lvh w-lvw overflow-hidden transition duration-1000"
     >
-      <div v-for="(offset, indexOffset) in [0, bgStarHeight]" :key="indexOffset">
+      <div
+        v-for="(offset, indexOffset) in [0, bgStarHeight]"
+        :key="indexOffset"
+        :style="{
+          animation: prefersReducedMotion ? '' : `translateStar ${layer.speed}s linear infinite`,
+        }"
+      >
         <div
           v-for="(star, indexStar) in layer.stars"
           :key="indexStar"
@@ -17,7 +28,6 @@
           :style="{
             top: star.top + offset + 'px',
             left: star.left + 'px',
-            animation: prefersReducedMotion ? '' : `translateStar ${layer.speed}s linear infinite`,
           }"
           :class="{
             'opacity-0': !showStars,
@@ -158,11 +168,6 @@ onMounted(() => {
 })
 </script>
 <style>
-#background-ellipse {
-  /* this is equivalent to Tailwind's neutral-800 & neutral-950 */
-  background: radial-gradient(ellipse at bottom, #262626 0%, #0a0a0a 100%);
-}
-
 @keyframes translateStar {
   from {
     transform: translateY(0px);
