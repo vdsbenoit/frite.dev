@@ -29,7 +29,7 @@ export default defineNuxtConfig({
         { charset: "utf-8" },
         {
           name: "viewport",
-          content: "width=device-width, height=device-height, initial-scale=1, user-scalable=no",
+          content: "width=device-width, height=device-height, initial-scale=1",
         },
         {
           hid: "description",
@@ -40,6 +40,18 @@ export default defineNuxtConfig({
       ],
       htmlAttrs: { lang: "en" },
       link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }],
+    },
+  },
+  security: {
+    headers: {
+      crossOriginEmbedderPolicy:
+        process.env.NODE_ENV === "development" ? "unsafe-none" : "require-corp", //https://github.com/Baroshem/nuxt-security/issues/101
+      contentSecurityPolicy: {
+        "upgrade-insecure-requests": process.env.NODE_ENV === "development" ? false : true, // USE ONLY IN DEV MODE
+      },
+    },
+    corsHandler: {
+      origin: "*",
     },
   },
 })
