@@ -1,7 +1,8 @@
 <template>
-  <NuxtLayout name="frite-background">
-    <NuxtPage />
-  </NuxtLayout>
+  <ClientOnly>
+    <FriteBackground />
+  </ClientOnly>
+  <NuxtPage />
   <UModals />
   <UNotifications />
 </template>
