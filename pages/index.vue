@@ -52,7 +52,7 @@
         size="lg"
         off-icon="i-tdesign-animation-1"
         on-icon="i-tdesign-animation-1"
-        class="hidden sm:col-start-5 sm:inline-flex"
+        class="hidden sm:col-start-5 sm:ml-20 sm:inline-flex"
       />
     </header>
     <main class="overflow-x-hidden">
@@ -61,7 +61,7 @@
         v-for="section in SECTIONS"
         :id="section.id"
         :key="section.id"
-        v-intersection-observer="[onIntersectionObserver, { threshold: 0.5 }]"
+        v-intersection-observer="[onIntersectionObserver, { threshold: 0.3 }]"
         :is-active="currentSection === section.id"
       />
     </main>
