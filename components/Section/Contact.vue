@@ -1,6 +1,6 @@
 <template>
   <section class="flex min-h-screen items-start justify-center pb-12 md:pb-8 lg:items-center">
-    <div class="px-3">
+    <div class="w-full max-w-screen-lg px-3 sm:px-6 xl:px-0">
       <h2 class="mb-4">Contact me</h2>
       <div class="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-8">
         <!-- Contact Form -->

@@ -1,6 +1,6 @@
 <template>
   <section class="flex min-h-screen items-start justify-center pb-24 md:pb-0 lg:items-center">
-    <div class="mt-2 max-w-screen-lg px-3 sm:mt-0 sm:px-6">
+    <div class="mt-2 max-w-screen-lg px-3 sm:mt-0 sm:px-6 xl:px-0">
       <div class="grid grid-cols-7 gap-4">
         <!-- 1st block -->
         <div

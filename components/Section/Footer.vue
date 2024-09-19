@@ -1,5 +1,5 @@
 <template>
-  <footer class="mx-auto max-w-screen-lg px-3 sm:px-10">
+  <footer class="mx-auto max-w-screen-lg px-3 sm:px-6 xl:px-0">
     <UDivider size="xs">
       <SocialLinks class="mx-4 space-x-8" :black-and-white="true" />
     </UDivider>
