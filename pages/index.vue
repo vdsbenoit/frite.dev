@@ -8,12 +8,13 @@
         class="group hidden cursor-pointer items-center sm:flex"
         @click.prevent="navigateTo('#hero')"
       >
-        <img src="~/assets/img/company-logo.png" alt="frites-logo" class="mr-2 size-8 md:size-10" />
+        <img src="~/assets/img/company-logo.png" alt="frites-logo" class="mr-1 size-8 md:size-10" />
         <a
           href="#hero"
-          class="decoration-primary bg-gray-950 text-lg font-bold transition-colors focus:underline focus:underline-offset-2 focus:outline-none group-hover:text-gray-400 md:text-xl"
-          >frite.dev</a
+          class="decoration-primary rounded bg-gray-950 px-2 py-0.5 text-lg font-bold transition-colors focus:underline focus:underline-offset-2 focus:outline-none group-hover:text-gray-400 md:text-xl"
         >
+          frite.dev
+        </a>
       </div>
       <div
         class="via-primary bg-gradient-to-r from-gray-700 to-red-400 pb-[1px] sm:col-start-3 sm:rounded-xl sm:bg-gradient-to-br sm:p-[1px]"
