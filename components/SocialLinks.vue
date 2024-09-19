@@ -3,20 +3,33 @@
     class="flex items-center *:transition motion-safe:hover:*:-translate-y-1 motion-safe:hover:*:scale-110"
   >
     <NuxtLink to="https://github.com/vdsbenoit" target="_blank">
-      <UIcon name="i-simple-icons-github" class="text-xl" />
+      <UIcon :name="blackAndWhite ? 'i-simple-icons-github' : 'i-simple-icons-github'" size="20" />
     </NuxtLink>
     <NuxtLink to="https://gitlab.com/vdsbenoit" target="_blank">
-      <UIcon name="i-vscode-icons-file-type-gitlab" class="text-2xl" />
+      <UIcon
+        :name="blackAndWhite ? 'i-simple-icons-gitlab' : 'i-vscode-icons-file-type-gitlab'"
+        :size="blackAndWhite ? 20 : 23"
+      />
     </NuxtLink>
     <NuxtLink to="https://linkedin.com/in/vdsbenoit" target="_blank">
-      <UIcon name="i-logos-linkedin-icon" class="text-xl" />
+      <UIcon
+        :name="blackAndWhite ? 'i-simple-icons-linkedin' : 'i-logos-linkedin-icon'"
+        size="20"
+      />
     </NuxtLink>
     <NuxtLink to="mailto:benoit@frite.dev" target="_blank">
-      <UIcon name="i-logos-google-gmail" class="text-xl" />
+      <UIcon
+        :name="blackAndWhite ? 'i-simple-icons-gmail' : 'i-logos-google-gmail'"
+        :size="blackAndWhite ? 26 : 20"
+      />
     </NuxtLink>
   </div>
 </template>
 
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+const props = defineProps({
+  blackAndWhite: { type: Boolean, default: false },
+})
+</script>
 
 <style scoped></style>

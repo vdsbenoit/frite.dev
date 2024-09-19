@@ -1,5 +1,5 @@
 <template>
-  <div class="flex min-h-screen items-center justify-center">
+  <section class="flex min-h-screen items-center justify-center">
     <div>
       <div id="background-clip" :style="{ clipPath }"></div>
       <h1 ref="heroTitle" class="relative mt-3 px-0.5 text-center font-bold tracking-tight sm:px-2">
@@ -38,7 +38,7 @@
         </a>
       </div>
     </div>
-  </div>
+  </section>
 </template>
 
 <script lang="ts" setup>

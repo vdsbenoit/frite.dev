@@ -54,16 +54,18 @@
       />
     </header>
     <main class="overflow-x-hidden">
-      <section
+      <component
+        :is="section.component"
         v-for="section in SECTIONS"
         :id="section.id"
         :key="section.id"
         v-intersection-observer="[onIntersectionObserver, { threshold: 0.5 }]"
-      >
-        <component :is="section.component" :is-active="currentSection === section.id" />
-      </section>
+        :is-active="currentSection === section.id"
+      />
     </main>
+    <SectionFooter />
     <div
+      id="star-toggle-fab"
       class="fixed bottom-6 right-6 flex size-10 cursor-pointer items-center justify-center rounded-full shadow shadow-gray-400/50 transition-colors active:shadow-none sm:hidden"
       :class="{ 'bg-primary-400': showStars, 'bg-gray-800': !showStars }"
       @click="toggleShowStars"

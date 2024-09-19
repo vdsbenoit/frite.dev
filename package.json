@@ -19,7 +19,10 @@
     "lint:fix": "eslint . --fix"
   },
   "lint-staged": {
-    "*.{ts,js,vue,css,json,yaml}": "npx prettier --check"
+    "*.{ts,js,vue,css,json,yaml}": [
+      "npx prettier --list-different",
+      "npx eslint"
+    ]
   },
   "devDependencies": {
     "@iconify-json/flag": "^1.2.0",
