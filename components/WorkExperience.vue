@@ -50,12 +50,13 @@
         <UIcon
           v-if="!icon"
           name="i-heroicons-check-circle"
+          :aria-label="`${company} icon`"
           :class="[iconClass ? iconClass : 'size-6 text-gray-800']"
         />
         <img
           v-else-if="icon.startsWith('~')"
           :src="imgPath"
-          alt="icon"
+          :alt="`${company} icon`"
           :class="[iconClass ? iconClass : 'size-8']"
         />
         <UIcon v-else :name="icon" :class="[iconClass ? iconClass : 'size-8']" />
