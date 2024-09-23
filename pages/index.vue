@@ -88,6 +88,10 @@ import Skills from "../components/Section/Skills.vue"
 import Contact from "../components/Section/Contact.vue"
 import { vIntersectionObserver } from "@vueuse/components"
 
+// SEO config
+
+defineOgImageComponent("FriteCustom")
+
 // Variables & Constants
 
 const SECTIONS = [
@@ -98,7 +102,6 @@ const SECTIONS = [
 ]
 
 const currentSection = ref<string>("")
-
 const showStars = useState<boolean>("showStars")
 
 // Methods

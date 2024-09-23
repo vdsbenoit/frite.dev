@@ -12,14 +12,21 @@ export default defineNuxtConfig({
   site: {
     url: "https://frite.dev",
     name: "frite.dev • Portfolio",
-    description: "frite.dev offers top-notch software development services for businesses.",
+    description:
+      "frite.dev is a software development company providing tailored solutions for businesses.",
     defaultLocale: "en",
   },
   schemaOrg: {
     identity: "Organization",
   },
   ogImage: {
-    enabled: false,
+    zeroRuntime: true,
+  },
+  nitro: {
+    prerender: {
+      crawlLinks: true,
+      routes: ["/"],
+    },
   },
   app: {
     head: {
