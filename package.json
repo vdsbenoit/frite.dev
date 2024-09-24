@@ -16,7 +16,8 @@
     "format": "prettier --check .",
     "format:fix": "prettier --write .",
     "lint": "eslint .",
-    "lint:fix": "eslint . --fix"
+    "lint:fix": "eslint . --fix",
+    "deploy": "firebase deploy"
   },
   "lint-staged": {
     "*.{ts,js,vue,css,json,yaml}": [

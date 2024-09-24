@@ -2,3 +2,4 @@
 /.nuxt
 /.vscode
 eslint.config.mjs
+firebase.json
