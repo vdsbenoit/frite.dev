@@ -58,6 +58,7 @@
     "vue-tsc": "^2.1.6"
   },
   "dependencies": {
+    "@emailjs/browser": "^4.4.1",
     "@vueuse/components": "^11.1.0",
     "@vueuse/core": "^11.1.0",
     "zod": "^3.23.8"

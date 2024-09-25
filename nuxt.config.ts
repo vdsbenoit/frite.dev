@@ -1,4 +1,5 @@
 import yaml from "@rollup/plugin-yaml"
+import { defineNuxtConfig } from "nuxt/config"
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
@@ -6,6 +7,17 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   modules: ["@nuxt/ui", "@nuxt/test-utils/module", "@nuxt/eslint", "nuxt-security", "@nuxtjs/seo"],
   vite: { plugins: [yaml()] },
+  runtimeConfig: {
+    public: {
+      contactFormToEmail: "benoit@frite.dev",
+      emailjsUserPubKey: "v_5w2uNf_muKtiZ_h",
+      emailjsServiceId: "service_eqtnwg3",
+      emailjsTemplateId: "template_grzi0mc",
+      recaptcha: {
+        v2SiteKey: "6LdZhU0qAAAAAERjASYgTeSzg-N2dWc9l1EYAD77",
+      },
+    },
+  },
   colorMode: {
     preference: "dark",
   },

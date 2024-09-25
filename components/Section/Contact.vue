@@ -15,6 +15,7 @@
                 icon="i-heroicons-user"
                 color="gray"
                 :ui="UI_FORM_INPUT"
+                autocomplete="name"
               />
             </UFormGroup>
             <UFormGroup label="Email" name="email" size="xl" :ui="UI_FORM_GROUP" required>
@@ -24,6 +25,7 @@
                 icon="i-heroicons-envelope"
                 color="gray"
                 :ui="UI_FORM_INPUT"
+                autocomplete="email"
               />
             </UFormGroup>
             <UFormGroup label="Message" name="message" size="xl" :ui="UI_FORM_GROUP" required>
@@ -39,9 +41,10 @@
             </UFormGroup>
 
             <!-- reCAPTCHA -->
-            <div class="g-recaptcha" data-sitekey="YOUR_SITE_KEY"></div>
-
-            <UButton type="submit" size="xl" class="mr-2"> Send message </UButton>
+            <div id="g-recaptcha" data-sitekey="6LdZhU0qAAAAAERjASYgTeSzg-N2dWc9l1EYAD77"></div>
+            <UButton type="submit" size="xl" class="mr-2" :disabled="!emailjs.isInitialized">
+              Send message
+            </UButton>
             <UButton
               :to="mailtoLink"
               size="xl"
@@ -59,15 +62,14 @@
           <h3 class="mb-4 text-center text-xl font-semibold text-gray-800">
             Schedule an appointment
           </h3>
-          <!-- todo: re-enable this -->
-          <iframe
+          <!-- <iframe
             title="Schedule Google Meeting"
-            src="https://calendar.google.com/calendar/appointments/schedules/AcZssZ1bFv7MU8Veh8vByx4_AGhr52K5pVaZKx9A4xGvDFUIR3a2qjoAo4i7rA9ljbcUqhheLlQvLEOc?gv=true"
+            :src="GOOGLE_SCHEDULER_URL"
             style="border: 0"
             width="100%"
             height="500"
             frameborder="0"
-          ></iframe>
+          ></iframe> -->
         </UCard>
       </div>
     </div>
@@ -86,6 +88,8 @@ const props = defineProps<{
 
 // Constants & variables
 
+const GOOGLE_SCHEDULER_URL =
+  "https://calendar.google.com/calendar/appointments/schedules/AcZssZ1bFv7MU8Veh8vByx4_AGhr52K5pVaZKx9A4xGvDFUIR3a2qjoAo4i7rA9ljbcUqhheLlQvLEOc?gv=true"
 const UI_FORM_GROUP = {
   label: { base: "dark:text-gray-700 font-semibold" },
   error: "dark:text-red-500",
@@ -100,7 +104,6 @@ const UI_FORM_INPUT = {
     outline: "dark:text-gray-800 dark:bg-gray-100",
   },
 }
-const TO_EMAIL = "benoit@frite.dev"
 let lastSubmittedTime = 0
 
 const formSchema = z.object({
@@ -124,23 +127,27 @@ const formData = reactive({
   email: undefined,
   message: undefined,
 })
-
 const subject = computed(() => {
   return `Message from ${formData.name || "frite.dev"}`
 })
+const reCaptchaResponse = ref("")
 
 // Composable
 
 const modal = useModal()
 const toast = useToast()
+const emailjs = useEmailJS()
+const runtimeConfig = useRuntimeConfig()
+const TO_EMAIL = runtimeConfig.public.contactFormToEmail as string
 
 // Methods
 
 const onSubmit = async (event: FormSubmitEvent<Schema>) => {
-  const captchaResponse = grecaptcha.getResponse()
-  if (!captchaResponse) {
+  if (!reCaptchaResponse.value) {
     modal.open(AlertModal, {
-      title: "Please complete the CAPTCHA",
+      title: "reCAPTCHA validated failed",
+      description:
+        "Please complete the reCAPTCHA validation, or use the other button to send it from your inbox.",
     })
     return
   }
@@ -163,25 +170,22 @@ const onSubmit = async (event: FormSubmitEvent<Schema>) => {
     name: event.data.name,
     email: event.data.email,
     message: event.data.message,
-    "g-recaptcha-response": captchaResponse,
+    "g-recaptcha-response": reCaptchaResponse.value,
   }
 
+  // Configure emailjs
   // Send email using EmailJS, include captcha response for backend validation
-  emailjs
-    .send("YOUR_SERVICE_ID", "YOUR_TEMPLATE_ID", templateParams, "YOUR_USER_ID")
-    .then(() => {
-      toast.add({ title: "Message sent", id: "message-sent", color: "green" })
+  const { success } = await emailjs.send(templateParams)
+  if (success) {
+    toast.add({ title: "Message sent", id: "message-sent", color: "green" })
+  } else {
+    toast.add({
+      title: "Failed to send message",
+      description: "Use the other button to send it from your inbox please",
+      id: "message-error",
+      color: "red",
     })
-    .catch((error: Error) => {
-      console.error(error)
-      toast.add({
-        title: "Failed to send message",
-        description: "Use the other button to send it from your inbox please",
-        id: "message-error",
-        color: "red",
-      })
-      alert("Failed to send message.")
-    })
+  }
 }
 
 // URL encoding the message for the mailto link
