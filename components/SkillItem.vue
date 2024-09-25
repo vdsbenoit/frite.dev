@@ -13,13 +13,13 @@
           v-if="icon"
           class="size-6 sm:size-8"
           :name="icon"
-          :style="{ color: color ? color : '@apply text-neutrol-300' }"
+          :style="{ color: color ? color : '@apply text-neutral-300' }"
         />
         <span v-else class="text-nowrap font-bold text-gray-300">{{ title }}</span>
       </div>
       <!-- Caption -->
       <div
-        class="absolute bottom-0 left-1/2 -translate-x-1/2 text-nowrap rounded p-1 text-center text-sm font-semibold text-gray-800 opacity-0 ease-in-out peer-hover:z-10 peer-hover:translate-y-5 peer-hover:opacity-100 motion-safe:transition"
+        class="absolute bottom-0 left-1/2 -translate-x-1/2 text-nowrap rounded p-1 text-center text-sm font-semibold text-gray-800 opacity-0 shadow-xl ease-in-out peer-hover:z-10 peer-hover:translate-y-5 peer-hover:opacity-100 motion-safe:transition-all"
         :style="{ backgroundColor: color ? color : '' }"
         :class="{ 'bg-gray-100': !color }"
       >
