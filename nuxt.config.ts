@@ -5,13 +5,7 @@ import { defineNuxtConfig } from "nuxt/config"
 export default defineNuxtConfig({
   compatibilityDate: "2024-04-03",
   devtools: { enabled: true },
-  modules: [
-    "@nuxt/ui",
-    "@nuxt/test-utils/module",
-    "@nuxt/eslint",
-    // "nuxt-security",
-    "@nuxtjs/seo",
-  ],
+  modules: ["@nuxt/ui", "@nuxt/test-utils/module", "@nuxt/eslint", "nuxt-security", "@nuxtjs/seo"],
   vite: { plugins: [yaml()] },
   runtimeConfig: {
     public: {

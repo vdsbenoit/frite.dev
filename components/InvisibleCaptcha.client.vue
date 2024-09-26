@@ -3,7 +3,7 @@ This component adds an invisible reCaptcha validation to a form.
 Instructions of use : 
  - Set the reCaptcha site key in the public.captchaSiteKey property of the nuxt.config.ts file.
  - Wrap the form with this component. It will automatically execute the reCaptcha validation when the form is focused out.
- - Read the response and error model values to check the validation status.
+ - In the parent component, read the v-model:response and v-model:error values to check the validation status.
 
 Since, the reCaptcha badge is hidden by default, this component adds a notice to the user that the site is protected by reCaptcha, 
 in order to comply with Google's terms of service. One can customize the notice text by passing the notice-class prop.
