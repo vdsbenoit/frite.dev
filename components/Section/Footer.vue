@@ -37,7 +37,12 @@
       </div>
 
       <div class="absolute right-0 top-1/2 hidden -translate-y-1/2 sm:block">
-        <UButton icon="i-mdi-arrow-up" color="gray" variant="ghost" @click="scrollToTop">
+        <UButton
+          icon="i-heroicons-arrow-small-up"
+          color="gray"
+          variant="ghost"
+          @click="scrollToTop"
+        >
           Back to top
         </UButton>
       </div>

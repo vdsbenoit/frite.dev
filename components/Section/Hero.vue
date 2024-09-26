@@ -109,7 +109,7 @@ const clipPath = computed(() => {
   margin: 0 auto;
   /* letter-spacing: .15em; */
   animation:
-    typing 2s steps(30, end) both,
+    typing 1.5s steps(30, end) both,
     blink-caret 0.75s step-end infinite;
   animation-delay: 0.8s;
 }
