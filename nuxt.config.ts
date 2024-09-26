@@ -16,6 +16,7 @@ export default defineNuxtConfig({
   vite: { plugins: [yaml()] },
   runtimeConfig: {
     public: {
+      appVersion: process.env.npm_package_version || "unknown",
       contactFormToEmail: "benoit@frite.dev",
       emailjsUserPubKey: "v_5w2uNf_muKtiZ_h",
       emailjsServiceId: "service_eqtnwg3",
