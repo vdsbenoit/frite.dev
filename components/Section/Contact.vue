@@ -7,8 +7,8 @@
         <UCard :ui="{ background: 'dark:bg-gray-100' }">
           <h3 class="mb-4 text-center text-xl font-semibold text-gray-800">Send a message</h3>
           <InvisibleCaptcha
-            :response="captchaResponse"
-            :error="captchaError"
+            v-model:response="captchaResponse"
+            v-model:error="captchaError"
             notice-class="mt-4 text-xs text-gray-800"
           >
             <UForm :schema="formSchema" :state="formData" class="space-y-4" @submit="onSubmit">
