@@ -7,8 +7,8 @@
         <UCard :ui="{ background: 'dark:bg-gray-100' }">
           <h3 class="mb-4 text-center text-xl font-semibold text-gray-800">Send a message</h3>
           <InvisibleCaptcha
-            v-model:response="captchaResponse"
-            v-model:error="captchaError"
+            :response="captchaResponse"
+            :error="captchaError"
             notice-class="mt-4 text-xs text-gray-800"
           >
             <UForm :schema="formSchema" :state="formData" class="space-y-4" @submit="onSubmit">
@@ -77,14 +77,14 @@
           <h3 class="mb-4 text-center text-xl font-semibold text-gray-800">
             Schedule an appointment
           </h3>
-          <!-- <iframe
+          <iframe
             title="Schedule Google Meeting"
             :src="google_scheduler_url"
             style="border: 0"
             width="100%"
             height="500"
             frameborder="0"
-          ></iframe> -->
+          ></iframe>
         </UCard>
       </div>
     </div>
