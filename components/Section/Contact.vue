@@ -41,7 +41,13 @@
             </UFormGroup>
 
             <!-- reCAPTCHA -->
-            <div id="g-recaptcha" data-sitekey="6LdZhU0qAAAAAERjASYgTeSzg-N2dWc9l1EYAD77"></div>
+            <div
+              class="g-recaptcha"
+              :data-sitekey="runtimeConfig.public.captchaSiteKey"
+              hl="en"
+              data-callback="captchaCallback"
+            ></div>
+
             <UButton type="submit" size="xl" class="mr-2" :disabled="!emailjs.isInitialized">
               Send message
             </UButton>
@@ -64,7 +70,7 @@
           </h3>
           <!-- <iframe
             title="Schedule Google Meeting"
-            :src="GOOGLE_SCHEDULER_URL"
+            :src="google_scheduler_url"
             style="border: 0"
             width="100%"
             height="500"
@@ -86,10 +92,14 @@ const props = defineProps<{
   isActive: boolean
 }>()
 
+// Composables
+
+const modal = useModal()
+const toast = useToast()
+const emailjs = useEmailJS()
+
 // Constants & variables
 
-const GOOGLE_SCHEDULER_URL =
-  "https://calendar.google.com/calendar/appointments/schedules/AcZssZ1bFv7MU8Veh8vByx4_AGhr52K5pVaZKx9A4xGvDFUIR3a2qjoAo4i7rA9ljbcUqhheLlQvLEOc?gv=true"
 const UI_FORM_GROUP = {
   label: { base: "dark:text-gray-700 font-semibold" },
   error: "dark:text-red-500",
@@ -117,8 +127,13 @@ const formSchema = z.object({
       "Well, that's very long. Could you summarize it? Else, I invite you to book a call with me instead.",
     ),
 })
-
 type Schema = z.output<typeof formSchema>
+
+const runtimeConfig = useRuntimeConfig()
+const GOOGLE_SCHEDULER_BASE_URL = "https://calendar.google.com/calendar/appointments/schedules/"
+const google_scheduler_url = computed(() => {
+  return `${GOOGLE_SCHEDULER_BASE_URL}${runtimeConfig.public.googleSchedulerCalendarId}?gv=true`
+})
 
 // Reactive data
 
@@ -130,22 +145,23 @@ const formData = reactive({
 const subject = computed(() => {
   return `Message from ${formData.name || "frite.dev"}`
 })
-const reCaptchaResponse = ref("")
 
-// Composable
+const captchaResponse = ref<string | null>(null)
 
-const modal = useModal()
-const toast = useToast()
-const emailjs = useEmailJS()
-const runtimeConfig = useRuntimeConfig()
-const TO_EMAIL = runtimeConfig.public.contactFormToEmail as string
+// Lifecycle hooks
+
+onMounted(() => {
+  window.captchaCallback = (response: string) => {
+    captchaResponse.value = response
+  }
+})
 
 // Methods
 
 const onSubmit = async (event: FormSubmitEvent<Schema>) => {
-  if (!reCaptchaResponse.value) {
+  if (!captchaResponse.value) {
     modal.open(AlertModal, {
-      title: "reCAPTCHA validated failed",
+      title: "reCAPTCHA validation failed",
       description:
         "Please complete the reCAPTCHA validation, or use the other button to send it from your inbox.",
     })
@@ -170,7 +186,7 @@ const onSubmit = async (event: FormSubmitEvent<Schema>) => {
     name: event.data.name,
     email: event.data.email,
     message: event.data.message,
-    "g-recaptcha-response": reCaptchaResponse.value,
+    "g-recaptcha-response": captchaResponse.value,
   }
 
   // Configure emailjs
@@ -184,13 +200,14 @@ const onSubmit = async (event: FormSubmitEvent<Schema>) => {
       description: "Use the other button to send it from your inbox please",
       id: "message-error",
       color: "red",
+      timeout: 8000,
     })
   }
 }
 
 // URL encoding the message for the mailto link
 const mailtoLink = computed(() => {
-  let mailto = `mailto:${TO_EMAIL}?subject=${encodeURIComponent(subject.value)}`
+  let mailto = `mailto:${runtimeConfig.public.contactFormToEmail}?subject=${encodeURIComponent(subject.value)}`
   if (formData.message) mailto += `&body=${encodeURIComponent(formData.message)}`
   return mailto
 })

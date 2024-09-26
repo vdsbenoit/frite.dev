@@ -3,7 +3,7 @@
     <UAlert
       :description="description"
       :title="title"
-      :ui="{ title: 'font-semibold', description: 'mt-3 ' }"
+      :ui="{ title: 'font-semibold', description: 'mt-3 ', padding: 'sm:pl-7 sm:py-5' }"
       :close-button="{
         icon: 'i-heroicons-x-mark-20-solid',
         color: 'gray',
