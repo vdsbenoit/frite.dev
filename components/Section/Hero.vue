@@ -71,7 +71,7 @@ const clipPath = computed(() => {
 }
 @keyframes bringIn {
   from {
-    opacity: 0;
+    opacity: 0.1;
   }
   to {
     opacity: 1;

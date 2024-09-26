@@ -52,7 +52,7 @@
   </div>
 </template>
 <script setup lang="ts">
-import { useEventListener, usePreferredReducedMotion } from "@vueuse/core"
+import { useDebounceFn, useEventListener, usePreferredReducedMotion } from "@vueuse/core"
 
 // Interfaces & Types
 
@@ -161,10 +161,9 @@ onMounted(() => {
   setTimeout(() => {
     showStars.value = true
   }, 10)
-  useEventListener(window, "resize", resetStars)
-
+  useEventListener(window, "resize", useDebounceFn(resetStars, 200))
   blurBackground()
-  useEventListener(window, "scroll", blurBackground)
+  useEventListener(window, "scroll", useDebounceFn(blurBackground, 200))
 })
 </script>
 <style>
