@@ -49,6 +49,10 @@ defineProps({
 
 const execute = () => {
   if (response.value != "") return
+  if (!window.grecaptcha) {
+    console.error("reCAPTCHA not loaded")
+    return
+  }
   try {
     window.grecaptcha.execute()
     console.log("reCAPTCHA executed")
@@ -72,11 +76,13 @@ onMounted(() => {
     error.value = true
   }
   if (!window.grecaptcha) {
-    const script = document.createElement("script")
-    script.src = "https://www.google.com/recaptcha/api.js"
-    script.async = true
-    script.defer = true
-    document.head.appendChild(script)
+    useScript({
+      src: "https://www.google.com/recaptcha/api.js",
+      defer: true,
+      async: true,
+      referrerpolicy: false,
+      crossorigin: false,
+    })
   }
 })
 </script>

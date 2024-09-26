@@ -5,7 +5,14 @@ import { defineNuxtConfig } from "nuxt/config"
 export default defineNuxtConfig({
   compatibilityDate: "2024-04-03",
   devtools: { enabled: true },
-  modules: ["@nuxt/ui", "@nuxt/test-utils/module", "@nuxt/eslint", "nuxt-security", "@nuxtjs/seo"],
+  modules: [
+    "@nuxt/ui",
+    "@nuxt/test-utils/module",
+    "@nuxt/eslint",
+    "nuxt-security",
+    "@nuxtjs/seo",
+    "@nuxt/scripts",
+  ],
   vite: { plugins: [yaml()] },
   runtimeConfig: {
     public: {
@@ -30,15 +37,6 @@ export default defineNuxtConfig({
   },
   schemaOrg: {
     identity: "Organization",
-  },
-  ogImage: {
-    zeroRuntime: true,
-  },
-  nitro: {
-    prerender: {
-      crawlLinks: true,
-      routes: ["/"],
-    },
   },
   app: {
     head: {

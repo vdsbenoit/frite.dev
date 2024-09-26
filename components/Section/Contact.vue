@@ -72,19 +72,19 @@
           </InvisibleCaptcha>
         </UCard>
 
-        <!-- Google Appointment Schedule -->
+        <!-- Google Appointment Scheduler -->
         <UCard :ui="{ background: 'dark:bg-gray-100', body: { padding: 'px-0 sm:px-0 sm:pb-0' } }">
           <h3 class="mb-4 text-center text-xl font-semibold text-gray-800">
             Schedule an appointment
           </h3>
-          <iframe
+          <!-- <iframe
             title="Schedule Google Meeting"
             :src="google_scheduler_url"
             style="border: 0"
             width="100%"
             height="500"
             frameborder="0"
-          ></iframe>
+          ></iframe> -->
         </UCard>
       </div>
     </div>
