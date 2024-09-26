@@ -6,61 +6,70 @@
         <!-- Contact Form -->
         <UCard :ui="{ background: 'dark:bg-gray-100' }">
           <h3 class="mb-4 text-center text-xl font-semibold text-gray-800">Send a message</h3>
-          <UForm :schema="formSchema" :state="formData" class="space-y-4" @submit="onSubmit">
-            <!-- Form Fields -->
-            <UFormGroup label="Name" name="name" size="xl" :ui="UI_FORM_GROUP">
-              <UInput
-                v-model="formData.name"
-                type="text"
-                icon="i-heroicons-user"
-                color="gray"
-                :ui="UI_FORM_INPUT"
-                autocomplete="name"
-              />
-            </UFormGroup>
-            <UFormGroup label="Email" name="email" size="xl" :ui="UI_FORM_GROUP" required>
-              <UInput
-                v-model="formData.email"
-                type="email"
-                icon="i-heroicons-envelope"
-                color="gray"
-                :ui="UI_FORM_INPUT"
-                autocomplete="email"
-              />
-            </UFormGroup>
-            <UFormGroup label="Message" name="message" size="xl" :ui="UI_FORM_GROUP" required>
-              <UTextarea
-                v-model="formData.message"
-                color="gray"
-                :ui="UI_FORM_INPUT"
+          <InvisibleCaptcha
+            :response="captchaResponse"
+            :error="captchaError"
+            notice-class="mt-4 text-xs text-gray-800"
+          >
+            <UForm :schema="formSchema" :state="formData" class="space-y-4" @submit="onSubmit">
+              <!-- Form Fields -->
+              <UFormGroup label="Name" name="name" size="xl" :ui="UI_FORM_GROUP">
+                <UInput
+                  v-model="formData.name"
+                  type="text"
+                  icon="i-heroicons-user"
+                  color="gray"
+                  variant="outline"
+                  :ui="UI_FORM_INPUT"
+                  autocomplete="name"
+                />
+              </UFormGroup>
+              <UFormGroup label="Email" name="email" size="xl" :ui="UI_FORM_GROUP" required>
+                <UInput
+                  v-model="formData.email"
+                  type="email"
+                  icon="i-heroicons-envelope"
+                  color="gray"
+                  variant="outline"
+                  :ui="UI_FORM_INPUT"
+                  autocomplete="email"
+                />
+              </UFormGroup>
+              <UFormGroup label="Message" name="message" size="xl" :ui="UI_FORM_GROUP" required>
+                <UTextarea
+                  v-model="formData.message"
+                  color="gray"
+                  :ui="UI_FORM_INPUT"
+                  size="xl"
+                  :rows="8"
+                  autoresize
+                />
+              </UFormGroup>
+              <UTooltip
+                text="Email module is not initialized"
+                :prevent="emailjs.isInitialized.value"
+                :popper="{ placement: 'top' }"
+              >
+                <UButton
+                  type="submit"
+                  size="xl"
+                  class="mr-2"
+                  :disabled="!emailjs.isInitialized.value"
+                >
+                  Send message
+                </UButton>
+              </UTooltip>
+              <UButton
+                :to="mailtoLink"
                 size="xl"
-                :rows="8"
-                autoresize
-                eager-validation
-              />
-            </UFormGroup>
-
-            <!-- reCAPTCHA -->
-            <div
-              class="g-recaptcha"
-              :data-sitekey="runtimeConfig.public.captchaSiteKey"
-              hl="en"
-              data-callback="captchaCallback"
-            ></div>
-
-            <UButton type="submit" size="xl" class="mr-2" :disabled="!emailjs.isInitialized">
-              Send message
-            </UButton>
-            <UButton
-              :to="mailtoLink"
-              size="xl"
-              color="white"
-              variant="solid"
-              :ui="{ color: { white: { solid: 'dark:hover:bg-gray-800' } } }"
-            >
-              Send from your mailbox
-            </UButton>
-          </UForm>
+                color="white"
+                variant="solid"
+                :ui="{ color: { white: { solid: 'dark:hover:bg-gray-800' } } }"
+              >
+                Send from your mailbox
+              </UButton>
+            </UForm>
+          </InvisibleCaptcha>
         </UCard>
 
         <!-- Google Appointment Schedule -->
@@ -129,10 +138,10 @@ const formSchema = z.object({
 })
 type Schema = z.output<typeof formSchema>
 
-const runtimeConfig = useRuntimeConfig()
+const nuxtRuntimeConfig = useRuntimeConfig()
 const GOOGLE_SCHEDULER_BASE_URL = "https://calendar.google.com/calendar/appointments/schedules/"
 const google_scheduler_url = computed(() => {
-  return `${GOOGLE_SCHEDULER_BASE_URL}${runtimeConfig.public.googleSchedulerCalendarId}?gv=true`
+  return `${GOOGLE_SCHEDULER_BASE_URL}${nuxtRuntimeConfig.public.googleSchedulerCalendarId}?gv=true`
 })
 
 // Reactive data
@@ -145,16 +154,8 @@ const formData = reactive({
 const subject = computed(() => {
   return `Message from ${formData.name || "frite.dev"}`
 })
-
-const captchaResponse = ref<string | null>(null)
-
-// Lifecycle hooks
-
-onMounted(() => {
-  window.captchaCallback = (response: string) => {
-    captchaResponse.value = response
-  }
-})
+const captchaResponse = ref("")
+const captchaError = ref(false)
 
 // Methods
 
@@ -162,8 +163,9 @@ const onSubmit = async (event: FormSubmitEvent<Schema>) => {
   if (!captchaResponse.value) {
     modal.open(AlertModal, {
       title: "reCAPTCHA validation failed",
-      description:
-        "Please complete the reCAPTCHA validation, or use the other button to send it from your inbox.",
+      description: captchaError.value
+        ? "Please use the other button to send it from your inbox"
+        : "Please complete the reCAPTCHA validation, or use the other button to send it from your inbox.",
     })
     return
   }
@@ -207,7 +209,7 @@ const onSubmit = async (event: FormSubmitEvent<Schema>) => {
 
 // URL encoding the message for the mailto link
 const mailtoLink = computed(() => {
-  let mailto = `mailto:${runtimeConfig.public.contactFormToEmail}?subject=${encodeURIComponent(subject.value)}`
+  let mailto = `mailto:${nuxtRuntimeConfig.public.contactFormToEmail}?subject=${encodeURIComponent(subject.value)}`
   if (formData.message) mailto += `&body=${encodeURIComponent(formData.message)}`
   return mailto
 })
