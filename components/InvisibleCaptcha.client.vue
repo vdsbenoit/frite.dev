@@ -63,6 +63,7 @@ const execute = () => {
 
 onMounted(() => {
   window.captchaCallback = (resp: string) => {
+    console.log("reCAPTCHA response", resp)
     response.value = resp
   }
   window.captchaExpiredCallback = () => {
