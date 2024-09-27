@@ -124,7 +124,7 @@ const UI_FORM_INPUT = {
   },
 }
 let lastSubmittedTime = 0
-
+let hasSuccessfullySentMessage = false
 const formSchema = z.object({
   name: z.string().optional(),
   email: z.string().email("Invalid email format"),
@@ -173,8 +173,15 @@ const onSubmit = async (event: FormSubmitEvent<Schema>) => {
   const currentTime = Date.now()
   const timeDiff = currentTime - lastSubmittedTime
 
+  // 1 minute limit between submissions
   if (timeDiff < 60000) {
-    // 1 minute limit between submissions
+    if (hasSuccessfullySentMessage) {
+      modal.open(AlertModal, {
+        title: "Message already sent",
+        description: "You can send another message in a minute.",
+      })
+      return
+    }
     modal.open(AlertModal, {
       title: "Too many submissions",
       description: "Please wait before submitting again.",
@@ -196,6 +203,7 @@ const onSubmit = async (event: FormSubmitEvent<Schema>) => {
   const { success } = await emailjs.send(templateParams)
   if (success) {
     toast.add({ title: "Message sent", id: "message-sent", color: "green" })
+    hasSuccessfullySentMessage = true
   } else {
     toast.add({
       title: "Failed to send message",
