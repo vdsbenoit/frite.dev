@@ -6,9 +6,9 @@
     <div class="relative mb-4 mt-4">
       <div class="flex flex-col items-center justify-center space-y-3 text-gray-500">
         <!-- Left column: Logo, copyright, and brief about -->
-        <div class="flex flex-col items-center space-y-2 sm:flex-row sm:space-x-1 sm:space-y-0">
+        <div class="flex flex-col items-center space-y-2 sm:flex-row sm:space-x-2 sm:space-y-0">
           <img
-            src="~/assets/img/company-logo.png"
+            src="~/assets/img/logo-transparent.png"
             alt="company logo"
             class="mx-auto h-8 w-auto sm:h-10"
           />

@@ -51,7 +51,7 @@
             title="Freelance Developer"
             company="frite.dev"
             location="Brussels"
-            icon="~/assets/img/company-logo.png"
+            icon="~/assets/img/logo-transparent.png"
             icon-class="size-7"
             icon-wrapper-class="bg-gray-950"
             :from="2024"
