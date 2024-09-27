@@ -10,7 +10,7 @@
       >
         <img
           src="~/assets/img/logo-transparent.png"
-          alt="frites-logo"
+          alt="company-logo"
           class="mr-1 size-8 md:size-10"
         />
         <a
@@ -24,18 +24,19 @@
         class="via-primary bg-gradient-to-r from-gray-700 to-red-400 pb-[1px] sm:col-start-3 sm:rounded-xl sm:bg-gradient-to-br sm:p-[1px]"
       >
         <nav
-          class="flex items-center justify-between bg-gray-800 px-4 py-2 text-gray-100 sm:gap-x-5 sm:rounded-xl sm:px-5 sm:py-1"
+          class="flex items-center justify-evenly bg-gray-800 px-1 py-2 text-gray-100 sm:justify-between sm:gap-x-5 sm:rounded-xl sm:px-5 sm:py-1"
         >
           <div
             class="group flex cursor-pointer items-center sm:hidden"
             @click.prevent="navigateTo('#hero')"
           >
-            <img src="~/assets/img/logo-transparent.png" alt="frites-logo" class="mr-2 size-8" />
+            <img src="~/assets/img/logo-transparent.png" alt="company-logo" class="mr-1 size-6" />
             <a
               href="#hero"
-              class="decoration-primary text-lg font-bold transition-colors focus:underline focus:underline-offset-2 focus:outline-none group-hover:text-gray-400"
-              >frite.dev</a
+              class="decoration-primary font-bold transition-colors focus:underline focus:underline-offset-2 focus:outline-none group-hover:text-gray-400 sm:text-lg"
             >
+              frite.dev
+            </a>
           </div>
           <a
             v-for="section in SECTIONS"
@@ -45,9 +46,10 @@
               'text-primary': currentSection === section.id,
               hidden: section.id === 'hero',
             }"
-            class="decoration-primary transition-colors hover:text-gray-400 focus:underline focus:underline-offset-2 focus:outline-none"
-            >{{ section.title }}</a
+            class="decoration-primary text-sm transition-colors hover:text-gray-400 focus:underline focus:underline-offset-2 focus:outline-none sm:text-base"
           >
+            {{ section.title }}
+          </a>
         </nav>
       </div>
       <UToggle

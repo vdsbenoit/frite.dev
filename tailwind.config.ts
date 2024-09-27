@@ -18,6 +18,7 @@ export default <Partial<Config>>{
     "left-1/2",
     "-translate-x-1/2",
     "-translate-x-3/4",
+    "rotate-180",
   ],
   theme: {
     extend: {
