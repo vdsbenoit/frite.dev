@@ -101,6 +101,7 @@ const showDescription = async () => {
 }
 
 const clickOutsideDescription = (event: MouseEvent) => {
+  if (!isDescriptionDisplayed.value) return
   if (thisComponent.value?.contains(event.target as Node)) return
   isDescriptionDisplayed.value = false
 }

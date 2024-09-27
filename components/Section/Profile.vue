@@ -97,8 +97,8 @@ const workExperiences = [
     description: `
       In 2024, I decided to start working on my own and I created frite.dev.
       <br /><br />
-      I provide services in software development, testing, automation and DevOps.
-      My expertise lies in leveraging technology to solve business challenges.
+      I provide services in various software engineering fields, including development, automation and DevOps.
+      My expertise lies in leveraging the right technologies to solve business challenges.
     `,
   },
   {
