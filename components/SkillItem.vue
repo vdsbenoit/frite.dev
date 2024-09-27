@@ -34,7 +34,7 @@
     <div
       id="description"
       ref="descriptionElement"
-      class="fixed top-1/2 z-30 w-[97%] origin-center -translate-y-1/2 rounded bg-gray-100 p-4 text-base text-gray-900 motion-safe:transition-all sm:absolute sm:w-auto sm:min-w-72"
+      class="fixed top-1/2 z-30 w-[97%] origin-center -translate-y-1/2 rounded bg-gray-100 p-4 text-base text-gray-900 motion-safe:transition-all sm:absolute sm:w-auto sm:min-w-80"
       :class="[
         {
           'scale-100': isDescriptionDisplayed,
