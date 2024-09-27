@@ -9,7 +9,7 @@
     ></div>
     <div
       v-for="(layer, indexLayer) in stars"
-      id="background-stars"
+      :id="`background-stars-layer-${indexLayer}`"
       :key="indexLayer"
       :class="{ 'blur-md': isBackgroundBlurred }"
       class="fixed inset-0 -z-40 h-lvh w-lvw overflow-hidden transition duration-1000"
