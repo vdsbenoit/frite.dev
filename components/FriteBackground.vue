@@ -24,7 +24,7 @@
         <div
           v-for="(star, indexStar) in layer.stars"
           :key="indexStar"
-          class="pointer-events-none absolute -z-10 transition duration-300"
+          class="pointer-events-none absolute transition duration-300"
           :style="{
             top: star.top + offset + 'px',
             left: star.left + 'px',
@@ -35,9 +35,9 @@
           }"
         >
           <img
-            src="~/assets/img/frite.png"
+            src="~/assets/img/frite-background.png"
             alt="moving fry"
-            :class="`h-${layer.height}`"
+            :class="`h-${layer.height} w-auto`"
             :style="{
               animation:
                 prefersReducedMotion || !isStarRotating
@@ -83,7 +83,7 @@ const appConfig = useAppConfig()
 const bgStarWidth = ref(0)
 const bgStarHeight = ref(0)
 const preferredMotion = usePreferredReducedMotion()
-const isBackgroundBlurred = ref(false)
+const isBackgroundBlurred = useState("blurBackground", () => false)
 const isStarRotating = ref(true)
 const stars = ref<StarLayer[]>([])
 const showStars = useState("showStars", () => false)
@@ -95,7 +95,7 @@ const prefersReducedMotion = computed(() => {
 })
 
 const starTransformTo = computed(() => {
-  return `translateY(-${bgStarHeight.value}px)`
+  return `translate3d(0, -${bgStarHeight.value}px, 0)`
 })
 
 const nbStars = computed(() => {
@@ -150,10 +150,6 @@ const resetStars = () => {
     setStars()
 }
 
-const blurBackground = () => {
-  isBackgroundBlurred.value = window.scrollY > window.innerHeight / 4
-}
-
 // Lifecycle hooks
 
 onMounted(() => {
@@ -162,8 +158,6 @@ onMounted(() => {
     showStars.value = true
   }, 10)
   useEventListener(window, "resize", useDebounceFn(resetStars, 200))
-  blurBackground()
-  useEventListener(window, "scroll", useDebounceFn(blurBackground, 200))
 })
 </script>
 <style>

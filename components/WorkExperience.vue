@@ -2,8 +2,8 @@
   <div ref="thisComponent" class="flex items-center">
     <!-- Left side badge -->
     <div
-      class="mr-6 shrink-0 overflow-hidden text-center motion-safe:transition-all motion-safe:duration-700 sm:mr-8 sm:block sm:w-16"
-      :class="[isOpen ? 'hidden w-0' : 'w-16']"
+      class="mr-6 shrink-0 transform-gpu overflow-hidden text-center motion-safe:transition-all motion-safe:duration-700 sm:mr-8 sm:block sm:w-16"
+      :class="[isDescriptionDisplayed ? 'hidden w-0' : 'w-16']"
       @mouseenter="isBadgeHovered = true"
       @mouseleave="isBadgeHovered = false"
     >
@@ -13,31 +13,34 @@
     </div>
     <!-- Right side content -->
     <div
-      class="border-primary relative origin-left motion-safe:transition-all motion-safe:hover:scale-110 sm:border-l sm:pl-10"
+      class="border-primary relative origin-left transform-gpu motion-safe:transition-all motion-safe:hover:scale-110 sm:border-l sm:pl-10"
       :class="[
-        isOpen
+        isDescriptionDisplayed
           ? 'z-0 scale-110 cursor-default py-8 motion-safe:duration-700'
           : 'z-10 cursor-pointer border-l py-4 pl-8',
       ]"
-      @click="isOpen = true"
+      @click="isDescriptionDisplayed = true"
     >
+      <!-- Title -->
       <div
         class="decoration-primary line-clamp-1 underline-offset-4 motion-safe:transition-all motion-safe:duration-700"
         :class="{
-          'mb-2 font-semibold underline': isOpen,
+          'mb-2 font-semibold underline': isDescriptionDisplayed,
         }"
       >
         {{ title }}
       </div>
+      <!-- Description  -->
       <p
-        class="w-10/12 overflow-hidden border-l-2 border-gray-500 bg-gray-800 px-3 text-justify text-sm motion-safe:transition-all motion-safe:duration-700 motion-safe:ease-in-out sm:px-4"
-        :class="[isOpen ? 'max-h-[1000px] py-2' : 'max-h-0 py-0']"
+        v-intersection-observer="[onIntersectionObserver, { threshold: 0.9 }]"
+        class="w-10/12 transform-gpu overflow-hidden border-l-2 border-gray-500 bg-gray-800 px-3 text-justify text-sm motion-safe:transition-all motion-safe:duration-700 motion-safe:ease-in-out sm:px-4"
+        :class="[isDescriptionDisplayed ? 'max-h-[1000px] py-2' : 'max-h-0 py-0']"
       >
         <!-- eslint-disable-next-line vue/no-v-html -->
         <span v-html="description"></span>
       </p>
 
-      <div class="text-sm text-gray-400" :class="{ 'mt-2': isOpen }">
+      <div class="text-sm text-gray-400" :class="{ 'mt-2': isDescriptionDisplayed }">
         <span class="font-bold uppercase">{{ company }}</span>
         <span> • </span>
         <span>{{ location }}</span>
@@ -45,7 +48,11 @@
       <!-- Icon (absolute position, relative to content) -->
       <div
         class="absolute -left-5 top-1/2 flex size-10 -translate-y-1/2 items-center justify-center overflow-hidden rounded-full sm:scale-100"
-        :class="[{ 'bg-primary': !icon }, iconWrapperClass, isOpen ? 'scale-0' : 'scale-100']"
+        :class="[
+          { 'bg-primary': !icon },
+          iconWrapperClass,
+          isDescriptionDisplayed ? 'scale-0' : 'scale-100',
+        ]"
       >
         <UIcon
           v-if="!icon"
@@ -67,6 +74,7 @@
 
 <script lang="ts" setup>
 import { computedAsync, useEventListener, usePreferredReducedMotion } from "@vueuse/core"
+import { vIntersectionObserver } from "@vueuse/components"
 
 const props = defineProps<{
   title: string
@@ -85,7 +93,7 @@ const thisComponent = ref<HTMLElement | null>(null)
 const isBadgeHovered = ref(false)
 const isBadgeRotating = ref(false)
 const badgeText = ref(props.from.toString())
-const isOpen = ref(false)
+const isDescriptionDisplayed = ref(false)
 
 // Compute the duration of the work experience
 const experienceDuration = computed(() => {
@@ -125,7 +133,10 @@ watch(isBadgeHovered, async (newHoverState) => {
 
 const clickOutsideDescription = (event: MouseEvent) => {
   if (thisComponent.value?.contains(event.target as Node)) return
-  isOpen.value = false
+  isDescriptionDisplayed.value = false
+}
+const onIntersectionObserver = ([{ isIntersecting }]: IntersectionObserverEntry[]) => {
+  if (isDescriptionDisplayed.value && !isIntersecting) isDescriptionDisplayed.value = false
 }
 
 onMounted(() => {

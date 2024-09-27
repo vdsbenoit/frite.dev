@@ -61,7 +61,7 @@
         v-for="section in SECTIONS"
         :id="section.id"
         :key="section.id"
-        v-intersection-observer="[onIntersectionObserver, { threshold: 0.3 }]"
+        v-intersection-observer="[onIntersectionObserver, { threshold: 0.5 }]"
         :is-active="currentSection === section.id"
       />
     </main>

@@ -52,11 +52,20 @@ const props = defineProps<{
 
 const heroTitle = ref<HTMLInputElement | null>(null)
 const heroTitleRect = useElementBounding(heroTitle)
+const isBackgroundBlurred = useState("blurBackground")
 
 const clipPath = computed(() => {
   if (!heroTitleRect.left.value) return ""
   return `polygon(${heroTitleRect.left.value}px ${heroTitleRect.top.value}px, ${heroTitleRect.right.value}px ${heroTitleRect.top.value}px, ${heroTitleRect.right.value}px ${heroTitleRect.bottom.value}px, ${heroTitleRect.left.value}px ${heroTitleRect.bottom.value}px)`
 })
+
+watch(
+  () => props.isActive,
+  (isActive: boolean) => {
+    isBackgroundBlurred.value = !isActive
+  },
+  { immediate: true },
+)
 </script>
 
 <style scoped>
