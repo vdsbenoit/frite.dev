@@ -16,7 +16,7 @@
       class="border-primary relative origin-left motion-safe:transition-all motion-safe:hover:scale-110 sm:border-l sm:pl-10"
       :class="[
         isDescriptionDisplayed
-          ? 'z-0 scale-110 cursor-default py-8 motion-safe:duration-700'
+          ? 'z-0 scale-110 cursor-default py-8'
           : 'z-10 cursor-pointer border-l py-4 pl-8',
       ]"
       @click="isDescriptionDisplayed = true"

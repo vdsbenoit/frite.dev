@@ -26,7 +26,6 @@
                 :icon="skill.icon ?? undefined"
                 :description="skill.description"
                 :color="skill.color ?? undefined"
-                :is-parent-active="isActive"
               />
             </div>
           </div>

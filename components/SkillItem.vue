@@ -3,7 +3,11 @@
     <div>
       <!-- Invisible div that cover the whole parent div, to increase the hover area -->
       <!-- Creating a group with the parent div induced weird hover effects with the translations -->
-      <div class="peer absolute inset-0 z-20 cursor-pointer" @click="showDescription"></div>
+      <div
+        v-intersection-observer="[onIntersectionObserver, { threshold: 0.9 }]"
+        class="peer absolute inset-0 z-20 cursor-pointer"
+        @click="showDescription"
+      ></div>
       <!-- Icon -->
       <div
         id="icon"
@@ -63,13 +67,13 @@
 
 <script lang="ts" setup>
 import { useElementBounding, useEventListener } from "@vueuse/core"
+import { vIntersectionObserver } from "@vueuse/components"
 
 const props = defineProps<{
   title: string
   icon?: string
   color?: string
   description: string
-  isParentActive: boolean
 }>()
 
 const thisComponent = ref<HTMLElement | null>(null)
@@ -100,14 +104,9 @@ const clickOutsideDescription = (event: MouseEvent) => {
   if (thisComponent.value?.contains(event.target as Node)) return
   isDescriptionDisplayed.value = false
 }
-
-watch(
-  () => props.isParentActive,
-  (isParentActive: boolean) => {
-    if (isDescriptionDisplayed.value && !isParentActive) isDescriptionDisplayed.value = false
-  },
-  { immediate: true },
-)
+const onIntersectionObserver = ([{ isIntersecting }]: IntersectionObserverEntry[]) => {
+  if (isDescriptionDisplayed.value && !isIntersecting) isDescriptionDisplayed.value = false
+}
 
 onMounted(() => {
   useEventListener(window, "click", clickOutsideDescription)
