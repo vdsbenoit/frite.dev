@@ -45,7 +45,7 @@
         <p class="mb-4 py-2" v-html="description"></p>
         <!-- Close button -->
         <div
-          class="absolute bottom-0 left-0 right-0 flex h-4 cursor-pointer items-center justify-center bg-gray-800"
+          class="absolute bottom-0 left-0 right-0 flex h-4 cursor-pointer items-center justify-center bg-gray-800 hover:bg-gray-700 active:shadow-inner active:shadow-gray-900"
           @click.stop="isDescriptionDisplayed = false"
         >
           <UIcon
