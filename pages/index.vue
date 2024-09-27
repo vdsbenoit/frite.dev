@@ -72,7 +72,7 @@
     <SectionFooter />
     <div
       id="star-toggle-fab"
-      class="fixed bottom-6 right-6 flex size-10 cursor-pointer items-center justify-center rounded-full shadow shadow-gray-400/50 transition-colors active:shadow-none sm:hidden"
+      class="fixed bottom-6 right-6 flex size-10 cursor-pointer items-center justify-center rounded-full shadow shadow-gray-600/50 transition-colors active:shadow-none sm:hidden"
       :class="{ 'bg-primary-400': showStars, 'bg-gray-800': !showStars }"
       @click="toggleShowStars"
     >

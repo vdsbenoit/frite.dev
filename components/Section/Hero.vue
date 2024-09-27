@@ -11,7 +11,8 @@
         <div class="flex w-full justify-center">
           <div>
             <div
-              class="typewriter-effect bg-gradient-to-t from-gray-400 to-white bg-clip-text text-lg text-transparent sm:text-3xl"
+              class="w-0 overflow-hidden whitespace-nowrap bg-gradient-to-t from-gray-400 to-white bg-clip-text text-lg text-transparent sm:text-3xl"
+              :class="{ 'typewriter-effect': isActive }"
             >
               with tailored
               <span class="decoration-primary underline underline-offset-4">
@@ -120,7 +121,6 @@ watch(
   animation:
     typing 1.5s steps(30, end) both,
     blink-caret 0.75s step-end infinite;
-  animation-delay: 0.8s;
 }
 @media (prefers-reduced-motion) {
   .anim-bring-in {
