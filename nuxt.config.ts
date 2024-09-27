@@ -59,27 +59,9 @@ export default defineNuxtConfig({
     headers: {
       crossOriginEmbedderPolicy:
         process.env.NODE_ENV === "development" ? "unsafe-none" : "require-corp", //https://github.com/Baroshem/nuxt-security/issues/101
-      contentSecurityPolicy: {
-        "upgrade-insecure-requests": process.env.NODE_ENV === "development" ? false : true, // USE ONLY IN DEV MODE
-        "script-src": [
-          "'self'",
-          "'unsafe-inline'",
-          "https:",
-          "https://www.google.com/recaptcha/",
-          "https://www.gstatic.com/recaptcha/",
-          "'strict-dynamic'",
-          "'nonce-{{nonce}}'",
-        ],
-        "frame-src": [
-          "https://www.google.com/recaptcha/",
-          "https://recaptcha.google.com/recaptcha/",
-        ],
-        "frame-ancestors": [
-          "'self'",
-          "https://www.google.com/",
-          "https://www.google.com/recaptcha",
-        ],
-      },
+      // xFrameOptions: false,
+      xContentTypeOptions: "nosniff",
+      contentSecurityPolicy: false,
     },
     corsHandler: {
       origin: "*",
