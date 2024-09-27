@@ -1,5 +1,9 @@
 <template>
-  <div ref="thisComponent" class="flex items-center">
+  <div
+    ref="thisComponent"
+    v-intersection-observer="[onIntersectionObserver, { threshold: 0.3 }]"
+    class="flex items-center"
+  >
     <!-- Left side badge -->
     <div
       class="mr-6 shrink-0 overflow-hidden text-center motion-safe:transition-all motion-safe:duration-700 sm:mr-8 sm:block sm:w-16"
@@ -12,8 +16,9 @@
       </UBadge>
     </div>
     <!-- Right side content -->
+    <!-- I use flex-col-reverse so the description pushes the surrounding content upwards when being opened -->
     <div
-      class="border-primary relative origin-left motion-safe:transition-all motion-safe:hover:scale-110 sm:border-l sm:pl-10"
+      class="border-primary relative flex origin-left flex-col-reverse motion-safe:transition-all motion-safe:hover:scale-110 sm:border-l sm:pl-10"
       :class="[
         isDescriptionDisplayed
           ? 'z-0 scale-110 cursor-default py-8'
@@ -21,6 +26,20 @@
       ]"
       @click="isDescriptionDisplayed = true"
     >
+      <!-- Location -->
+      <div class="text-sm text-gray-400" :class="{ 'mt-2': isDescriptionDisplayed }">
+        <span class="font-bold uppercase">{{ company }}</span>
+        <span> • </span>
+        <span>{{ location }}</span>
+      </div>
+      <!-- Description  -->
+      <p
+        class="w-10/12 overflow-hidden border-l-2 border-gray-500 bg-gray-800 px-3 text-justify text-sm motion-safe:transition-all motion-safe:duration-700 motion-safe:ease-in-out sm:px-4"
+        :class="[isDescriptionDisplayed ? 'max-h-[1000px] py-2' : 'max-h-0 py-0']"
+      >
+        <!-- eslint-disable-next-line vue/no-v-html -->
+        <span v-html="description"></span>
+      </p>
       <!-- Title -->
       <div
         class="decoration-primary line-clamp-1 underline-offset-4 motion-safe:transition-all motion-safe:duration-700"
@@ -29,21 +48,6 @@
         }"
       >
         {{ title }}
-      </div>
-      <!-- Description  -->
-      <p
-        v-intersection-observer="[onIntersectionObserver, { threshold: 0.9 }]"
-        class="w-10/12 overflow-hidden border-l-2 border-gray-500 bg-gray-800 px-3 text-justify text-sm motion-safe:transition-all motion-safe:duration-700 motion-safe:ease-in-out sm:px-4"
-        :class="[isDescriptionDisplayed ? 'max-h-[1000px] py-2' : 'max-h-0 py-0']"
-      >
-        <!-- eslint-disable-next-line vue/no-v-html -->
-        <span v-html="description"></span>
-      </p>
-
-      <div class="text-sm text-gray-400" :class="{ 'mt-2': isDescriptionDisplayed }">
-        <span class="font-bold uppercase">{{ company }}</span>
-        <span> • </span>
-        <span>{{ location }}</span>
       </div>
       <!-- Icon (absolute position, relative to content) -->
       <div
