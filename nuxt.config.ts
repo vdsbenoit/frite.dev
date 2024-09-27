@@ -64,6 +64,9 @@ export default defineNuxtConfig({
     headers: {
       crossOriginEmbedderPolicy:
         process.env.NODE_ENV === "development" ? "unsafe-none" : "require-corp", //https://github.com/Baroshem/nuxt-security/issues/101
+      contentSecurityPolicy: {
+        "upgrade-insecure-requests": process.env.NODE_ENV === "development" ? false : true, // USE ONLY IN DEV MODE
+      },
     },
     corsHandler: {
       origin: "*",
