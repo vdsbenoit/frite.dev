@@ -30,8 +30,8 @@
             left: star.left + 'px',
           }"
           :class="{
-            'opacity-0': !showStars,
-            'opacity-100': showStars,
+            'opacity-0': !isStarVisible,
+            'opacity-100': isStarVisible,
           }"
         >
           <img
@@ -84,9 +84,10 @@ const bgStarWidth = ref(0)
 const bgStarHeight = ref(0)
 const preferredMotion = usePreferredReducedMotion()
 const isBackgroundBlurred = useState("blurBackground", () => false)
-const isStarRotating = ref(true)
+const isStarsEnabled = useState("isStarsEnabled", () => true)
 const stars = ref<StarLayer[]>([])
-const showStars = useState("showStars", () => false)
+const isStarRotating = ref(true)
+const isStarVisible = ref(false)
 
 // Computed variables
 
@@ -133,8 +134,9 @@ const generateStars = (n: number): Star[] => {
 }
 
 const setStars = () => {
-  bgStarWidth.value = window.outerWidth
-  bgStarHeight.value = window.outerHeight
+  console.log("set stars")
+  bgStarWidth.value = window.innerWidth
+  bgStarHeight.value = window.innerHeight
   stars.value = [
     { stars: generateStars(nbStars.value * 6), speed: 70, height: 2 },
     { stars: generateStars(nbStars.value * 2), speed: 100, height: 3 },
@@ -144,19 +146,33 @@ const setStars = () => {
 
 const resetStars = () => {
   if (
-    Math.abs(window.outerWidth - bgStarWidth.value) > bgStarWidth.value * RESET_THRESHOLD_X ||
-    Math.abs(window.outerHeight - bgStarHeight.value) > bgStarHeight.value * RESET_THRESHOLD_Y
+    Math.abs(window.innerWidth - bgStarWidth.value) > bgStarWidth.value * RESET_THRESHOLD_X ||
+    Math.abs(window.innerHeight - bgStarHeight.value) > bgStarHeight.value * RESET_THRESHOLD_Y
   )
     setStars()
 }
 
+watch(
+  isStarsEnabled,
+  (isEnabled) => {
+    if (isEnabled) {
+      setStars()
+      setTimeout(() => {
+        isStarVisible.value = true
+      }, 10)
+    } else {
+      isStarVisible.value = false
+      setTimeout(() => {
+        stars.value = []
+      }, 300)
+    }
+  },
+  { immediate: true },
+)
+
 // Lifecycle hooks
 
 onMounted(() => {
-  setStars()
-  setTimeout(() => {
-    showStars.value = true
-  }, 10)
   useEventListener(window, "resize", useDebounceFn(resetStars, 200))
 })
 </script>

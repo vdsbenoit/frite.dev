@@ -1,7 +1,5 @@
 <template>
-  <ClientOnly>
-    <FriteBackground />
-  </ClientOnly>
+  <FriteBackground />
   <NuxtPage />
   <UModals />
   <UNotifications />

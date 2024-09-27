@@ -51,7 +51,7 @@
         </nav>
       </div>
       <UToggle
-        v-model="showStars"
+        v-model="isStarsEnabled"
         name="toggleStarBackground"
         size="lg"
         off-icon="i-tdesign-animation-1"
@@ -73,13 +73,13 @@
     <div
       id="star-toggle-fab"
       class="fixed bottom-6 right-6 flex size-10 cursor-pointer items-center justify-center rounded-full shadow shadow-gray-600/50 transition-colors active:shadow-none sm:hidden"
-      :class="{ 'bg-primary-400': showStars, 'bg-gray-800': !showStars }"
-      @click="toggleShowStars"
+      :class="{ 'bg-primary-400': isStarsEnabled, 'bg-gray-800': !isStarsEnabled }"
+      @click="toggleStars"
     >
       <UIcon
         name="i-tdesign-animation-1"
         class="size-5 transition-colors"
-        :class="{ 'bg-primary-400': !showStars, 'bg-gray-800': showStars }"
+        :class="{ 'bg-primary-400': !isStarsEnabled, 'bg-gray-800': isStarsEnabled }"
       />
     </div>
   </div>
@@ -106,12 +106,12 @@ const SECTIONS = [
 ]
 
 const currentSection = ref<string>("")
-const showStars = useState<boolean>("showStars")
+const isStarsEnabled = useState<boolean>("isStarsEnabled", () => true)
 
 // Methods
 
-const toggleShowStars = () => {
-  showStars.value = !showStars.value
+const toggleStars = () => {
+  isStarsEnabled.value = !isStarsEnabled.value
 }
 
 const onIntersectionObserver = (entries: IntersectionObserverEntry[]) => {
