@@ -2,7 +2,7 @@
 <template>
   <div>
     <header
-      class="fixed left-0 right-0 top-0 z-30 items-center sm:top-8 sm:grid sm:grid-flow-col sm:grid-cols-5 sm:justify-items-center"
+      class="fixed left-0 right-0 top-0 z-30 items-center sm:top-8 sm:grid sm:grid-flow-col sm:grid-cols-5 sm:justify-items-center sm:px-6 xl:px-0"
     >
       <div
         class="group hidden cursor-pointer items-center sm:flex"
