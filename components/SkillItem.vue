@@ -34,7 +34,7 @@
     <div
       id="description"
       ref="descriptionElement"
-      class="fixed top-1/2 z-30 min-w-72 origin-center -translate-y-1/2 rounded bg-gray-100 p-4 text-base text-gray-900 motion-safe:transition-all sm:absolute"
+      class="fixed top-1/2 z-30 w-[97%] origin-center -translate-y-1/2 rounded bg-gray-100 p-4 text-base text-gray-900 motion-safe:transition-all sm:absolute sm:w-auto sm:min-w-72"
       :class="[
         {
           'scale-100': isDescriptionDisplayed,
@@ -86,12 +86,15 @@ const xClassesDescription = ref<string[]>([])
  * Ensure the description popup does not go out the the viewport
  */
 watch(descriptionRect.left, () => {
-  // if it does not fit on both sides, change the way it is displayed to a fixed centered position
+  if (window.innerWidth < 640) return
   if (descriptionRect.left.value < 0) {
     xClassesDescription.value = ["left-0"]
-    // if description goes out of the viewport on the right side
-  } else if (descriptionRect.right.value > window.innerWidth) {
+    return
+  }
+  // if description goes out of the viewport on the right side
+  if (descriptionRect.right.value > window.innerWidth) {
     xClassesDescription.value = ["left-1/2", "-translate-x-3/4"]
+    return
   }
 })
 
