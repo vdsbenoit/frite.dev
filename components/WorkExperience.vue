@@ -2,7 +2,7 @@
   <div ref="thisComponent" class="flex items-center">
     <!-- Left side badge -->
     <div
-      class="mr-6 shrink-0 transform-gpu overflow-hidden text-center motion-safe:transition-all motion-safe:duration-700 sm:mr-8 sm:block sm:w-16"
+      class="mr-6 shrink-0 overflow-hidden text-center motion-safe:transition-all motion-safe:duration-700 sm:mr-8 sm:block sm:w-16"
       :class="[isDescriptionDisplayed ? 'hidden w-0' : 'w-16']"
       @mouseenter="isBadgeHovered = true"
       @mouseleave="isBadgeHovered = false"
@@ -13,7 +13,7 @@
     </div>
     <!-- Right side content -->
     <div
-      class="border-primary relative origin-left transform-gpu motion-safe:transition-all motion-safe:hover:scale-110 sm:border-l sm:pl-10"
+      class="border-primary relative origin-left motion-safe:transition-all motion-safe:hover:scale-110 sm:border-l sm:pl-10"
       :class="[
         isDescriptionDisplayed
           ? 'z-0 scale-110 cursor-default py-8 motion-safe:duration-700'
@@ -33,7 +33,7 @@
       <!-- Description  -->
       <p
         v-intersection-observer="[onIntersectionObserver, { threshold: 0.9 }]"
-        class="w-10/12 transform-gpu overflow-hidden border-l-2 border-gray-500 bg-gray-800 px-3 text-justify text-sm motion-safe:transition-all motion-safe:duration-700 motion-safe:ease-in-out sm:px-4"
+        class="w-10/12 overflow-hidden border-l-2 border-gray-500 bg-gray-800 px-3 text-justify text-sm motion-safe:transition-all motion-safe:duration-700 motion-safe:ease-in-out sm:px-4"
         :class="[isDescriptionDisplayed ? 'max-h-[1000px] py-2' : 'max-h-0 py-0']"
       >
         <!-- eslint-disable-next-line vue/no-v-html -->

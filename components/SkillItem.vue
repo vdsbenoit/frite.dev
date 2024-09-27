@@ -7,7 +7,7 @@
       <!-- Icon -->
       <div
         id="icon"
-        class="flex size-12 scale-100 transform-gpu items-center justify-center rounded-full border border-gray-800 bg-gray-900 ease-in-out peer-hover:z-10 peer-hover:-translate-y-4 peer-hover:scale-110 peer-hover:shadow-sm peer-hover:shadow-gray-700 motion-safe:transition-all sm:size-16"
+        class="flex size-12 scale-100 items-center justify-center rounded-full border border-gray-800 bg-gray-900 ease-in-out peer-hover:z-10 peer-hover:-translate-y-4 peer-hover:scale-110 peer-hover:shadow-sm peer-hover:shadow-gray-700 motion-safe:transition-all sm:size-16"
       >
         <UIcon
           v-if="icon"
@@ -19,7 +19,7 @@
       </div>
       <!-- Caption -->
       <div
-        class="absolute bottom-0 left-1/2 -translate-x-1/2 transform-gpu text-nowrap rounded p-1 text-center text-sm font-semibold text-gray-800 opacity-0 shadow shadow-gray-600 ease-in-out peer-hover:z-10 peer-hover:translate-y-5 peer-hover:opacity-100 motion-safe:transition-all"
+        class="absolute bottom-0 left-1/2 -translate-x-1/2 text-nowrap rounded p-1 text-center text-sm font-semibold text-gray-800 opacity-0 shadow shadow-gray-600 ease-in-out peer-hover:z-10 peer-hover:translate-y-5 peer-hover:opacity-100 motion-safe:transition-all"
         :style="{ backgroundColor: color ? color : '' }"
         :class="{ 'bg-gray-100': !color }"
       >

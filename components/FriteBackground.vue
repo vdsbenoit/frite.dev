@@ -95,7 +95,7 @@ const prefersReducedMotion = computed(() => {
 })
 
 const starTransformTo = computed(() => {
-  return `translate3d(0, -${bgStarHeight.value}px, 0)`
+  return `translateY(-${bgStarHeight.value}px)`
 })
 
 const nbStars = computed(() => {
