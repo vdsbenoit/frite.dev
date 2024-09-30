@@ -23,9 +23,10 @@
       </div>
       <!-- Caption -->
       <div
-        class="absolute bottom-0 left-1/2 -translate-x-1/2 text-nowrap rounded p-1 text-center text-sm font-semibold text-gray-800 opacity-0 shadow shadow-gray-600 ease-in-out peer-hover:z-10 peer-hover:translate-y-5 peer-hover:opacity-100 motion-safe:transition-all"
+        ref="captionElement"
+        class="absolute bottom-0 rounded p-1 text-center text-sm font-semibold text-gray-800 opacity-0 shadow shadow-gray-600 ease-in-out peer-hover:z-10 peer-hover:translate-y-5 peer-hover:opacity-100 motion-safe:transition-all"
         :style="{ backgroundColor: color ? color : '' }"
-        :class="{ 'bg-gray-100': !color }"
+        :class="[{ 'bg-gray-100': !color }, xClassesCaption]"
       >
         {{ title }}
       </div>
@@ -45,7 +46,7 @@
     >
       <div class="flex items-center justify-between">
         <h4
-          class="text-nowrap rounded px-4 py-1 font-bold"
+          class="text text-wrap rounded px-4 py-1 font-bold"
           :style="{ backgroundColor: color ? color : '' }"
           :class="{
             'text-gray-800': color,
@@ -66,6 +67,7 @@
 </template>
 
 <script lang="ts" setup>
+import { ref, watch, onMounted, onUnmounted } from "vue"
 import { useElementBounding, useEventListener } from "@vueuse/core"
 import { vIntersectionObserver } from "@vueuse/components"
 
@@ -80,7 +82,30 @@ const thisComponent = ref<HTMLElement | null>(null)
 const descriptionElement = ref<HTMLElement | null>(null)
 const descriptionRect = useElementBounding(descriptionElement)
 const isDescriptionDisplayed = ref(false)
-const xClassesDescription = ref<string[]>([])
+const xClassesDescription = ref<string[]>(["left-1/2", "-translate-x-1/2"])
+const captionElement = ref<HTMLElement | null>(null)
+const captionRect = useElementBounding(captionElement)
+const xClassesCaption = ref<string[]>(["left-1/2", "-translate-x-1/2", "text-nowrap"])
+
+/**
+ * Ensure the caption does not go out the the viewport
+ */
+const adjustCaptionPosition = () => {
+  if (!captionRect.width.value) return
+  if (window.innerWidth < 640 && captionRect.width.value >= 640 * 0.97) {
+    xClassesCaption.value = ["left-1/2", "-translate-x-1/2", "text-wrap"]
+    return
+  }
+  if (captionRect.left.value < 0) {
+    xClassesCaption.value = ["left-0", "text-nowrap"]
+    return
+  }
+  // if caption goes out of the viewport on the right side
+  if (captionRect.right.value > window.innerWidth) {
+    xClassesCaption.value = ["right-0", "text-nowrap"]
+    return
+  }
+}
 
 /**
  * Ensure the description popup does not go out the the viewport
@@ -105,7 +130,7 @@ const showDescription = async () => {
 
 const clickOutsideDescription = (event: MouseEvent) => {
   if (!isDescriptionDisplayed.value) return
-  if (thisComponent.value?.contains(event.target as Node)) return
+  if (thisComponent.value && thisComponent.value.contains(event.target as Node)) return
   isDescriptionDisplayed.value = false
 }
 const onIntersectionObserver = ([{ isIntersecting }]: IntersectionObserverEntry[]) => {
@@ -115,6 +140,8 @@ const onIntersectionObserver = ([{ isIntersecting }]: IntersectionObserverEntry[
 onMounted(() => {
   useEventListener(window, "click", clickOutsideDescription)
   useEventListener(descriptionElement, "transitionend", descriptionRect.update)
+  useEventListener(window, "resize", adjustCaptionPosition)
+  adjustCaptionPosition()
 })
 </script>
 
