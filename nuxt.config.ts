@@ -31,7 +31,7 @@ export default defineNuxtConfig({
   },
   site: {
     url: "https://frite.dev",
-    name: "frite.dev • Portfolio",
+    name: "frite.dev • Benoit's portfolio",
     description:
       "frite.dev is a software development company providing tailored solutions for businesses.",
     defaultLocale: "en",
