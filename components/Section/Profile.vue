@@ -87,7 +87,7 @@ const workTimeYears = Math.floor(workTime / (1000 * 60 * 60 * 24 * 365.25))
 
 const workExperiences = [
   {
-    title: "Freelance Developer",
+    title: "Freelance Software Engineer",
     company: "frite.dev",
     location: "Brussels",
     icon: "~/assets/img/logo-transparent.png",
@@ -95,10 +95,10 @@ const workExperiences = [
     iconWrapperClass: "bg-gray-950",
     from: 2024,
     description: `
-      In 2024, I decided to start working on my own and I created frite.dev.
+      As of 2024, I work on my own as a freelance software engineer, under the name of frite.dev.
       <br /><br />
-      I provide services in various software engineering fields, including development, automation and DevOps.
-      My expertise lies in leveraging the right technologies to solve business challenges.
+      I provide services to businesses in various software engineering fields, including development, automation and DevOps.
+      My expertise lies in analyzing my client's challenges, then providing tailored solutions by leveraging the right technologies.
     `,
   },
   {
