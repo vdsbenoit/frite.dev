@@ -121,15 +121,26 @@ watch(isBackgroundBlurred, (isBlurred: boolean) => {
 const generateStars = (n: number): Star[] => {
   const stars: Star[] = []
 
-  for (let i = 0; i < n; i++) {
-    const star: Star = {
-      top: Math.floor(Math.random() * bgStarHeight.value),
-      left: Math.floor(Math.random() * bgStarWidth.value),
-      rotationDirection: Math.random() > 0.5 ? "clockwise" : "counter-clockwise",
-      rotationSpeed: Math.random() * 100 + 10, // Random speed between 10 and 110 seconds
-    }
+  // create a grid to spread stars evenly
+  const rows = Math.ceil(Math.sqrt(n))
+  const cols = Math.ceil(n / rows)
+  const cellWidth = bgStarWidth.value / cols
+  const cellHeight = bgStarHeight.value / rows
 
-    stars.push(star)
+  let count = 0
+  for (let row = 0; row < rows; row++) {
+    for (let col = 0; col < cols; col++) {
+      if (count < n) {
+        const star: Star = {
+          left: col * cellWidth + Math.random() * cellWidth,
+          top: row * cellHeight + Math.random() * cellHeight,
+          rotationDirection: Math.random() > 0.5 ? "clockwise" : "counter-clockwise",
+          rotationSpeed: Math.random() * 100 + 10, // Random speed between 10 and 110 seconds
+        }
+        stars.push(star)
+        count++
+      }
+    }
   }
   return stars
 }
