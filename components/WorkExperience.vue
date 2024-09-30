@@ -7,7 +7,10 @@
     <!-- Left side badge -->
     <div
       class="mr-6 shrink-0 overflow-hidden text-center motion-safe:transition-all motion-safe:duration-700 sm:mr-8 sm:block sm:w-16"
-      :class="[isDescriptionDisplayed ? 'hidden w-0' : 'w-16']"
+      :class="{
+        'hidden w-0': isDescriptionDisplayed,
+        'w-16': !isDescriptionDisplayed,
+      }"
       @mouseenter="isBadgeHovered = true"
       @mouseleave="isBadgeHovered = false"
     >
@@ -19,11 +22,10 @@
     <!-- I use flex-col-reverse so the description pushes the surrounding content upwards when being opened -->
     <div
       class="border-primary relative flex origin-left flex-col-reverse motion-safe:transition-all motion-safe:hover:scale-110 sm:border-l sm:pl-10"
-      :class="[
-        isDescriptionDisplayed
-          ? 'z-0 scale-110 cursor-default py-8'
-          : 'z-10 cursor-pointer border-l py-4 pl-8',
-      ]"
+      :class="{
+        'z-0 scale-110 cursor-default py-8': isDescriptionDisplayed,
+        'z-10 cursor-pointer border-l py-4 pl-8': !isDescriptionDisplayed,
+      }"
       @click="isDescriptionDisplayed = true"
     >
       <!-- Title -->
@@ -39,7 +41,10 @@
       <!-- Description  -->
       <div
         class="relative order-2 w-11/12 overflow-hidden border-l-2 border-gray-600 bg-gray-900 px-3 text-justify text-sm motion-safe:transition-all motion-safe:duration-700 motion-safe:ease-in-out sm:w-10/12 sm:px-4"
-        :class="[isDescriptionDisplayed ? 'max-h-[1000px]' : 'max-h-0']"
+        :class="{
+          'max-h-[1000px]': isDescriptionDisplayed,
+          'max-h-0': !isDescriptionDisplayed,
+        }"
       >
         <!-- eslint-disable-next-line vue/no-v-html -->
         <p class="mb-4 py-2" v-html="description"></p>

@@ -8,7 +8,7 @@
       style="background: radial-gradient(ellipse at bottom, #262626 0%, #0a0a0a 100%)"
     ></div>
     <div
-      v-for="(layer, indexLayer) in stars"
+      v-for="(layer, indexLayer) in starLayers"
       :id="`background-stars-layer-${indexLayer}`"
       :key="indexLayer"
       :class="{ 'blur-md': isBackgroundBlurred }"
@@ -37,8 +37,9 @@
           <img
             src="~/assets/img/frite-background.png"
             alt="moving fry"
-            :class="`h-${layer.height} w-auto`"
+            class="h-6 w-auto"
             :style="{
+              height: `${layer.height}rem`,
               animation:
                 prefersReducedMotion || !isStarRotating
                   ? ''
@@ -65,8 +66,8 @@ interface Star {
 
 interface StarLayer {
   stars: Star[]
-  speed: number
-  height: number
+  speed: number // n seconds to cross the screen
+  height: number // in rem
 }
 
 // Constants
@@ -85,7 +86,7 @@ const bgStarHeight = ref(0)
 const preferredMotion = usePreferredReducedMotion()
 const isBackgroundBlurred = useState("blurBackground", () => false)
 const isStarsEnabled = useState("isStarsEnabled", () => true)
-const stars = ref<StarLayer[]>([])
+const starLayers = ref<StarLayer[]>([])
 const isStarRotating = ref(true)
 const isStarVisible = ref(false)
 
@@ -137,10 +138,10 @@ const setStars = () => {
   console.log("set stars")
   bgStarWidth.value = window.innerWidth
   bgStarHeight.value = window.innerHeight
-  stars.value = [
-    { stars: generateStars(nbStars.value * 6), speed: 70, height: 2 },
-    { stars: generateStars(nbStars.value * 2), speed: 100, height: 3 },
-    { stars: generateStars(nbStars.value), speed: 150, height: 6 },
+  starLayers.value = [
+    { stars: generateStars(nbStars.value * 6), speed: 70, height: 0.5 },
+    { stars: generateStars(nbStars.value * 2), speed: 100, height: 0.75 },
+    { stars: generateStars(nbStars.value), speed: 150, height: 1.5 },
   ]
 }
 
@@ -163,7 +164,7 @@ watch(
     } else {
       isStarVisible.value = false
       setTimeout(() => {
-        stars.value = []
+        starLayers.value = []
       }, 300)
     }
   },

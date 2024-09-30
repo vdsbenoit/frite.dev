@@ -8,6 +8,8 @@ export default <Partial<Config>>{
   safelist: [
     { pattern: /grid-cols-\d/, variants: ["md"] },
     { pattern: /h-\d/ },
+    { pattern: /text-gray-\d+/ },
+    { pattern: /bg-gray-\d+/ },
     "scale-0",
     "scale-100",
     "blur-md",
@@ -15,10 +17,17 @@ export default <Partial<Config>>{
     "opacity-100",
     "hidden",
     "left-0",
+    "right-0",
     "left-1/2",
     "-translate-x-1/2",
     "-translate-x-3/4",
     "rotate-180",
+    "text-xs",
+    "text-wrap",
+    "text-nowrap",
+    "bg-[#69BE28]",
+    "size-6",
+    "size-8",
   ],
   theme: {
     extend: {
