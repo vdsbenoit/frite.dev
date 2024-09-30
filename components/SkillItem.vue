@@ -24,7 +24,7 @@
       <!-- Caption -->
       <div
         ref="captionElement"
-        class="absolute bottom-0 rounded p-1 text-center text-sm font-semibold text-gray-800 opacity-0 shadow shadow-gray-600 ease-in-out peer-hover:z-10 peer-hover:translate-y-5 peer-hover:opacity-100 motion-safe:transition-all"
+        class="absolute bottom-0 rounded p-1 text-center text-sm font-semibold text-gray-800 opacity-0 shadow shadow-gray-600 ease-in-out peer-hover:z-10 peer-hover:translate-y-6 peer-hover:opacity-100 motion-safe:transition-all"
         :style="{ backgroundColor: color ? color : '' }"
         :class="[{ 'bg-gray-100': !color }, xClassesCaption]"
       >
