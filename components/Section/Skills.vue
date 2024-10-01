@@ -25,7 +25,9 @@
                 :title="skill.title"
                 :icon="skill.icon ?? undefined"
                 :description="skill.description"
+                :opinion="skill.opinion"
                 :color="skill.color ?? undefined"
+                :level="skill.level"
               />
             </div>
           </div>

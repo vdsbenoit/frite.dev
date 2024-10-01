@@ -46,7 +46,7 @@
     >
       <div class="flex items-center justify-between">
         <h4
-          class="text text-wrap rounded px-4 py-1 font-bold"
+          class="text text-wrap rounded px-2 py-1 font-bold"
           :style="{ backgroundColor: color ? color : '' }"
           :class="{
             'text-gray-800': color,
@@ -55,29 +55,49 @@
         >
           {{ title }}
         </h4>
-        <UIcon
-          class="ml-4 size-7 cursor-pointer"
-          name="i-heroicons-x-mark-16-solid"
-          @click="isDescriptionDisplayed = false"
-        />
+        <div
+          class="size-7 cursor-pointer rounded hover:bg-gray-300 active:bg-gray-500"
+          @click="hideDescription"
+        >
+          <UIcon class="size-7" name="i-heroicons-x-mark-16-solid" />
+        </div>
       </div>
-      <p class="mt-3">{{ description }}</p>
+
+      <p class="pt-3">{{ description }}</p>
+      <p v-if="opinion" class="mt-2 border-t border-gray-400 pt-2">{{ opinion }}</p>
+      <UMeter
+        v-if="level"
+        class="pt-3"
+        :color="levelColor"
+        :value="preferredMotion === 'reduce' ? level : displayedLevel"
+        :min="0"
+        :max="3"
+        :ui="{
+          meter: {
+            bar: {
+              transition:
+                '[&::-webkit-meter-optimum-value]:duration-700 [&::-moz-meter-bar]:duration-700 [&::-webkit-meter-optimum-value]:ease-in-out [&::-moz-meter-bar]:ease-in-out',
+            },
+          },
+        }"
+      >
+        <template #label>
+          <p class="text-sm tracking-wide">Proficiency : {{ levelText }}</p>
+        </template>
+      </UMeter>
     </div>
   </div>
 </template>
 
 <script lang="ts" setup>
 import { ref, watch, onMounted, onUnmounted } from "vue"
-import { useElementBounding, useEventListener } from "@vueuse/core"
+import { useElementBounding, useEventListener, usePreferredReducedMotion } from "@vueuse/core"
 import { vIntersectionObserver } from "@vueuse/components"
+import type { SkillItem } from "~/types/skills.interfaces.ts"
 
-const props = defineProps<{
-  title: string
-  icon?: string
-  color?: string
-  description: string
-}>()
+const props = defineProps<SkillItem>()
 
+const preferredMotion = usePreferredReducedMotion()
 const thisComponent = ref<HTMLElement | null>(null)
 const descriptionElement = ref<HTMLElement | null>(null)
 const descriptionRect = useElementBounding(descriptionElement)
@@ -86,6 +106,33 @@ const xClassesDescription = ref<string[]>(["left-1/2", "-translate-x-1/2"])
 const captionElement = ref<HTMLElement | null>(null)
 const captionRect = useElementBounding(captionElement)
 const xClassesCaption = ref<string[]>(["left-1/2", "-translate-x-1/2", "text-nowrap"])
+const displayedLevel = ref(0)
+
+const levelText = computed(() => {
+  switch (props.level) {
+    case 1:
+      return "Elementary"
+    case 2:
+      return "Intermediate"
+    case 3:
+      return "Advanced"
+    default:
+      return "Unknown"
+  }
+})
+
+const levelColor = computed(() => {
+  switch (props.level) {
+    case 1:
+      return "orange"
+    case 2:
+      return "primary"
+    case 3:
+      return "green"
+    default:
+      return "gray"
+  }
+})
 
 /**
  * Ensure the caption does not go out the the viewport
@@ -126,15 +173,21 @@ watch(descriptionRect.left, () => {
 const showDescription = async () => {
   xClassesDescription.value = ["left-1/2", "-translate-x-1/2"]
   isDescriptionDisplayed.value = true
+  displayedLevel.value = props.level ?? 0
+}
+
+const hideDescription = () => {
+  isDescriptionDisplayed.value = false
+  displayedLevel.value = 0
 }
 
 const clickOutsideDescription = (event: MouseEvent) => {
   if (!isDescriptionDisplayed.value) return
   if (thisComponent.value && thisComponent.value.contains(event.target as Node)) return
-  isDescriptionDisplayed.value = false
+  hideDescription()
 }
 const onIntersectionObserver = ([{ isIntersecting }]: IntersectionObserverEntry[]) => {
-  if (isDescriptionDisplayed.value && !isIntersecting) isDescriptionDisplayed.value = false
+  if (isDescriptionDisplayed.value && !isIntersecting) hideDescription()
 }
 
 onMounted(() => {

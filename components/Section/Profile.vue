@@ -95,7 +95,7 @@ const workExperiences = [
     iconWrapperClass: "bg-gray-950",
     from: 2024,
     description: `
-      As of 2024, I work on my own as a freelance software engineer, under the name of frite.dev.
+      As of 2024, I work on my own as a freelance software engineer, and created frite.dev.
       <br /><br />
       I provide services to businesses in various software engineering fields, including development, automation and DevOps.
       My expertise lies in analyzing my client's challenges, then providing tailored solutions by leveraging the right technologies.
