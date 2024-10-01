@@ -35,7 +35,14 @@
                   autocomplete="email"
                 />
               </UFormGroup>
-              <UFormGroup label="Message" name="message" size="xl" :ui="UI_FORM_GROUP" required>
+              <UFormGroup
+                label="Message"
+                name="message"
+                size="xl"
+                :ui="UI_FORM_GROUP"
+                required
+                :hint="hintMessage"
+              >
                 <UTextarea
                   v-model="formData.message"
                   color="gray"
@@ -130,13 +137,13 @@ const formSchema = z.object({
   email: z.string().email("Invalid email format"),
   message: z
     .string()
-    .min(80, "This is interesting! Please, tell me more.")
+    .min(60, "This is interesting! Please, tell me more.")
     .max(
       600,
       "Well, that's very long. Could you summarize it? Else, I invite you to book a call with me instead.",
     ),
 })
-type Schema = z.output<typeof formSchema>
+type FormSubmitSchema = z.output<typeof formSchema>
 
 const nuxtRuntimeConfig = useRuntimeConfig()
 const GOOGLE_SCHEDULER_BASE_URL = "https://calendar.google.com/calendar/appointments/schedules/"
@@ -145,8 +152,12 @@ const google_scheduler_url = computed(() => {
 })
 
 // Reactive data
-
-const formData = reactive({
+interface FormData {
+  name: string | undefined
+  email: string | undefined
+  message: string | undefined
+}
+const formData = reactive<FormData>({
   name: undefined,
   email: undefined,
   message: undefined,
@@ -156,10 +167,19 @@ const subject = computed(() => {
 })
 const captchaResponse = ref("")
 const captchaError = ref(false)
+const hintMessage = computed(() => {
+  if (formData.message == undefined) return ""
+  const minChars =
+    formSchema.shape.message._def.checks.find((check) => check.kind === "min")?.value ?? 60
+  const maxChars =
+    formSchema.shape.message._def.checks.find((check) => check.kind === "max")?.value ?? 600
+  if (formData.message.length < minChars) return `${formData.message.length}/${minChars}`
+  return `${maxChars - formData.message.length}/${maxChars}`
+})
 
 // Methods
 
-const onSubmit = async (event: FormSubmitEvent<Schema>) => {
+const onSubmit = async (event: FormSubmitEvent<FormSubmitSchema>) => {
   if (!captchaResponse.value) {
     modal.open(AlertModal, {
       title: "reCAPTCHA validation failed",
