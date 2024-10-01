@@ -5,7 +5,11 @@
     <NuxtLink to="https://github.com/vdsbenoit" target="_blank" aria-label="GitHub Profile">
       <UIcon :name="blackAndWhite ? 'i-simple-icons-github' : 'i-simple-icons-github'" size="20" />
     </NuxtLink>
-    <NuxtLink to="https://gitlab.com/vdsbenoit" target="_blank" aria-label="GitLab Profile">
+    <NuxtLink
+      to="https://gitlab.com/users/vdsbenoit/projects"
+      target="_blank"
+      aria-label="GitLab Profile"
+    >
       <UIcon
         :name="blackAndWhite ? 'i-simple-icons-gitlab' : 'i-vscode-icons-file-type-gitlab'"
         :size="blackAndWhite ? 20 : 23"
