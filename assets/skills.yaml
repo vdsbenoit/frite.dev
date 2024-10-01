@@ -12,6 +12,7 @@
             I have experience in building full-stack applications using various
             technologies. My preferred stack right now being Vue, Nuxt, Tailwind
             and serverless backend services like Firebase.
+        # todo: add SEO
         - title: DevOps
           id: devops
           icon: i-iconoir-infinite
@@ -78,7 +79,7 @@
             Like most the software engineering companies today, the places I worked at used Agile methodologies.
         - title: V-Model
           id: waterfall
-          icon: i-tabler-square-root
+          icon: i-simple-icons-v
           color: "#14b8a6"
           description: >-
             The V-Model is a software development model that emphasis the relationships between 
@@ -493,13 +494,6 @@
           description: >-
             Trello is a web-based list-making application. 
             I used Trello in some of my projects to plan, track the progress of the tasks and to collaborate with my team.
-        - title: Bugzilla
-          id: bugzilla
-          icon: i-simple-icons-mozilla
-          color: "#9148C8"
-          description: >-
-            Bugzilla is a web-based general-purpose bug tracking system and testing tool originally developed and used by the Mozilla project. 
-            I used Bugzilla in my previous professional experiences to track bugs and issues.
         - title: IBM DOORS
           id: doors
           icon: i-simple-icons-ibm

@@ -2,10 +2,22 @@
 
 ## Tech stack
 
-- Nuxt + Vue 3 Composition API
+- Nuxt 3
+- Vue 3 Composition API
 - Nuxt UI
 - Tailwind
+- TypeScript
 - Prettier (& prettier-plugin-tailwindcss) enforced
+- ESLint enforced
+- Firebase hosting
+
+## Third party libraries
+
+- emailjs for the contact form
+- Google reCAPTCHA
+- Google Appointment Schedule
+- Nuxt SEO
+- Nuxt Security
 
 ## Design
 
@@ -22,6 +34,6 @@
 
 Here are some pieces of code and websites I used as inspiration
 
-### Stars background
+### Star background
 
-I used [this code](https://codepen.io/sarazond/pen/LYGbwj) as inspiration for the animated background. I wrote it in Vue + Tailwind instead of Sass and Compass
+I used [this code](https://codepen.io/sarazond/pen/LYGbwj) as inspiration for the animated background. I rewrote it in Vue + Tailwind instead of Sass and Compass
