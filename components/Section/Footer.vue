@@ -13,9 +13,9 @@
             class="mx-auto h-8 w-auto sm:h-10"
           />
           <p class="text-center text-sm sm:text-start">
-            frite.dev &copy; {{ new Date().getFullYear() }} - All rights reserved
+            &copy; {{ new Date().getFullYear() }} frite.dev - VAT BE1010 351 307
             <br />
-            VAT BE1010 351 307 -
+            Benoit Vander Stappen -
             <ULink to="mailto:benoit@frite.dev" class="text-sm hover:text-gray-300">
               benoit@frite.dev
             </ULink>
