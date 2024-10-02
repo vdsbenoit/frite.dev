@@ -78,11 +78,9 @@ generate:
     expire_in: 10 days
     paths:
       - .output/public
-      - package.json
-      - version.txt
 
-# Deploy only if we are on master
-deploy:
+# Deploy only if we are on main
+firebase:
   stage: deploy
   image: node:lts-slim
   cache:
@@ -94,5 +92,5 @@ deploy:
   before_script:
     - npm install firebase-tools --cache .npm --prefer-offline
   script:
-    - firebase use default
-    - firebase deploy --only hosting --token $FIREBASE_TOKEN --debug
+    - npx firebase use default
+    - npx firebase deploy --only hosting --token $FIREBASE_TOKEN --debug
