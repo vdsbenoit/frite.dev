@@ -223,7 +223,7 @@
           id: javascript
           icon: i-logos-javascript
           color: "#f7df1e"
-          level: 3
+          level: 2
           description: >-
             JavaScript is the programming language of the web. It is used to add interactivity to web pages.
           opinion: >-
@@ -368,6 +368,41 @@
             I deployed and maintained a GitLab server for multiple years in one of
             my previous professional experiences. Hence, I have a very good
             understanding of most of GitLab features.
+        - title: Firebase
+          id: firebase
+          icon: i-vscode-icons-file-type-firebase
+          color: "#f5820b"
+          level: 3
+          description: >-
+            Firebase is a BaaS (Back-end as a Service) platform developed by
+            Google for creating mobile and web applications.
+          opinion: >-
+            I used Firebase in my previous web development experiences to deploy 
+            serverless web applications.
+        - title: GCP
+          id: gcp
+          icon: i-logos-google-cloud
+          color: "#4285f4"
+          level: 2
+          description: >-
+            Google Cloud Platform is a suite of cloud computing services that
+            runs on the same infrastructure that Google uses internally for its
+            end-user products.
+          opinion: >-
+            As Firebase is part of GCP, I also used GCP in my previous 
+            web development experiences to deploy serverless applications.
+        - title: Git
+          id: git
+          icon: i-vscode-icons-file-type-git
+          color: "#f34f29"
+          level: 3
+          description: >-
+            Git is a distributed version control system.
+          opinion: >-
+            I intensively use it on every project.
+            I have a very good understanding of Git's logic and its CLI. 
+            I am also familiar with Mercurial and Subversion.
+
         - title: Artifactory
           id: artifactory
           icon: i-logos-jfrog
@@ -449,29 +484,6 @@
           opinion: >-
             I used to build Android libraries in my previous DevOps experiences.
             I know the complexity of building on various platforms.
-        - title: Firebase
-          id: firebase
-          icon: i-vscode-icons-file-type-firebase
-          color: "#f5820b"
-          level: 3
-          description: >-
-            Firebase is a BaaS (Back-end as a Service) platform developed by
-            Google for creating mobile and web applications.
-          opinion: >-
-            I used Firebase in my previous web development experiences to deploy 
-            serverless web applications.
-        - title: GCP
-          id: gcp
-          icon: i-logos-google-cloud
-          color: "#4285f4"
-          level: 2
-          description: >-
-            Google Cloud Platform is a suite of cloud computing services that
-            runs on the same infrastructure that Google uses internally for its
-            end-user products.
-          opinion: >-
-            As Firebase is part of GCP, I also used GCP in my previous 
-            web development experiences to deploy serverless applications.
         - title: Prometheus
           id: prometheus
           icon: i-logos-prometheus
@@ -493,18 +505,6 @@
           opinion: >-
             I used Grafana alongside Prometheus in my previous professional experiences 
             to monitor the performance of the software I used to maintain.
-        - title: Git
-          id: git
-          icon: i-vscode-icons-file-type-git
-          color: "#f34f29"
-          level: 3
-          description: >-
-            Git is a distributed version control system.
-          opinion: >-
-            I intensively use it on every project.
-            I have a very good understanding of Git's logic and its CLI. 
-            I am also familiar with Mercurial and Subversion.
-
     - title: Miscellaneous
       id: miscellaneous
       items:

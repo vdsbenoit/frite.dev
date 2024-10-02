@@ -11,7 +11,7 @@
       <!-- Icon -->
       <div
         id="icon"
-        class="flex size-12 scale-100 items-center justify-center rounded-full border border-gray-800 bg-gray-900 ease-in-out peer-hover:z-10 peer-hover:-translate-y-4 peer-hover:scale-110 peer-hover:shadow-sm peer-hover:shadow-gray-700 motion-safe:transition-all sm:size-16"
+        class="relative flex size-12 scale-100 items-center justify-center rounded-full border border-gray-800 bg-gray-900 ease-in-out peer-hover:z-10 peer-hover:-translate-y-4 peer-hover:scale-110 peer-hover:shadow-sm peer-hover:shadow-gray-700 motion-safe:transition-all sm:size-16"
       >
         <UIcon
           v-if="icon"
@@ -20,6 +20,11 @@
           :style="{ color: color ? color : '@apply text-neutral-300' }"
         />
         <span v-else class="text-nowrap font-bold text-gray-300">{{ title }}</span>
+        <UIcon
+          v-if="level > 2"
+          class="text-primary absolute -right-0.5 -top-0.5 size-4"
+          name="i-heroicons-star-16-solid"
+        ></UIcon>
       </div>
       <!-- Caption -->
       <div
@@ -113,7 +118,7 @@ const levelText = computed(() => {
     case 1:
       return "Elementary"
     case 2:
-      return "Intermediate"
+      return "Good"
     case 3:
       return "Advanced"
     default:
