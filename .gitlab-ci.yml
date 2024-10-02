@@ -1,0 +1,95 @@
+stages:
+  - install
+  - verify
+  - build
+  - deploy
+
+npm-ci:
+  stage: install
+  image: node:lts-slim
+  cache: # https://docs.gitlab.com/ee/ci/caching/#cache-nodejs-dependencies
+    key:
+      files:
+        - package-lock.json
+    paths:
+      - .npm/
+  script:
+    - npm ci --cache .npm --prefer-offline
+
+eslint:
+  stage: verify
+  image: node:lts-slim
+  cache:
+    key:
+      files:
+        - package-lock.json
+    paths:
+      - .npm/
+  before_script:
+    - npm ci --cache .npm --prefer-offline
+  script:
+    - npm run lint
+
+format:
+  stage: verify
+  image: node:lts-slim
+  cache:
+    key:
+      files:
+        - package-lock.json
+    paths:
+      - .npm/
+  before_script:
+    - npm ci --cache .npm --prefer-offline
+  script:
+    - npm run format
+
+vitest:
+  stage: verify
+  image: node:lts-slim
+  cache:
+    key:
+      files:
+        - package-lock.json
+    paths:
+      - .npm/
+  before_script:
+    - npm ci --cache .npm --prefer-offline
+  script:
+    - npm run test
+
+generate:
+  stage: build
+  image: node:lts-slim
+  cache:
+    key:
+      files:
+        - package-lock.json
+    paths:
+      - .npm/
+  before_script:
+    - npm ci --cache .npm --prefer-offline
+  script:
+    - npm run generate
+  artifacts:
+    expire_in: 10 days
+    paths:
+      - .output/public
+      - package.json
+      - version.txt
+
+# Deploy only if we are on master
+deploy:
+  stage: deploy
+  image: node:lts-slim
+  cache:
+    key: firebase-tools
+    paths:
+      - .npm/
+  only:
+    - main
+  before_script:
+    - npm install firebase-tools --cache .npm --prefer-offline
+  script:
+    - firebase use default
+    - firebase deploy --only hosting --token $FIREBASE_TOKEN --debug
