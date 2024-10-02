@@ -9,7 +9,7 @@
           icon: i-heroicons-code-bracket-16-solid
           color: "#f8da4c"
           description: >-
-            I have experience in building full-stack applications using various
+            I have experience in building both front-end and back-end applications, using various
             technologies. My preferred stack right now is Vue, Nuxt, Tailwind
             and serverless backend services like Firebase.
         - title: DevOps
@@ -517,7 +517,7 @@
             Windows is a group of several proprietary graphical operating system
             families, all of which are developed and marketed by Microsoft.
           opinion: >
-            I used Windows as my main operating system for most of my life.
+            I used Windows as my main operating system for most of my life, both personally and professionally.
             I can administrate Windows servers too.
         - title: MacOS
           id: macos
@@ -526,8 +526,8 @@
           description: >-
             macOS is a series of proprietary graphical operating systems developed and marketed by Apple Inc.
           opinion: >-
-            I switched to macOS in 2023. I appreciate the stability and the Unix environment of macOS.
-            I still value Windows and Linux for their use cases.
+            I personally use MacOS on a day-to-day basis. I appreciate its performances, and the stability of 
+            the Unix environment. I still value Windows and Linux for their use cases.
         - title: Linux
           id: linux
           icon: i-logos-linux-tux
