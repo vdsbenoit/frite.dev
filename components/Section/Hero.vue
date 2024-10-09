@@ -4,14 +4,14 @@
       <div id="background-clip" :style="{ clipPath }"></div>
       <h1 ref="heroTitle" class="relative mt-3 px-0.5 text-center font-bold tracking-tight sm:px-2">
         <span
-          class="anim-bring-in block bg-gradient-to-t from-gray-400 to-white bg-clip-text text-[28px] text-transparent sm:text-5xl sm:leading-tight"
+          class="anim-bring-in block bg-gradient-to-t from-gray-400 to-white bg-clip-text text-[28px] text-transparent sm:text-5xl sm:leading-tight lg:text-6xl lg:leading-normal xl:text-7xl xl:leading-relaxed"
         >
           Empower your business
         </span>
         <div class="flex w-full justify-center">
           <div>
             <div
-              class="w-0 overflow-hidden whitespace-nowrap bg-gradient-to-t from-gray-400 to-white bg-clip-text text-lg text-transparent sm:text-3xl"
+              class="w-0 overflow-hidden whitespace-nowrap bg-gradient-to-t from-gray-400 to-white bg-clip-text text-lg text-transparent sm:text-3xl lg:text-4xl xl:text-5xl"
               :class="{ 'typewriter-effect': isActive }"
             >
               with tailored
