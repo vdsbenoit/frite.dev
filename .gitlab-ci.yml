@@ -92,5 +92,4 @@ firebase:
   before_script:
     - npm install firebase-tools --cache .npm --prefer-offline
   script:
-    - npx firebase use default
     - npx firebase deploy --only hosting --token $FIREBASE_TOKEN --debug
