@@ -53,8 +53,20 @@
 
           <SocialLinks class="flex justify-center gap-x-11 sm:hidden" />
 
+          <!-- Services -->
+          <div class="lg:pr-6">
+            <p>I provide the following services:</p>
+            <ul class="list-inside list-disc px-1 py-2 sm:px-2">
+              <li>☁ cloud or 🏢 on-premises SaaS and app implementation</li>
+              <li>🛠️ micro-services development & deployment</li>
+              <li>🤖 software automation / scripting</li>
+              <li>🚀 CI/CD optimization</li>
+            </ul>
+          </div>
+
           <!-- 3rd block : work experiences -->
-          <WorkExperiences class="mt-2" />
+          <h3>My work experiences</h3>
+          <WorkExperiences />
         </div>
       </div>
     </div>
