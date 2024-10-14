@@ -247,32 +247,6 @@
             runtime environment that executes JavaScript code outside a web browser.
           opinion: >-
             I use Node.js to build server-side applications like services or API's.
-        - title: C/C++
-          id: c-lang
-          icon: i-logos-c-plusplus
-          color: "#00599C"
-          level: 1
-          description: >-
-            C and C++ are two of the most widely used programming languages in
-            the world.
-          opinion: >-
-            While I am not an active C/C++ developer, I have a good
-            understanding of the language and its ecosystem. I studied system C
-            during my bachelor and used to work with C/C++ projects in my
-            previous professional experiences.
-        - title: Java
-          id: java
-          icon: i-logos-java
-          color: "#007396"
-          level: 2
-          description: >-
-            Java is a high-level, class-based, object-oriented programming
-            language that is designed to have as few implementation dependencies
-            as possible.
-          opinion: >-
-            Java is one of the first programming languages I learned. I used
-            Java in my previous professional experiences. However, I haven't
-            worked with Java for a while.
         - title: MongoDB
           id: mongodb
           icon: i-vscode-icons-file-type-mongo
@@ -293,28 +267,6 @@
           opinion: >-
             I learned SQL during my degree and used MySQL in the past to store
             and manage data.
-        - title: php
-          id: php
-          icon: i-logos-php
-          color: "#777BB4"
-          level: 1
-          description: >-
-            php is a server-side scripting language designed for web development.
-          opinion: >-
-            I used php during my degree to build a wiki and a forum.
-        - title: Angular
-          id: angular
-          icon: i-logos-angular-icon
-          color: "#dd0031"
-          level: 1
-          description: >-
-            Angular is an open-source web application framework led by the
-            Angular Team at Google and by a community of individuals and
-            corporations.
-          opinion: >-
-            I worked with Angular for a project in the past.
-            Today, I prefer working with Vue, which provides cleaner code, hence
-            better maintainability.
         - title: Bash
           id: bash
           icon: i-simple-icons-gnubash
@@ -383,7 +335,7 @@
           id: gcp
           icon: i-logos-google-cloud
           color: "#4285f4"
-          level: 2
+          level: 1
           description: >-
             Google Cloud Platform is a suite of cloud computing services that
             runs on the same infrastructure that Google uses internally for its
