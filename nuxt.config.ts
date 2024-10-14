@@ -22,7 +22,7 @@ export default defineNuxtConfig({
       emailjsServiceId: "service_eqtnwg3",
       emailjsTemplateId: "template_grzi0mc",
       // prettier-ignore
-      googleSchedulerCalendarId: "AcZssZ1bFv7MU8Veh8vByx4_AGhr52K5pVaZKx9A4xGvDFUIR3a2qjoAo4i7rA9ljbcUqhheLlQvLEOc",
+      googleSchedulerCalendarId: "AcZssZ19CN4i1EHDIxZhCyJPYHcCg8T_sj1NDkP_nJnxZw2Yf_NfkoFqIT2BuCl1xzH92dnHnkW4xLdJ",
       captchaSiteKey: "6Le_eE8qAAAAAPsyNWtWJZTulFsdQ98bOM2KiC3w",
     },
   },
