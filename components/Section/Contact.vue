@@ -80,7 +80,12 @@
         </UCard>
 
         <!-- Google Appointment Scheduler -->
-        <UCard :ui="{ background: 'dark:bg-gray-100', body: { padding: 'px-0 sm:px-0 sm:pb-0' } }">
+        <UCard
+          :ui="{
+            background: 'dark:bg-gray-100',
+            body: { padding: 'px-0 sm:px-0 sm:pb-0 text-gray-900' },
+          }"
+        >
           <h3 class="mb-4 text-center text-xl font-semibold text-gray-800">
             Schedule an appointment
           </h3>
@@ -93,12 +98,17 @@
             height="500"
             frameborder="0"
           ></iframe>
-          <div v-else class="h-[500px] w-full justify-center text-center">
-            The appointment scheduler relies on Google services. Please
-            <span class="underline hover:text-gray-800" @click="isCookieConsentShown = true">
-              accept the use of cookies
-            </span>
-            to enable it.
+          <div v-else class="flex h-[500px] w-full items-center justify-center px-4 text-center">
+            <p>
+              The appointment scheduler relies on Google services. Please
+              <span
+                class="cursor-pointer underline hover:text-gray-700"
+                @click="isCookieConsentShown = true"
+              >
+                accept the use of cookies
+              </span>
+              to enable it.
+            </p>
           </div>
         </UCard>
       </div>

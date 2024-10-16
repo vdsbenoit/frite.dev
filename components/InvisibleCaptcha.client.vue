@@ -22,8 +22,8 @@ in order to comply with Google's terms of service. One can customize the notice 
       data-error-callback="captchaErrorCallback"
     ></div>
 
-    <div :class="noticeClass">
-      <p v-if="isCookieConsentGiven">
+    <div>
+      <p v-if="isCookieConsentGiven" :class="noticeClass">
         This site is protected by reCAPTCHA and the Google
         <ULink to="https://policies.google.com/privacy" target="_blank" class="underline">
           Privacy Policy
@@ -34,9 +34,12 @@ in order to comply with Google's terms of service. One can customize the notice 
         </ULink>
         apply.
       </p>
-      <p v-else class="text-red-500">
+      <p v-else class="pt-3 text-red-500">
         This form is protected against robots. Please,
-        <span class="underline hover:text-red-700" @click="isCookieConsentShown = true">
+        <span
+          class="cursor-pointer underline hover:text-red-700"
+          @click="isCookieConsentShown = true"
+        >
           accept the use of cookies
         </span>
         to enable the reCAPTCHA validation.

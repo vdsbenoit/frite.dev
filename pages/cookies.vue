@@ -1,8 +1,8 @@
 <template>
-  <div class="flex min-h-screen items-start justify-center lg:items-center">
-    <div class="mt-2 max-w-screen-lg px-3 sm:mt-0 sm:px-6 xl:px-0">
-      <h2 class="mb-4">Cookies & privacy</h2>
-      <p>
+  <div class="flex min-h-screen items-start justify-center">
+    <div class="mt-2 max-w-screen-lg px-3 sm:mt-16 sm:px-6 xl:px-0">
+      <h2 class="mt-4">Cookies & privacy</h2>
+      <p class="py-2">
         Your privacy is extremely important to us. We are committed to handling your personal data
         in a legal, fair, and transparent way. This privacy statement complies with the General Data
         Protection Regulation (GDPR), effective since May 25, 2018. This website uses cookies to
@@ -12,20 +12,28 @@
         external services may set cookies to collect certain data, such as analyzing visitor
         browsing behavior.
       </p>
-      <h2 class="mb-4">Cookie Settings</h2>
-      <p>
+      <h3 class="mt-4">Cookie Settings</h3>
+      <p class="py-2">
         Cookies are disabled by default. You can change this setting using the switch below. Please
         note that disabling cookies may prevent some features from functioning properly.
       </p>
-      <UToggle v-model="isCookieConsentGiven" name="cookieToggle" /> Cookies are
-      <span v-if="isCookieConsentGiven" class="text-green-800"> enabled </span>
-      <span v-else class="text-red-700"> disabled </span>.
-      <h2 class="mb-4">Removing Cookies</h2>
-      <p>
+      <div class="flex items-center gap-x-2 py-2">
+        <UToggle v-model="isCookieConsentGiven" name="cookieToggle" />
+        <p>
+          Cookies are
+          <span v-if="isCookieConsentGiven" class="text-green-600"> enabled </span>
+          <span v-else class="text-red-600"> disabled </span>
+        </p>
+      </div>
+      <h3 class="mt-4">Removing Cookies</h3>
+      <p class="py-2">
         Most web browsers allow you to delete cookies from your device. You can also block cookies
         in advance or request a warning before cookies are installed. For more information, refer to
         your browser's instructions or help section.
       </p>
+      <UButton class="mt-4" icon="i-heroicons-arrow-small-left" color="gray" variant="solid" to="/">
+        Back to homepage
+      </UButton>
     </div>
   </div>
 </template>
@@ -33,12 +41,29 @@
 <script lang="ts" setup>
 import { useLocalStorage } from "@vueuse/core"
 
-const isCookieConsentShown = useLocalStorage("cookie-consent-prompt", true)
-const isCookieConsentGiven = useLocalStorage("cookie-consent", false)
+// Reactive data
+
+const route = useRoute()
+const isCookieConsentShown = useLocalStorage<boolean>("cookie-consent-prompt", true)
+const isCookieConsentGiven = useLocalStorage<boolean>("cookie-consent", false, {
+  listenToStorageChanges: true,
+})
+const isBackgroundBlurred = useState("blurBackground", () => false)
+
+// Watchers
 
 watch(isCookieConsentGiven, () => {
   isCookieConsentShown.value = false
 })
+watch(
+  route,
+  (newRoute) => {
+    if (newRoute.name === "cookies") {
+      isBackgroundBlurred.value = true
+    }
+  },
+  { immediate: true },
+)
 </script>
 
 <style scoped>

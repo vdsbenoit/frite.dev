@@ -113,6 +113,7 @@ import Profile from "../components/Section/Profile.vue"
 import Skills from "../components/Section/Skills.vue"
 import Contact from "../components/Section/Contact.vue"
 import { vIntersectionObserver } from "@vueuse/components"
+import { useLocalStorage } from "@vueuse/core"
 
 // SEO config
 
@@ -128,7 +129,7 @@ const SECTIONS = [
 ]
 
 const currentSection = ref<string>("")
-const isStarsEnabled = useState<boolean>("isStarsEnabled", () => true)
+const isStarsEnabled = useLocalStorage("is-stars-enabled", true)
 
 // Methods
 
