@@ -35,25 +35,10 @@
           <ULink to="https://en.wikipedia.org/wiki/Belgium"> from 🇧🇪 </ULink>
         </p>
       </div>
-
-      <div class="absolute right-0 top-1/2 hidden -translate-y-1/2 sm:block">
-        <UButton
-          icon="i-heroicons-arrow-small-up"
-          color="gray"
-          variant="ghost"
-          @click="scrollToTop"
-        >
-          Back to top
-        </UButton>
-      </div>
     </div>
   </footer>
 </template>
 
-<script lang="ts" setup>
-const scrollToTop = () => {
-  window.scrollTo({ top: 0, behavior: "smooth" })
-}
-</script>
+<script lang="ts" setup></script>
 
 <style scoped></style>

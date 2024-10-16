@@ -73,8 +73,28 @@
     </main>
     <SectionFooter />
     <div
+      class="fixed bottom-6 right-6 z-30 hidden sm:block md:right-8 lg:right-10 xl:right-12 2xl:right-16"
+    >
+      <UButton
+        id="back-to-top-button"
+        icon="i-heroicons-arrow-small-up"
+        color="gray"
+        variant="ghost"
+        @click="scrollToTop"
+      >
+        Back to top
+      </UButton>
+    </div>
+    <div
+      id="back-to-top-fab"
+      class="fixed bottom-20 right-6 z-30 flex size-10 cursor-pointer items-center justify-center rounded-full bg-gray-700 shadow shadow-gray-600/50 active:shadow-none sm:hidden"
+      @click="scrollToTop"
+    >
+      <UIcon name="i-heroicons-arrow-small-up" color="gray" class="size-5" />
+    </div>
+    <div
       id="star-toggle-fab"
-      class="fixed bottom-6 right-6 flex size-10 cursor-pointer items-center justify-center rounded-full shadow shadow-gray-600/50 transition-colors active:shadow-none sm:hidden"
+      class="fixed bottom-6 right-6 z-30 flex size-10 cursor-pointer items-center justify-center rounded-full shadow shadow-gray-600/50 transition-colors active:shadow-none sm:hidden"
       :class="{ 'bg-primary-400': isStarsEnabled, 'bg-gray-800': !isStarsEnabled }"
       @click="toggleStars"
     >
@@ -122,6 +142,10 @@ const onIntersectionObserver = (entries: IntersectionObserverEntry[]) => {
       currentSection.value = entry.target.id
     }
   })
+}
+
+const scrollToTop = () => {
+  window.scrollTo({ top: 0, behavior: "smooth" })
 }
 </script>
 <style scoped></style>
