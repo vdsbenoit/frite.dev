@@ -22,24 +22,39 @@ in order to comply with Google's terms of service. One can customize the notice 
       data-error-callback="captchaErrorCallback"
     ></div>
 
-    <p :class="noticeClass">
-      This site is protected by reCAPTCHA and the Google
-      <ULink to="https://policies.google.com/privacy" target="_blank" class="underline">
-        Privacy Policy
-      </ULink>
-      and
-      <ULink to="https://policies.google.com/terms" target="_blank" class="underline">
-        Terms of Service
-      </ULink>
-      apply.
-    </p>
+    <div :class="noticeClass">
+      <p v-if="isCookieConsentGiven">
+        This site is protected by reCAPTCHA and the Google
+        <ULink to="https://policies.google.com/privacy" target="_blank" class="underline">
+          Privacy Policy
+        </ULink>
+        and
+        <ULink to="https://policies.google.com/terms" target="_blank" class="underline">
+          Terms of Service
+        </ULink>
+        apply.
+      </p>
+      <p v-else class="text-red-500">
+        This form is protected against robots. Please,
+        <span class="underline hover:text-red-700" @click="isCookieConsentShown = true">
+          accept the use of cookies
+        </span>
+        to enable the reCAPTCHA validation.
+      </p>
+    </div>
   </div>
 </template>
 
 <script lang="ts" setup>
+import { useLocalStorage } from "@vueuse/core"
+
 const nuxtRuntimeConfig = useRuntimeConfig()
+
+// Props & models
+
 const response = defineModel<string>("response")
 const error = defineModel<boolean>("error")
+
 defineProps({
   noticeClass: {
     type: String,
@@ -47,19 +62,49 @@ defineProps({
   },
 })
 
+// Reactive data
+
+const isCookieConsentShown = useLocalStorage("cookie-consent-prompt", true)
+const isCookieConsentGiven = useLocalStorage("cookie-consent", false)
+
+// Methods
+
 const execute = () => {
+  if (!isCookieConsentGiven.value) return
+  error.value = false
   if (response.value != "") return
   if (!window.grecaptcha) {
     console.error("reCAPTCHA not loaded")
+    error.value = true
     return
   }
   try {
     window.grecaptcha.execute()
     console.log("reCAPTCHA executed")
-  } catch (error) {
-    console.error("reCAPTCHA error", error)
+  } catch (e) {
+    console.error("reCAPTCHA error", e)
+    error.value = true
   }
 }
+
+const loadRecaptchaScript = () => {
+  if (window.grecaptcha) return
+  useScript({
+    src: "https://www.google.com/recaptcha/api.js",
+    defer: true,
+    async: true,
+    referrerpolicy: false,
+    crossorigin: false,
+  })
+}
+
+// Watchers & lifecycle hooks
+
+watch(isCookieConsentGiven, (newValue: boolean) => {
+  if (newValue) {
+    loadRecaptchaScript()
+  }
+})
 
 onMounted(() => {
   window.captchaCallback = (resp: string) => {
@@ -76,15 +121,7 @@ onMounted(() => {
     response.value = ""
     error.value = true
   }
-  if (!window.grecaptcha) {
-    useScript({
-      src: "https://www.google.com/recaptcha/api.js",
-      defer: true,
-      async: true,
-      referrerpolicy: false,
-      crossorigin: false,
-    })
-  }
+  if (isCookieConsentGiven.value) loadRecaptchaScript()
 })
 </script>
 

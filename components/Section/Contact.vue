@@ -61,7 +61,7 @@
                   type="submit"
                   size="xl"
                   class="mr-2"
-                  :disabled="!emailjs.isInitialized.value"
+                  :disabled="!emailjs.isInitialized.value || !captchaResponse"
                 >
                   Send message
                 </UButton>
@@ -85,6 +85,7 @@
             Schedule an appointment
           </h3>
           <iframe
+            v-if="isCookieConsentGiven"
             title="Schedule Google Meeting"
             :src="google_scheduler_url"
             style="border: 0"
@@ -92,6 +93,13 @@
             height="500"
             frameborder="0"
           ></iframe>
+          <div v-else class="h-[500px] w-full justify-center text-center">
+            The appointment scheduler relies on Google services. Please
+            <span class="underline hover:text-gray-800" @click="isCookieConsentShown = true">
+              accept the use of cookies
+            </span>
+            to enable it.
+          </div>
         </UCard>
       </div>
     </div>
@@ -101,6 +109,7 @@
 import { z } from "zod"
 import type { FormSubmitEvent } from "#ui/types"
 import { AlertModal } from "#components"
+import { useLocalStorage } from "@vueuse/core"
 
 // Props
 
@@ -176,6 +185,8 @@ const hintMessage = computed(() => {
   if (formData.message.length < minChars) return `${formData.message.length}/${minChars}`
   return `${maxChars - formData.message.length}/${maxChars}`
 })
+const isCookieConsentShown = useLocalStorage("cookie-consent-prompt", true)
+const isCookieConsentGiven = useLocalStorage("cookie-consent", false)
 
 // Methods
 

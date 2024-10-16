@@ -1,6 +1,7 @@
 <template>
   <FriteBackground />
   <NuxtPage />
+  <CookieConsent />
   <UModals />
   <UNotifications />
 </template>
