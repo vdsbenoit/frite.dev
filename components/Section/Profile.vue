@@ -1,6 +1,6 @@
 <template>
   <section class="flex min-h-screen items-start justify-center pb-24 md:pb-0 lg:items-center">
-    <div class="mt-2 max-w-screen-lg px-3 sm:mt-0 sm:px-6 xl:px-0">
+    <div class="mt-2 max-w-screen-lg px-3 sm:mt-0 sm:px-6 xl:px-2">
       <div class="flex gap-x-8">
         <!-- left panel -->
         <!-- visible only over the sm breakpoint -->
@@ -42,10 +42,10 @@
           <p class="lg:pr-6">
             I am a freelance
             <span class="decoration-primary underline underline-offset-2">software engineer</span>.
-            I find solutions to business issues using technology. I have more than
-            <span class="decoration-primary underline underline-offset-2"
-              >{{ workTimeYears }} years of experience</span
-            >
+            I find solutions to business issues using technology. I have
+            <span class="decoration-primary underline underline-offset-2">
+              {{ workTimeYears }} years of experience
+            </span>
             in software development, testing, automation and DevOps. I have worked in
             <span class="decoration-primary underline underline-offset-2">various industries</span>
             such as health, education, entertainment and new technologies.
@@ -60,7 +60,7 @@
               <li>☁ cloud or 🏢 on-premises SaaS and app implementation</li>
               <li>🛠️ micro-services development & deployment</li>
               <li>🤖 software automation / scripting</li>
-              <li>🚀 CI/CD optimization</li>
+              <li>🚀 CI/CD pipelines optimization</li>
             </ul>
           </div>
 
