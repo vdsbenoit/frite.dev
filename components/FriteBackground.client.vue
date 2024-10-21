@@ -53,12 +53,7 @@
   </div>
 </template>
 <script setup lang="ts">
-import {
-  useDebounceFn,
-  useEventListener,
-  useLocalStorage,
-  usePreferredReducedMotion,
-} from "@vueuse/core"
+import { useDebounceFn, useEventListener, usePreferredReducedMotion } from "@vueuse/core"
 
 // Interfaces & Types
 
@@ -90,7 +85,7 @@ const bgStarWidth = ref(0)
 const bgStarHeight = ref(0)
 const preferredMotion = usePreferredReducedMotion()
 const isBackgroundBlurred = useState("blurBackground", () => false)
-const isStarsEnabled = useLocalStorage("is-stars-enabled", true)
+const isStarsEnabled = useCookie("is-stars-enabled", { default: () => true })
 const starLayers = ref<StarLayer[]>([])
 const isStarRotating = ref(true)
 const isStarVisible = ref(false)

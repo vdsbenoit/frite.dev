@@ -1,6 +1,7 @@
 <!-- This page contains the nav bar & instantiate the different section components -->
 <template>
   <div>
+    <p>starenabled: {{ isStarsEnabled }}</p>
     <header
       class="fixed left-0 right-0 top-0 z-40 items-center sm:top-8 sm:grid sm:grid-flow-col sm:grid-cols-5 sm:justify-items-center sm:px-6 xl:px-0"
     >
@@ -113,7 +114,6 @@ import Profile from "../components/Section/Profile.vue"
 import Skills from "../components/Section/Skills.vue"
 import Contact from "../components/Section/Contact.vue"
 import { vIntersectionObserver } from "@vueuse/components"
-import { useLocalStorage } from "@vueuse/core"
 
 // SEO config
 
@@ -129,7 +129,7 @@ const SECTIONS = [
 ]
 
 const currentSection = ref<string>("")
-const isStarsEnabled = useLocalStorage("is-stars-enabled", true)
+const isStarsEnabled = useCookie("is-stars-enabled", { default: () => true })
 
 // Methods
 

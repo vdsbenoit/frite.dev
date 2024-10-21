@@ -39,15 +39,11 @@
 </template>
 
 <script lang="ts" setup>
-import { useLocalStorage } from "@vueuse/core"
-
 // Reactive data
 
 const route = useRoute()
-const isCookieConsentShown = useLocalStorage<boolean>("cookie-consent-prompt", true)
-const isCookieConsentGiven = useLocalStorage<boolean>("cookie-consent", false, {
-  listenToStorageChanges: true,
-})
+const isCookieConsentShown = useCookie("cookie-consent-prompt", { default: () => true })
+const isCookieConsentGiven = useCookie("cookie-consent", { default: () => false })
 const isBackgroundBlurred = useState("blurBackground", () => false)
 
 // Watchers

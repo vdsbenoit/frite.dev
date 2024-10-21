@@ -119,7 +119,6 @@
 import { z } from "zod"
 import type { FormSubmitEvent } from "#ui/types"
 import { AlertModal } from "#components"
-import { useLocalStorage } from "@vueuse/core"
 
 // Props
 
@@ -195,8 +194,8 @@ const hintMessage = computed(() => {
   if (formData.message.length < minChars) return `${formData.message.length}/${minChars}`
   return `${maxChars - formData.message.length}/${maxChars}`
 })
-const isCookieConsentShown = useLocalStorage("cookie-consent-prompt", true)
-const isCookieConsentGiven = useLocalStorage("cookie-consent", false)
+const isCookieConsentShown = useCookie("cookie-consent-prompt", { default: () => true })
+const isCookieConsentGiven = useCookie("cookie-consent", { default: () => false })
 
 // Methods
 

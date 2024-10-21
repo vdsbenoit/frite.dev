@@ -34,10 +34,8 @@
 </template>
 
 <script lang="ts" setup>
-import { useLocalStorage } from "@vueuse/core"
-
-const isCookieConsentShown = useLocalStorage("cookie-consent-prompt", true)
-const isCookieConsentGiven = useLocalStorage("cookie-consent", false)
+const isCookieConsentShown = useCookie("cookie-consent-prompt", { default: () => true })
+const isCookieConsentGiven = useCookie("cookie-consent", { default: () => false })
 
 const processConsent = (hasAccepted: boolean) => {
   isCookieConsentGiven.value = hasAccepted
