@@ -14,7 +14,7 @@
             :id="`skill-${group.id}`"
             :key="`skill-${group.id}`"
           >
-            <h3 class="mb-1">
+            <h3>
               {{ group.title }}
             </h3>
             <div class="flex flex-wrap gap-1 py-2 md:gap-2">

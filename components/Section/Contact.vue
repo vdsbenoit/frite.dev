@@ -61,7 +61,7 @@
                   type="submit"
                   size="xl"
                   class="mr-2"
-                  :disabled="!emailjs.isInitialized.value"
+                  :disabled="!emailjs.isInitialized.value || !captchaResponse"
                 >
                   Send message
                 </UButton>
@@ -80,11 +80,17 @@
         </UCard>
 
         <!-- Google Appointment Scheduler -->
-        <UCard :ui="{ background: 'dark:bg-gray-100', body: { padding: 'px-0 sm:px-0 sm:pb-0' } }">
+        <UCard
+          :ui="{
+            background: 'dark:bg-gray-100',
+            body: { padding: 'px-0 sm:px-0 sm:pb-0 text-gray-900' },
+          }"
+        >
           <h3 class="mb-4 text-center text-xl font-semibold text-gray-800">
             Schedule an appointment
           </h3>
           <iframe
+            v-if="isCookieConsentGiven"
             title="Schedule Google Meeting"
             :src="google_scheduler_url"
             style="border: 0"
@@ -92,6 +98,18 @@
             height="500"
             frameborder="0"
           ></iframe>
+          <div v-else class="flex h-[500px] w-full items-center justify-center px-4 text-center">
+            <p>
+              The appointment scheduler relies on Google services. Please
+              <span
+                class="cursor-pointer underline hover:text-gray-700"
+                @click="isCookieConsentShown = true"
+              >
+                accept the use of cookies
+              </span>
+              to enable it.
+            </p>
+          </div>
         </UCard>
       </div>
     </div>
@@ -176,6 +194,8 @@ const hintMessage = computed(() => {
   if (formData.message.length < minChars) return `${formData.message.length}/${minChars}`
   return `${maxChars - formData.message.length}/${maxChars}`
 })
+const isCookieConsentShown = useCookie("cookie-consent-prompt", { default: () => true })
+const isCookieConsentGiven = useCookie("cookie-consent", { default: () => false })
 
 // Methods
 
