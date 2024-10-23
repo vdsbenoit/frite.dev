@@ -19,6 +19,10 @@
 - Nuxt SEO
 - Nuxt Security
 
+## Lighthouse report
+![Lighthouse report](./docs/lighthouse-report.png)
+
+
 ## Design
 
 ### Colors
