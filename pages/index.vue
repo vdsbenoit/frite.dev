@@ -58,7 +58,7 @@
         size="lg"
         off-icon="i-tdesign-animation-1"
         on-icon="i-tdesign-animation-1"
-        class="hidden sm:col-start-5 sm:ml-20 sm:inline-flex"
+        class="hidden sm:col-start-5 sm:inline-flex"
       />
     </header>
     <main class="overflow-x-hidden">
@@ -73,10 +73,11 @@
     </main>
     <SectionFooter />
     <div
-      class="fixed bottom-6 right-6 z-30 hidden sm:block md:right-8 lg:right-10 xl:right-12 2xl:right-16"
+      class="fixed bottom-6 left-0 right-0 z-30 hidden items-center sm:grid sm:grid-flow-col sm:grid-cols-5 sm:justify-items-center sm:px-6 xl:px-0"
     >
       <UButton
         id="back-to-top-button"
+        class="col-start-5 text-nowrap"
         icon="i-heroicons-arrow-small-up"
         color="gray"
         variant="ghost"
@@ -87,14 +88,14 @@
     </div>
     <div
       id="back-to-top-fab"
-      class="fixed bottom-20 right-6 z-30 flex size-10 cursor-pointer items-center justify-center rounded-full bg-gray-700 shadow shadow-gray-600/50 active:shadow-none sm:hidden"
+      class="fixed bottom-16 right-4 z-30 flex size-8 cursor-pointer items-center justify-center rounded-full bg-gray-700 shadow shadow-gray-600/50 active:shadow-none sm:hidden"
       @click="scrollToTop"
     >
       <UIcon name="i-heroicons-arrow-small-up" color="gray" class="size-5" />
     </div>
     <div
       id="star-toggle-fab"
-      class="fixed bottom-6 right-6 z-30 flex size-10 cursor-pointer items-center justify-center rounded-full shadow shadow-gray-600/50 transition-colors active:shadow-none sm:hidden"
+      class="fixed bottom-3 right-3 z-30 flex size-10 cursor-pointer items-center justify-center rounded-full shadow shadow-gray-600/50 transition-colors active:shadow-none sm:hidden"
       :class="{ 'bg-primary-400': isStarsEnabled, 'bg-gray-800': !isStarsEnabled }"
       @click="toggleStars"
     >
