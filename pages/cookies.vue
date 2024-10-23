@@ -35,7 +35,7 @@
         your browser's instructions or help section.
       </p>
       <UButton class="mt-4" icon="i-heroicons-arrow-small-left" color="gray" variant="solid" to="/">
-        Back to homepage
+        Back to home page
       </UButton>
     </div>
   </div>

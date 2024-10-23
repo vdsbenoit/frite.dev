@@ -7,12 +7,12 @@
       <UIcon class="size-8 sm:size-5" name="i-iconoir-half-cookie" />
       <div class="flex flex-col items-center gap-2 sm:flex-row sm:gap-3">
         <div>
-          This website uses cookies.
+          This website
           <ULink
-            class="decoration-primary text-nowrap underline underline-offset-2 hover:text-gray-300 sm:ms-2"
+            class="decoration-primary text-nowrap underline underline-offset-2 hover:text-gray-300"
             to="/cookies"
           >
-            Learn more
+            uses cookies
           </ULink>
         </div>
         <div class="flex w-full gap-2 sm:w-fit">
