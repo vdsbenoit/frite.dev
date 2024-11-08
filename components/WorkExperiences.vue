@@ -27,10 +27,9 @@ const workExperiences = [
     iconWrapperClass: "bg-gray-950",
     from: 2024,
     description: `
-      As of 2024, I work on my own as a freelance software engineer, and created frite.dev.
-      <br /><br />
-      I provide services to businesses in various software engineering fields, including development, automation and DevOps.
-      My expertise lies in analyzing my client's challenges, then providing tailored solutions by leveraging the right technologies.
+      In 2024, I decided to start working on my own and I created my software development agency : frite.dev. 
+      I provide services to businesses in multiple software engineering fields, including cloud or on-premises SaaS 
+      and app implementation, micro-services development, automation and CI/CD optimization.
     `,
   },
   {

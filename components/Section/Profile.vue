@@ -65,7 +65,7 @@
           </div>
 
           <!-- 3rd block : work experiences -->
-          <h3>My work experiences</h3>
+
           <WorkExperiences />
         </div>
       </div>

@@ -29,7 +29,7 @@
           href="#profile"
           class="bg-primary-400 hover:bg-primary-300 active:bg-primary-500 inline-block text-gray-800 sm:justify-self-end"
         >
-          Who I am
+          About me
         </a>
         <a
           href="#contact"
