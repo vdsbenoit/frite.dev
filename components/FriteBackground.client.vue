@@ -135,7 +135,6 @@ const generateStars = (n: number): Star[] => {
 }
 
 const setStars = () => {
-  console.log("set stars")
   bgStarWidth.value = window.innerWidth
   bgStarHeight.value = window.innerHeight
   starLayers.value = [
