@@ -88,25 +88,6 @@ const execute = () => {
   }
 }
 
-const loadRecaptchaScript = () => {
-  if (window.grecaptcha) return
-  useScript({
-    src: "https://www.google.com/recaptcha/api.js",
-    defer: true,
-    async: true,
-    referrerpolicy: false,
-    crossorigin: false,
-  })
-}
-
-// Watchers & lifecycle hooks
-
-watch(isCookieConsentGiven, (newValue: boolean) => {
-  if (newValue) {
-    loadRecaptchaScript()
-  }
-})
-
 onMounted(() => {
   window.captchaCallback = (resp: string) => {
     console.log("reCAPTCHA response", resp)
@@ -122,7 +103,23 @@ onMounted(() => {
     response.value = ""
     error.value = true
   }
-  if (isCookieConsentGiven.value) loadRecaptchaScript()
+  // If the script is already loaded, do nothing
+  if (!window.grecaptcha) {
+    useScript(
+      {
+        src: "https://www.google.com/recaptcha/api.js",
+        defer: true,
+        async: true,
+        referrerpolicy: false,
+        crossorigin: false,
+      },
+      {
+        trigger: useScriptTriggerConsent({
+          consent: isCookieConsentGiven,
+        }),
+      },
+    )
+  }
 })
 </script>
 
