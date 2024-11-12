@@ -48,7 +48,7 @@
             </span>
             in software development, testing, automation and DevOps. I have worked in
             <span class="decoration-primary underline underline-offset-2">various industries</span>
-            such as health, education, entertainment and new technologies.
+            such as health, entertainment and new technologies.
           </p>
 
           <SocialLinks class="flex justify-center gap-x-11 sm:hidden" />
