@@ -9,7 +9,7 @@
     "patch": "npm version patch --no-git-tag-version",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "postinstall": "nuxt prepare",
+    "postinstall": "nuxt prepare && node ./scripts/fix-unenv.cjs",
     "prepare": "husky",
     "test": "vitest run",
     "coverage": "vitest run --coverage",
