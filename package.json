@@ -1,6 +1,6 @@
 {
-  "name": "frite.dev",
-  "version": "1.0.15",
+  "name": "frites.dev",
+  "version": "1.0.16",
   "private": true,
   "type": "module",
   "scripts": {

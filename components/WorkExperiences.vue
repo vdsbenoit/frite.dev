@@ -20,16 +20,16 @@
 const workExperiences = [
   {
     title: "Freelance Software Engineer",
-    company: "frite.dev",
+    company: "frites.dev SRL",
     location: "Brussels",
     icon: "~/assets/img/logo-transparent.png",
     iconClass: "size-7",
     iconWrapperClass: "bg-gray-950",
     from: 2024,
     description: `
-      In 2024, I decided to start working on my own and I created my software development agency : frite.dev. 
-      I provide services to businesses in multiple software engineering fields, including cloud or on-premises SaaS 
-      and app implementation, micro-services development, automation and CI/CD optimization.
+      In 2024, I decided to start working on my own and I created my software development agency : frites.dev SRL. 
+      I provide services to businesses in multiple software engineering fields, including mobile app development,
+      cloud and on-premises SaaS implementation.
     `,
   },
   {

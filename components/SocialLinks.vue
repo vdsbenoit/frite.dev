@@ -21,7 +21,7 @@
         size="20"
       />
     </NuxtLink>
-    <NuxtLink to="mailto:benoit@frite.dev" target="_blank" aria-label="Send Email">
+    <NuxtLink to="mailto:benoit@frites.dev" target="_blank" aria-label="Send Email">
       <UIcon
         :name="blackAndWhite ? 'i-simple-icons-gmail' : 'i-logos-google-gmail'"
         :size="blackAndWhite ? 26 : 20"

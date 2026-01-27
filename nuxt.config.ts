@@ -18,7 +18,7 @@ export default defineNuxtConfig({
   runtimeConfig: {
     public: {
       appVersion: process.env.npm_package_version || "unknown",
-      contactFormToEmail: "benoit@frite.dev",
+      contactFormToEmail: "benoit@frites.dev",
       emailjsUserPubKey: "v_5w2uNf_muKtiZ_h",
       emailjsServiceId: "service_eqtnwg3",
       emailjsTemplateId: "template_grzi0mc",
@@ -31,10 +31,10 @@ export default defineNuxtConfig({
     preference: "dark",
   },
   site: {
-    url: "https://frite.dev",
-    name: "frite.dev • Benoit's portfolio",
+    url: "https://frites.dev",
+    name: "frites.dev SRL • Tailored Software Solutions",
     description:
-      "frite.dev is a software development company providing tailored solutions for businesses.",
+      "frites.dev SRL is a software development company providing tailored solutions for businesses.",
     defaultLocale: "en",
   },
   schemaOrg: {

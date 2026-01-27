@@ -6,8 +6,8 @@
     <div class="flex flex-row items-center">
       <img class="size-[400px] p-16" src="/logo-transparent.png" />
       <p class="flex flex-col text-neutral-100">
-        <span class="text-9xl font-bold">frite.dev</span>
-        <span class="mt-6 text-3xl">Top-notch software solutions for businesses</span>
+        <span class="text-9xl font-bold">frites.dev SRL</span>
+        <span class="mt-6 text-3xl">Tailored software solutions for businesses</span>
       </p>
     </div>
   </div>

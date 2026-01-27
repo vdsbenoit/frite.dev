@@ -181,7 +181,7 @@ const formData = reactive<FormData>({
   message: undefined,
 })
 const subject = computed(() => {
-  return `Message from ${formData.name || "frite.dev"}`
+  return `Message from ${formData.name || "frites.dev"}`
 })
 const captchaResponse = ref("")
 const captchaError = ref(false)

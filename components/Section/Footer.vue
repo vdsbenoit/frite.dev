@@ -13,11 +13,11 @@
             class="mx-auto h-8 w-auto sm:h-10"
           />
           <p class="text-center text-sm sm:text-start">
-            &copy; {{ new Date().getFullYear() }} frite.dev - VAT BE1010 351 307
+            &copy; {{ new Date().getFullYear() }} frites.dev SRL - VAT BE1032 412 966
             <br />
             Benoit Vander Stappen -
-            <ULink to="mailto:benoit@frite.dev" class="text-sm hover:text-gray-300">
-              benoit@frite.dev
+            <ULink to="mailto:benoit@frites.dev" class="text-sm hover:text-gray-300">
+              benoit@frites.dev
             </ULink>
           </p>
         </div>
