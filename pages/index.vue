@@ -15,7 +15,7 @@
         />
         <a
           href="#hero"
-          class="decoration-primary rounded bg-gray-950 px-2 py-0.5 text-lg font-bold transition-colors focus:underline focus:underline-offset-2 focus:outline-none group-hover:text-gray-400 md:text-xl"
+          class="decoration-primary rounded text-lg font-bold drop-shadow-[0_2px_6px_rgba(0,0,0,1)] transition-colors focus:underline focus:underline-offset-2 focus:outline-none group-hover:text-gray-400 md:text-xl"
         >
           frites.dev
         </a>
