@@ -21,10 +21,10 @@
         </a>
       </div>
       <div
-        class="via-primary bg-gradient-to-r from-gray-700 to-red-400 pb-[1px] sm:col-start-3 sm:rounded-xl sm:bg-gradient-to-br sm:p-[1px]"
+        class="via-primary squircle-nav-bar bg-gradient-to-r from-gray-700 to-red-400 pb-[1px] sm:col-start-3 sm:rounded-xl sm:bg-gradient-to-br sm:p-[1px]"
       >
         <nav
-          class="flex items-center justify-evenly bg-gray-800 px-1 py-2 text-gray-100 sm:justify-between sm:gap-x-5 sm:rounded-xl sm:px-5 sm:py-1"
+          class="squircle-nav-bar flex items-center justify-evenly bg-gray-800 px-1 py-2 text-gray-100 sm:justify-between sm:gap-x-5 sm:rounded-xl sm:px-5 sm:py-1"
         >
           <div
             class="group flex cursor-pointer items-center sm:hidden"
@@ -149,4 +149,8 @@ const scrollToTop = () => {
   window.scrollTo({ top: 0, behavior: "smooth" })
 }
 </script>
-<style scoped></style>
+<style scoped>
+.squircle-nav-bar {
+  corner-shape: squircle;
+}
+</style>
