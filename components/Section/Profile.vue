@@ -57,10 +57,10 @@
           <div class="lg:pr-6">
             <p>I provide the following services:</p>
             <ul class="list-inside list-disc px-1 py-2 sm:px-2">
+              <li>📱 cross-platform mobile app development</li>
               <li>☁ cloud or 🏢 on-premises SaaS and app implementation</li>
               <li>🛠️ micro-services development & deployment</li>
               <li>🤖 software automation / scripting</li>
-              <li>🚀 CI/CD pipelines optimization</li>
             </ul>
           </div>
 
