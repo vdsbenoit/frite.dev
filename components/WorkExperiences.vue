@@ -19,6 +19,20 @@
 <script lang="ts" setup>
 const workExperiences = [
   {
+    title: "Front-end & Mobile Developer",
+    company: "Izix",
+    location: "Brussels",
+    icon: "~/assets/img/izix-logo.png",
+    iconClass: "size-7",
+    iconWrapperClass: "bg-[#062F40]",
+    from: 2025,
+    description: `
+      In 2025, I started collaborating with Izix as a Front-end and Mobile Developer.
+      I created from scratch a new cross-platform mobile application for their customers using
+      hybrid technologies such as Ionic and Capacitor.
+    `,
+  },
+  {
     title: "Freelance Software Engineer",
     company: "frites.dev SRL",
     location: "Brussels",
