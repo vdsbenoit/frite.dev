@@ -7,10 +7,17 @@
         in a legal, fair, and transparent way. This privacy statement complies with the General Data
         Protection Regulation (GDPR), effective since May 25, 2018. This website uses cookies to
         enhance the browsing experience for our visitors. Cookies help our site perform better and
-        adapt to your preferences. Although this website only stores some necessary preferences
-        cookies, it also relies on some Google services, such as reCAPTCHA and Google Calendar.
-        These external services may set cookies to collect certain data, such as analyzing visitor
-        browsing behavior.
+        adapt to your preferences. This website stores necessary preference cookies and may also use
+        Google services such as reCAPTCHA and Google Calendar. These external services may set
+        additional cookies (for example, reCAPTCHA cookies such as <code>_grecaptcha</code>) to
+        support security and service functionality.
+      </p>
+      <p class="py-2">
+        As announced by Google for reCAPTCHA (effective April 2, 2026), when reCAPTCHA is enabled on
+        this site, we act as the data controller and Google acts as a data processor for data
+        processed by reCAPTCHA under Google Cloud terms, including the Cloud Data Processing
+        Addendum. reCAPTCHA processing is no longer governed by Google's consumer Privacy Policy and
+        Terms of Service for this specific service context.
       </p>
       <h3 class="mt-4">Cookie Settings</h3>
       <!-- prettier-ignore -->
